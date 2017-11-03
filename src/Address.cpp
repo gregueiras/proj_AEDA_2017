@@ -3,24 +3,23 @@
 // Constructors/Destructors
 //  
 
-Address::Address () {
-initAttributes();
+Address::Address() {
+	initAttributes();
 }
 
-Address::~Address () { }
+Address::~Address() {
+}
 
 //  
 // Methods
 //  
 
-
 // Accessor methods
 //  
-
 
 // Other methods
 //  
 
-void Address::initAttributes () {
+void Address::initAttributes() {
 }
 
