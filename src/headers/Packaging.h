@@ -1,8 +1,8 @@
 
 #ifndef PACKAGING_H
 #define PACKAGING_H
-#include "Services.h"
-
+#include "Date.h"
+#include "Hour.h"
 #include <string>
 
 /**
@@ -10,12 +10,13 @@
   * 
   */
 
-class Packaging : public Services
+class Packaging
 {
 public:
 
   // Constructors/Destructors
   //  
+	Packaging(Date start_date, Hour start_hour, Date end_date, Hour end_hour);
 
 
   /**
@@ -113,7 +114,7 @@ public:
    * Date of start packaging
    * @return the value of start_date
    */
-  Date getStart_date ()   {
+  Date getStart_date () const{
     return start_date;
   }
 
@@ -131,7 +132,7 @@ public:
    * Hour of start
    * @return the value of start_hour
    */
-  Hour getStart_hour ()   {
+  Hour getStart_hour () const  {
     return start_hour;
   }
 
@@ -149,7 +150,7 @@ public:
    * Date of end of packaging
    * @return the value of end_date
    */
-  Date getEnd_date ()   {
+  Date getEnd_date () const  {
     return end_date;
   }
 
@@ -167,7 +168,7 @@ public:
    * Hour of end of packaging
    * @return the value of end_hour
    */
-  Hour getEnd_hour ()   {
+  Hour getEnd_hour () const  {
     return end_hour;
   }
 private:

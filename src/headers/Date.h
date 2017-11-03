@@ -3,7 +3,7 @@
 #define DATE_H
 
 #include <string>
-
+#include <iostream>
 /**
   * class Date
   * 
@@ -16,6 +16,7 @@ public:
   // Constructors/Destructors
   //  
 
+	Date(unsigned int d, unsigned int m, unsigned int y);
 
   /**
    * Empty Constructor
@@ -110,7 +111,7 @@ public:
    * Day
    * @return the value of day
    */
-  unsigned int getDay ()   {
+  unsigned int getDay () const  {
     return day;
   }
 
@@ -128,7 +129,7 @@ public:
    * Month
    * @return the value of month
    */
-  unsigned int getMonth ()   {
+  unsigned int getMonth () const  {
     return month;
   }
 
@@ -146,7 +147,7 @@ public:
    * Year
    * @return the value of year
    */
-  unsigned int getYear ()   {
+  unsigned int getYear () const  {
     return year;
   }
 private:
@@ -154,6 +155,53 @@ private:
 
   void initAttributes () ;
 
+
+public:
+
+  //Other methods
+  //
+
+
 };
+
+
+
+bool operator== (const Date& d1, const Date& d2);
+std::ostream & operator<< (std::ostream &o, const Date& d1);
+
+bool operator< (const Date& d1, const Date& d2);
+bool operator> (const Date& d1, const Date& d2);
+
+
+
+
+
+
+
+class DateInvalidDay {
+private:
+	unsigned int day;
+
+public:
+	DateInvalidDay(unsigned int day) { this->day= day; }
+};
+
+class DateInvalidMonth {
+private:
+	unsigned int month;
+
+public:
+	DateInvalidMonth(unsigned int month) { this->month = month; }
+};
+
+class DateInvalidYear {
+private:
+	unsigned int year;
+
+public:
+	DateInvalidYear(unsigned int year) { this->year= year; }
+};
+
+
 
 #endif // DATE_H

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>proj_AEDA_2017</name>
@@ -25,3 +26,6 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
 </projectDescription>
+=======
+	</projects>
+>>>>>>> branch 'master' of https://github.com/Gonca007/proj_AEDA_2017.git
