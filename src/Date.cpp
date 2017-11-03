@@ -3,35 +3,101 @@
 // Constructors/Destructors
 //  
 
-Date::Date() {
+Date::Date () {
 	initAttributes();
 }
 
-Date::~Date() {
+Date::Date(unsigned int d, unsigned int m, unsigned int y)
+{
+	if ((m < 0) || (m > 12))
+		throw DateInvalidMonth(m);
+
+	if (y < 0)
+		throw DateInvalidYear(y);
+
+	if (m == 4 || m == 6 || m == 9 || m == 11)
+	{
+		if (d > 30)
+			throw DateInvalidDay(d);
+	} else if (m == 2)
+	{
+		if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
+		{
+			if (d > 28)
+				throw DateInvalidDay(d);
+		} else
+			if (d > 29)
+				throw DateInvalidDay(d);
+	} else
+		if (d > 31)
+			throw DateInvalidDay(d);
+
+
+
+
+	this->day = d;
+	this->month = m;
+	this->year = y;
 }
 
-void Date::setDay(unsigned int new_var) {
-	day = new_var;
+Date::~Date () { }
+
+//  
+// Methods
+//  
+
+
+// Accessor methods
+//  
+
+
+// Other methods
+//  
+
+void Date::initAttributes () {
+	this->day = 0;
+	this->month = 0;
+	this->year = 0;
 }
 
-unsigned int Date::getDay() {
-	return day;
+bool operator== (const Date& d1, const Date& d2)
+{
+	if ((d1.getYear() != d2.getYear()) || (d1.getMonth() != d2.getMonth()) || (d1.getDay() != d2.getDay()))
+		return false;
+	else
+		return true;
 }
 
-void Date::setMonth(unsigned int new_var) {
-	month = new_var;
+bool operator< (const Date& d1, const Date& d2)
+{
+	if (d1.getYear() < d2.getYear())
+		return true;
+	else if (d1.getYear() > d2.getYear())
+		return false;
+	else if (d1.getMonth() < d2.getMonth())
+		return true;
+	else if (d1.getMonth() > d2.getMonth())
+		return false;
+	else if (d1.getDay() < d2.getDay())
+		return true;
+	else if (d1.getDay() > d2.getDay())
+		return false;
+	else if (d1 == d2)
+		return false;
 }
 
-unsigned int Date::getMonth() {
-	return month;
-}
-void Date::setYear(unsigned int new_var) {
-	year = new_var;
+bool operator> (const Date& d1, const Date& d2)
+{
+	if (d1 < d2)
+		return false;
+	else if (d1 == d2)
+		return false;
+
+	return true;
 }
 
-unsigned int Date::getYear() {
-	return year;
+std::ostream & operator<< (std::ostream &o, const Date& d1)
+{
+	  o << d1.getDay() << "/" << d1.getMonth() << "/" << d1.getYear();
+	  return o;
 }
-void Date::initAttributes() {
-}
-

@@ -1,8 +1,8 @@
 
 #ifndef SHIPPING_H
 #define SHIPPING_H
-#include "Services.h"
-
+#include "Date.h"
+#include "Hour.h"
 #include <string>
 
 /**
@@ -10,12 +10,13 @@
   * 
   */
 
-class Shipping : public Services
+class Shipping
 {
 public:
 
   // Constructors/Destructors
   //  
+	Shipping(Date start_date, Hour start_hour, Date end_date, Hour end_hour);
 
 
   /**
@@ -113,7 +114,7 @@ public:
    * Date of dispatch
    * @return the value of dispatch_date
    */
-  Date getDispatch_date ()   {
+  Date getDispatch_date ()  const {
     return dispatch_date;
   }
 
@@ -131,7 +132,7 @@ public:
    * Hour of dispatch
    * @return the value of dispatch_hour
    */
-  Hour getDispatch_hour ()   {
+  Hour getDispatch_hour ()  const {
     return dispatch_hour;
   }
 
@@ -149,7 +150,7 @@ public:
    * Date of arrival
    * @return the value of arrival_date
    */
-  Date getArrival_date ()   {
+  Date getArrival_date ()  const {
     return arrival_date;
   }
 
@@ -167,7 +168,7 @@ public:
    * Hour of arrival
    * @return the value of arrival_hour
    */
-  Hour getArrival_hour ()   {
+  Hour getArrival_hour () const  {
     return arrival_hour;
   }
 private:

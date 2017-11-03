@@ -1,8 +1,8 @@
 
 #ifndef DELIVERY_H
 #define DELIVERY_H
-#include "Services.h"
-
+#include "Date.h"
+#include "Hour.h"
 #include <string>
 
 /**
@@ -10,13 +10,14 @@
   * 
   */
 
-class Delivery : public Services
+class Delivery
 {
 public:
 
   // Constructors/Destructors
   //  
 
+	Delivery(Date start_date, Hour start_hour, Date end_date, Hour end_hour);
 
   /**
    * Empty Constructor
@@ -75,7 +76,6 @@ private:
 
   // Private attributes
   //  
-
   // Date of start of delivery
   Date start_date;
   // Hour of start of delivery
@@ -84,6 +84,7 @@ private:
   Date end_date;
   // Hour of end of delivery
   Hour end_hour;
+
 public:
 
 
@@ -113,7 +114,7 @@ public:
    * Date of start of delivery
    * @return the value of start_date
    */
-  Date getStart_date ()   {
+  Date getStart_date ()  const {
     return start_date;
   }
 
@@ -131,7 +132,7 @@ public:
    * Hour of start of delivery
    * @return the value of start_hour
    */
-  Hour getStart_hour ()   {
+  Hour getStart_hour () const  {
     return start_hour;
   }
 
@@ -149,7 +150,7 @@ public:
    * Date of end of delivery
    * @return the value of end_date
    */
-  Date getEnd_date ()   {
+  Date getEnd_date () const  {
     return end_date;
   }
 
@@ -167,12 +168,13 @@ public:
    * Hour of end of delivery
    * @return the value of end_hour
    */
-  Hour getEnd_hour ()   {
+  Hour getEnd_hour ()  const {
     return end_hour;
   }
+
 private:
 
-
+  friend class Services;
   void initAttributes () ;
 
 };

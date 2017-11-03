@@ -3,72 +3,34 @@
 #define SERVICES_H
 
 #include <string>
-#include vector
+#include <vector>
+#include <iostream>
+#include "GPS.h"
+#include "Address.h"
+#include "Delivery.h"
+#include "Packaging.h"
+#include "Shipping.h"
 
-
+using namespace std;
+static double cost_km_m = 0.5;
+static double cost_day_in_storage = 2;
 
 /**
   * class Services
   * 
   */
-
 class Services
 {
 public:
 
   // Constructors/Destructors
   //  
-
-
-  /**
-   * Empty Constructor
-   */
-  Services ();
-
+	Services(Address origin_address, double volume, Address destination_address);
+	Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery);
   /**
    * Empty Destructor
    */
   virtual ~Services ();
-
-  // Static Public attributes
-  //  
-
-  // Public attributes
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-  // Public attribute accessor methods
-  //  
-
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
 
 private:
 
@@ -78,23 +40,25 @@ private:
   // Private attributes
   //  
 
-  // GPS Coordinates of the origin of service
+  // ID of the client
+  int id;
+  // Origin of service
   Address origin_address;
   // Volume shipped
-  long volume;
+  double volume;
   // Distance between origin and destination of service
-  unsigned long distance;
+  double distance;
   // Price of service
-  unsigned long price;
+  double price;
   // GPS Coordinates of the destination of service
-  Address destination_Address;
-public:
+  Address destination_address;
+  //
+  Shipping shipping;
+  //
+  Packaging packaging;
+  //
+  Delivery delivery;
 
-
-  // Private attribute accessor methods
-  //  
-
-private:
 
 public:
 
@@ -105,7 +69,7 @@ public:
 
   /**
    * Set the value of origin_address
-   * GPS Coordinates of the origin of service
+   * Address of the origin of service
    * @param new_var the new value of origin_address
    */
   void setOrigin_address (Address new_var)   {
@@ -114,10 +78,10 @@ public:
 
   /**
    * Get the value of origin_address
-   * GPS Coordinates of the origin of service
+   * Address of the origin of service
    * @return the value of origin_address
    */
-  Address getOrigin_address ()   {
+  Address getOrigin_address () const  {
     return origin_address;
   }
 
@@ -126,7 +90,7 @@ public:
    * Volume shipped
    * @param new_var the new value of volume
    */
-  void setVolume (long new_var)   {
+  void setVolume (double new_var)   {
       volume = new_var;
   }
 
@@ -135,68 +99,95 @@ public:
    * Volume shipped
    * @return the value of volume
    */
-  long getVolume ()   {
+  double getVolume ()  const {
     return volume;
   }
 
   /**
-   * Set the value of distance
+   * Calculate the value of distance
    * Distance between origin and destination of service
-   * @param new_var the new value of distance
    */
-  void setDistance (unsigned long new_var)   {
-      distance = new_var;
-  }
+  double calcDistance ();
 
   /**
    * Get the value of distance
    * Distance between origin and destination of service
    * @return the value of distance
    */
-  unsigned long getDistance ()   {
+  double getDistance ()  const {
     return distance;
   }
 
   /**
-   * Set the value of price
+   * Calculate the value of price
    * Price of service
-   * @param new_var the new value of price
    */
-  void setPrice (unsigned long new_var)   {
-      price = new_var;
-  }
+  double calcPrice ();
 
   /**
    * Get the value of price
    * Price of service
    * @return the value of price
    */
-  unsigned long getPrice ()   {
+  double getPrice () const  {
     return price;
   }
 
   /**
    * Set the value of destination_Address
-   * GPS Coordinates of the destination of service
+   * Address of the destination of service
    * @param new_var the new value of destination_Address
    */
   void setDestination_Address (Address new_var)   {
-      destination_Address = new_var;
+      destination_address = new_var;
   }
 
   /**
    * Get the value of destination_Address
-   * GPS Coordinates of the destination of service
+   * Address of the destination of service
    * @return the value of destination_Address
    */
-  Address getDestination_Address ()   {
-    return destination_Address;
+  Address getDestination_address ()  const {
+    return destination_address;
   }
-private:
+
+  /**
+   * Get the value of Shipping
+   * Service of Shipping
+   * @return the value of shipping
+   */
+  Shipping getShipping() const  {
+    return shipping;
+  }
+
+  /**
+   * Get the value of Packaging
+   * Service of Packaging
+   * @return the value of packaging
+   */
+  Packaging getPackaging()  const {
+    return packaging;
+  }
+  /**
+   * Get the value of Delivery
+   * Service of Delivery
+   * @return the value of delivery
+   */
+  Delivery getDelivery()  const {
+    return delivery;
+  }
+
+public:
 
 
-  void initAttributes () ;
+
+
 
 };
+
+ostream& operator<< (ostream& o, const Services& c);
+
+
+
 
 #endif // SERVICES_H
