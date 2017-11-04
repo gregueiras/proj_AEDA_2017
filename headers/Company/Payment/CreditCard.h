@@ -21,7 +21,7 @@ public:
   /**
    * Empty Constructor
    */
-  CreditCard ();
+  CreditCard (double value);
 
   /**
    * Empty Destructor
@@ -42,58 +42,18 @@ public:
   // Public attribute accessor methods
   //  
 
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
 private:
+	// ID number of the Payment
+	const unsigned int payment_id = 3;
 
-  // Static Private attributes
-  //  
-
-  // Private attributes
-  //  
 
 public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-
-
+	/**
+	* Create new id
+	* ID number of the next payment requested
+	* @return the value of new id
+	*/
+	const unsigned int newId();
 };
 
 #endif // CREDITCARD_H
