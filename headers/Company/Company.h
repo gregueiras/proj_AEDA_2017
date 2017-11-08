@@ -108,7 +108,15 @@ public:
 	* Vector of clients of the company
 	* @param new_var the new client
 	*/
-	void addClient(Client *new_var);
+	bool addClient(Client *new_var);
+
+	/**
+	* Get client from clients vector using id as reference
+	* Vector of clients of the company
+	* @param new_var the client, if found
+	* @param id the client id
+	*/
+	bool getClient(unsigned int id, Client *new_var);
 
 	/**
 	* Set the vector of services_queue

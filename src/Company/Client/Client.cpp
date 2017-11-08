@@ -6,7 +6,7 @@ unsigned int Client::next_id = 1;
 // Constructors/Destructors
 //  
 
-Client::Client (string name, Address address, unsigned int nif) {
+Client::Client (string name, Address address, unsigned int nif, const unsigned int Id) : id(Id) {
 	this->name = name;
 	this->address = address;
 	this->nif = nif;
@@ -32,6 +32,10 @@ void Client::setAddress(Address new_add) {
 
 Address Client::getAddress() {
 	return this->address;
+}
+
+const unsigned int Client::getId(){
+	return this->id;
 }
 
 void Client::setNif(unsigned int new_nif) {

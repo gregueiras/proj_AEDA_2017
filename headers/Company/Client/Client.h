@@ -15,7 +15,7 @@
   * 
   */
 
-class Client : public Business
+class Client
 {
 public:
 
@@ -25,7 +25,7 @@ public:
   /**
    * Constructor for registed clients
    */
-  Client (string name, Address address, unsigned int nif);
+  Client (string name, Address address, unsigned int nif, const unsigned int Id);
 
   /**
    * Empty Destructor
@@ -50,6 +50,9 @@ private:
   vector<Services*> services;
   // History of payments of the client
   vector<Payment*> payments;
+  //client id
+  const unsigned int id;
+  //virtual const unsigned int client_id
 
 public:
   /**
@@ -78,6 +81,13 @@ public:
    * @return the value of address
    */
   Address getAddress ();
+
+  /**
+  * Get the value of id
+  * Client ID
+  * @return the value of id
+  */
+  const unsigned int getId();
 
   /**
    * Set the value of nif

@@ -19,9 +19,9 @@ public:
 
 
   /**
-   * Empty Constructor
+   * Constructor
    */
-  Unregisted ();
+	Unregisted (string name, Address address, unsigned int nif);
 
   /**
    * Empty Destructor
@@ -30,19 +30,11 @@ public:
 
 private:
 	// ID number of the client
-	const unsigned int id;
 
 	// ID number of the group
 	const unsigned int client_id = 0;
 
 public:
-	/**
-	* Get the value of id
-	* ID number of the client
-	* @return the value of id
-	*/
-	const unsigned int getId();
-
 	/**
 	* Create new id
 	* ID number of the client

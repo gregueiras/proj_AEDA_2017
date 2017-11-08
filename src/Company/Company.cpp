@@ -38,8 +38,30 @@ vector<Client*> Company::getClients() {
 	return this->clients;
 }
 
-void Company::addClient(Client *new_var) {
+bool Company::addClient(Client *new_var) {
+	unsigned int new_client_id = *new_var->getId();
+
+	int clients_size = this->clients.size();
+	for(int i = 0; i <= clients_size; ++i){
+		if( i == clients_size)
+			break;
+
+		if(new_client_id == *new_var->getId())
+			return false;
+	}
 	this->clients.push_back(new_var);
+	return true;
+}
+
+bool Company::getClient(unsigned int id, Client *new_var){
+	int clients_size = this->clients.size();
+	for(int i = 0; i < clients_size; ++i){
+		if(id == this->clients.at(i)->getId()){
+			new_var = this->clients.at(i);
+			return true;
+		}
+	}
+	return false;
 }
 
 void Company::setServicesQueue(vector<Services*> new_var) {

@@ -20,7 +20,7 @@ public:
 
 
   /**
-   * Empty Constructor
+   * Constructor
    */
   Business (string name, Address address, unsigned int nif);
 
@@ -31,19 +31,11 @@ public:
 
 private:
   // ID number of the client - last digit 2
-  const unsigned int id;
 
   // ID number of the group
   const unsigned int client_id = 2;
 
 public:
-	/**
-	* Get the value of id
-	* ID number of the client
-	* @return the value of id
-	*/
-	const unsigned int getId();
-
 	/**
 	* Create new id
 	* ID number of the client

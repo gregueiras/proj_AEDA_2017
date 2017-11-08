@@ -3,18 +3,13 @@
 // Constructors/Destructors
 //  
 
-Personal::Personal () {
-}
+Personal::Personal (string name, Address address, unsigned int nif) : Client::Client(name, address, nif, newId()) {}
 
 Personal::~Personal () { }
 
 //  
 // Methods
 //  
-
-const unsigned int Personal::getId() {
-	return this->id;
-}
 
 const unsigned int Personal::newId() {
 	const unsigned int newId = this->getNextId() * 10 + this->client_id;
