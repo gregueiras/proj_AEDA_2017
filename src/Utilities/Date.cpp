@@ -101,3 +101,16 @@ std::ostream & operator<< (std::ostream &o, const Date& d1)
 	  o << d1.getDay() << "/" << d1.getMonth() << "/" << d1.getYear();
 	  return o;
 }
+
+unsigned int operator -(const Date& d1, const Date& d2) {
+	unsigned int i = 0;
+
+	if (d1 == d2)
+		return i;
+	else
+	{
+		i += abs((d1.getYear() - d2.getYear()))*365;
+		i += abs((d1.getMonth() - d2.getMonth()))*30;
+		i += abs((d1.getDay() - d2.getDay()));
+	}
+}

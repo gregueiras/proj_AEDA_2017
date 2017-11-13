@@ -1,12 +1,13 @@
 #include "Services.h"
 using namespace std;
 
-// Constructors/Destructors
-//  
 static int service_no = 0;
 
-Services::Services(Address origin_address, double volume, Address destination_address, const unsigned int client)
-: client_id(client) , service_id(service_no++) {
+
+// Constructors/Destructors
+//  
+
+Services::Services(Address origin_address, double volume, Address destination_address) : service_id(service_no++) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;
@@ -18,9 +19,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 }
 
-Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery, const unsigned int client)
-: client_id(client) , service_id(service_no++) {
-
+Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery) : service_id(service_no++) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;

@@ -171,7 +171,7 @@ std::ostream & operator<< (std::ostream &o, const Date& d1);
 
 bool operator< (const Date& d1, const Date& d2);
 bool operator> (const Date& d1, const Date& d2);
-
+unsigned int operator-(const Date& d1, const Date& d2);
 
 
 
