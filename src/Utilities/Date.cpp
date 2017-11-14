@@ -98,8 +98,8 @@ bool operator> (const Date& d1, const Date& d2)
 
 std::ostream & operator<< (std::ostream &o, const Date& d1)
 {
-	  o << d1.getDay() << "/" << d1.getMonth() << "/" << d1.getYear();
-	  return o;
+	o << d1.getDay() << "/" << d1.getMonth() << "/" << d1.getYear();
+	return o;
 }
 
 unsigned int operator -(const Date& d1, const Date& d2) {
@@ -113,4 +113,95 @@ unsigned int operator -(const Date& d1, const Date& d2) {
 		i += abs((d1.getMonth() - d2.getMonth()))*30;
 		i += abs((d1.getDay() - d2.getDay()));
 	}
+
+	return i;
+}
+
+Date operator +(const Date& d1, const Hour& h1) {
+	unsigned int hrs = h1.getHour();
+	Date d2 = d1;
+
+	unsigned int days = hrs / 24;
+	std::cout << "Hours: " << hrs <<  "  Hour to day: " << days << std::endl;
+	return d2 + days;
+}
+
+Date operator +(const Hour& h1, const Date& d1) {
+	return d1 + h1;
+}
+
+Date operator +(const unsigned int days, const Date& d1) {
+	return d1 + days;
+}
+
+Date operator +(const Date& d1, const unsigned int days) {
+	unsigned int d_new = d1.getDay() + days;
+
+	Date d2 = d1;
+	//	d2.setDay(d_new);
+	//
+	//	return d2;
+	while(1)
+	{
+		unsigned int m = d2.getMonth(), y = d2.getYear();
+
+		if (m == 4 || m == 6 || m == 9 || m == 11)
+		{
+			if (d_new > 30)
+			{
+				d_new -= 30;
+				d2.setDay(1);
+				d2.setMonth(d2.getMonth()+1);
+
+			} else
+			{
+				std::cout << d_new << std::endl;
+
+				d2.setDay(d_new);
+				return d2;
+			}
+
+		} else if (m == 2)
+		{
+			if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
+			{
+				if (d_new > 28)
+				{
+					d_new -= 28;
+					d2.setDay(1);
+					d2.setMonth(d2.getMonth()+1);
+
+				}else
+				{
+					d2.setDay(d_new);
+					return d2;
+				}
+			} else
+				if (d_new > 29)
+				{
+					d_new -= 28;
+					d2.setDay(1);
+					d2.setMonth(d2.getMonth()+1);
+
+				} else
+				{
+					d2.setDay(d_new);
+					return d2;
+				}
+		} else
+			if (d_new > 31)
+			{
+				std::cout << d_new << std::endl;
+				d_new -= 31; //TODO
+				d2.setDay(1);
+				d2.setMonth(d2.getMonth()+1);
+				std::cout << d_new << std::endl << d2.getMonth();
+
+			} else
+			{
+				d2.setDay(d_new);
+				return d2;
+			}
+	}
+
 }

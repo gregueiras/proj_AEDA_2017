@@ -17,6 +17,8 @@ public:
   //  
   Hour(unsigned int h, unsigned int m);
 
+  Hour(unsigned int h, unsigned int m, bool b);
+
   /**
    * Empty Constructor
    */

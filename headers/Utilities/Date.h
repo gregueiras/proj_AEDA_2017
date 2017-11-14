@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include "hour.h"
 /**
   * class Date
   * 
@@ -171,7 +172,14 @@ std::ostream & operator<< (std::ostream &o, const Date& d1);
 
 bool operator< (const Date& d1, const Date& d2);
 bool operator> (const Date& d1, const Date& d2);
+
 unsigned int operator-(const Date& d1, const Date& d2);
+Date operator+(const Date& d1, const Hour& h1);
+Date operator+(const Hour& h1 ,const Date& d1);
+
+Date operator+(const unsigned int days, const Date& d1);
+Date operator+(const Date& d1, const unsigned int days);
+
 
 
 

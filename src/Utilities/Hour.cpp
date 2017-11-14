@@ -46,3 +46,7 @@ std::ostream & operator<< (std::ostream &o, const Hour& h1)
 	  return o;
 }
 
+Hour::Hour(unsigned int h, unsigned int m, bool b) {
+	this->hour = h;
+	this->minute = m;
+}
