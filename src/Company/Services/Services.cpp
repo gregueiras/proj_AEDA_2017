@@ -2,6 +2,10 @@
 using namespace std;
 
 static int service_no = 0;
+static double min_m3 = 2;
+static double min_pack = 15;
+static double min_shipp = 300;
+static double velocity = 100.0/60.0;
 
 
 // Constructors/Destructors
@@ -19,6 +23,52 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 }
 
+Services::Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage)
+: service_id(service_no++) {
+
+	this->origin_address = origin_address;
+	this->destination_address = destination_address;
+
+	if (volume > 0)
+		this->volume = volume;
+
+	this->distance = calcDistance();
+
+	Hour pack_time = auxCalcTimePackaging(volume);
+	Hour shipp_time = auxCalcTimeShipping(volume);
+
+	cout << "Pack: " << pack_time << "  :  " << "Shipp: " << shipp_time << endl;
+
+	Hour hour_end_pack = initial_hour + pack_time;
+	Date date_end_pack = initial_date + pack_time
+			+ ((pack_time.getHour() + initial_hour.getHour() + (pack_time.getMinute() + initial_hour.getMinute())/60) / 24);
+
+
+	Packaging pack(initial_date, initial_hour, date_end_pack, hour_end_pack);
+	this->packaging = pack;
+
+	Hour hour_end_shipp = hour_end_pack + shipp_time;
+	Date date_end_shipp = date_end_pack + shipp_time
+			+ ((shipp_time.getHour() + hour_end_pack.getHour() + (shipp_time.getMinute() + hour_end_pack.getMinute())/60) / 24);
+
+
+	Shipping shipp(date_end_pack, hour_end_pack, date_end_shipp, hour_end_shipp);
+	this->shipping = shipp;
+
+	Hour hour_end_deliv = hour_end_shipp + pack_time;
+	Date date_end_deliv = date_end_shipp + pack_time
+			+ ((shipp_time.getHour() + hour_end_shipp.getHour() + (shipp_time.getMinute() + hour_end_shipp.getMinute())/60) / 24);
+
+
+	Delivery deliv(date_end_pack + days_in_storage, hour_end_shipp, date_end_deliv, hour_end_deliv);
+	this->delivery = deliv;
+
+
+	this->price = calcPrice(days_in_storage);
+}
+
+
+
 Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery) : service_id(service_no++) {
 
 	this->origin_address = origin_address;
@@ -33,6 +83,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 	this->distance = calcDistance();
 	this->price = calcPrice();
+//	this->price = calcPrice(delivery.getStart_date() - shipping.getDispatch_date());
 
 
 }
@@ -48,9 +99,7 @@ double Services::calcDistance ()   {
 
 }
 
-double Services::calcPrice ()   {
-
-	unsigned int days_in_storage = shipping.getArrival_date().getDay() - delivery.getStart_date().getDay();
+double Services::calcPrice (unsigned int days_in_storage)   {
 
 	if (distance > 2000000)
 		return (volume*distance/1000*cost_km_m + days_in_storage*cost_day_in_storage*volume)*1.1;
@@ -70,24 +119,38 @@ double Services::calcPrice ()   {
 // Other methods
 //  
 
-ostream& operator<< (ostream& o,const Services& c) //TODO
+ostream& operator<< (ostream& o,const Services& c)
 {
 
 
-	  o << "Pickup address: " << endl << c.getOrigin_address() << "Pickup time: between " << c.getPackaging().getStart_date() << "  " << c.getPackaging().getStart_hour() <<
-			   " and " << c.getPackaging().getEnd_date() << "  " << c.getPackaging().getEnd_hour() << std::endl;
-	  o << "Shipping: " << c.getShipping().getDispatch_date() << "  " << c.getShipping().getDispatch_hour() << " to " << c.getShipping().getArrival_date() << "  "
-			  << c.getShipping().getArrival_hour() << std::endl << std::endl;
-	  o << "Destination address: " << endl << c.getDestination_address();
-	  o << "Delivery between " << c.getDelivery().getStart_date() << "  " << c.getDelivery().getStart_hour() << " and " << c.getDelivery().getEnd_date() << "  "
-			  << c.getDelivery().getEnd_hour() << std::endl;
-	  o << "Details: " << endl << "Volume: " << c.getVolume() << "m^3   Distance: " << c.getDistance()/1000 << "km   Price: " << c.getPrice() << "€" << std::endl << std::endl;
+	o << "Pickup address: " << endl << c.getOrigin_address() << "Pickup time: between " << c.getPackaging().getStart_date() << "  " << c.getPackaging().getStart_hour() <<
+			" and " << c.getPackaging().getEnd_date() << "  " << c.getPackaging().getEnd_hour() << std::endl;
+	o << "Shipping: " << c.getShipping().getDispatch_date() << "  " << c.getShipping().getDispatch_hour() << " to " << c.getShipping().getArrival_date() << "  "
+			<< c.getShipping().getArrival_hour() << std::endl << std::endl;
+	o << "Destination address: " << endl << c.getDestination_address();
+	o << "Delivery between " << c.getDelivery().getStart_date() << "  " << c.getDelivery().getStart_hour() << " and " << c.getDelivery().getEnd_date() << "  "
+			<< c.getDelivery().getEnd_hour() << std::endl;
+	o << "Details: " << endl << "Volume: " << c.getVolume() << "m^3   Distance: " << c.getDistance()/1000 << "km   Price: " << c.getPrice() << "€" << std::endl << std::endl;
 
-	  o << endl;
+	o << endl;
 
 
 	return o;
 }
 
+Hour auxCalcTimePackaging(double volume) {
+	unsigned int minutes = volume*min_m3 + min_pack;
+	unsigned int hours = minutes/60;
+	minutes = minutes % 60;
 
+	return Hour(hours, minutes, false);
+}
 
+Hour auxCalcTimeShipping(double distance) {
+	unsigned int minutes = min_shipp + distance/velocity;
+	unsigned int hours = minutes/60;
+	minutes = minutes % 60;
+
+	return Hour(hours, minutes, false);
+
+}

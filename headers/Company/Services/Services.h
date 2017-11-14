@@ -28,6 +28,7 @@ public:
   //  
 	Services(Address origin_address, double volume, Address destination_address);
 	Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery);
+	Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage = 0);
   /**
    * Empty Destructor
    */
@@ -42,7 +43,7 @@ private:
   //  
 
   // ID of the service
-    int service_id;
+  int service_id;
   // Origin of service
   Address origin_address;
   // Volume shipped
@@ -121,8 +122,10 @@ public:
   /**
    * Calculate the value of price
    * Price of service
+   * @param days_in_storage Days the package spends in the storage
+   * @return the value of price
    */
-  double calcPrice ();
+  double calcPrice (unsigned int days_in_storage = 0);
 
   /**
    * Get the value of price
@@ -179,6 +182,9 @@ public:
 
 public:
 
+friend Hour auxCalcTimePackaging(double volume);
+friend Hour auxCalcTimeShipping(double distance);
+
 
 
 
@@ -187,7 +193,8 @@ public:
 
 ostream& operator<< (ostream& o, const Services& c);
 
-
+Hour auxCalcTimePackaging(double volume);
+Hour auxCalcTimeShipping(double distance);
 
 
 #endif // SERVICES_H

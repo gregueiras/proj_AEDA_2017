@@ -143,6 +143,15 @@ public:
 };
 
 std::ostream & operator<< (std::ostream &o, const Hour& h1);
+
+Hour operator+(const Hour& h1, const Hour& h2);
+
+Hour operator+(const Hour& h1, const unsigned int add);
+Hour operator+(const unsigned int add ,const Hour& h1);
+
+
+
+
 class HourInvalidHour {
 private:
 	unsigned int hour;

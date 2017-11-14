@@ -122,7 +122,6 @@ Date operator +(const Date& d1, const Hour& h1) {
 	Date d2 = d1;
 
 	unsigned int days = hrs / 24;
-	std::cout << "Hours: " << hrs <<  "  Hour to day: " << days << std::endl;
 	return d2 + days;
 }
 
@@ -155,7 +154,6 @@ Date operator +(const Date& d1, const unsigned int days) {
 
 			} else
 			{
-				std::cout << d_new << std::endl;
 
 				d2.setDay(d_new);
 				return d2;
@@ -191,11 +189,9 @@ Date operator +(const Date& d1, const unsigned int days) {
 		} else
 			if (d_new > 31)
 			{
-				std::cout << d_new << std::endl;
 				d_new -= 31; //TODO
 				d2.setDay(1);
 				d2.setMonth(d2.getMonth()+1);
-				std::cout << d_new << std::endl << d2.getMonth();
 
 			} else
 			{
