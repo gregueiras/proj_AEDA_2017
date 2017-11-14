@@ -37,7 +37,6 @@ Services::Services::Services(Address origin_address, double volume, Address dest
 	Hour pack_time = auxCalcTimePackaging(volume);
 	Hour shipp_time = auxCalcTimeShipping(volume);
 
-	cout << "Pack: " << pack_time << "  :  " << "Shipp: " << shipp_time << endl;
 
 	Hour hour_end_pack = initial_hour + pack_time;
 	Date date_end_pack = initial_date + pack_time
@@ -82,8 +81,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 	this->delivery = delivery;
 
 	this->distance = calcDistance();
-	this->price = calcPrice();
-//	this->price = calcPrice(delivery.getStart_date() - shipping.getDispatch_date());
+	this->price = calcPrice(delivery.getStart_date() - shipping.getDispatch_date());
 
 
 }

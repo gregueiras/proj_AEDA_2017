@@ -181,7 +181,15 @@ Date operator+(const unsigned int days, const Date& d1);
 Date operator+(const Date& d1, const unsigned int days);
 
 
-
+/**
+ * Transforms a Date into a integer, counting from 01-01-0001
+ * Uses the Rada Die format, https://en.wikipedia.org/wiki/Rata_Die
+ * https://www.researchgate.net/publication/316558298_Date_Algorithms#pf2a
+ * Rata Die Date
+ * @param d1 date to be converted
+ * @return no. of days from 01-01-0001 to d1
+ */
+int rdn(Date d1);
 
 
 

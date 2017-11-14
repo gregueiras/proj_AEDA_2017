@@ -60,7 +60,6 @@ Hour::Hour(unsigned int h, unsigned int m, bool b) {
 
 Hour operator +(const Hour& h1, const Hour& h2) {
 	unsigned int min = h1.getMinute() + h2.getMinute();
-	std::cout << h1.getHour() << "  " << h2.getHour() << "  " << (min/60) << std::endl;
 	Hour hf;
 	hf.setHour( (h1.getHour() + h2.getHour() + (min/60)) % 24);
 	hf.setMinute(min % 60);

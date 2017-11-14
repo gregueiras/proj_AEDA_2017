@@ -61,12 +61,12 @@ void Date::initAttributes () {
 }
 
 bool operator== (const Date& d1, const Date& d2)
-{
+		{
 	if ((d1.getYear() != d2.getYear()) || (d1.getMonth() != d2.getMonth()) || (d1.getDay() != d2.getDay()))
 		return false;
 	else
 		return true;
-}
+		}
 
 bool operator< (const Date& d1, const Date& d2)
 {
@@ -82,7 +82,7 @@ bool operator< (const Date& d1, const Date& d2)
 		return true;
 	else if (d1.getDay() > d2.getDay())
 		return false;
-	else if (d1 == d2)
+	else
 		return false;
 }
 
@@ -107,12 +107,25 @@ unsigned int operator -(const Date& d1, const Date& d2) {
 
 	if (d1 == d2)
 		return i;
+	//	else if (d1.getMonth() == d2.g)
+	//	{
+	//		if (d1.getYear() != d2.getYear())
+	//			i += abs((d1.getYear() - d2.getYear()) - 1)*365;
+	//
+	//		if (d1.getMonth() != d2.getMonth())
+	//			i += abs((d1.getMonth() - d2.getMonth()) - 1)*30;
+	//
+	//		if (d1.getDay() != d2.getDay())
+	//		i += abs((d1.getDay() - d2.getDay()));
+	//	}
 	else
 	{
-		i += abs((d1.getYear() - d2.getYear()))*365;
-		i += abs((d1.getMonth() - d2.getMonth()))*30;
-		i += abs((d1.getDay() - d2.getDay()));
+		i = abs(rdn(d1) - rdn(d2));
 	}
+
+
+
+
 
 	return i;
 }
@@ -201,3 +214,16 @@ Date operator +(const Date& d1, const unsigned int days) {
 	}
 
 }
+
+/* Rata Die day one is 0001-01-01 */
+int rdn(Date d1)
+{
+	int year = d1.getYear(), month = d1.getMonth();
+	if (month < 3)
+		{
+			year--;
+			month += 12;
+		}
+	return d1.getDay() + (153*month - 457)/5 + 365*year + year/4 - year/100 + year/400 - 306;
+}
+
