@@ -78,3 +78,9 @@ Hour operator +(const Hour& h1, const unsigned int add) {
 Hour operator +(const unsigned int add, const Hour& h1) {
 	return h1 + add;
 }
+
+std::string Hour::toStr() {
+	std::stringstream s1;
+	s1 << *this;
+	return s1.str();
+}

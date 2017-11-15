@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 #include "hour.h"
 /**
   * class Date
@@ -161,7 +162,7 @@ public:
 
   //Other methods
   //
-
+  std::string toStr();
 
 };
 

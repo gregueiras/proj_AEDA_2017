@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 /**
   * class Hour
   * 
@@ -138,7 +139,7 @@ private:
 
 public:
 
-
+  std::string toStr();
 
 };
 
