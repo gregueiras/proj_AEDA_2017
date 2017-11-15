@@ -3,7 +3,7 @@
 // Constructors/Destructors
 //  
 
-Personal::Personal (string name, Address address, unsigned int nif) : Client::Client(name, address, nif, newId()) {}
+Personal::Personal (string name, Address address, unsigned int nif, string passwd) : Client::Client(name, address, nif, newId(), passwd) {}
 
 Personal::~Personal () { }
 
@@ -17,6 +17,21 @@ const unsigned int Personal::newId() {
 	return newId;
 }
 
+bool Personal::SupportPayBankTransfer() {
+	return this->sup_pay_bank_transfer;
+}
+
+bool Personal::SupportPayCreditCard(){
+	return this->sup_pay_credit_card;
+}
+
+bool Personal::SupportPayDebitCard(){
+	return this->sup_pay_debit_card;
+}
+
+bool Personal::SupportPayEOM(){
+	return this->sup_pay_eom;
+}
 // Accessor methods
 //  
 

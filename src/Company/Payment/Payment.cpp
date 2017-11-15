@@ -23,6 +23,14 @@ void Payment::incNextId() {
 	++this->next_id;
 }
 
+void Payment::setDue(bool new_var) {
+	this->due = new_var;
+}
+
+string Payment::getDue() {
+	return this->due;
+}
+
 // Accessor methods
 //  
 

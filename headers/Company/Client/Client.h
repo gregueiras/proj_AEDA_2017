@@ -60,6 +60,34 @@ private:
 
 public:
   /**
+   * get value of sup_pay_bank_transfer
+   *
+   * @return true if payment method is supported
+   */
+  virtual bool SupportPayBankTransfer();
+
+  /**
+   * get value of sup_pay_credit_card
+   *
+   * @return true if payment method is supported
+   */
+  virtual bool SupportPayCreditCard();
+
+  /**
+   * get value of sup_pay_debit_card
+   *
+   * @return true if payment method is supported
+   */
+  virtual bool SupportPayDebitCard();
+
+  /**
+   * get value of sup_pay_eom
+   *
+   * @return true if payment method is supported
+   */
+  virtual bool SupportPayEOM();
+
+  /**
    * Set the value of visibility
    * client visibility - client is accessible if true
    * @param new_var the new value of visibility

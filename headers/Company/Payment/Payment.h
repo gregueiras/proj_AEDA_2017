@@ -34,6 +34,9 @@ private:
 	// Payment's value
 	double value;
 
+	// Payment is due
+	bool due;
+
 public:
 	/**
 	* Get the value of next_id
@@ -54,6 +57,20 @@ public:
 	* @return the value of new id
 	*/
 	virtual const unsigned int newId() = 0;
+
+	/**
+	 * Set value of due
+	 * Payment is due
+	 * * @param new_var the value of due
+	 */
+	 void setDue(bool new_var);
+
+	 /**
+	  * Set value of due
+	  * Payment is due
+	  * @return the value of due
+	  */
+	 string getDue();
 };
 
 #endif // PAYMENT_H
