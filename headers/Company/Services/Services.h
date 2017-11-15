@@ -10,6 +10,7 @@
 #include "Delivery.h"
 #include "Packaging.h"
 #include "Shipping.h"
+#include "Payment.h"
 
 using namespace std;
 static double cost_km_m = 0.5;
@@ -42,6 +43,8 @@ private:
   // Private attributes
   //  
 
+  //
+  Payment* pay;
   // ID of the service
   int service_id;
   // Origin of service

@@ -34,7 +34,7 @@ Address::Address(string street, string country, string city, string county, unsi
 	this->door_number = door_number;
 
 	GPS temp_gps;
-	cityToGPS(city, temp_gps);
+	cityToGPS();
 	this->coordinates = temp_gps;
 }
 
@@ -54,8 +54,11 @@ void Address::initAttributes () {
 }
 
 
-bool cityToGPS(const string city, GPS &gps)
+bool Address::cityToGPS()
 {
+	string city = this->city;
+	GPS coord = this->coordinates;
+
 	vector <pair <string, GPS>> city_gps;
 	city_gps.push_back(make_pair("Aveiro", GPS(40.63987916844782, -8.654651641845703)));
 	city_gps.push_back(make_pair("Beja", GPS(38.01523440990023, -7.862091064453125)));
@@ -82,7 +85,10 @@ bool cityToGPS(const string city, GPS &gps)
 	{
 		if (city == city_gps.at(i).first)
 		{
-			gps = city_gps.at(i).second;
+			coord = city_gps.at(i).second;
+
+			this->coordinates = coord;
+
 			return true;
 		}
 	}
@@ -117,6 +123,15 @@ ostream& operator<< (ostream& o, const Address& c)
 	o << c.getCoordinates() << endl;
 	return o;
 }
+
+string Address::toStr() {
+	ostringstream s1;
+	s1 << this;
+
+	return s1.str();
+
+}
+
 //bool auxSearch(const string city1,const pair<string, GPS> city2)
 //{
 //	return (city1 == city2.first);

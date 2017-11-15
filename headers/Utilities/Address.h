@@ -7,6 +7,7 @@
 #include "GPS.h"
 #include <vector>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 /**
@@ -207,16 +208,22 @@ private:
 
 public:
 
+  /**
+   * If city is a district capital of Portugal, returns true and sets its coordinates to gps. Else, returns false
+   * @return true if city is in list, false if city is not
+   */
+  bool cityToGPS();
+
+  /**
+   * @return a string with Address Information
+   */
+  string toStr();
+
 
 };
 
 
-/**
- * If city is a district capital of Portugal, returns true and sets its coordinates to gps. Else, returns false
- * @param city City to be searched
- * @param gps variable to return the gps coordinates of the city
- */
-bool cityToGPS(const string city, GPS &gps);
+
 
 
 /**
