@@ -115,6 +115,15 @@ public:
   }
 
   /**
+   * Set the value of coordinates
+   * @param GPS coordinates
+   *
+   */
+  void setCoordinates (GPS gp1)   {
+	  this->coordinates = gp1;
+  }
+
+  /**
    * Get the value of coordinates
    * @return the value of coordinates
    */
