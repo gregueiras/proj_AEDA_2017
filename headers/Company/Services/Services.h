@@ -11,6 +11,7 @@
 #include "Packaging.h"
 #include "Shipping.h"
 #include "Payment.h"
+#include <sstream>
 
 using namespace std;
 static double cost_km_m = 0.5;
@@ -185,9 +186,11 @@ public:
 
 public:
 
-friend Hour auxCalcTimePackaging(double volume);
-friend Hour auxCalcTimeShipping(double distance);
+Hour auxCalcTimePackaging();
+Hour auxCalcTimeShipping();
 
+string toStrComplete();
+string toStrShort();
 
 
 
@@ -196,8 +199,6 @@ friend Hour auxCalcTimeShipping(double distance);
 
 ostream& operator<< (ostream& o, const Services& c);
 
-Hour auxCalcTimePackaging(double volume);
-Hour auxCalcTimeShipping(double distance);
 
 
 #endif // SERVICES_H
