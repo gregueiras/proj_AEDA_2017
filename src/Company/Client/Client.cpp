@@ -10,6 +10,8 @@ Client::Client (string name, Address address, unsigned int nif, const unsigned i
 	this->name = name;
 	this->address = address;
 	this->nif = nif;
+	this->visibility = true;
+	this->pass = pass;
 }
 
 Client::~Client () { }
@@ -17,6 +19,10 @@ Client::~Client () { }
 //  
 // Methods
 //  
+
+void Client::setVisibility (bool new_var){
+	this->visibility = new_var;
+}
 
 void Client::setName(string new_name) {
 	this->name = new_name;
@@ -76,4 +82,22 @@ vector<Payment*> Client::getPayment() {
 
 void Client::addPayment(Payment *new_pay) {
 	this->payments.push_back(new_pay);
+}
+
+string Client::getInfoDisp(Client new_var){
+	string ret = "Client ID: ";
+	ret += string(this->id) + "\n";
+	ret += "Name: " + this->name + "\n";
+	ret += "Address: " + /*getStringOfAddress +*/ "\n";
+	ret += "NIF: " + string(this->nif) + "\n";
+	return ret;
+
+}
+
+void Client::setPass (string new_var) {
+	this->pass = new_var;
+}
+
+string Client::getPass () {
+	return this->pass;
 }

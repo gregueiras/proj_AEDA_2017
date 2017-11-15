@@ -25,7 +25,7 @@ public:
   /**
    * Constructor for registed clients
    */
-  Client (string name, Address address, unsigned int nif, const unsigned int Id);
+  Client (string name, Address address, unsigned int nif, const unsigned int Id, string pass);
 
   /**
    * Empty Destructor
@@ -52,9 +52,20 @@ private:
   vector<Payment*> payments;
   //client id
   const unsigned int id;
-  //virtual const unsigned int client_id
+  virtual const unsigned int client_id;
+  //client visibility - client is accessible if true
+  bool visibility;
+  //login password
+  string pass;
 
 public:
+  /**
+   * Set the value of visibility
+   * client visibility - client is accessible if true
+   * @param new_var the new value of visibility
+   */
+  void setVisibility (bool new_var) ;
+
   /**
    * Set the value of name
    * Name/company of the client
@@ -164,6 +175,27 @@ public:
   * @param new_pay the new last value of payments vector, by push_back
   */
   void addPayment(Payment *new_pay);
+
+  /**
+    * Get client info in a string
+    * Client
+    * @param new_var the client to get info from
+    */
+  string getInfoDisp(Client new_var);
+
+  /**
+   * Set the value of pass
+   * Login password
+   * @param new_var the new value of pass
+   */
+  void setPass (string new_var);
+
+  /**
+   * Get the value of pass
+   * Login password
+   * @return the value of pass
+   */
+  string getPass ();
 };
 
 #endif // CLIENT_H
