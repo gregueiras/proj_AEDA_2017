@@ -1,12 +1,14 @@
 #include "Services.h"
 using namespace std;
 
-static unsigned int service_no = 0;
-static double min_m3 = 2;
-static double min_pack = 15;
-static double min_shipp = 300;
-static double velocity = 100000.0/60.0;
 
+double Services::min_m3 = 2;
+double Services::min_pack = 15;
+double Services::min_shipp = 300;
+double Services::velocity = 100000.0/60.0;
+unsigned int Services::service_no = 0;
+static double Services::cost_km_m3 = 0.5;
+static double Services::cost_day_in_storage = 2;
 
 // Constructors/Destructors
 //  
@@ -103,9 +105,9 @@ double Services::calcDistance ()   {
 double Services::calcPrice (unsigned int days_in_storage)   {
 
 	if (distance > 2000000)
-		return (volume*distance/1000*cost_km_m + days_in_storage*cost_day_in_storage*volume)*1.1;
+		return (volume*distance/1000*cost_km_m3 + days_in_storage*cost_day_in_storage*volume)*1.1;
 	else
-		return volume*distance/1000*cost_km_m + days_in_storage*cost_day_in_storage*volume;
+		return volume*distance/1000*cost_km_m3 + days_in_storage*cost_day_in_storage*volume;
 
 }
 
