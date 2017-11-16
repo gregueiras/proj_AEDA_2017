@@ -10,11 +10,19 @@
 #include "Delivery.h"
 #include "Packaging.h"
 #include "Shipping.h"
-#include "Payment.h"
 #include <sstream>
+//#include "Payment.h"
 
 using namespace std;
+
+/**
+ * Cost, in Euros, to move 1m^3 for 1 Km
+ */
 static double cost_km_m = 0.5;
+
+/**
+ * Cost, in Euros, to store package in storage, per day
+ */
 static double cost_day_in_storage = 2;
 
 
@@ -45,9 +53,9 @@ private:
   //  
 
   //
-  Payment* pay;
+//  Payment* pay;
   // ID of the service
-  int service_id;
+  unsigned int service_id;
   // Origin of service
   Address origin_address;
   // Volume shipped
@@ -184,15 +192,86 @@ public:
     return delivery;
   }
 
+  /**
+   * Get the value of service_id
+   * Id of service
+   * @return the value of service_id
+   */
+  unsigned int getId()  const {
+    return service_id;
+  }
+
+//  /**
+//   * Get the value of Payment
+//   * @return the payment of service
+//   */
+//  unsigned int getPayment()  const {
+//    return pay;
+//  }
+
 public:
 
+
+/**
+ * Calculates how much time it takes to pack the package
+ * @return Time to pack
+ */
 Hour auxCalcTimePackaging();
+
+
+/**
+ * Calculates how much time it takes to ship the package from origin address to destination address
+ * @return Time to ship
+ */
 Hour auxCalcTimeShipping();
 
+
+/**
+ * Converts the Service to a string with all info
+ * @return Service info
+ */
 string toStrComplete();
+
+/**
+ * Converts the Service to a string with just the Origin Address and Destination Address of the Service
+ * @return Origin Address and Destination Address of the Service
+ */
 string toStrShort();
 
 
+/**
+ * Checks if a service is between 2 Dates
+ * @param d1 Lower bound of date interval
+ * @param d2 Upper bound of date interval
+ * @return True if service is between those Dates
+ */
+bool isBetweenDates(const Date &d1, const Date &d2);
+
+/**
+ * Checks if a service volume is between 2 Volumes
+ * @param d1 Lower bound of volume interval
+ * @param d2 Upper bound of volume interval
+ * @return True if service volume is between those volumes
+ */
+bool isBetweenVolume(const double &d1, const double &d2);
+
+
+/**
+ * Checks if a service distance is between 2 distance
+ * @param d1 Lower bound of distance interval
+ * @param d2 Upper bound of distance interval
+ * @return True if service distance is between those distances
+ */
+bool isBetweenDistance(const double &d1, const double &d2);
+
+
+/**
+ * Checks if a service price is between 2 prices
+ * @param d1 Lower bound of price interval
+ * @param d2 Upper bound of price interval
+ * @return True if service price is between those prices
+ */
+bool isBetweenPrice(const double &d1, const double &d2);
 
 
 };

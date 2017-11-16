@@ -1,11 +1,11 @@
 #include "Services.h"
 using namespace std;
 
-static int service_no = 0;
+static unsigned int service_no = 0;
 static double min_m3 = 2;
 static double min_pack = 15;
 static double min_shipp = 300;
-static double velocity = 100.0/60.0;
+static double velocity = 100000.0/60.0;
 
 
 // Constructors/Destructors
@@ -34,8 +34,8 @@ Services::Services::Services(Address origin_address, double volume, Address dest
 
 	this->distance = calcDistance();
 
-	Hour pack_time = auxCalcTimePackaging(volume);
-	Hour shipp_time = auxCalcTimeShipping(volume);
+	Hour pack_time = auxCalcTimePackaging();
+	Hour shipp_time = auxCalcTimeShipping();
 
 
 	Hour hour_end_pack = initial_hour + pack_time;
@@ -55,11 +55,10 @@ Services::Services::Services(Address origin_address, double volume, Address dest
 	this->shipping = shipp;
 
 	Hour hour_end_deliv = hour_end_shipp + pack_time;
-	Date date_end_deliv = date_end_shipp + pack_time
-			+ ((shipp_time.getHour() + hour_end_shipp.getHour() + (shipp_time.getMinute() + hour_end_shipp.getMinute())/60) / 24);
+	Date date_end_deliv = date_end_shipp + days_in_storage + pack_time
+			+ ((+ hour_end_shipp.getHour() + (shipp_time.getMinute() + hour_end_shipp.getMinute())/60) / 24);
 
-
-	Delivery deliv(date_end_pack + days_in_storage, hour_end_shipp, date_end_deliv, hour_end_deliv);
+	Delivery deliv(date_end_shipp + days_in_storage, hour_end_shipp, date_end_deliv, hour_end_deliv);
 	this->delivery = deliv;
 
 
@@ -136,7 +135,7 @@ ostream& operator<< (ostream& o,const Services& c)
 	return o;
 }
 
-Hour auxCalcTimePackaging(double volume) {
+Hour Services::auxCalcTimePackaging() {
 	unsigned int minutes = volume*min_m3 + min_pack;
 	unsigned int hours = minutes/60;
 	minutes = minutes % 60;
@@ -144,11 +143,84 @@ Hour auxCalcTimePackaging(double volume) {
 	return Hour(hours, minutes, false);
 }
 
-Hour auxCalcTimeShipping(double distance) {
+Hour Services::auxCalcTimeShipping() {
 	unsigned int minutes = min_shipp + distance/velocity;
 	unsigned int hours = minutes/60;
 	minutes = minutes % 60;
 
 	return Hour(hours, minutes, false);
 
+}
+
+string Services::toStrComplete() {
+	stringstream s1;
+	s1 << *this;
+	return s1.str();
+}
+
+string Services::toStrShort() {
+	string s1 = this->getOrigin_address().toStr() + '\n';
+	s1 += this->getDestination_address().toStr() + '\n';
+
+	return s1;
+
+}
+
+bool Services::isBetweenDates(const Date& d1, const Date& d2) {
+
+	Date d3 = d1, d4 = d2;
+	if (d1 > d2)
+	{
+		d4 = d1;
+		d3 = d2;
+	}
+	if ( (this->packaging.getStart_date() > d3) && (this->delivery.getEnd_date() < d4) )
+		return true;
+	else
+		return false;
+}
+
+bool Services::isBetweenVolume(const double& d1, const double& d2) {
+
+	double d3 = d1, d4 = d2;
+	if (d1 > d2)
+	{
+		d4 = d1;
+		d3 = d2;
+	}
+
+	if (this->getVolume() > d3 && this->getVolume() < d4)
+		return true;
+	else
+		return false;
+}
+
+bool Services::isBetweenDistance(const double& d1, const double& d2) {
+
+	double d3 = d1, d4 = d2;
+	if (d1 > d2)
+	{
+		d4 = d1;
+		d3 = d2;
+	}
+
+	if (this->getDistance() > d3 && this->getDistance() < d4)
+		return true;
+	else
+		return false;
+}
+
+bool Services::isBetweenPrice(const double& d1, const double& d2) {
+
+	double d3 = d1, d4 = d2;
+	if (d1 > d2)
+	{
+		d4 = d1;
+		d3 = d2;
+	}
+
+	if (this->getPrice() > d3 && this->getPrice() < d4)
+		return true;
+	else
+		return false;
 }
