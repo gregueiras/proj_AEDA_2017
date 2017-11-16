@@ -13,8 +13,6 @@
 #include <sstream>
 //#include "Payment.h"
 
-using namespace std;
-
 /**
  * Cost, in Euros, to move 1m^3 for 1 Km
  */
@@ -56,6 +54,8 @@ private:
 //  Payment* pay;
   // ID of the service
   unsigned int service_id;
+  //Visibility
+  bool visibility;
   // Origin of service
   Address origin_address;
   // Volume shipped
@@ -230,13 +230,13 @@ Hour auxCalcTimeShipping();
  * Converts the Service to a string with all info
  * @return Service info
  */
-string toStrComplete();
+std::string toStrComplete();
 
 /**
  * Converts the Service to a string with just the Origin Address and Destination Address of the Service
  * @return Origin Address and Destination Address of the Service
  */
-string toStrShort();
+std::string toStrShort();
 
 
 /**
@@ -273,10 +273,44 @@ bool isBetweenDistance(const double &d1, const double &d2);
  */
 bool isBetweenPrice(const double &d1, const double &d2);
 
+	void setDelivery(const Delivery& delivery) {
+		this->delivery = delivery;
+	}
 
+	const Address& getDestinationAddress() const {
+		return destination_address;
+	}
+
+	void setDestinationAddress(const Address& destinationAddress) {
+		destination_address = destinationAddress;
+	}
+
+	const Address& getOriginAddress() const {
+		return origin_address;
+	}
+
+	void setOriginAddress(const Address& originAddress) {
+		origin_address = originAddress;
+	}
+
+	void setPackaging(const Packaging& packaging) {
+		this->packaging = packaging;
+	}
+
+	void setShipping(const Shipping& shipping) {
+		this->shipping = shipping;
+	}
+
+	bool isVisibility() const {
+		return visibility;
+	}
+
+	void setVisibility(bool visibility) {
+		this->visibility = visibility;
+	}
 };
 
-ostream& operator<< (ostream& o, const Services& c);
+std::ostream& operator<< (std::ostream& o, const Services& c);
 
 
 

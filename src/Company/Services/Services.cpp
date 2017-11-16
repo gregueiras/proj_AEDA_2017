@@ -20,6 +20,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 		this->volume = volume;
 
 	this->distance = calcDistance();
+	this->visibility = true;
 
 }
 
@@ -33,6 +34,7 @@ Services::Services::Services(Address origin_address, double volume, Address dest
 		this->volume = volume;
 
 	this->distance = calcDistance();
+	this->visibility = true;
 
 	Hour pack_time = auxCalcTimePackaging();
 	Hour shipp_time = auxCalcTimeShipping();
@@ -74,6 +76,8 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 	if (volume > 0)
 		this->volume = volume;
+
+	this->visibility = true;
 
 	this->packaging = packaging;
 	this->shipping = shipping;

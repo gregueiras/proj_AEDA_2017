@@ -8,7 +8,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
-using namespace std;
+
 
 /**
   * class Address
@@ -21,8 +21,8 @@ public:
 
   // Constructors/Destructors
   //  
-  Address (string street, string country, string city, string county, unsigned int door_number, double lat, double lon);
-  Address (string street, string country, string city, string county, unsigned int door_number);
+  Address (std::string street, std::string country, std::string city, std::string county, unsigned int door_number, double lat, double lon);
+  Address (std::string street, std::string country, std::string city, std::string county, unsigned int door_number);
 
 
   /**
@@ -84,10 +84,10 @@ private:
   //  
 
   GPS coordinates;
-  string street;
-  string country;
-  string city;
-  string county;
+  std::string street;
+  std::string country;
+  std::string city;
+  std::string county;
   unsigned int door_number;
 public:
 
@@ -135,7 +135,7 @@ public:
    * Set the value of street
    * @param new_var the new value of street
    */
-  void setStreet (string new_var)   {
+  void setStreet (std::string new_var)   {
       street = new_var;
   }
 
@@ -143,7 +143,7 @@ public:
    * Get the value of street
    * @return the value of street
    */
-  string getStreet ()  const {
+  std::string getStreet ()  const {
     return street;
   }
 
@@ -151,7 +151,7 @@ public:
    * Set the value of country
    * @param new_var the new value of country
    */
-  void setCountry (string new_var)   {
+  void setCountry (std::string new_var)   {
       country = new_var;
   }
 
@@ -159,7 +159,7 @@ public:
    * Get the value of country
    * @return the value of country
    */
-  string getCountry () const  {
+  std::string getCountry () const  {
     return country;
   }
 
@@ -167,7 +167,7 @@ public:
    * Set the value of city
    * @param new_var the new value of city
    */
-  void setCity (string new_var)   {
+  void setCity (std::string new_var)   {
       city = new_var;
   }
 
@@ -175,7 +175,7 @@ public:
    * Get the value of city
    * @return the value of city
    */
-  string getCity ()  const {
+  std::string getCity ()  const {
     return city;
   }
 
@@ -183,7 +183,7 @@ public:
    * Set the value of county
    * @param new_var the new value of county
    */
-  void setCounty (string new_var)   {
+  void setCounty (std::string new_var)   {
       county = new_var;
   }
 
@@ -191,7 +191,7 @@ public:
    * Get the value of county
    * @return the value of county
    */
-  string getCounty ()  const {
+  std::string getCounty ()  const {
     return county;
   }
 
@@ -226,7 +226,7 @@ public:
   /**
    * @return a string with Address Information
    */
-  string toStr();
+  std::string toStr();
 
 
 };
@@ -241,9 +241,9 @@ public:
  * @param city2 Pair to compare with city
  * @return Returns true if city1 == city2.first()
  */
-bool auxSearch(const string city,const pair<string, GPS> city2);
+bool auxSearch(const std::string city,const std::pair<std::string, GPS> city2);
 
-ostream& operator<< (ostream& o, const Address& c);
+std::ostream& operator<< (std::ostream& o, const Address& c);
 bool operator== (const Address & c1, const Address & c2);
 bool operator!= (const Address & c1, const Address & c2);
 
