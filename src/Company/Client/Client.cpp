@@ -1,5 +1,4 @@
 #include "Client.h"
-#include "Company.h"
 
 
 unsigned int Client::next_id = 1;
@@ -19,6 +18,22 @@ Client::~Client () { }
 //  
 // Methods
 //  
+
+bool Client::SupportPayBankTransfer() {
+	return this->sup_pay_bank_transfer;
+}
+
+bool Client::SupportPayCreditCard() {
+	return this->sup_pay_credit_card;
+}
+
+bool Client::SupportPayDebitCard() {
+	return this->sup_pay_debit_card;
+}
+
+bool Client::SupportPayEOM() {
+	return this->sup_pay_eom;
+}
 
 void Client::setVisibility (bool new_var){
 	this->visibility = new_var;
@@ -64,12 +79,28 @@ void Client::addServices(Services *new_serv) {
 	this->services.push_back(new_serv);
 }
 
+Services Client::getServiceById(const unsigned int &id) {
+	for (unsigned int i = 0; i < this->getServices().size(); i++)
+	{
+		if (this->getServices().at(i).getServiceId() == id)
+			return this->getServices().at(i);
+	}
+
+	return Services(Address(), 0, Address());
+}
+
 unsigned int Client::getNextId() {
 	return this->next_id;
 }
 
 void Client::incNextId() {
 	++this->next_id;
+}
+
+const unsigned int Client::newId() {
+	const unsigned int newId = this->getNextId() * 10 + this->client_id;
+	this->incNextId();
+	return newId;
 }
 
 void Client::setPayment(vector<Payment*> new_pay_vec) {
@@ -101,3 +132,5 @@ void Client::setPass (string new_var) {
 string Client::getPass () {
 	return this->pass;
 }
+
+

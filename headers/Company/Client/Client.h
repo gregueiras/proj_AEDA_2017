@@ -52,40 +52,46 @@ private:
   vector<Payment*> payments;
   //client id
   const unsigned int id;
-  virtual const unsigned int client_id;
+  const unsigned int client_id;
   //client visibility - client is accessible if true
   bool visibility;
   //login password
   string pass;
 
+  //supported payment methods
+  const bool sup_pay_bank_transfer;
+  const bool sup_pay_credit_card;
+  const bool sup_pay_debit_card;
+  const bool sup_pay_eom;
+
 public:
   /**
    * get value of sup_pay_bank_transfer
-   *
+   * support payment methods
    * @return true if payment method is supported
    */
-  virtual bool SupportPayBankTransfer();
+  bool SupportPayBankTransfer();
 
   /**
    * get value of sup_pay_credit_card
-   *
+   * support payment methods
    * @return true if payment method is supported
    */
-  virtual bool SupportPayCreditCard();
+  bool SupportPayCreditCard();
 
   /**
    * get value of sup_pay_debit_card
-   *
+   * support payment methods
    * @return true if payment method is supported
    */
-  virtual bool SupportPayDebitCard();
+  bool SupportPayDebitCard();
 
   /**
    * get value of sup_pay_eom
-   *
+   * support payment methods
    * @return true if payment method is supported
    */
-  virtual bool SupportPayEOM();
+  bool SupportPayEOM();
 
   /**
    * Set the value of visibility
@@ -164,6 +170,14 @@ public:
   void addServices (Services *new_serv);
 
   /**
+  * Get service based on id
+  * History of services of the client
+  * @param id the service to get id
+  * @return the service with this->id == id or service with volume == 0 if not found any 
+  */
+  Services getServiceById(const unsigned int &id);
+
+  /**
   * Get the value of next_id
   * ID number of the next client added
   * @return the value of next_id
@@ -181,7 +195,7 @@ public:
   * ID number of the client
   * @return the value of new id
   */
-  virtual const unsigned int newId() = 0;
+  const unsigned int newId();
 
   /**
   * Set the value of poyments
@@ -224,6 +238,7 @@ public:
    * @return the value of pass
    */
   string getPass ();
+
 };
 
 #endif // CLIENT_H

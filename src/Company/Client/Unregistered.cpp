@@ -1,36 +1,17 @@
-#include "../../../headers/Company/Client/Unregistered.h"
+#include "Unregistered.h"
 
 // Constructors/Destructors
 //  
 
-Unregistered::Unregistered (string name, Address address, unsigned int nif, string passwd) : Client::Client(name, address, nif, newId(), passwd) {}
+Unregistered::Unregistered (string name, Address address, unsigned int nif, string passwd) : Client::Client(name, address, nif, newId(), passwd),
+																							sup_pay_bank_transfer(true), sup_pay_credit_card(false),
+																							sup_pay_debit_card(true), sup_pay_eom(false), client_id(3) {}
 
 Unregistered::~Unregistered () { }
 
 //  
 // Methods
 //  
-const unsigned int Unregistered::newId() {
-	const unsigned int newId = this->getNextId() * 10 + this->client_id;
-	this->incNextId();
-	return newId;
-}
-
-bool Unregistered::SupportPayBankTransfer() {
-	return this->sup_pay_bank_transfer;
-}
-
-bool Unregistered::SupportPayCreditCard(){
-	return this->sup_pay_credit_card;
-}
-
-bool Unregistered::SupportPayDebitCard(){
-	return this->sup_pay_debit_card;
-}
-
-bool Unregistered::SupportPayEOM(){
-	return this->sup_pay_eom;
-}
 
 // Accessor methods
 //  
