@@ -2,6 +2,9 @@
 #ifndef PAYMENT_H
 #define PAYMENT_H
 
+#include "../../Utilities/Date.h"
+#include "../../Utilities/Hour.h"
+
 #include <string>
 
 /**
@@ -37,6 +40,12 @@ private:
 	// Payment is due
 	bool due;
 
+	//Payment due date
+	Date due_date;
+
+	//Payment due hour
+	Hour due_hour;
+
 public:
 	/**
 	* Get the value of next_id
@@ -61,7 +70,7 @@ public:
 	/**
 	 * Set value of due
 	 * Payment is due
-	 * * @param new_var the value of due
+	 * @param new_var the value of due
 	 */
 	 void setDue(bool new_var);
 
@@ -70,7 +79,35 @@ public:
 	  * Payment is due
 	  * @return the value of due
 	  */
-	 string getDue();
+	 bool isDue();
+
+	 /**
+	 * Set value of due_date
+	 * Payment due date
+	 * @param new_var the value of due_date
+	 */
+	 void setDueDate(Date new_var);
+
+	 /**
+	 * Set value of due_date
+	 * Payment due date
+	 * @return the value of due_date
+	 */
+	 Date getDueDate();
+
+	 /**
+	 * Set value of due_hour
+	 * Payment due hour
+	 * @param new_var the value of due_hour
+	 */
+	 void setDueHour(Hour new_var);
+
+	 /**
+	 * Set value of due_hour
+	 * Payment due hour
+	 * @return the value of due_hour
+	 */
+	 Hour getDueHour();
 };
 
 #endif // PAYMENT_H
