@@ -5,11 +5,12 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+
+
 /**
   * class Hour
   * 
   */
-
 class Hour
 {
 public:
@@ -78,10 +79,8 @@ private:
   // Private attributes
   //  
 
-  // Hour
-  unsigned int hour;
-  // Minute
-  unsigned int minute;
+  unsigned int hour; /*!< Hour*/
+  unsigned int minute; /*!< Minute*/
 public:
 
 
@@ -143,16 +142,46 @@ public:
 
 };
 
+
+/**
+ * Overload of operator<<, to send an Hour to a ostream, in format HH:MM
+ * @param o ostream
+ * @param c Hour to be sent
+ * @return Returns the ostream
+ */
 std::ostream & operator<< (std::ostream &o, const Hour& h1);
 
+
+/**
+ * Overload of operator+, to add 2 Hours
+ * @param h1 lhs hour
+ * @param h2 rhs hour
+ * @return Returns a new hour, with the sum of 2 hours
+ */
 Hour operator+(const Hour& h1, const Hour& h2);
 
+/**
+ * Overload of operator+, to add an Hour to an amount of hours
+ * @param h1 lhs hour
+ * @param add amount of hours to be added
+ * @return Returns a new hour, with the sum
+ */
 Hour operator+(const Hour& h1, const unsigned int add);
+
+/**
+ * Overload of operator+, to add an Hour to an amount of hours
+ * @param add amount of hours to be added
+ * @param h1 rhs hour
+ * @return Returns a new hour, with the sum
+ */
 Hour operator+(const unsigned int add ,const Hour& h1);
 
 
 
-
+/**
+  * class HourInvalidHour
+  *
+  */
 class HourInvalidHour {
 private:
 	unsigned int hour;
@@ -161,6 +190,10 @@ public:
 	HourInvalidHour(unsigned int hour) { this->hour = hour; }
 };
 
+/**
+  * class HourInvalidMinute
+  *
+  */
 class HourInvalidMinute {
 private:
 	unsigned int minute;

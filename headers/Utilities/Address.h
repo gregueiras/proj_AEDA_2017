@@ -83,12 +83,12 @@ private:
   // Private attributes
   //  
 
-  GPS coordinates;
-  std::string street;
-  std::string country;
-  std::string city;
-  std::string county;
-  unsigned int door_number;
+  GPS coordinates; /*!< GPS coordinates*/
+  std::string street; /*!< Street*/
+  std::string country; /*!< Country */
+  std::string city; /*!< City*/
+  std::string county; /*!< County*/
+  unsigned int door_number; /*!< Door_number*/
 public:
 
 
@@ -117,7 +117,6 @@ public:
   /**
    * Set the value of coordinates
    * @param GPS coordinates
-   *
    */
   void setCoordinates (GPS gp1)   {
 	  this->coordinates = gp1;
@@ -224,6 +223,7 @@ public:
   bool cityToGPS();
 
   /**
+   * Converts the Address to a string
    * @return a string with Address Information
    */
   std::string toStr();
@@ -243,8 +243,29 @@ public:
  */
 bool auxSearch(const std::string city,const std::pair<std::string, GPS> city2);
 
+
+/**
+ * Overload of operator<<, to send an Address to a ostream
+ * @param o ostream
+ * @param c Address to be sent
+ * @return Returns the ostream
+ */
 std::ostream& operator<< (std::ostream& o, const Address& c);
+
+/**
+ * Overload of operator==, to compare 2 addresses
+ * @param c1 lhs city
+ * @param c2 rhs city
+ * @return Returns true if all attributes of c1 are the same of c2, false if some are different
+ */
 bool operator== (const Address & c1, const Address & c2);
+
+/**
+ * Overload of operator!=, to compare 2 addresses
+ * @param c1 lhs city
+ * @param c2 rhs city
+ * @return Returns false if all attributes of c1 are the same of c2, true if some are different
+ */
 bool operator!= (const Address & c1, const Address & c2);
 
 

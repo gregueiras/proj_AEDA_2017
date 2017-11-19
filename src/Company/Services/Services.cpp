@@ -7,8 +7,8 @@ double Services::min_pack = 15;
 double Services::min_shipp = 300;
 double Services::velocity = 100000.0/60.0;
 unsigned int Services::service_no = 0;
-static double Services::cost_km_m3 = 0.5;
-static double Services::cost_day_in_storage = 2;
+double Services::cost_km_m3 = 0.5;
+double Services::cost_day_in_storage = 2;
 
 // Constructors/Destructors
 //  

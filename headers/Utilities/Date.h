@@ -78,12 +78,9 @@ private:
   // Private attributes
   //  
 
-  // Day
-  unsigned int day;
-  // Month
-  unsigned int month;
-  // Year
-  unsigned int year;
+  unsigned int day; /*!< Day*/
+  unsigned int month; /*!< Month*/
+  unsigned int year; /*!< Year*/
 public:
 
 
