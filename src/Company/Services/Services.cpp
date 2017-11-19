@@ -230,3 +230,18 @@ bool Services::isBetweenPrice(const double& d1, const double& d2) {
 	else
 		return false;
 }
+
+bool Services::isBetweenID(const unsigned int& d1, const unsigned int& d2) {
+
+	unsigned int d3 = d1, d4 = d2;
+	if (d1 > d2)
+	{
+		d4 = d1;
+		d3 = d2;
+	}
+
+	if (this->getId() > d3 && this->getId() < d4)
+		return true;
+	else
+		return false;
+}

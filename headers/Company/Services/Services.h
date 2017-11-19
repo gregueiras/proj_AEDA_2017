@@ -2,15 +2,16 @@
 #ifndef SERVICES_H
 #define SERVICES_H
 
-#include <string>
-#include <vector>
 #include <iostream>
-#include "GPS.h"
+#include <string>
+#include <sstream>
+
 #include "Address.h"
 #include "Delivery.h"
 #include "Packaging.h"
 #include "Shipping.h"
-#include <sstream>
+#include "GPS.h"
+
 //#include "Payment.h"
 
 /**
@@ -359,6 +360,14 @@ public:
 	 * @return True if service price is between those prices
 	 */
 	bool isBetweenPrice(const double &d1, const double &d2);
+
+	/**
+	 * Checks if a service ID is between 2 IDs
+	 * @param d1 Lower bound of IDinterval
+	 * @param d2 Upper bound of ID interval
+	 * @return True if service ID is between those IDs
+	 */
+	bool isBetweenID(const unsigned int &d1, const unsigned int &d2);
 
 };
 
