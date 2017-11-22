@@ -11,7 +11,8 @@ Client::Client (string name, Address address, unsigned int nif, const unsigned i
 	this->nif = nif;
 	this->visibility = true;
 	this->pass = pass;
-	this->services = vector<Services*>();
+	std::vector<Services*> v1;
+	this->services = v1;
 }
 
 Client::~Client () { }
@@ -78,8 +79,11 @@ vector<Services*> Client::getServices() {
 
 void Client::addServices(Services *new_serv) {
 	std::cout << "d1" << std::endl;
-	std::cout << this->services.size() << std::endl;
-	//this->services.push_back(new_serv);
+
+	std::cout << (*new_serv) << std::endl;
+	
+	//std::cout << this->services.size() << std::endl;
+	this->services.push_back(new_serv);
 	std::cout << "d2" << std::endl;
 }
 
