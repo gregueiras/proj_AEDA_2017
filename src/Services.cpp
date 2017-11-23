@@ -6,7 +6,7 @@ double Services::min_m3 = 2;
 double Services::min_pack = 15;
 double Services::min_shipp = 300;
 double Services::velocity = 100000.0/60.0;
-unsigned int Services::service_no = 0;
+unsigned int Services::service_no = 1;
 double Services::cost_km_m3 = 0.5;
 double Services::cost_day_in_storage = 2;
 
@@ -141,6 +141,8 @@ ostream& operator<< (ostream& o,const Services& c)
 	return o;
 }
 
+
+
 Hour Services::auxCalcTimePackaging() {
 	unsigned int minutes = volume*min_m3 + min_pack;
 	unsigned int hours = minutes/60;
@@ -246,3 +248,4 @@ bool Services::isBetweenID(const unsigned int& d1, const unsigned int& d2) {
 	else
 		return false;
 }
+

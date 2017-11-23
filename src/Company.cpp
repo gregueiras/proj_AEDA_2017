@@ -110,3 +110,91 @@ void Company::addPayment(Payment *new_var, unsigned int client_id) {
 	if (client_identified)
 		this->payments_regist.push_back(new_var);
 }
+
+
+
+vector<Services*> Company::readFromFile(const unsigned int id)
+{
+	vector<Services*> temp_v;
+	string country, county, city, street, temp;
+	unsigned int door_number, days_in_storage;
+	double lat, lon, volume;
+
+	string file = "client" + to_string(id) + "_services.txt";
+
+	ifstream input;
+	input.open(file);
+	if (input.is_open())
+	{
+		while (!input.eof())
+		{
+
+			getline(input, street);
+
+			getline(input, temp);
+			door_number = stoul(temp);
+
+			getline(input, city);
+			getline(input, county);
+			getline(input, country);
+
+			getline(input, temp);
+			lat = stod(temp);
+
+			getline(input, temp);
+			lon = stod(temp);
+
+			Address origin(street, country, city, county, door_number, lat, lon);
+
+			getline(input, temp);
+
+			getline(input, street);
+
+			getline(input, temp);
+			door_number = stoul(temp);
+
+			getline(input, city);
+			getline(input, county);
+			getline(input, country);
+
+			getline(input, temp);
+			lat = stod(temp);
+
+			getline(input, temp);
+			lon = stod(temp);
+
+			Address destination(street, country, city, county, door_number, lat, lon);
+
+			getline(input, temp);
+
+			getline(input, temp);
+			Date start_d(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
+
+			getline(input, temp);
+			Hour start_h(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
+
+			getline(input, temp);
+			days_in_storage = stoul(temp);
+
+			getline(input, temp);
+			volume = stod(temp);
+
+			Services* s1 = new Services(origin, volume, destination, start_h, start_d, days_in_storage);
+
+			temp_v.push_back(s1);
+		}
+
+
+
+
+		input.close();
+
+
+
+		return temp_v;
+	}
+	else
+	{
+		return temp_v;
+	}
+}

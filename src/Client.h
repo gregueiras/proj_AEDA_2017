@@ -7,6 +7,7 @@
 #include "Address.h"
 #include <string>
 #include <vector>
+#include <fstream>
 
 using std::vector;
 using std::string;
@@ -199,6 +200,13 @@ public:
   void incNextId();
 
   /**
+  * Create new id
+  * ID number of the client
+  * @return the value of new id
+  */
+  const unsigned int newId();
+
+  /**
   * Set the value of poyments
   * History of payments of the client
   * @param new_var the new value of services
@@ -238,6 +246,15 @@ public:
    * @return the value of pass
    */
   string getPass ();
+
+
+  /**
+  * writes all the services to a file named "client" + id +"_services.txt"
+  * @return True in case of success, false if failure
+  */
+  bool writeServicesToFile();
+
+
 
 };
 

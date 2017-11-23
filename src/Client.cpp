@@ -1,6 +1,6 @@
 #include "Client.h"
 
-
+using namespace std;
 unsigned int Client::next_id = 1;
 // Constructors/Destructors
 //  
@@ -105,6 +105,15 @@ void Client::incNextId() {
 	++this->next_id;
 }
 
+const unsigned int Client::newId() {
+	//	const unsigned int newId = this->getNextId() * 10 + this->client_id;
+	//	this->incNextId();
+	//	return newId;
+
+	this->incNextId();
+	return this->next_id;
+}
+
 void Client::setPayment(vector<Payment*> new_pay_vec) {
 	this->payments = new_pay_vec;
 }
@@ -134,6 +143,55 @@ void Client::setPass (string new_var) {
 
 string Client::getPass () {
 	return this->pass;
+}
+
+bool Client::writeServicesToFile()
+{
+	string file = "client" + to_string(id) + "_services.txt";
+
+	ofstream output(file);
+
+	if (output.is_open())
+	{
+
+		for (unsigned int i = 0; i < this->services.size(); i++)
+		{
+
+			output << this->services.at(i)->getOriginAddress().getStreet() << endl;
+			output << to_string(this->services.at(i)->getOriginAddress().getDoor_number()) << endl;
+			output << this->services.at(i)->getOriginAddress().getCity() << endl;
+			output << this->services.at(i)->getOriginAddress().getCounty() << endl;
+			output << this->services.at(i)->getOriginAddress().getCountry() << endl;
+			output << to_string(this->services.at(i)->getOriginAddress().getCoordinates().getLatitude()) << endl;
+			output << to_string(this->services.at(i)->getOriginAddress().getCoordinates().getLongitude()) << endl << endl;
+
+			output << this->services.at(i)->getDestinationAddress().getStreet() << endl;
+			output << to_string(this->services.at(i)->getDestinationAddress().getDoor_number()) << endl;
+			output << this->services.at(i)->getDestinationAddress().getCity() << endl;
+			output << this->services.at(i)->getDestinationAddress().getCounty() << endl;
+			output << this->services.at(i)->getDestinationAddress().getCountry() << endl;
+			output << to_string(this->services.at(i)->getDestinationAddress().getCoordinates().getLatitude()) << endl;
+			output << to_string(this->services.at(i)->getDestinationAddress().getCoordinates().getLongitude()) << endl << endl;
+
+			output << this->services.at(i)->getPackaging().getStart_date().toStr() << endl;
+			output << this->services.at(i)->getPackaging().getStart_hour().toStr() << endl;
+
+			output << to_string(this->services.at(i)->getDelivery().getStart_date() - this->services.at(i)->getShipping().getArrival_date()) << endl;
+			
+			if ((i + 1) != this->services.size())
+				output << this->services.at(i)->getVolume() << endl;
+			else
+				output << this->services.at(i)->getVolume();
+
+
+		}
+
+	}
+	else
+		return false;
+
+	output.close();
+	return true;
 }
 
 

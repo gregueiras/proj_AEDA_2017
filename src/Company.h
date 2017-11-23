@@ -135,6 +135,13 @@ public:
 	*/
 	void addPayment(Payment *new_var, unsigned int client_id);
 
+	/**
+	* Reads all the services from a file named "client" + id +"_services.txt"
+	* @param id Id of the client to be read
+	* @return Services read from file
+	*/
+	vector<Services*> readFromFile(const unsigned int id);
+
 };
 
 #endif // COMPANY_H
