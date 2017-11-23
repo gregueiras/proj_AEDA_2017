@@ -165,8 +165,7 @@ string Services::toStrComplete() {
 }
 
 string Services::toStrShort() {
-	string s1 = this->getOrigin_address().toStr() + '\n';
-	s1 += this->getDestination_address().toStr() + '\n';
+	string s1 = this->getPackaging().getStart_date + "to" + this->getDelivery().getEnd_date();
 
 	return s1;
 
