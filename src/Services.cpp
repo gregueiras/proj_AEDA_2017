@@ -13,7 +13,7 @@ double Services::cost_day_in_storage = 2;
 // Constructors/Destructors
 //  
 
-Services::Services(Address origin_address, double volume, Address destination_address) : service_id(++service_no) {
+Services::Services(Address origin_address, double volume, Address destination_address) : service_id(service_no++) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;
@@ -26,8 +26,8 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 }
 
-Services::Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage)
-: service_id(++service_no) {
+Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage)
+: service_id(service_no++) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;
@@ -71,7 +71,7 @@ Services::Services::Services(Address origin_address, double volume, Address dest
 
 
 
-Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery) : service_id(++service_no) {
+Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery) : service_id(service_no++) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;
@@ -126,14 +126,14 @@ ostream& operator<< (ostream& o,const Services& c)
 {
 
 
-	o << "Pickup address: " << endl << c.getOrigin_address() << "Pickup time: between " << c.getPackaging().getStart_date() << "  " << c.getPackaging().getStart_hour() <<
-			" and " << c.getPackaging().getEnd_date() << "  " << c.getPackaging().getEnd_hour() << std::endl;
-	o << "Shipping: " << c.getShipping().getDispatch_date() << "  " << c.getShipping().getDispatch_hour() << " to " << c.getShipping().getArrival_date() << "  "
+	o << "Endereco de Origem: " << endl << c.getOrigin_address() << "Recolha: entre " << c.getPackaging().getStart_date() << " " << c.getPackaging().getStart_hour() <<
+			" e " << c.getPackaging().getEnd_date() << "  " << c.getPackaging().getEnd_hour() << std::endl;
+	o << "Expedicao: " << c.getShipping().getDispatch_date() << "  " << c.getShipping().getDispatch_hour() << " ate " << c.getShipping().getArrival_date() << "  "
 			<< c.getShipping().getArrival_hour() << std::endl << std::endl;
-	o << "Destination address: " << endl << c.getDestination_address();
-	o << "Delivery between " << c.getDelivery().getStart_date() << "  " << c.getDelivery().getStart_hour() << " and " << c.getDelivery().getEnd_date() << "  "
+	o << "Endereco de Destino: " << endl << c.getDestination_address();
+	o << "Entrega entre " << c.getDelivery().getStart_date() << "  " << c.getDelivery().getStart_hour() << " e " << c.getDelivery().getEnd_date() << "  "
 			<< c.getDelivery().getEnd_hour() << std::endl;
-	o << "Details: " << endl << "Volume: " << c.getVolume() << "m^3   Distance: " << c.getDistance()/1000 << "km   Price: " << c.getPrice() << "€" << std::endl << std::endl;
+	o << "Detalhes: " << endl << "Volume: " << c.getVolume() << "m^3   Distancia: " << c.getDistance()/1000 << "km   Preco: " << c.getPrice() << "€" << std::endl << std::endl;
 
 	o << endl;
 
