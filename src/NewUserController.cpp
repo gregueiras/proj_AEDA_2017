@@ -23,7 +23,7 @@ void NewUserController::menu() {
 	string name, street, country, city, county;
 	string password; 
 
-	theView->printInitialMessage();
+	theView->printNewUserMenu(); 
 	getUserInformation(userType, name, nif, street, country, city, county,
 			doorNumber, latitude, longitude, password);
 	createUser(userType, name, nif, street, country, city, county, doorNumber,
@@ -156,6 +156,7 @@ void NewUserController::createUser(unsigned int &userType, string &name,
 	} else if (userType == client_type_business) {
 		client = new Business(name, address, nif, password);
 	}
+
 cout<<client->getId()<<endl;
 	company->addClient(client);
 	vector<Client*>vec = company->getClients();

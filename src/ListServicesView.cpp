@@ -19,9 +19,6 @@ void ListServicesView::printMessage(const string &message) {
 	cout << message << endl;
 }
 
-void ListServicesView::printInitialMessage() {
-	printMessage(initialMessage);
-}
 void ListServicesView::printEnterOption() {
 	printMessage(enterOption);
 }

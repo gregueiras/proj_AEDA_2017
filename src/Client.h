@@ -31,7 +31,7 @@ public:
   /**
    * Constructor for registed clients
    */
-  Client (string name, Address address, unsigned int nif, const unsigned int Id, string pass);
+  Client (string name, Address address, unsigned int nif, string pass);
 
   /**
    * Empty Destructor
@@ -197,13 +197,6 @@ public:
   * ID number of the next client added
   */
   void incNextId();
-
-  /**
-  * Create new id
-  * ID number of the client
-  * @return the value of new id
-  */
-  const unsigned int newId();
 
   /**
   * Set the value of poyments

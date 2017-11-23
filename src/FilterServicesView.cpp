@@ -20,11 +20,6 @@ void FilterServicesView::printMessage(const string& message) {
 
 }
 
-void FilterServicesView::printInitialMessage() {
-	printMessage(initialMessage);
-
-}
-
 void FilterServicesView::printFilterMenu() {
 	printMessage(filterMenu);
 

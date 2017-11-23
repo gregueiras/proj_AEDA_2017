@@ -20,7 +20,6 @@ ClientMenuController::~ClientMenuController() {
 }
 
 void ClientMenuController::menu() {
-	theView->printInitialMessage();
 	theView->printClientMenu();
 	clientMenuHandler();
 }

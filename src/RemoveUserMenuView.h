@@ -17,14 +17,14 @@ class RemoveMenuView {
 private:
 	Utilities *u;
 
-	const string initialMessage = "Remover Utilizador";
-	const string removeUserMenu = "\n1->remover\n2->voltar atrás\n0->SAIR";
+	const string removeUserMenu =
+			"Remover Utilizador\n1->remover\n2->voltar atras\n0->SAIR";
 
 	const string enterConfirmation =
-			"Deseja mesmo remover utilizador?\n0->Não\n->Sim";
+			"Deseja mesmo remover utilizador?\n0->Nao\n->Sim";
 
-	const string enterOption = "Introduza a sua opção";
-	const string wrongOption = "Introduziu opção errada";
+	const string enterOption = "Introduza a sua opcao";
+	const string wrongOption = "Introduziu opcao errada";
 	const string end = "\nTerminou Remover Utilizador";
 	void printMessage(const string &message);
 
@@ -32,16 +32,34 @@ public:
 	RemoveMenuView();
 	virtual ~RemoveMenuView();
 
-	void printInitialMessage();
+	/**
+	 * prints remove user menu initial message
+	 */
 	void printRemoveUser();
 
+	/**
+	 * prints enter option message
+	 */
 	void printEnterOption();
+
+	/**
+	 * prints enter confirmation message
+	 */
 	void printEnterConfirmation();
 
+	/**
+	 * prints wrong option message
+	 */
 	void printWrongOption();
 
+	/**
+	 * prints end message
+	 */
 	void printEnd();
 
+	/**
+	 * reads string from keyboard
+	 */
 	template<typename T> bool getInfo(T &info);
 };
 

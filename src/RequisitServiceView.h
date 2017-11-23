@@ -16,23 +16,23 @@ using namespace std;
 class RequisitServiceView {
 private:
 	Utilities *u;
-	const string initialMessage = "Requisitar Serviço";
+	const string initialMessage = "Requisitar Servico";
 
-	const string departureAddress = "Introduza o endereço de partida";
-	const string arrivalAddress = "Introduza o endereço de chegada";
+	const string departureAddress = "Introduza o endereco de partida";
+	const string arrivalAddress = "Introduza o endereco de chegada";
 	const string enterVolume = "Introduza o volume da mercadoria";
 	const string enterStreet = "Introduza Nome da Rua";
-	const string enterCountry = "Introduza País";
+	const string enterCountry = "Introduza Pais";
 	const string enterCity = "Introduza Cidade";
-	const string enterCounty = "Introduza Município";
-	const string enterDoorNumber = "Introduza Número da Rua";
+	const string enterCounty = "Introduza Municipio";
+	const string enterDoorNumber = "Introduza Numero da Porta";
 	const string enterLatitude = "Introduza Latitude";
 	const string enterLongitude = "Introduza Longitude";
 
 	const string enterPackagingInitialDate =
-			"Introduza data de início do embalamento (dd mm aaaa)";
+			"Introduza data de inicio do embalamento (dd mm aaaa)";
 	const string enterPackagingInitialTime =
-			"Introduza tempo de início do embalamento (hh mm)";
+			"Introduza tempo de inicio do embalamento (hh mm)";
 
 	const string enterStorageTime = "Introduza o tempo de armazenamento";
 
@@ -52,51 +52,155 @@ private:
 
 	const string addToEOM =
 			"Pretende deixar para o fim do mes?\n1->Sim\n2->Nao\n0->SAIR";
-	const string enterOption = "Introduza a sua opção";
-	const string wrongOption = "Opçao introduzida invalida";
+	const string enterOption = "Introduza a sua opcao";
+	const string wrongOption = "Opcao introduzida invalida";
 
 	const string exit = "\n0->SAIR";
-	const string end = "\nTerminou Requesitar Serviço";
+	const string end = "\nTerminou Requesitar Servico";
 	void printMessage(const string &message);
 
 public:
 	RequisitServiceView();
 	virtual ~RequisitServiceView();
 
+	/**
+	 * prints requisit service initial message
+	 */
 	void printInitialMessage();
 
+	/**
+	 * prints departure address message
+	 */
 	void printDepartureAddress();
+
+	/**
+	 * prints arrival address message
+	 */
 	void printArrivalAddress();
 
+	/**
+	 * prints enter street message
+	 */
 	void printEnterStreet();
+
+	/**
+	 * prints enter country message
+	 */
 	void printEnterCountry();
+
+	/**
+	 * prints enter city message
+	 */
 	void printEnterCity();
+
+	/**
+	 * prints enter county message
+	 */
 	void printEnterCounty();
+
+	/**
+	 * prints enter door number message
+	 */
 	void printEnterDoorNumber();
+
+	/**
+	 * prints enter latitude message
+	 */
 	void printEnterLatitude();
+
+	/**
+	 * prints enter longitude message
+	 */
 	void printEnterLongitude();
 
+	/**
+	 * prints enter packaging initial date message
+	 */
 	void printEnterPackagingInitialDate();
+
+	/**
+	 * prints enter packaging initial time message
+	 */
 	void printEnterPackagingInitialTime();
+
+	/**
+	 * prints enter storage time message
+	 */
 	void printEnterStorageTime();
+
+	/**
+	 * prints enter volume message
+	 */
 	void printEnterVolume();
 
+	/**
+	 * prints enter intial day message
+	 */
 	void printWrongPackagingInitialDay();
+
+	/**
+	 * prints enter intial month message
+	 */
 	void printWrongPackagingInitialMonth();
+
+	/**
+	 * prints enter intial year message
+	 */
 	void printWrongPackagingInitialYear();
+
+	/**
+	 * prints enter intial minute message
+	 */
 	void printWrongPackagingInitialMinute();
+
+	/**
+	 * prints enter intial hour message
+	 */
 	void printWrongPackagingInitialHour();
+
+	/**
+	 * prints wrong storage time message
+	 */
 	void printWrongStorageTime();
+
+	/**
+	 * prints wrong nif message
+	 */
 	void printWrongNIF();
+
+	/**
+	 * prints wrong latitude latitude
+	 */
 	void printWrongLatitude();
+
+	/**
+	 * prints wrong longitude latitude
+	 */
 	void printWrongLongitude();
 
+	/**
+	 * prints add to EOM latitude
+	 */
 	void printAddToEOM();
+
+	/**
+	 * prints enter option message
+	 */
 	void printEnterOption();
+
+	/**
+	 * prints wrong option message
+	 */
 	void printWrongOption();
 
+	/**
+	 * prints end message
+	 */
 	void printEnd();
 
+	/**
+	 * reads string from keyboard
+	 */
 	template<typename T> bool getInfo(T &info);
 };
 

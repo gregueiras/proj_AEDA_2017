@@ -8,30 +8,24 @@
 #include "PayServiceView.h"
 
 PayServiceView::PayServiceView() {
-	u = new Utilities(); 
+	u = new Utilities();
 }
 
 PayServiceView::~PayServiceView() {
 	// TODO Auto-generated destructor stub
 }
 
-void PayServiceView::printInitialMessage() {
-	printMessage(initialMessage);
-}
-
-void PayServiceView::printPayMenu() {
+void PayServiceView::printMenuNormal() {
 	printMessage(payMenu);
+	printMessage(payMenuNormal);
 }
 
-void  PayServiceView::printGetBackNormal() {
-	printMessage(getBackNormal);
+void PayServiceView::printMenuBusiness() {
+	printMessage(payMenu);
+	printMessage(payMenuBusiness);
 }
 
-void  PayServiceView::printBackBusiness() {
-	printMessage(getBackBusiness);
-}
-
-void  PayServiceView::printAmountToPay() {
+void PayServiceView::printAmountToPay() {
 	printMessage(amountToPay);
 }
 
@@ -44,10 +38,9 @@ void PayServiceView::printWrongOption() {
 }
 
 void PayServiceView::printEnd() {
-	printMessage(end); 
+	printMessage(end);
 }
 
-void PayServiceView::printMessage(const string &message)  {
+void PayServiceView::printMessage(const string &message) {
 	cout << message << endl;
 }
-

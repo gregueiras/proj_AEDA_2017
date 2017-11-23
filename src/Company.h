@@ -103,7 +103,7 @@ public:
 	* @param new_var the client, if found
 	* @param id the client id
 	*/
-	bool getClient(unsigned int id, Client *new_var);
+	Client * getClient(unsigned int id);
 
 	/**
 	* Set the vector of services_queue

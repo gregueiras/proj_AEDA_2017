@@ -20,9 +20,7 @@ void EnterView::printMessage(const string message) const {
 }
 
 void EnterView::printEnterMenu() const {
-	printMessage(title);
 	printMessage(options);
-	printEnterOption();
 }
 
 void EnterView::printWrongOption() const {

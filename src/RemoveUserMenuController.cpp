@@ -21,7 +21,6 @@ RemoveUserMenuController::~RemoveUserMenuController() {
 }
 
 void RemoveUserMenuController::menu() {
-	theView->printInitialMessage();
 	theView->printRemoveUser();
 	removeUserHandler();
 }

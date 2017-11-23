@@ -18,9 +18,6 @@ void ClientMenuView::printMessage(const string &message) {
 	cout << message << endl;
 }
 
-void ClientMenuView::printInitialMessage() {
-	printMessage(initialMessage);
-}
 void ClientMenuView::printEnterOption() {
 	printMessage(enterOption);
 
@@ -35,5 +32,4 @@ void ClientMenuView::printEnd() {
 void ClientMenuView::printClientMenu() {
 	printMessage(clientMenu);
 }
-
 

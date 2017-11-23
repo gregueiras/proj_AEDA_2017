@@ -19,10 +19,6 @@ void ChangeUserMenuView::printMessage(const string &message) {
 	cout << message << endl;
 }
 
-void ChangeUserMenuView::printInitialMessage() {
-	printMessage(initialMessage);
-}
-
 void ChangeUserMenuView::printChangeUser() {
 	printMessage(changeUserMenu);
 }

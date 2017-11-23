@@ -13,7 +13,7 @@ double Services::cost_day_in_storage = 2;
 // Constructors/Destructors
 //  
 
-Services::Services(Address origin_address, double volume, Address destination_address) : service_id(service_no++) {
+Services::Services(Address origin_address, double volume, Address destination_address) : service_id(++service_no) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;
@@ -27,7 +27,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 }
 
 Services::Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage)
-: service_id(service_no++) {
+: service_id(++service_no) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;
@@ -71,7 +71,7 @@ Services::Services::Services(Address origin_address, double volume, Address dest
 
 
 
-Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery) : service_id(service_no++) {
+Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery) : service_id(++service_no) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;

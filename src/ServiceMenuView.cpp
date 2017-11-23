@@ -20,11 +20,6 @@ void ServiceMenuView::printMessage(const string& message) {
 
 }
 
-void ServiceMenuView::printInitialMessage() {
-	printMessage(initialMessage);
-
-}
-
 void ServiceMenuView::printServiceMenu() {
 	printMessage(serviceMenu);
 }

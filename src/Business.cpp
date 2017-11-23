@@ -3,7 +3,7 @@
 // Constructors/Destructors
 //  
 
-Business::Business (string name, Address address, unsigned int nif, string passwd) : Client::Client(name, address, nif, newId(), passwd) {}
+Business::Business (string name, Address address, unsigned int nif, string passwd) : Client::Client(name, address, nif, passwd) {}
 
 
 Business::~Business () { }

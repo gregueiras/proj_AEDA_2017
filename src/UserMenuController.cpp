@@ -20,7 +20,6 @@ UserMenuController::~UserMenuController() {
 }
 
 void UserMenuController::menu() {
-	theView->printInitialMessage();
 	theView->printUserMenu();
 	menuHandler();
 }

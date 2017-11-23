@@ -17,7 +17,7 @@ using namespace std;
 class LoginView {
 private:
 	Utilities *u;
-	const string initialMessage = "\nLogin";
+	const string initialMessage = "\nLogin Menu";
 
 	const string enterID = "Introduza id";
 	const string enterPass = "Introduza pass";
@@ -31,13 +31,39 @@ public:
 	LoginView();
 	virtual ~LoginView();
 
+	/**
+	 * prints user menu initial message
+	 */
 	void printInitialMessage();
+
+	/**
+	 * prints enter id message
+	 */
 	void printEnterID();
+
+	/**
+	 * prints enter password message
+	 */
 	void printEnterPassword();
+
+	/**
+	 * prints user not found message
+	 */
 	void printUserNotFound();
+
+	/**
+	 * prints wrong user id message
+	 */
 	void printWrongUserID();
+
+	/**
+	 * prints end message
+	 */
 	void printEnd();
 
+	/**
+	 * reads string from keyboard
+	 */
 	template<typename T> bool getInfo(T &info);
 };
 

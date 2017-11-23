@@ -18,7 +18,7 @@ using std::string;
 
 class SeeServiceView {
 private:
-	const string initialMessage = "\nVer Informa��es do cliente";
+	const string initialMessage = "\nVer Informacoes do cliente";
 
 	const string end = "\nTerminou Menu Cliente";
 	void printMessage(const string &message);
@@ -27,8 +27,19 @@ public:
 	SeeServiceView();
 	virtual ~SeeServiceView();
 
+	/**
+	 * prints see service initial message
+	 */
 	void printInitialMessage();
+
+	/**
+	 * prints service information message
+	 */
 	void printServiceInformation(const string &information);
+
+	/**
+	 * prints end message
+	 */
 	void printEnd();
 };
 

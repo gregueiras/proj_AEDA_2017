@@ -18,10 +18,6 @@ void UserMenuView::printMessage(const string &message) {
 	cout << message << endl;
 }
 
-void UserMenuView::printInitialMessage() {
-	printMessage(initialMessage);
-}
-
 void UserMenuView::printUserMenu() {
 	printMessage(userMenu);
 }

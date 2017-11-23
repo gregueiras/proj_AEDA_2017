@@ -3,7 +3,7 @@
 // Constructors/Destructors
 //  
 
-Unregistered::Unregistered (string name, Address address, unsigned int nif, string passwd) : Client::Client(name, address, nif, newId(), passwd)
+Unregistered::Unregistered (string name, Address address, unsigned int nif, string passwd) : Client::Client(name, address, nif, passwd)
 {}
 
 

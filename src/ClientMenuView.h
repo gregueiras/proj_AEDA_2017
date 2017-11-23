@@ -16,12 +16,11 @@ using namespace std;
 class ClientMenuView {
 private:
 	Utilities *u;
-	const string enterOption = "Introduza a sua opção";
-	const string wrongOption = "Opção escolhida invalida";
-	const string initialMessage = "\nMenu Cliente";
+	const string enterOption = "Introduza a sua opcao";
+	const string wrongOption = "Opcao escolhida invalida";
 
 	const string clientMenu =
-			"\n1->utilizador\n2->serviços\n3->voltar atrás\n0->SAIR";
+			"\nMenu Cliente\n1->utilizador\n2->servicos\n3->voltar atras\n0->SAIR";
 
 	const string end = "\nTerminou Menu Cliente";
 	void printMessage(const string &message);
@@ -30,14 +29,29 @@ public:
 	ClientMenuView();
 	virtual ~ClientMenuView();
 
-	void printInitialMessage();
+	/**
+	 * prints client menu
+	 */
 	void printClientMenu();
 
+	/**
+	 * prints enter option message
+	 */
 	void printEnterOption();
+
+	/**
+	 * prints wrong option message
+	 */
 	void printWrongOption();
 
+	/**
+	 * prints end message
+	 */
 	void printEnd();
 
+	/**
+	 * reads string from keyboard
+	 */
 	template<typename T> bool getInfo(T &info);
 };
 

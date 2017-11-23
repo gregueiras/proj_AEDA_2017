@@ -23,9 +23,6 @@ void RemoveMenuView::printRemoveUser() {
 	printMessage(removeUserMenu);
 }
 
-void RemoveMenuView::printInitialMessage() {
-	printMessage(initialMessage);
-}
 
 void RemoveMenuView::printEnterOption() {
 	printMessage(enterOption);

@@ -16,33 +16,59 @@ using namespace std;
 class ListServicesView {
 private:
 	Utilities *u;
-	const string initialMessage = "Listar Serviços";
 	const string listServicesMenu =
-			"\n1->Ver Serviço\n2->ordenar\n3->filtrar\n4->alterar\n5->apagar\n6->voltar atras\n0->SAIR";
+			"\nListar Servicos\n1->Ver Servico\n2->ordenar\n3->filtrar\n4->alterar\n5->apagar\n6->voltar atras\n0->SAIR";
 	const string listServicesMenuForBusinnessClients =
-			"\n1->Ver Serviço\n2->ordenar\n3->filtrar\n4->alterar\n5->apagar\n6->pagar\n7->voltar atras\n0->SAIR";
+			"\n1->Ver Servico\n2->ordenar\n3->filtrar\n4->alterar\n5->apagar\n6->pagar\n7->voltar atras\n0->SAIR";
 
-	const string enterOption = "Introduza a sua opção";
-	const string enterServiceID = "Introduza o id do serviço";
-	const string wrongOption = "Opção escolhida invalida";
+	const string enterOption = "Introduza a sua opcao";
+	const string enterServiceID = "Introduza o id do servico";
+	const string wrongOption = "Opcao escolhida invalida";
 
-	const string end = "\nTerminou Menu Listar Serviços";
+	const string end = "\nTerminou Menu Listar Servicos";
 	void printMessage(const string &message);
 public:
 	ListServicesView();
 	virtual ~ListServicesView();
 
-	void printInitialMessage();
+	/**
+	 * prints list services menu
+	 */
 	void printListServicesMenu();
+
+	/**
+	 * prints list services menu
+	 */
 	void printListServicesMenuForBusinnessClients();
 
+	/**
+	 * prints list services menu
+	 */
 	void printEnterOption();
+
+	/**
+	 * prints list services menu
+	 */
 	void printEnterServiceID();
+
+	/**
+	 * prints list services menu
+	 */
 	void printServiceInfo(unsigned int i, string userInfo);
+
+	/**
+	 * prints list services menu
+	 */
 	void printWrongOption();
 
+	/**
+	 * prints list services menu
+	 */
 	void printEnd();
 
+	/**
+	 * prints list services menu
+	 */
 	template<typename T> bool getInfo(T &info);
 };
 

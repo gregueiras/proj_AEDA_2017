@@ -5,8 +5,8 @@
  *      Author: jotaa
  */
 
-#ifndef SRC_VIEW_HEADERS_CHANGEUSERMENUVIEW_H_
-#define SRC_VIEW_HEADERS_CHANGEUSERMENUVIEW_H_
+#ifndef CHANGEUSERMENUVIEW_H_
+#define CHANGEUSERMENUVIEW_H_
 
 #include <iostream>
 #include "Utilities.h"
@@ -17,23 +17,21 @@ class ChangeUserMenuView {
 private:
 	Utilities *u;
 
-	const string initialMessage = "ALterar Utilizador";
-
 	const string changeUserMenu =
-			"\n1->name\n2->NIF\n3->street\n4->Country\n5->city\n6->County\n7->DoorNumber\n8->Latitude\n9->Longitude\n10->voltar atr�s\n0->SAIR";
+			"\nALterar Utilizador\n1->name\n2->NIF\n3->street\n4->Country\n5->city\n6->County\n7->DoorNumber\n8->Latitude\n9->Longitude\n10->voltar atr�s\n0->SAIR";
 
 	const string enterName = "Introduza novo nome";
 	const string enterNIF = "Introduza novo NIF";
 	const string enterStreet = "Introduza nova rua";
-	const string enterCountry = "Introduza novo pa�s";
+	const string enterCountry = "Introduza novo pais";
 	const string enterCity = "Introduza nova cidade";
 	const string enterCounty = "Introduza novo municipio";
-	const string enterDoorNumber = "Introduza novo n�mero da porta";
+	const string enterDoorNumber = "Introduza novo numero da porta";
 	const string enterLatitude = "Introduza nova latitude";
 	const string enterLongitude = "Introduza nova longitude";
 
-	const string enterOption = "Introduza a sua op��o";
-	const string wrongOption = "Introduziu op��o errada";
+	const string enterOption = "Introduza a sua opcao";
+	const string wrongOption = "Introduziu opcao errada";
 	const string keepContinuing = "Deseja continuar \n0->Nao\n1->Sim";
 
 	const string wrongNIF = "NIF introduzido invalido";
@@ -46,31 +44,99 @@ public:
 	ChangeUserMenuView();
 	virtual ~ChangeUserMenuView();
 
-	void printInitialMessage();
+	/**
+	 * prints change user
+	 */
 	void printChangeUser();
 
+	/**
+	 * prints enter new name
+	 */
 	void printEnterNewName();
+
+	/**
+	 * prints enter new nif
+	 */
 	void printEnterNewNIF();
+
+	/**
+	 * prints enter new street
+	 */
 	void printEnterNewStreet();
+
+	/**
+	 * prints enter new county
+	 */
 	void printEnterNewCounty();
+
+	/**
+	 * prints enter new city
+	 */
 	void printEnterNewCity();
+
+	/**
+	 * prints enter new country
+	 */
 	void printEnterNewCountry();
+
+	/**
+	 * prints enter new door number
+	 */
 	void printEnterNewDoorNumber();
+
+	/**
+	 * prints enter new latitude
+	 */
 	void printEnterNewLatitude();
+
+	/**
+	 * prints enter new longitude
+	 */
 	void printEnterNewLongitude();
 
+	/**
+	 * prints enter option
+	 */
 	void printEnterOption();
+
+	/**
+	 * prints continue info
+	 */
 	void printEnterContinue();
 
-	void printUserInfo(std::string str);
+	/**
+	 * prints user info
+	 */
+	void printUserInfo(string str);
 
+	/**
+	 * prints wrong option message
+	 */
 	void printWrongOption();
+
+	/**
+	 * prints wrong nif message
+	 */
 	void printWrongNIF();
+
+	/**
+	 * prints wrong latitude message
+	 */
 	void printWrongLatitude();
+
+	/**
+	 * prints wrong longitude message
+	 */
 	void printWrongLongitude();
 
+	/**
+	 * prints end message
+	 */
 	void printEnd();
 
+	/**
+	 * reads string from keyboard
+	 */
 	template<typename T> bool getInfo(T &info);
 };
 
@@ -78,4 +144,4 @@ template<typename T>
 bool ChangeUserMenuView::getInfo(T &info) {
 	return u->readString(info);
 }
-#endif /* SRC_VIEW_HEADERS_CHANGEUSERMENUVIEW_H_ */
+#endif /* CHANGEUSERMENUVIEW_H_ */

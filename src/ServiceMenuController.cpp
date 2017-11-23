@@ -18,7 +18,6 @@ ServiceMenuController::~ServiceMenuController() {
 }
 
 void ServiceMenuController::menu() {
-	theView->printInitialMessage();
 	theView->printServiceMenu();
 	serviceMenuHandler();
 }

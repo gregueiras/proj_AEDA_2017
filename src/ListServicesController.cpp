@@ -22,7 +22,6 @@ ListServicesController::~ListServicesController() {
 }
 
 void ListServicesController::menu() {
-	theView->printInitialMessage();
 	theView->printListServicesMenu();
 	listServices();
 	serviceID = getServiceID();

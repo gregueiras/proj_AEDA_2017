@@ -48,15 +48,15 @@ bool Company::addClient(Client *new_var) {
 	return true;
 }
 
-bool Company::getClient(unsigned int id, Client *new_var){
+Client * Company::getClient(unsigned int id){
 	int clients_size = this->clients.size();
 	for(int i = 0; i < clients_size; ++i){
 		if(id == this->clients.at(i)->getId()){
-			new_var = this->clients.at(i);
-			return true;
+			return this->clients.at(i);
+			
 		}
 	}
-	return false;
+	return NULL;
 }
 
 void Company::setServicesQueue(vector<Services*> new_var) {

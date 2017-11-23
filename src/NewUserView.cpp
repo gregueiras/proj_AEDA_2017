@@ -19,9 +19,6 @@ void NewUserView::printMessage(const string &message) const {
 	cout << message << endl;
 }
 
-void NewUserView::printInitialMessage() const {
-	printMessage(initialMessage);
-}
 void NewUserView::printEnd() const {
 	printMessage(end);
 }
@@ -82,4 +79,8 @@ void NewUserView::printWrongUserType() {
 
 void NewUserView::printEnterPassword() {
 	printMessage(enterPassword);
+}
+
+void NewUserView::printNewUserMenu() {
+	printMessage(newUserMenu);
 }

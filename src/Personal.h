@@ -22,7 +22,6 @@ public:
    * Empty Constructor
    */
 	Personal (string name, Address address, unsigned int nif, string passwd);
-
   /**
    * Empty Destructor
    */

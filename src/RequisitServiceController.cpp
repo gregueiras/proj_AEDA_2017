@@ -241,7 +241,8 @@ int RequisitServiceController::getMenuOption(const int lowerBound,
 }
 
 void RequisitServiceController::addService() {
-	user->addServices(service);
+	/*user->addServices(service);*/
+	company->addService(service, user->getId());
 }
 
 void RequisitServiceController::addToEOM() {

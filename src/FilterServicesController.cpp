@@ -37,7 +37,6 @@ FilterServicesController::~FilterServicesController() {
 }
 
 void FilterServicesController::menu() {
-	theView->printInitialMessage();
 	filterServicesHandler();
 	newListServicesMenu();
 }

@@ -13,34 +13,56 @@
 class PayServiceView {
 private:
 	Utilities *u;
-	const string initialMessage = "Pagar Serviço";
-	const string payMenu = "\n1->multibanco\n2->transferencia bancaria";
+	const string payMenu =
+			"Pagar Servico\n1->multibanco\n2->transferencia bancaria";
 
-	const string getBackNormal = "\n3->voltar atras\n0->SAIR";
-	const string getBackBusiness =
+	const string payMenuNormal = "\n3->voltar atras\n0->SAIR";
+	const string payMenuBusiness =
 			"\n3->cartao de credito\n4->voltar atras\n0->SAIR";
 	const string amountToPay = "\nMontante a pagar ->";
 
-	const string enterOption = "Introduza a sua opção";
-	const string wrongOption = "Introduziu opção errada";
-	const string end = "\nTerminou Pagar Serviço";
+	const string enterOption = "Introduza a sua opcao";
+	const string wrongOption = "Introduziu opcao errada";
+	const string end = "\nTerminou Pagar Servico";
 	void printMessage(const string &message);
 
 public:
 	PayServiceView();
 	virtual ~PayServiceView();
 
-	void printInitialMessage();
-	void printPayMenu();
+	/**
+	 * prints pay service normal menu
+	 */
+	void printMenuNormal();
 
-	void printGetBackNormal();
-	void printBackBusiness();
+	/**
+	 * prints pay service business menu
+	 */
+	void printMenuBusiness();
+
+	/**
+	 * prints enter amount to pay message
+	 */
 	void printAmountToPay();
 
+	/**
+	 * prints enter option message
+	 */
 	void printEnterOption();
+
+	/**
+	 * prints wrong option message
+	 */
 	void printWrongOption();
+
+	/**
+	 * prints end message
+	 */
 	void printEnd();
 
+	/**
+	 * reads string from keyboard
+	 */
 	template<typename T> bool getInfo(T &info);
 };
 

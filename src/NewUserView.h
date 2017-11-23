@@ -17,19 +17,19 @@ using namespace std;
 class NewUserView {
 private:
 	Utilities *u;
-	const string initialMessage = "\nCriar novo perfil utilizador";
+	const string newUserMenu = "\nCriar novo perfil utilizador";
 	const string enterUserType =
-			"Introduza Tipo Utilizador\n1->Pessoal\n2->Empresarial";
+			"\nIntroduza Tipo Utilizador\n1->Pessoal\n2->Empresarial";
 	const string enterName = "Introduza Nome";
 	const string enterNIF = "Introduza NIF";
 	const string enterStreet = "Introduza Nome da Rua";
-	const string enterCountry = "Introduza País";
+	const string enterCountry = "Introduza Pais";
 	const string enterCity = "Introduza Cidade";
-	const string enterCounty = "Introduza Município";
-	const string enterDoorNumber = "Introduza Número da Rua";
+	const string enterCounty = "Introduza Municipio";
+	const string enterDoorNumber = "Introduza Numero da Porta";
 	const string enterLatitude = "Introduza Latitude";
 	const string enterLongitude = "Introduza Longitude";
-	const string enterPassword = "Introduza password"; 
+	const string enterPassword = "Introduza password";
 	const string wrongNIF = "NIF introduzido invalido";
 	const string wrongLatitude = "Latitude introduzida invalida";
 	const string wrongLongitude = "Longitude introduzida invalida";
@@ -42,28 +42,95 @@ public:
 	NewUserView();
 	virtual ~NewUserView();
 
-	void printInitialMessage() const;
+	/**
+	 * prints enter new user menu
+	 */
+	void printNewUserMenu();
 
+	/**
+	 * prints enter user type
+	 */
 	void printEnterUserType();
+
+	/**
+	 * prints enter name
+	 */
 	void printEnterName();
+
+	/**
+	 * prints enter nif
+	 */
 	void printEnterNIF();
+
+	/**
+	 * prints enter street
+	 */
 	void printEnterStreet();
+
+	/**
+	 * prints enter enter country
+	 */
 	void printEnterCountry();
+
+	/**
+	 * prints enter enter city
+	 */
 	void printEnterCity();
+
+	/**
+	 * prints enter county
+	 */
 	void printEnterCounty();
+
+	/**
+	 * prints enter door number
+	 */
 	void printEnterDoorNumber();
+
+	/**
+	 * prints enter latitude
+	 */
 	void printEnterLatitude();
+
+	/**
+	 * prints enter longitude
+	 */
 	void printEnterLongitude();
+
+	/**
+	 * prints enter password
+	 */
 	void printEnterPassword();
 
+	/**
+	 * prints wrong nif message
+	 */
 	void printWrongNIF();
+
+	/**
+	 * prints wrong latitude message
+	 */
 	void printWrongLatitude();
+
+	/**
+	 * prints wrong longitude message
+	 */
 	void printWrongLongitude();
+
+	/**
+	 * prints wrong user type message
+	 */
 	void printWrongUserType();
 
+	/**
+	 * prints end message
+	 */
 	void printEnd() const;
 
-	template<typename T>bool getInfo(T &info);
+	/**
+	 * reads string from keyboard
+	 */
+	template<typename T> bool getInfo(T &info);
 };
 
 template<typename T>

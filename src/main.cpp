@@ -14,23 +14,23 @@ int main() {
 
 	Address a2("RuaB", "Portugal", "Lisboa", "Lisboa", 5);
 
-	Personal p1("Joao", a1, 456789123, "a");
-	Personal* p2 = &p1;
+	Client* p1 = new Personal ("Joao", a1, 456789123, "a");
+
+
+	Services* s1 = new Services(a1, 50, a2, Hour(8, 50), Date(5, 10, 2017));
+	p1->addServices(s1);
+
+	
 
 	Company* c1 = new Company();
-	c1->addClient(p2);
+	c1->addClient(p1);
 
 	EnterController enter = EnterController(c1);
 	enter.menu();
 
 
-	//Services* s1 = new Services(a1, 50, a2, Hour(8, 50), Date(5, 10, 2017)) ;
-	//p1.addServices(s1);
 
-	//int a;
-	//cout << (*s1) << endl;
-	//
-	//cout << (*p1.getServices().at(0)) << endl;
-	//cin >> a;
+
+
 
 }

@@ -19,7 +19,6 @@ ChangeUserMenuController::~ChangeUserMenuController() {
 }
 
 void ChangeUserMenuController::menu() {
-	theView->printInitialMessage();
 	theView->printUserInfo(user->getInfoDisp());
 	theView->printChangeUser();
 	menuHandler();

@@ -5,7 +5,7 @@ unsigned int Client::next_id = 1;
 // Constructors/Destructors
 //  
 
-Client::Client (string name, Address address, unsigned int nif, const unsigned int Id, string pass) : id(Id) {
+Client::Client (string name, Address address, unsigned int nif, string pass) : id(next_id++) {
 	this->name = name;
 	this->address = address;
 	this->nif = nif;
@@ -103,15 +103,6 @@ unsigned int Client::getNextId() {
 
 void Client::incNextId() {
 	++this->next_id;
-}
-
-const unsigned int Client::newId() {
-//	const unsigned int newId = this->getNextId() * 10 + this->client_id;
-//	this->incNextId();
-//	return newId;
-
-	this->incNextId();
-	return this->next_id;
 }
 
 void Client::setPayment(vector<Payment*> new_pay_vec) {
