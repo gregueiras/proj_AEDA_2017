@@ -262,17 +262,7 @@ public:
 	*/
 	bool readCompanyFromFile();
 
-	/**
-	* Check if client as dues
-	* @param value the value of total due
-	* @return true if has dues
-	*/
-	bool checkAllDues(Client * c, double & value);
-
-	/**
-	* Set value of due to false and change due_hour/date to current_hour/date
-	*/
-	void payAllDues(Client * c);
+	
 
 };
 
