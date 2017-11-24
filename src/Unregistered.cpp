@@ -3,15 +3,19 @@
 // Constructors/Destructors
 //  
 
-Unregistered::Unregistered (string name, Address address, unsigned int nif, string passwd) : Client::Client(name, address, nif, passwd)
-{}
+Unregistered::Unregistered (string name, Address address, unsigned int nif) : Client::Client(name, address, nif, "") {}
 
+Unregistered::Unregistered(string name, Address address, unsigned int nif, unsigned int id) : Client::Client(name, address, nif, "", id) {}
 
 Unregistered::~Unregistered () { }
 
 //  
 // Methods
 //  
+
+std::string Unregistered::getClientType() {
+	return "Unregistered";
+}
 
 // Accessor methods
 //  

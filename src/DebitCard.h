@@ -23,6 +23,8 @@ public:
    */
   DebitCard (double value);
 
+  DebitCard (double value, bool due, Date due_date, Hour due_hour);
+
   /**
    * Empty Destructor
    */
@@ -53,6 +55,8 @@ public:
 	* @return the value of new id
 	*/
 	const unsigned int newId();
+
+	std::string getPayType();
 
 
 };

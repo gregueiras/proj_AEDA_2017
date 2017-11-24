@@ -1,6 +1,7 @@
 
 #ifndef EOMPAYMENT_H
 #define EOMPAYMENT_H
+#include "Payment.h"
 
 #include <string>
 
@@ -9,7 +10,7 @@
   * 
   */
 
-class EOMPayment
+class EOMPayment : public Payment
 {
 public:
 
@@ -20,7 +21,9 @@ public:
   /**
    * Empty Constructor
    */
-  EOMPayment ();
+  EOMPayment (double value);
+
+  EOMPayment(double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -41,58 +44,21 @@ public:
   // Public attribute accessor methods
   //  
 
-
-protected:
-
-  // Static Protected attributes
-  //  
-
-  // Protected attributes
-  //  
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-public:
-
-
-  // Protected attribute accessor methods
-  //  
-
-protected:
-
-
 private:
-
-  // Static Private attributes
-  //  
-
-  // Private attributes
-  //  
+	// ID number of the Payment
+	const unsigned int payment_id = 5;
 
 public:
+	/**
+	* Create new id
+	* ID number of the next payment requested
+	* @return the value of new id
+	*/
+	const unsigned int newId();
 
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
-public:
-
-
-  // Private attribute accessor methods
-  //  
-
-private:
-
+	std::string getPayType();
 
 
 };
 
-#endif // EOMPAYMENT_H
+#endif // EOMPayment_H

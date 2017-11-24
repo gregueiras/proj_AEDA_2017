@@ -24,7 +24,7 @@ void LoginController::menu() {
 	theView->printInitialMessage();
 	getUserCredentials();
 	
-	Client* c1 = company->getClient(id);
+	Client* c1 = company->getClient(id, pass);
 	if (c1 != NULL) {
 		this->user = c1;
 		newClientMenu();

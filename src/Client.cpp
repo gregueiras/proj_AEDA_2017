@@ -5,7 +5,7 @@ unsigned int Client::next_id = 1;
 // Constructors/Destructors
 //  
 
-Client::Client (string name, Address address, unsigned int nif, string pass) : id(next_id++) {
+Client::Client (string name, Address address, unsigned int nif, string pass) {
 	this->name = name;
 	this->address = address;
 	this->nif = nif;
@@ -13,6 +13,18 @@ Client::Client (string name, Address address, unsigned int nif, string pass) : i
 	this->pass = pass;
 	std::vector<Services*> v1;
 	this->services = v1;
+	this->id = next_id++;
+}
+
+Client::Client(string name, Address address, unsigned int nif, string pass, unsigned int id) {
+	this->name = name;
+	this->address = address;
+	this->nif = nif;
+	this->visibility = true;
+	this->pass = pass;
+	std::vector<Services*> v1;
+	this->services = v1;
+	this->id = id;
 }
 
 Client::~Client () { }
@@ -184,6 +196,73 @@ bool Client::writeServicesToFile()
 				output << this->services.at(i)->getVolume();
 
 
+		}
+
+	}
+	else
+		return false;
+
+	output.close();
+	return true;
+}
+
+bool Client::writePaymentsToFile()
+{
+	string file = "client" + to_string(id) + "_payments.txt";
+
+	ofstream output(file);
+
+	if (output.is_open())
+	{
+
+		for (unsigned int i = 0; i < this->payments.size(); i++)
+		{
+			//Pay Type
+			output << this->getPayment().at(i)->getPayType() << endl << endl;
+			//Value
+			output << to_string(this->getPayment().at(i)->getValue()) << endl << endl;
+			//Due
+			output << to_string((int)this->getPayment().at(i)->getDue()) << endl << endl;
+			//Due Date & Hour
+			output << this->getPayment().at(i)->getDueDate().toStr() << endl;
+			output << this->getPayment().at(i)->getDueHour().toStr() << endl << endl;
+		}
+
+	}
+	else
+		return false;
+
+	output.close();
+	return true;
+}
+
+bool Client::writeClientToFile()
+{
+	string file = "client" + to_string(id) + ".txt";
+
+	ofstream output(file);
+
+	if (output.is_open())
+	{
+
+		for (unsigned int i = 0; i < this->payments.size(); i++)
+		{
+			//Client Type
+			output << this->getClientType() << endl << endl;
+			//Name
+			output << this->getName() << endl << endl;
+			//Address info
+			output << this->getAddress().getStreet() << endl;
+			output << to_string(this->getAddress().getDoor_number()) << endl;
+			output << this->getAddress().getCity() << endl;
+			output << this->getAddress().getCounty() << endl;
+			output << this->getAddress().getCountry() << endl;
+			output << to_string(this->getAddress().getCoordinates().getLatitude()) << endl;
+			output << to_string(this->getAddress().getCoordinates().getLongitude()) << endl << endl;
+			//nif
+			output << to_string(this->getNif()) << endl << endl;
+			//pass	
+			output << this->getPass() << endl << endl;
 		}
 
 	}

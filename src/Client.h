@@ -1,7 +1,7 @@
 
 #ifndef CLIENT_H
 #define CLIENT_H
-//#include "Business.h"
+
 #include "Services.h"
 #include "Payment.h"
 #include "Address.h"
@@ -33,6 +33,8 @@ public:
    * Constructor for registed clients
    */
   Client (string name, Address address, unsigned int nif, string pass);
+
+  Client(string name, Address address, unsigned int nif, string pass, unsigned int id);
 
   /**
    * Empty Destructor
@@ -67,7 +69,7 @@ private:
   virtual bool Sup_pay_debit_card()= 0;
   virtual bool Sup_pay_eom() = 0;
   //client id
-   const unsigned int id;
+   unsigned int id;
 //   unsigned int client_id;
    //client visibility - client is accessible if true
    bool visibility;
@@ -247,14 +249,29 @@ public:
    */
   string getPass ();
 
-
   /**
   * writes all the services to a file named "client" + id +"_services.txt"
   * @return True in case of success, false if failure
   */
   bool writeServicesToFile();
 
+  /**
+  * writes all the payments to a file named "client" + id +"_payments.txt"
+  * @return True in case of success, false if failure
+  */
+  bool writePaymentsToFile();
 
+  /**
+  * writes client to a file named "client" + id +".txt"
+  * @return True in case of success, false if failure
+  */
+  bool writeClientToFile();
+
+  /**
+  * Get string with Client type
+  * @return subclass payment
+  */
+  virtual std::string getClientType() = 0;
 
 };
 

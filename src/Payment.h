@@ -25,6 +25,8 @@ public:
    */
   Payment (double value);
 
+  Payment(double value, bool due, Date due_date, Hour due_hour);
+
   /**
    * Empty Destructor
    */
@@ -75,11 +77,11 @@ public:
 	 void setDue(bool new_var);
 
 	 /**
-	  * Set value of due
+	  * Get value of due
 	  * Payment is due
 	  * @return the value of due
 	  */
-	 bool isDue();
+	 bool getDue();
 
 	 /**
 	 * Set value of due_date
@@ -89,11 +91,18 @@ public:
 	 void setDueDate(Date new_var);
 
 	 /**
-	 * Set value of due_date
+	 * Get value of due_date
 	 * Payment due date
 	 * @return the value of due_date
 	 */
 	 Date getDueDate();
+
+	 /**
+	 * Get value of value
+	 * Payment's value
+	 * @return the value of value
+	 */
+	 double getValue();
 
 	 /**
 	 * Set value of due_hour
@@ -108,6 +117,12 @@ public:
 	 * @return the value of due_hour
 	 */
 	 Hour getDueHour();
+
+	 /**
+	 * Get string with payment type
+	 * @return subclass payment 
+	 */
+	 virtual std::string getPayType() = 0;
 };
 
 #endif // PAYMENT_H

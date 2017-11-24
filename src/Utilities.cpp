@@ -101,3 +101,36 @@ bool Utilities::isCapitalDistrito(const string city) {
 	}
 	return false;	 
 }
+
+Date Utilities::lastDayofMonth(unsigned int month, unsigned int year)
+{
+	if (month > 12 || month < 0)
+		return Date(1, month, year);
+	switch (month) {
+	case 4: case 6: case 9: case 11:
+			return Date(30, month, year);
+
+		case 2:
+			if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+				return Date(29, month, year);
+			else
+				return Date(28, month, year);
+
+		default:
+			return Date(31, month, year);
+	}
+}
+
+string generateRandom(int length)
+{
+	string random = "";
+	int r = rand();
+	for (size_t i = 0; i < length; i++)
+	{
+		srand(time(NULL) + r);
+		r = rand();
+		random += to_string(r % 10);;
+	}
+
+	return random;
+}

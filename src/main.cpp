@@ -20,9 +20,13 @@ int main() {
 	Services* s1 = new Services(a1, 50, a2, Hour(8, 50), Date(5, 10, 2017));
 	p1->addServices(s1);
 
-	
+	string nib = generateRandom(21);
+	string entity = generateRandom(5);
+	string reference = generateRandom(9);
 
-	Company* c1 = new Company();
+	cout << endl << nib << endl << entity << endl << reference << endl;
+
+	Company* c1 = new Company(nib, entity, reference);
 	c1->addClient(p1);
 
 	EnterController enter = EnterController(c1);
