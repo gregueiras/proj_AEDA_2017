@@ -377,6 +377,8 @@ vector<Payment*> Company::readPaymentsFromFile(const unsigned int id)
 				ptr = new CreditCard(value, due, due_date, due_hour);
 			else if (pay_type == "DebitCard")
 				ptr = new DebitCard(value, due, due_date, due_hour);
+			else if (pay_type == "EOMPayment")
+				ptr = new EOMPayment(value, due, due_date, due_hour);
 
 			temp_v.push_back(ptr);
 		}
@@ -508,6 +510,7 @@ bool Company::checkAllDues(Client * c, double & value)
 	value = 0;
 	for (size_t i = 0; i < c->getPayment().size(); i++)
 	{
+		//Assuming EOMPayment
 		if (c->getPayment().at(i)->getDue() == true)
 			value += c->getPayment().at(i)->getValue();
 	}
@@ -521,6 +524,7 @@ void Company::payAllDues(Client * c)
 {
 	for (size_t i = 0; i < c->getPayment().size(); i++)
 	{
+		//Assuming EOMPayment
 		if (c->getPayment().at(i)->getDue() == true) {
 			c->getPayment().at(i)->setDue(false);
 			c->getPayment().at(i)->setDueDate(this->current_date);
