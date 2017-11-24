@@ -5,7 +5,7 @@ unsigned int Payment::next_id = 1;
 // Constructors/Destructors
 //  
 
-Payment::Payment (double value) {
+Payment::Payment(double value) {
 	this->value = value;
 	this->due = false;
 
@@ -18,7 +18,7 @@ Payment::Payment(double value, bool due, Date due_date, Hour due_hour) {
 	this->due_hour = due_hour;
 }
 
-Payment::~Payment () { }
+Payment::~Payment() { }
 
 //  
 // Methods

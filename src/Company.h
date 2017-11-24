@@ -37,6 +37,8 @@ public:
    */
   Company ();
 
+  Company(string nib, string entity, string reference);
+
   /**
    * Empty Destructor
    */
@@ -75,7 +77,42 @@ private:
   // Company reference - 9 digits
   string reference;
 
+  //World Time
+  //Date
+  Date current_date;
+
+  //Hour
+  Hour current_hour;
+
 public:
+
+	/**
+	* Get the value of current_date
+	* World Time - Date
+	* @return the value of current_date
+	*/
+	Date getCurrentDate();
+
+	/**
+	* Set the value of current_date
+	* World Time - Date
+	* @param new_var the new value of current_date
+	*/
+	void setCurrentDate(Date new_var);
+
+	/**
+	* Get the value of current_hour
+	* World Time - Hour
+	* @return the value of current_hour
+	*/
+	Hour getCurrentHour();
+
+	/**
+	* Set the value of current_hour
+	* World Time - Hour
+	* @param new_var the new value of current_hour
+	*/
+	void setCurrentHour(Hour new_var);
 
 	/**
 	* Get the value of nib
@@ -223,6 +260,18 @@ public:
 	* @return True in case of success, false if failure
 	*/
 	bool readCompanyFromFile();
+
+	/**
+	* Check if client as dues
+	* @param value the value of total due
+	* @return true if has dues
+	*/
+	bool checkAllDues(Client * c, double & value);
+
+	/**
+	* Set value of due to false and change due_hour/date to current_hour/date
+	*/
+	void payAllDues(Client * c);
 
 };
 

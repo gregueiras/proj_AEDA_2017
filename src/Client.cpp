@@ -218,14 +218,14 @@ bool Client::writePaymentsToFile()
 		for (unsigned int i = 0; i < this->payments.size(); i++)
 		{
 			//Pay Type
-			output << this->getPayment().at(i)->getPayType() << endl;
+			output << this->getPayment().at(i)->getPayType() << endl << endl;
 			//Value
-			output << to_string(this->getPayment().at(i)->getValue()) << endl;
+			output << to_string(this->getPayment().at(i)->getValue()) << endl << endl;
 			//Due
-			output << to_string((int)this->getPayment().at(i)->getDue()) << endl;
+			output << to_string((int)this->getPayment().at(i)->getDue()) << endl << endl;
 			//Due Date & Hour
 			output << this->getPayment().at(i)->getDueDate().toStr() << endl;
-			output << this->getPayment().at(i)->getDueHour().toStr() << endl;
+			output << this->getPayment().at(i)->getDueHour().toStr() << endl << endl;
 		}
 
 	}
@@ -248,9 +248,9 @@ bool Client::writeClientToFile()
 		for (unsigned int i = 0; i < this->payments.size(); i++)
 		{
 			//Client Type
-			output << this->getClientType() << endl;
+			output << this->getClientType() << endl << endl;
 			//Name
-			output << this->getName() << endl;
+			output << this->getName() << endl << endl;
 			//Address info
 			output << this->getAddress().getStreet() << endl;
 			output << to_string(this->getAddress().getDoor_number()) << endl;
@@ -258,11 +258,11 @@ bool Client::writeClientToFile()
 			output << this->getAddress().getCounty() << endl;
 			output << this->getAddress().getCountry() << endl;
 			output << to_string(this->getAddress().getCoordinates().getLatitude()) << endl;
-			output << to_string(this->getAddress().getCoordinates().getLongitude()) << endl;
+			output << to_string(this->getAddress().getCoordinates().getLongitude()) << endl << endl;
 			//nif
-			output << to_string(this->getNif()) << endl;
+			output << to_string(this->getNif()) << endl << endl;
 			//pass	
-			output << this->getPass() << endl;
+			output << this->getPass() << endl << endl;
 		}
 
 	}

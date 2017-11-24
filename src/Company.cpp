@@ -6,8 +6,35 @@ using namespace std;
 
 Company::Company() {}
 
+Company::Company(string nib, string entity, string reference)
+{
+	this->nib = nib;
+	this->entity = entity;
+	this->reference = reference;
+}
+
 
 Company::~Company() { }
+
+Date Company::getCurrentDate()
+{
+	return this->current_date;
+}
+
+void Company::setCurrentDate(Date new_var)
+{
+	this->current_date = new_var;
+}
+
+Hour Company::getCurrentHour()
+{
+	return this->current_hour;
+}
+
+void Company::setCurrentHour(Hour new_var)
+{
+	this->current_hour = new_var;
+}
 
 string Company::getNib()
 {
@@ -292,7 +319,7 @@ Client* Company::readClientFromFile(const unsigned int id)
 		else if (client_type == "Personal")
 			ptr = new Personal(name, address, nif, pass, id);
 		else if (client_type == "Unregistered")
-			ptr = new Unregistered(name, address, nif, pass, id);
+			ptr = new Unregistered(name, address, nif, id);
 
 		input.close();
 
@@ -411,11 +438,14 @@ bool Company::writeCompanyToFile()
 	{
 
 		//nib
-		output << this->getNib() << endl;
+		output << this->getNib() << endl << endl;
 		//entity
-		output << this->getEntity() << endl;
+		output << this->getEntity() << endl << endl;
 		//reference
-		output << this->getReference() << endl;
+		output << this->getReference() << endl << endl;
+		//Current Date & Hour
+		output << this->getCurrentDate().toStr() << endl;
+		output << this->getCurrentHour().toStr() << endl << endl;
 
 	}
 	else
@@ -454,10 +484,47 @@ bool Company::readCompanyFromFile()
 		this->setReference(temp);
 		//////////////////////
 
+		getline(input, temp);
+
+		//get current_date and current_hour
+		getline(input, temp);
+		Date current_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
+		this->setCurrentDate(current_date);
+		getline(input, temp);
+		Hour current_hour(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
+		this->setCurrentHour(current_hour);
+		//////////////////////
+
 		input.close();
 
 		return true;
 
 	}
 	return false;
+}
+
+bool Company::checkAllDues(Client * c, double & value)
+{
+	value = 0;
+	for (size_t i = 0; i < c->getPayment().size(); i++)
+	{
+		if (c->getPayment().at(i)->getDue() == true)
+			value += c->getPayment().at(i)->getValue();
+	}
+	if (value == 0)
+		return false;
+	else
+		return true;
+}
+
+void Company::payAllDues(Client * c)
+{
+	for (size_t i = 0; i < c->getPayment().size(); i++)
+	{
+		if (c->getPayment().at(i)->getDue() == true) {
+			c->getPayment().at(i)->setDue(false);
+			c->getPayment().at(i)->setDueDate(this->current_date);
+			c->getPayment().at(i)->setDueHour(this->current_hour);
+		}
+	}
 }

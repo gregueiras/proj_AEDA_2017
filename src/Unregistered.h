@@ -21,9 +21,9 @@ public:
   /**
    * Constructor
    */
-	Unregistered (string name, Address address, unsigned int nif, string passwd);
+	Unregistered (string name, Address address, unsigned int nif);
 
-	Unregistered(string name, Address address, unsigned int nif, string passwd, unsigned int id);
+	Unregistered(string name, Address address, unsigned int nif, unsigned int id);
 
   /**
    * Empty Destructor

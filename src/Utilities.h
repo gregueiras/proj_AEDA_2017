@@ -10,7 +10,10 @@
 
 #include <iostream>
 #include <limits>
+#include <time.h> 
+
 #include "Services.h"
+
 
 using namespace std;
 
@@ -25,6 +28,8 @@ public:
 
 
 	bool isCapitalDistrito(const string city);
+
+	Date lastDayofMonth(unsigned int month, unsigned int year);
 };
 
 
@@ -92,5 +97,12 @@ bool auxSortbyDistance(Services* a, Services* b);
 bool auxSortbyID(Services* a, Services* b);
 
 }
+
+/**
+* Auxiliary for Banking Specs on Company
+* @param length size of return
+* @return string of numbers with size == length
+*/
+string generateRandom(int length);
 
 #endif /* SRC_MODEL_UTILITIES_H_ */
