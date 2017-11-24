@@ -4,10 +4,20 @@
 
 #include <string>
 #include <vector>
+#include <array>
+
+#include "Services.h"
 
 #include "Client.h"
-#include "Services.h"
+#include "Business.h"
+#include "Personal.h"
+#include "Unregistered.h"
+
 #include "Payment.h"
+#include "BankTransfer.h"
+#include "CreditCard.h"
+#include "DebitCard.h"
+
 
 
 /**
@@ -38,14 +48,14 @@ private:
   // Static Private attributes
   //  
 
-  // Cost of shipping 1 cubic meter of material for 1km.
-  // Basis for calculating prices.
-  static unsigned long cost_km_m;
+  //// Cost of shipping 1 cubic meter of material for 1km.
+  //// Basis for calculating prices.
+  //static unsigned long cost_km_m;
 
-  // Price of storing goods in the storage.
-  // Service only available for registered clients.
-  // Basis for calculating prices
-  static unsigned long cost_day_in_storage;
+  //// Price of storing goods in the storage.
+  //// Service only available for registered clients.
+  //// Basis for calculating prices
+  //static unsigned long cost_day_in_storage;
 
   // Vector of clients of the company
   vector<Client*> clients;
@@ -55,26 +65,59 @@ private:
 
   // Regist of payments of the company's clients
   vector<Payment*> payments_regist;
+
+  // Company nib - 21 digits
+  string nib;
+
+  // Company entity - 5 digits
+  string entity;
+
+  // Company reference - 9 digits
+  string reference;
+
 public:
 
+	/**
+	* Get the value of nib
+	* Company nib - 21 digits
+	* @return the value of nib
+	*/
+	string getNib();
 
-  /**
-   * Get the value of cost_km_m
-   * Cost of shipping 1 cubic metre of material for 1km.
-   * Basis for calculating prices.
-   * @return the value of cost_km_m
-   */
-	unsigned long getCost_km_m();
+	/**
+	* Set the value of nib
+	* Company nib - 21 digits
+	* @param new_var the new value of nib
+	*/
+	void setNib(string new_var);
 
+	/**
+	* Get the value of entity
+	* Company entity - 5 digits
+	* @return the value of entity
+	*/
+	string getEntity();
 
-  /**
-   * Get the value of cost_day_in_storage
-   * Price of storing goods in the storage.
-   * Service only available for registered clients.
-   * Basis for calculating prices
-   * @return the value of cost_day_in_storage
-   */
-	unsigned long getCost_day_in_storage();
+	/**
+	* Set the value of entity
+	* Company entity - 5 digits
+	* @param new_var the new value of entity
+	*/
+	void setEntity(string new_var);
+
+	/**
+	* Get the value of reference
+	* Company reference - 9 digits
+	* @return the value of reference
+	*/
+	string getReference();
+
+	/**
+	* Set the value of reference
+	* Company reference - 9 digits
+	* @param new_var the new value of reference
+	*/
+	void setReference(string new_var);
 
   /**
    * Set the value of clients
@@ -140,7 +183,46 @@ public:
 	* @param id Id of the client to be read
 	* @return Services read from file
 	*/
-	vector<Services*> readFromFile(const unsigned int id);
+	vector<Services*> readServicesFromFile(const unsigned int id);
+
+	/**
+	* Reads all clients from a files named "client" + id +".txt"
+	* @return Clients read from file
+	*/
+	vector<Client*> readClientsFromFile();
+
+	/**
+	* Reads a client from a file named "client" + id +".txt"
+	* @param id Id of the client to be read
+	* @return Clients read from file
+	*/
+	Client* readClientFromFile(const unsigned int id);
+
+	/**
+	* Reads all the payments from a file named "client" + id +"_payments.txt"
+	* @param id Id of the client to be read
+	* @return Payments read from file
+	*/
+	vector<Payment*> readPaymentsFromFile(const unsigned int id);
+
+	/**
+	* writes client to a file named "client" + id +".txt"
+	* Vector of clients of the company
+	* @return True in case of success, false if failure
+	*/
+	bool writeClientsToFile();
+
+	/**
+	* writes company to a file named "company.txt"
+	* @return True in case of success, false if failure
+	*/
+	bool writeCompanyToFile();
+
+	/**
+	* read company from a file named "company.txt"
+	* @return True in case of success, false if failure
+	*/
+	bool readCompanyFromFile();
 
 };
 

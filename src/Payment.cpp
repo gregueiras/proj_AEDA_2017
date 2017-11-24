@@ -11,6 +11,13 @@ Payment::Payment (double value) {
 
 }
 
+Payment::Payment(double value, bool due, Date due_date, Hour due_hour) {
+	this->value = value;
+	this->due = due;
+	this->due_date = due_date;
+	this->due_hour = due_hour;
+}
+
 Payment::~Payment () { }
 
 //  
@@ -29,7 +36,7 @@ void Payment::setDue(bool new_var) {
 	this->due = new_var;
 }
 
-bool Payment::isDue() {
+bool Payment::getDue() {
 	return this->due;
 }
 
@@ -39,6 +46,11 @@ void Payment::setDueDate(Date new_var) {
 
 Date Payment::getDueDate() {
 	return this->due_date;
+}
+
+double Payment::getValue()
+{
+	return this->value;
 }
 
 void Payment::setDueHour(Hour new_var) {
