@@ -104,10 +104,17 @@ double Services::calcDistance ()   {
 
 double Services::calcPrice (unsigned int days_in_storage)   {
 
+	double cost_days;
+
+	if (days_in_storage < 5)
+		cost_days = 0;
+	else 
+		cost_days = (days_in_storage - 5) * cost_day_in_storage * volume;
+
 	if (distance > 2000000)
-		return (volume*distance/1000*cost_km_m3 + days_in_storage*cost_day_in_storage*volume)*1.1;
+		return (volume*distance/1000*cost_km_m3 + cost_days)*1.1;
 	else
-		return volume*distance/1000*cost_km_m3 + days_in_storage*cost_day_in_storage*volume;
+		return volume*distance/1000*cost_km_m3 + cost_days;
 
 }
 
