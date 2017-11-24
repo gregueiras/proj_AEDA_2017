@@ -182,8 +182,9 @@ public:
 	* Vector of clients of the company
 	* @param new_var the client, if found
 	* @param id the client id
+	* @param pass the client pass
 	*/
-	Client * getClient(unsigned int id);
+	Client * getClient(unsigned int id, string pass);
 
 	/**
 	* Set the vector of services_queue

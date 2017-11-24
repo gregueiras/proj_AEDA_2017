@@ -102,10 +102,10 @@ bool Company::addClient(Client *new_var) {
 	return true;
 }
 
-Client * Company::getClient(unsigned int id) {
+Client * Company::getClient(unsigned int id, string pass) {
 	int clients_size = this->clients.size();
 	for (int i = 0; i < clients_size; ++i) {
-		if (id == this->clients.at(i)->getId()) {
+		if (id == this->clients.at(i)->getId() && pass == this->clients.at(i)->getPass()) {
 			return this->clients.at(i);
 
 		}
