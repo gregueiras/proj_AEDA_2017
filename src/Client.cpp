@@ -273,4 +273,27 @@ bool Client::writeClientToFile()
 	return true;
 }
 
+int Client::checkAllDues()
+{
+	double value = 0;
+	for (size_t i = 0; i < this->getPayment().size(); i++)
+	{
+		//Assuming EOMPayment
+		if (this->getPayment().at(i)->getDue() == true)
+			value += this->getPayment().at(i)->getValue();
+	}
+	return value;
+}
 
+void Client::payAllDues(Date c_date, Hour c_hour)
+{
+	for (size_t i = 0; i < this->getPayment().size(); i++)
+	{
+		//Assuming EOMPayment
+		if (this->getPayment().at(i)->getDue() == true) {
+			this->getPayment().at(i)->setDue(false);
+			this->getPayment().at(i)->setDueDate(c_date);
+			this->getPayment().at(i)->setDueHour(c_hour);
+		}
+	}
+}

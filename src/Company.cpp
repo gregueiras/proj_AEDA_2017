@@ -505,30 +505,3 @@ bool Company::readCompanyFromFile()
 	return false;
 }
 
-bool Company::checkAllDues(Client * c, double & value)
-{
-	value = 0;
-	for (size_t i = 0; i < c->getPayment().size(); i++)
-	{
-		//Assuming EOMPayment
-		if (c->getPayment().at(i)->getDue() == true)
-			value += c->getPayment().at(i)->getValue();
-	}
-	if (value == 0)
-		return false;
-	else
-		return true;
-}
-
-void Company::payAllDues(Client * c)
-{
-	for (size_t i = 0; i < c->getPayment().size(); i++)
-	{
-		//Assuming EOMPayment
-		if (c->getPayment().at(i)->getDue() == true) {
-			c->getPayment().at(i)->setDue(false);
-			c->getPayment().at(i)->setDueDate(this->current_date);
-			c->getPayment().at(i)->setDueHour(this->current_hour);
-		}
-	}
-}
