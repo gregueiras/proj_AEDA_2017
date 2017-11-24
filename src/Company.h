@@ -17,7 +17,6 @@
 #include "BankTransfer.h"
 #include "CreditCard.h"
 #include "DebitCard.h"
-#include "EOMPayment.h"
 
 
 /**

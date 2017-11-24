@@ -168,7 +168,7 @@ bool Client::writeServicesToFile()
 
 		for (unsigned int i = 0; i < this->services.size(); i++)
 		{
-
+			output << this->services.at(i)->getEOMPay().getEOMPaymentToWrite() << endl;
 			output << this->services.at(i)->getOriginAddress().getStreet() << endl;
 			output << to_string(this->services.at(i)->getOriginAddress().getDoor_number()) << endl;
 			output << this->services.at(i)->getOriginAddress().getCity() << endl;
@@ -276,11 +276,11 @@ bool Client::writeClientToFile()
 int Client::checkAllDues()
 {
 	double value = 0;
-	for (size_t i = 0; i < this->getPayment().size(); i++)
+	for (size_t i = 0; i < this->getServices().size(); i++)
 	{
 		//Assuming EOMPayment
-		if (this->getPayment().at(i)->getDue() == true)
-			value += this->getPayment().at(i)->getValue();
+		if (this->getServices().at(i)->getEOMPay().getDue() == true)
+			value += this->getServices().at(i)->getPrice();
 	}
 	return value;
 }
@@ -290,10 +290,10 @@ void Client::payAllDues(Date c_date, Hour c_hour)
 	for (size_t i = 0; i < this->getPayment().size(); i++)
 	{
 		//Assuming EOMPayment
-		if (this->getPayment().at(i)->getDue() == true) {
-			this->getPayment().at(i)->setDue(false);
-			this->getPayment().at(i)->setDueDate(c_date);
-			this->getPayment().at(i)->setDueHour(c_hour);
+		if (this->getServices().at(i)->getEOMPay().getDue() == true) {
+			this->getServices().at(i)->getEOMPay().setDue(false);
+			this->getServices().at(i)->getEOMPay().setDueDate(c_date);
+			this->getServices().at(i)->getEOMPay().setDueHour(c_hour);
 		}
 	}
 }

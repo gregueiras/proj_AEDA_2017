@@ -26,7 +26,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 }
 
-Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage)
+Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, bool due, Date due_date, Hour due_hour, unsigned int days_in_storage)
 : service_id(service_no++) {
 
 	this->origin_address = origin_address;
@@ -64,6 +64,8 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 	Delivery deliv(date_end_shipp + days_in_storage, hour_end_shipp, date_end_deliv, hour_end_deliv);
 	this->delivery = deliv;
+
+	this->eom_pay = EOMPayment(due, due_date, due_hour);
 
 
 	this->price = calcPrice(days_in_storage);
@@ -254,5 +256,15 @@ bool Services::isBetweenID(const unsigned int& d1, const unsigned int& d2) {
 		return true;
 	else
 		return false;
+}
+
+EOMPayment Services::getEOMPay()
+{
+	return this->eom_pay;
+}
+
+void Services::setEOMPay(EOMPayment new_var)
+{
+	this->eom_pay = new_var;
 }
 

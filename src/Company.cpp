@@ -174,6 +174,8 @@ vector<Services*> Company::readServicesFromFile(const unsigned int id)
 	unsigned int door_number, days_in_storage;
 	double lat, lon, volume;
 
+	bool due;
+
 	string file = "client" + to_string(id) + "_services.txt";
 
 	ifstream input;
@@ -182,6 +184,13 @@ vector<Services*> Company::readServicesFromFile(const unsigned int id)
 	{
 		while (!input.eof())
 		{
+			getline(input, temp);
+			due = stoi(temp);
+			getline(input, temp);
+			Date due_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
+
+			getline(input, temp);
+			Hour due_hour(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
 
 			getline(input, street);
 
@@ -377,8 +386,6 @@ vector<Payment*> Company::readPaymentsFromFile(const unsigned int id)
 				ptr = new CreditCard(value, due, due_date, due_hour);
 			else if (pay_type == "DebitCard")
 				ptr = new DebitCard(value, due, due_date, due_hour);
-			else if (pay_type == "EOMPayment")
-				ptr = new EOMPayment(value, due, due_date, due_hour);
 
 			temp_v.push_back(ptr);
 		}
