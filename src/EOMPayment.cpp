@@ -2,10 +2,15 @@
 
 // Constructors/Destructors
 //  
+EOMPayment::EOMPayment() {
+	this->due = false;
+}
 
-EOMPayment::EOMPayment (double value) : Payment::Payment(value), payment_id(newId()) {}
-
-EOMPayment::EOMPayment(double value, bool due, Date due_date, Hour due_hour) : Payment::Payment(value, due, due_date, due_hour) {}
+EOMPayment::EOMPayment(bool due, Date due_date, Hour due_hour) {
+	this->due_date = due_date;
+	this->due_hour = due_hour;
+	this->due = due;
+}
 
 EOMPayment::~EOMPayment () { }
 
@@ -13,14 +18,37 @@ EOMPayment::~EOMPayment () { }
 // Methods
 //  
 
-const unsigned int EOMPayment::newId() {
-	const unsigned int newId = this->getNextId() * 10 + this->payment_id;
-	this->incNextId();
-	return newId;
+void EOMPayment::setDue(bool new_var) {
+	this->due = new_var;
 }
 
-std::string EOMPayment::getPayType() {
-	return "EOMPayment";
+bool EOMPayment::getDue() {
+	return this->due;
+}
+
+void EOMPayment::setDueDate(Date new_var) {
+	this->due_date = new_var;
+}
+
+Date EOMPayment::getDueDate() {
+	return this->due_date;
+}
+
+void EOMPayment::setDueHour(Hour new_var) {
+	this->due_hour = new_var;
+}
+
+Hour EOMPayment::getDueHour() {
+	return this->due_hour;
+}
+
+string EOMPayment::getEOMPaymentToWrite()
+{
+	string ret = "";
+
+	ret += to_string((int)(this->due)) + "\n" + this->due_date.toStr() + "\n" + this->due_hour.toStr() + "\n";
+
+	return ret;
 }
 
 // Accessor methods

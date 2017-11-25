@@ -14,20 +14,25 @@
 
 #include "Services.h"
 
+
 using namespace std;
 
 class Utilities {
 public:
 	Utilities();
 	virtual ~Utilities();
+	
+	template<typename T>string toString(const T &value);
 
 	template<typename T> bool readString(T &s);
+
 
 	bool isCapitalDistrito(const string city);
 
 	Date lastDayofMonth(unsigned int month, unsigned int year);
-	string readLine();
 };
+
+
 
 template<typename T>
 bool Utilities::readString(T &s) {
@@ -37,15 +42,18 @@ bool Utilities::readString(T &s) {
 	if (cin.fail()) {
 		if (cin.eof()) {
 			return false;
-		} else {
+		}
+		else {
 			cin.clear(); // reset failbit, clear error state
 			cin.ignore(numeric_limits<streamsize>::max(), '\n'); //clear input buffer
 		}
-	} else {
+	}
+	else {
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //clear input buffer
 	}
 	return true;
 }
+
 
 namespace Sort {
 /**
@@ -91,10 +99,10 @@ bool auxSortbyID(Services* a, Services* b);
 }
 
 /**
- * Auxiliary for Banking Specs on Company
- * @param length size of return
- * @return string of numbers with size == length
- */
+* Auxiliary for Banking Specs on Company
+* @param length size of return
+* @return string of numbers with size == length
+*/
 string generateRandom(int length);
 
 #endif /* SRC_MODEL_UTILITIES_H_ */

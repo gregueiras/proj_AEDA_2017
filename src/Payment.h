@@ -23,9 +23,9 @@ public:
   /**
    * Constructor
    */
-  Payment (double value);
+  Payment (double value, unsigned int service_id);
 
-  Payment(double value, bool due, Date due_date, Hour due_hour);
+  Payment(double value, unsigned int service_id, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -33,6 +33,9 @@ public:
   virtual ~Payment ();
 
 private:
+	//service ID
+	unsigned int service_id;
+
 	// ID number of the next payment requested
 	static unsigned int next_id;
 
@@ -123,6 +126,20 @@ public:
 	 * @return subclass payment 
 	 */
 	 virtual std::string getPayType() = 0;
+
+	 /**
+	 * Get the value of service_id
+	 * Service ID
+	 * @return the value of service_id
+	 */
+	 unsigned int getServiceId();
+
+	 /**
+	 * Set the value of service_id
+	 * Service ID
+	 * @param new_var the value of service_id
+	 */
+	 void setServiceId(unsigned int new_var);
 };
 
 #endif // PAYMENT_H

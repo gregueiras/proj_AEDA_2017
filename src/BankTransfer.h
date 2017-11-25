@@ -21,9 +21,9 @@ public:
   /**
    * Empty Constructor
    */
-  BankTransfer (double value);
+  BankTransfer (double value, unsigned int service_id);
 
-  BankTransfer(double value, bool due, Date due_date, Hour due_hour);
+  BankTransfer(double value, unsigned int service_id, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
