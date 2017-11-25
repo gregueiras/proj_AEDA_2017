@@ -8,7 +8,7 @@
 #include "RemoveUserMenuView.h"
 
 RemoveMenuView::RemoveMenuView() {
-	u = new Utilities(); 
+	u = new Utilities();
 }
 
 RemoveMenuView::~RemoveMenuView() {
@@ -22,7 +22,6 @@ void RemoveMenuView::printMessage(const string &message) {
 void RemoveMenuView::printRemoveUser() {
 	printMessage(removeUserMenu);
 }
-
 
 void RemoveMenuView::printEnterOption() {
 	printMessage(enterOption);
@@ -40,3 +39,6 @@ void RemoveMenuView::printEnd() {
 	printMessage(end);
 }
 
+void RemoveMenuView::printShutdown() {
+	printMessage(shutdown);
+}

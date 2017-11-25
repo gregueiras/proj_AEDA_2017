@@ -23,11 +23,29 @@ private:
 	Client *user;
 	Company *company;
 
+	/**
+	 * opens new list services menu
+	 */
 	void newListServicesMenu();
 
 public:
-	ChangeServiceController(Services *service, Client *user, Company *company);
+	/**
+	 * Contructor that initalizes all variables
+	 * @param service chosen service
+	 * @param client log in user
+	 * @param company pointer to the company object
+	 */
+	ChangeServiceController(Services *service, Client *client,
+			Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~ChangeServiceController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
 };
 

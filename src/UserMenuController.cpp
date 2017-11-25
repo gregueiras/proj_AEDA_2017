@@ -29,7 +29,7 @@ void UserMenuController::menuHandler() {
 	int option = getMenuOption(0, 3);
 	switch (option) {
 	case 0:
-		theView->printEnd();
+		theView->printShutdown();
 		endProgram();
 		break;
 	case 1:
@@ -52,7 +52,7 @@ int UserMenuController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}

@@ -22,30 +22,43 @@ ListServicesController::~ListServicesController() {
 }
 
 void ListServicesController::menu() {
-	theView->printListServicesMenu();
+	theView->printServicesListing();
 	listServices();
-	serviceID = getServiceID();
-	listServicesHandler(serviceID);
-}
 
-int ListServicesController::getServiceID() {
-	int id;
-	theView->printEnterServiceID();
-	getInfo(id);
-	return id;
+	printListServicesByUserType();
+	listServicesMenuHandler();
 }
 
 void ListServicesController::listServices() {
 	vector<Services *> services = user->getServices();
 	for (size_t i = 0; i < services.size(); i++) {
 		if (services.at(i)->isVisibility()) {
+			//		cout << "ID: " << services.at(i)->getId() << " "
+			//			<< services.at(i)->toStrShort() << endl;
 			theView->printServiceInfo(services.at(i)->getId(),
 					services.at(i)->toStrShort());
 		}
 	}
 }
 
-void ListServicesController::listServicesHandler(int serviceID) {
+void ListServicesController::printListServicesByUserType() {
+	if (dynamic_cast<Business*>(user)) {
+		theView->printListServicesMenuForBusinnessClients();
+	} else {
+		theView->printListServicesMenu();
+	}
+}
+
+int ListServicesController::getServiceID() {
+	int id;
+	theView->printEnterServiceID();
+	theView->getInfo(id);
+	if (id == 10) {
+		newServiceMenu();
+	}
+	return id;
+}
+void ListServicesController::listServicesMenuHandler() {
 	theView->printEnterOption();
 	int option = getMenuOption(0, 7);
 	switch (option) {
@@ -54,6 +67,7 @@ void ListServicesController::listServicesHandler(int serviceID) {
 		endProgram();
 		break;
 	case 1:
+		serviceID = getServiceID();
 		newSeeService();
 		break;
 	case 2:
@@ -69,11 +83,13 @@ void ListServicesController::listServicesHandler(int serviceID) {
 		newRemoveServiceMenu();
 		break;
 	case 6:
-		newPayServiceMenu();
+		if (dynamic_cast<Business*>(user)) {
+			newPayServiceMenu();
+		} else {
+			newServiceMenu();
+		}
 		break;
 	case 7:
-		newServiceMenu();
-		break;
 	default:
 		newServiceMenu();
 		break;
@@ -85,7 +101,7 @@ int ListServicesController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}
@@ -101,8 +117,9 @@ void ListServicesController::newSeeService() {
 
 	Services s1 = user->getServiceById(serviceID);
 	Services* ss1 = &s1;
-	SeeServiceController *seeServiceController = new SeeServiceController(
-			ss1, user, company);
+
+	SeeServiceController *seeServiceController = new SeeServiceController(ss1,
+			user, company);
 	seeServiceController->menu();
 }
 
@@ -140,7 +157,7 @@ void ListServicesController::newSortServicesMenu() {
 
 void ListServicesController::newPayServiceMenu() {
 	PayServiceController *payServiceController = new PayServiceController(user,
-			serviceID, company);
+			-1, company);
 	payServiceController->menu();
 }
 

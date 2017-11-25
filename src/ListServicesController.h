@@ -28,35 +28,91 @@ private:
 	Company *company;
 	unsigned int serviceID;
 
-	void listServices();
+	/**
+	 * call to print menu according to user type
+	 */
+	void printListServicesByUserType();
+
+	/**
+	 * user interaction method to read service id
+	 */
 	int getServiceID();
-	void listServicesHandler(int serviceID);
+
+	/**
+	 * lists user services
+	 */
+	void listServices();
+
+	/**
+	 * reads the user option and acts accordingly
+	 */
+	void listServicesMenuHandler();
+
+	/**
+	 * read the menu option from the keyboard the value of arrival_date
+	 * Date of arrival
+	 * @param lowerBound lower bound of the menu option
+	 * @param upperBound upper bound of the menu option
+	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
 
-	template<typename T> void getInfo(T &info);
-
+	/**
+	 * ends the program
+	 */
 	void endProgram();
 
+	/**
+	 * opens new see service services menu
+	 */
 	void newSeeService();
+
+	/**
+	 * opens new change service menu
+	 */
 	void newChangeServiceMenu();
+
+	/**
+	 * opens new remove service menu
+	 */
 	void newRemoveServiceMenu();
+
+	/**
+	 * opens new filter services menu
+	 */
 	void newFilterServicesMenu();
+
+	/**
+	 * opens new sort services menu
+	 */
 	void newSortServicesMenu();
+
+	/**
+	 * opens new pay service menu
+	 */
 	void newPayServiceMenu();
+
+	/**
+	 * opens new see service menu
+	 */
 	void newServiceMenu();
 
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param client log in user
+	 * @param company pointer to the company object
+	 */
 	ListServicesController(Client *client, Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~ListServicesController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
 };
-
-template<typename T>
-void ListServicesController::getInfo(T& info) {
-	if (!theView->getInfo(info)) { //ctrlz, fim do ficheiro
-		theView->printEnd();
-		newServiceMenu();
-	}
-}
 
 #endif /* SRC_CONTROLLER_HEADERS_LISTSERVICESCONTROLLER_H_ */

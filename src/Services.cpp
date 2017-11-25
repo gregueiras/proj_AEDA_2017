@@ -26,7 +26,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 }
 
-Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, bool due, Date due_date, Hour due_hour, unsigned int days_in_storage)
+Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage)
 : service_id(service_no++) {
 
 	this->origin_address = origin_address;
@@ -64,8 +64,6 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 	Delivery deliv(date_end_shipp + days_in_storage, hour_end_shipp, date_end_deliv, hour_end_deliv);
 	this->delivery = deliv;
-
-	this->eom_pay = EOMPayment(due, due_date, due_hour);
 
 
 	this->price = calcPrice(days_in_storage);
@@ -106,17 +104,10 @@ double Services::calcDistance ()   {
 
 double Services::calcPrice (unsigned int days_in_storage)   {
 
-	double cost_days;
-
-	if (days_in_storage < 5)
-		cost_days = 0;
-	else 
-		cost_days = (days_in_storage - 5) * cost_day_in_storage * volume;
-
 	if (distance > 2000000)
-		return (volume*distance/1000*cost_km_m3 + cost_days)*1.1;
+		return (volume*distance/1000*cost_km_m3 + days_in_storage*cost_day_in_storage*volume)*1.1;
 	else
-		return volume*distance/1000*cost_km_m3 + cost_days;
+		return volume*distance/1000*cost_km_m3 + days_in_storage*cost_day_in_storage*volume;
 
 }
 
@@ -153,7 +144,7 @@ ostream& operator<< (ostream& o,const Services& c)
 
 
 Hour Services::auxCalcTimePackaging() {
-	unsigned int minutes = volume*min_m3 + min_pack;
+	unsigned int minutes = (int)volume*(int)min_m3 + (int)min_pack;
 	unsigned int hours = minutes/60;
 	minutes = minutes % 60;
 
@@ -161,7 +152,7 @@ Hour Services::auxCalcTimePackaging() {
 }
 
 Hour Services::auxCalcTimeShipping() {
-	unsigned int minutes = min_shipp + distance/velocity;
+	unsigned int minutes = (int)min_shipp + (int)distance/ (int)velocity;
 	unsigned int hours = minutes/60;
 	minutes = minutes % 60;
 
@@ -256,15 +247,5 @@ bool Services::isBetweenID(const unsigned int& d1, const unsigned int& d2) {
 		return true;
 	else
 		return false;
-}
-
-EOMPayment Services::getEOMPay()
-{
-	return this->eom_pay;
-}
-
-void Services::setEOMPay(EOMPayment new_var)
-{
-	this->eom_pay = new_var;
 }
 

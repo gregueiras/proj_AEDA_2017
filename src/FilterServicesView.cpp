@@ -91,3 +91,8 @@ void FilterServicesView::printWrongCity() {
 void FilterServicesView::printWrongDate() {
 	printMessage(wrongDate);
 }
+
+void FilterServicesView::printShutdown() {
+	printMessage(shutdown);
+}
+

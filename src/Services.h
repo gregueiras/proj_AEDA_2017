@@ -5,14 +5,12 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <fstream>
 
 #include "Address.h"
 #include "Delivery.h"
 #include "Packaging.h"
 #include "Shipping.h"
 #include "GPS.h"
-#include "EOMPayment.h"
 
 //#include "Payment.h"
 
@@ -28,7 +26,7 @@ public:
 	//
 	Services(Address origin_address, double volume, Address destination_address);
 	Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery);
-	Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, bool due, Date due_date, Hour due_hour, unsigned int days_in_storage = 0);
+	Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage = 0);
 	Services();
 	/**
 	 * Empty Destructor
@@ -72,8 +70,6 @@ private:
 	Packaging packaging;
 	//
 	Delivery delivery;
-	//
-	EOMPayment eom_pay; 
 
 
 public:
@@ -372,10 +368,6 @@ public:
 	 * @return True if service ID is between those IDs
 	 */
 	bool isBetweenID(const unsigned int &d1, const unsigned int &d2);
-
-	EOMPayment getEOMPay();
-
-	void setEOMPay(EOMPayment new_var);
 
 };
 

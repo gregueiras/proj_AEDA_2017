@@ -4,73 +4,61 @@ using namespace std;
 // Constructors/Destructors
 //  
 
-Company::Company() {}
+Company::Company() {
+}
 
-Company::Company(string nib, string entity, string reference)
-{
+Company::Company(string nib, string entity, string reference) {
 	this->nib = nib;
 	this->entity = entity;
 	this->reference = reference;
 }
 
+Company::~Company() {
+}
 
-Company::~Company() { }
-
-Date Company::getCurrentDate()
-{
+Date Company::getCurrentDate() {
 	return this->current_date;
 }
 
-void Company::setCurrentDate(Date new_var)
-{
+void Company::setCurrentDate(Date new_var) {
 	this->current_date = new_var;
 }
 
-Hour Company::getCurrentHour()
-{
+Hour Company::getCurrentHour() {
 	return this->current_hour;
 }
 
-void Company::setCurrentHour(Hour new_var)
-{
+void Company::setCurrentHour(Hour new_var) {
 	this->current_hour = new_var;
 }
 
-string Company::getNib()
-{
+string Company::getNib() {
 	return this->nib;
 }
 
-void Company::setNib(string new_var)
-{
+void Company::setNib(string new_var) {
 	this->nib = new_var;
 }
 
-string Company::getEntity()
-{
+string Company::getEntity() {
 	return this->entity;
 }
 
-void Company::setEntity(string new_var)
-{
+void Company::setEntity(string new_var) {
 	this->entity = new_var;
 }
 
-string Company::getReference()
-{
+string Company::getReference() {
 	return this->reference;
 }
 
-void Company::setReference(string new_var)
-{
+void Company::setReference(string new_var) {
 	this->reference = new_var;
 }
 
 //  
 // Methods
 //  
-
-
 
 //unsigned long Company::getCost_km_m() {
 //	return this->cost_km_m;
@@ -105,7 +93,8 @@ bool Company::addClient(Client *new_var) {
 Client * Company::getClient(unsigned int id, string pass) {
 	int clients_size = this->clients.size();
 	for (int i = 0; i < clients_size; ++i) {
-		if (id == this->clients.at(i)->getId() && pass == this->clients.at(i)->getPass()) {
+		if (id == this->clients.at(i)->getId()
+				&& pass == this->clients.at(i)->getPass()) {
 			return this->clients.at(i);
 
 		}
@@ -125,8 +114,7 @@ void Company::addService(Services *new_var, unsigned int client_id) {
 	bool client_identified = false;
 
 	int clients_size = this->getClients().size();
-	for (int i = 0; i < clients_size; i++)
-	{
+	for (int i = 0; i < clients_size; i++) {
 		//pointer to client in analisies
 		Client *i_Client = this->clients.at(i);
 		//if client is found (by id)
@@ -147,8 +135,7 @@ void Company::addPayment(Payment *new_var, unsigned int client_id) {
 	bool client_identified = false;
 
 	int clients_size = this->getClients().size();
-	for (int i = 0; i < clients_size; i++)
-	{
+	for (int i = 0; i < clients_size; i++) {
 		//pointer to client in analisies
 		Client *i_Client = this->clients.at(i);
 		//if client is found (by id)
@@ -165,32 +152,18 @@ void Company::addPayment(Payment *new_var, unsigned int client_id) {
 		this->payments_regist.push_back(new_var);
 }
 
-
-
-vector<Services*> Company::readServicesFromFile(const unsigned int id)
-{
+vector<Services*> Company::readServicesFromFile(const unsigned int id) {
 	vector<Services*> temp_v;
 	string country, county, city, street, temp;
 	unsigned int door_number, days_in_storage;
 	double lat, lon, volume;
 
-	bool due;
-
 	string file = "client" + to_string(id) + "_services.txt";
 
 	ifstream input;
 	input.open(file);
-	if (input.is_open())
-	{
-		while (!input.eof())
-		{
-			getline(input, temp);
-			due = stoi(temp);
-			getline(input, temp);
-			Date due_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
-
-			getline(input, temp);
-			Hour due_hour(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
+	if (input.is_open()) {
+		while (!input.eof()) {
 
 			getline(input, street);
 
@@ -207,7 +180,8 @@ vector<Services*> Company::readServicesFromFile(const unsigned int id)
 			getline(input, temp);
 			lon = stod(temp);
 
-			Address origin(street, country, city, county, door_number, lat, lon);
+			Address origin(street, country, city, county, door_number, lat,
+					lon);
 
 			getline(input, temp);
 
@@ -226,12 +200,14 @@ vector<Services*> Company::readServicesFromFile(const unsigned int id)
 			getline(input, temp);
 			lon = stod(temp);
 
-			Address destination(street, country, city, county, door_number, lat, lon);
+			Address destination(street, country, city, county, door_number, lat,
+					lon);
 
 			getline(input, temp);
 
 			getline(input, temp);
-			Date start_d(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
+			Date start_d(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
+					stoul(temp.substr(6)));
 
 			getline(input, temp);
 			Hour start_h(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
@@ -242,28 +218,21 @@ vector<Services*> Company::readServicesFromFile(const unsigned int id)
 			getline(input, temp);
 			volume = stod(temp);
 
-			Services* s1 = new Services(origin, volume, destination, start_h, start_d, days_in_storage);
+			Services* s1 = new Services(origin, volume, destination, start_h,
+					start_d, days_in_storage);
 
 			temp_v.push_back(s1);
 		}
 
-
-
-
 		input.close();
 
-
-
 		return temp_v;
-	}
-	else
-	{
+	} else {
 		return temp_v;
 	}
 }
 
-Client* Company::readClientFromFile(const unsigned int id)
-{
+Client* Company::readClientFromFile(const unsigned int id) {
 	Client* ptr = NULL;
 	string name, pass, client_type;
 	unsigned int nif;
@@ -273,12 +242,10 @@ Client* Company::readClientFromFile(const unsigned int id)
 	unsigned int door_number;
 	double lat, lon;
 
-
 	string file = "client" + to_string(id) + ".txt";
 	ifstream input;
 	input.open(file);
-	if (input.is_open())
-	{
+	if (input.is_open()) {
 		//get client_type
 		getline(input, client_type);
 		//////////////////////
@@ -337,8 +304,7 @@ Client* Company::readClientFromFile(const unsigned int id)
 	return ptr;
 }
 
-vector<Payment*> Company::readPaymentsFromFile(const unsigned int id)
-{
+vector<Payment*> Company::readPaymentsFromFile(const unsigned int id) {
 	vector<Payment*> temp_v;
 	Payment* ptr = NULL;
 	string temp, pay_type;
@@ -349,10 +315,8 @@ vector<Payment*> Company::readPaymentsFromFile(const unsigned int id)
 
 	ifstream input;
 	input.open(file);
-	if (input.is_open())
-	{
-		while (!input.eof())
-		{
+	if (input.is_open()) {
+		while (!input.eof()) {
 			//get pay_type
 			getline(input, pay_type);
 			//////////////////////
@@ -375,7 +339,8 @@ vector<Payment*> Company::readPaymentsFromFile(const unsigned int id)
 
 			//get due_date and due_hour
 			getline(input, temp);
-			Date due_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
+			Date due_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
+					stoul(temp.substr(6)));
 			getline(input, temp);
 			Hour due_hour(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
 			//////////////////////
@@ -386,6 +351,8 @@ vector<Payment*> Company::readPaymentsFromFile(const unsigned int id)
 				ptr = new CreditCard(value, due, due_date, due_hour);
 			else if (pay_type == "DebitCard")
 				ptr = new DebitCard(value, due, due_date, due_hour);
+			else if (pay_type == "EOMPayment")
+				ptr = new EOMPayment(value, due, due_date, due_hour);
 
 			temp_v.push_back(ptr);
 		}
@@ -405,18 +372,19 @@ vector<Client*> Company::readClientsFromFile() {
 	unsigned int id = 1;
 	Client* ptr = NULL;
 
-	do
-	{
+	do {
 		if (id > 1) {
 			s_tmp = readServicesFromFile(id - 1);
 			ptr->setServices(s_tmp);
 			//add services to company registers
-			this->services_queue.insert(this->services_queue.end(), s_tmp.begin(), s_tmp.end());
+			this->services_queue.insert(this->services_queue.end(),
+					s_tmp.begin(), s_tmp.end());
 
 			p_tmp = readPaymentsFromFile(id - 1);
 			ptr->setPayment(p_tmp);
 			//add payments to company registers
-			this->payments_regist.insert(this->payments_regist.end(), p_tmp.begin(), p_tmp.end());
+			this->payments_regist.insert(this->payments_regist.end(),
+					p_tmp.begin(), p_tmp.end());
 
 			c_tmp.push_back(ptr);
 		}
@@ -428,8 +396,7 @@ vector<Client*> Company::readClientsFromFile() {
 	return c_tmp;
 }
 
-bool Company::writeClientsToFile()
-{
+bool Company::writeClientsToFile() {
 	for (size_t i = 0; i < this->getClients().size(); i++)
 		if (!(this->getClients().at(i)->writeClientToFile()))
 			return false;
@@ -437,14 +404,12 @@ bool Company::writeClientsToFile()
 	return true;
 }
 
-bool Company::writeCompanyToFile()
-{
+bool Company::writeCompanyToFile() {
 	string file = "company.txt";
 
 	ofstream output(file);
 
-	if (output.is_open())
-	{
+	if (output.is_open()) {
 
 		//nib
 		output << this->getNib() << endl << endl;
@@ -456,24 +421,21 @@ bool Company::writeCompanyToFile()
 		output << this->getCurrentDate().toStr() << endl;
 		output << this->getCurrentHour().toStr() << endl << endl;
 
-	}
-	else
+	} else
 		return false;
 
 	output.close();
 	return true;
 }
 
-bool Company::readCompanyFromFile()
-{
+bool Company::readCompanyFromFile() {
 	string temp;
 
 	string file = "company.txt";
 
 	ifstream input;
 	input.open(file);
-	if (input.is_open())
-	{
+	if (input.is_open()) {
 		//get nib
 		getline(input, temp);
 		this->setNib(temp);
@@ -497,7 +459,8 @@ bool Company::readCompanyFromFile()
 
 		//get current_date and current_hour
 		getline(input, temp);
-		Date current_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
+		Date current_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
+				stoul(temp.substr(6)));
 		this->setCurrentDate(current_date);
 		getline(input, temp);
 		Hour current_hour(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
@@ -512,3 +475,26 @@ bool Company::readCompanyFromFile()
 	return false;
 }
 
+bool Company::checkAllDues(Client * c, double &value) {
+	value = 0;
+	for (size_t i = 0; i < c->getPayment().size(); i++) {
+		//Assuming EOMPayment
+		if (c->getPayment().at(i)->getDue() == true)
+			value += c->getPayment().at(i)->getValue();
+	}
+	if (value == 0)
+		return false;
+	else
+		return true;
+}
+
+void Company::payAllDues(Client * c) {
+	for (size_t i = 0; i < c->getPayment().size(); i++) {
+		//Assuming EOMPayment
+		if (c->getPayment().at(i)->getDue() == true) {
+			c->getPayment().at(i)->setDue(false);
+			c->getPayment().at(i)->setDueDate(this->current_date);
+			c->getPayment().at(i)->setDueHour(this->current_hour);
+		}
+	}
+}

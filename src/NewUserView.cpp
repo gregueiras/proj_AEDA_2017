@@ -25,43 +25,34 @@ void NewUserView::printEnd() const {
 
 void NewUserView::printEnterUserType() {
 	printMessage(enterUserType);
-	printMessage(exit);
 }
 
 void NewUserView::printEnterName() {
 	printMessage(enterName);
-	printMessage(exit);
 }
 void NewUserView::printEnterNIF() {
 	printMessage(enterNIF);
-	printMessage(exit);
 }
 void NewUserView::printEnterStreet() {
 	printMessage(enterStreet);
 }
 void NewUserView::printEnterCountry() {
 	printMessage(enterCountry);
-	printMessage(exit);
 }
 void NewUserView::printEnterCity() {
 	printMessage(enterCity);
-	printMessage(exit);
 }
 void NewUserView::printEnterCounty() {
 	printMessage(enterCounty);
-	printMessage(exit);
 }
 void NewUserView::printEnterDoorNumber() {
 	printMessage(enterDoorNumber);
-	printMessage(exit);
 }
 void NewUserView::printEnterLatitude() {
 	printMessage(enterLatitude);
-	printMessage(exit);
 }
 void NewUserView::printEnterLongitude() {
 	printMessage(enterLongitude);
-	printMessage(exit);
 }
 
 void NewUserView::printWrongNIF() {
@@ -83,4 +74,16 @@ void NewUserView::printEnterPassword() {
 
 void NewUserView::printNewUserMenu() {
 	printMessage(newUserMenu);
+}
+
+void NewUserView::printUserID(const unsigned int userID) {
+	printMessage("ID-> " + to_string(userID));
+}
+
+void NewUserView::printShutdown() {
+	printMessage(shutdown);
+}
+
+string NewUserView::readLine() {
+	return u->readLine();
 }

@@ -7,7 +7,8 @@
 
 #include "ChangeUserMenuController.h"
 
-ChangeUserMenuController::ChangeUserMenuController(Client *client, Company *company) {
+ChangeUserMenuController::ChangeUserMenuController(Client *client,
+		Company *company) {
 	this->theView = new ChangeUserMenuView;
 	this->company = company;
 	u = new Utilities();
@@ -29,7 +30,7 @@ void ChangeUserMenuController::menuHandler() {
 	int option = getMenuOption(0, 9);
 	switch (option) {
 	case 0:
-		theView->printEnd();
+		theView->printShutdown();
 		endProgram();
 		break;
 	case 1:
@@ -73,7 +74,7 @@ int ChangeUserMenuController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}
@@ -156,7 +157,7 @@ void ChangeUserMenuController::changeLongitude() {
 string ChangeUserMenuController::getName() {
 	string name;
 	theView->printEnterNewName();
-	getInfo(name);
+	theView->getInfo(name);
 	return name;
 }
 unsigned int ChangeUserMenuController::getNIF() {
@@ -164,7 +165,7 @@ unsigned int ChangeUserMenuController::getNIF() {
 	theView->printEnterNewNIF();
 	bool flag = false;
 	while (!flag) {
-		getInfo(nif);
+		theView->getInfo(nif);
 		if (!(flag = v->validateNIFFormat(std::to_string(nif)))) {
 			theView->printWrongNIF();
 		}
@@ -174,31 +175,31 @@ unsigned int ChangeUserMenuController::getNIF() {
 string ChangeUserMenuController::getStreet() {
 	string street;
 	theView->printEnterNewStreet();
-	getInfo(street);
+	theView->getInfo(street);
 	return street;
 }
 string ChangeUserMenuController::getCountry() {
 	string country;
 	theView->printEnterNewCountry();
-	getInfo(country);
+	theView->getInfo(country);
 	return country;
 }
 string ChangeUserMenuController::getCity() {
 	string city;
 	theView->printEnterNewCity();
-	getInfo(city);
+	theView->getInfo(city);
 	return city;
 }
 string ChangeUserMenuController::getCounty() {
 	string county;
 	theView->printEnterNewCounty();
-	getInfo(county);
+	theView->getInfo(county);
 	return county;
 }
 unsigned int ChangeUserMenuController::getDoorNumber() {
 	unsigned int doorNumber;
 	theView->printEnterNewDoorNumber();
-	getInfo(doorNumber);
+	theView->getInfo(doorNumber);
 	return doorNumber;
 }
 
@@ -207,7 +208,7 @@ double ChangeUserMenuController::getLatitude() {
 	theView->printEnterNewLatitude();
 	bool flag = false;
 	while (!flag) {
-		getInfo(latitude);
+		theView->getInfo(latitude);
 		if (!(flag = v->validateLatitudeFormat(std::to_string(latitude)))) {
 			theView->printWrongLatitude();
 		}
@@ -220,7 +221,7 @@ double ChangeUserMenuController::getLongitude() {
 	theView->printEnterNewLongitude();
 	bool flag = false;
 	while (!flag) {
-		getInfo(longitude);
+		theView->getInfo(longitude);
 		if (!(flag = v->validateLongitudeFormat(std::to_string(longitude)))) {
 			theView->printWrongLongitude();
 		}
@@ -233,7 +234,7 @@ bool ChangeUserMenuController::getKeepContinuing() {
 	theView->printEnterContinue();
 	bool flag = false;
 	while (!flag) {
-		getInfo(keepContinuing);
+		theView->getInfo(keepContinuing);
 		if (!(flag = v->validateBound(keepContinuing, 0, 1))) {
 			theView->printWrongOption();
 		}
@@ -246,6 +247,7 @@ void ChangeUserMenuController::endProgram() {
 }
 
 void ChangeUserMenuController::newUserMenu() {
-	UserMenuController *userMenuController = new UserMenuController(user,company);
+	UserMenuController *userMenuController = new UserMenuController(user,
+			company);
 	userMenuController->menu();
 }

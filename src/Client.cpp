@@ -5,7 +5,7 @@ unsigned int Client::next_id = 1;
 // Constructors/Destructors
 //  
 
-Client::Client (string name, Address address, unsigned int nif, string pass) {
+Client::Client(string name, Address address, unsigned int nif, string pass) {
 	this->name = name;
 	this->address = address;
 	this->nif = nif;
@@ -16,7 +16,8 @@ Client::Client (string name, Address address, unsigned int nif, string pass) {
 	this->id = next_id++;
 }
 
-Client::Client(string name, Address address, unsigned int nif, string pass, unsigned int id) {
+Client::Client(string name, Address address, unsigned int nif, string pass,
+		unsigned int id) {
 	this->name = name;
 	this->address = address;
 	this->nif = nif;
@@ -27,7 +28,8 @@ Client::Client(string name, Address address, unsigned int nif, string pass, unsi
 	this->id = id;
 }
 
-Client::~Client () { }
+Client::~Client() {
+}
 
 //  
 // Methods
@@ -49,7 +51,7 @@ Client::~Client () { }
 //	return this->sup_pay_eom;
 //}
 
-void Client::setVisibility (bool new_var){
+void Client::setVisibility(bool new_var) {
 	this->visibility = new_var;
 }
 
@@ -69,7 +71,7 @@ Address Client::getAddress() {
 	return this->address;
 }
 
-const unsigned int Client::getId(){
+const unsigned int Client::getId() {
 	return this->id;
 }
 
@@ -90,18 +92,11 @@ vector<Services*> Client::getServices() {
 }
 
 void Client::addServices(Services *new_serv) {
-	std::cout << "d1" << std::endl;
-
-	std::cout << (*new_serv) << std::endl;
-	
-	//std::cout << this->services.size() << std::endl;
 	this->services.push_back(new_serv);
-	std::cout << "d2" << std::endl;
 }
 
 Services Client::getServiceById(const unsigned int &id) {
-	for (unsigned int i = 0; i < this->getServices().size(); i++)
-	{
+	for (unsigned int i = 0; i < this->getServices().size(); i++) {
 		if (this->getServices().at(i)->getId() == id)
 			return *this->getServices().at(i);
 	}
@@ -138,7 +133,7 @@ void Client::addPayment(Payment *new_pay) {
 	this->payments.push_back(new_pay);
 }
 
-string Client::getInfoDisp(){
+string Client::getInfoDisp() {
 	string ret = "Client ID: ";
 	ret += std::to_string(this->id);
 	ret += "\n";
@@ -149,104 +144,129 @@ string Client::getInfoDisp(){
 
 }
 
-void Client::setPass (string new_var) {
+void Client::setPass(string new_var) {
 	this->pass = new_var;
 }
 
-string Client::getPass () {
+string Client::getPass() {
 	return this->pass;
 }
 
-bool Client::writeServicesToFile()
-{
+bool Client::writeServicesToFile() {
 	string file = "client" + to_string(id) + "_services.txt";
 
 	ofstream output(file);
 
-	if (output.is_open())
-	{
+	if (output.is_open()) {
 
-		for (unsigned int i = 0; i < this->services.size(); i++)
-		{
-			output << this->services.at(i)->getEOMPay().getEOMPaymentToWrite() << endl;
-			output << this->services.at(i)->getOriginAddress().getStreet() << endl;
-			output << to_string(this->services.at(i)->getOriginAddress().getDoor_number()) << endl;
-			output << this->services.at(i)->getOriginAddress().getCity() << endl;
-			output << this->services.at(i)->getOriginAddress().getCounty() << endl;
-			output << this->services.at(i)->getOriginAddress().getCountry() << endl;
-			output << to_string(this->services.at(i)->getOriginAddress().getCoordinates().getLatitude()) << endl;
-			output << to_string(this->services.at(i)->getOriginAddress().getCoordinates().getLongitude()) << endl << endl;
+		for (unsigned int i = 0; i < this->services.size(); i++) {
 
-			output << this->services.at(i)->getDestinationAddress().getStreet() << endl;
-			output << to_string(this->services.at(i)->getDestinationAddress().getDoor_number()) << endl;
-			output << this->services.at(i)->getDestinationAddress().getCity() << endl;
-			output << this->services.at(i)->getDestinationAddress().getCounty() << endl;
-			output << this->services.at(i)->getDestinationAddress().getCountry() << endl;
-			output << to_string(this->services.at(i)->getDestinationAddress().getCoordinates().getLatitude()) << endl;
-			output << to_string(this->services.at(i)->getDestinationAddress().getCoordinates().getLongitude()) << endl << endl;
+			output << this->services.at(i)->getOriginAddress().getStreet()
+					<< endl;
+			output
+					<< to_string(
+							this->services.at(i)->getOriginAddress().getDoor_number())
+					<< endl;
+			output << this->services.at(i)->getOriginAddress().getCity()
+					<< endl;
+			output << this->services.at(i)->getOriginAddress().getCounty()
+					<< endl;
+			output << this->services.at(i)->getOriginAddress().getCountry()
+					<< endl;
+			output
+					<< to_string(
+							this->services.at(i)->getOriginAddress().getCoordinates().getLatitude())
+					<< endl;
+			output
+					<< to_string(
+							this->services.at(i)->getOriginAddress().getCoordinates().getLongitude())
+					<< endl << endl;
 
-			output << this->services.at(i)->getPackaging().getStart_date().toStr() << endl;
-			output << this->services.at(i)->getPackaging().getStart_hour().toStr() << endl;
+			output << this->services.at(i)->getDestinationAddress().getStreet()
+					<< endl;
+			output
+					<< to_string(
+							this->services.at(i)->getDestinationAddress().getDoor_number())
+					<< endl;
+			output << this->services.at(i)->getDestinationAddress().getCity()
+					<< endl;
+			output << this->services.at(i)->getDestinationAddress().getCounty()
+					<< endl;
+			output << this->services.at(i)->getDestinationAddress().getCountry()
+					<< endl;
+			output
+					<< to_string(
+							this->services.at(i)->getDestinationAddress().getCoordinates().getLatitude())
+					<< endl;
+			output
+					<< to_string(
+							this->services.at(i)->getDestinationAddress().getCoordinates().getLongitude())
+					<< endl << endl;
 
-			output << to_string(this->services.at(i)->getDelivery().getStart_date() - this->services.at(i)->getShipping().getArrival_date()) << endl;
-			
+			output
+					<< this->services.at(i)->getPackaging().getStart_date().toStr()
+					<< endl;
+			output
+					<< this->services.at(i)->getPackaging().getStart_hour().toStr()
+					<< endl;
+
+			output
+					<< to_string(
+							this->services.at(i)->getDelivery().getStart_date()
+									- this->services.at(i)->getShipping().getArrival_date())
+					<< endl;
+
 			if ((i + 1) != this->services.size())
 				output << this->services.at(i)->getVolume() << endl;
 			else
 				output << this->services.at(i)->getVolume();
 
-
 		}
 
-	}
-	else
+	} else
 		return false;
 
 	output.close();
 	return true;
 }
 
-bool Client::writePaymentsToFile()
-{
+bool Client::writePaymentsToFile() {
 	string file = "client" + to_string(id) + "_payments.txt";
 
 	ofstream output(file);
 
-	if (output.is_open())
-	{
+	if (output.is_open()) {
 
-		for (unsigned int i = 0; i < this->payments.size(); i++)
-		{
+		for (unsigned int i = 0; i < this->payments.size(); i++) {
 			//Pay Type
 			output << this->getPayment().at(i)->getPayType() << endl << endl;
 			//Value
-			output << to_string(this->getPayment().at(i)->getValue()) << endl << endl;
+			output << to_string(this->getPayment().at(i)->getValue()) << endl
+					<< endl;
 			//Due
-			output << to_string((int)this->getPayment().at(i)->getDue()) << endl << endl;
+			output << to_string((int) this->getPayment().at(i)->getDue())
+					<< endl << endl;
 			//Due Date & Hour
 			output << this->getPayment().at(i)->getDueDate().toStr() << endl;
-			output << this->getPayment().at(i)->getDueHour().toStr() << endl << endl;
+			output << this->getPayment().at(i)->getDueHour().toStr() << endl
+					<< endl;
 		}
 
-	}
-	else
+	} else
 		return false;
 
 	output.close();
 	return true;
 }
 
-bool Client::writeClientToFile()
-{
+bool Client::writeClientToFile() {
 	string file = "client" + to_string(id) + ".txt";
 
 	ofstream output(file);
 
-	if (output.is_open())
-	{
+	if (output.is_open()) {
 
-		for (unsigned int i = 0; i < this->payments.size(); i++)
-		{
+		for (unsigned int i = 0; i < this->payments.size(); i++) {
 			//Client Type
 			output << this->getClientType() << endl << endl;
 			//Name
@@ -257,43 +277,24 @@ bool Client::writeClientToFile()
 			output << this->getAddress().getCity() << endl;
 			output << this->getAddress().getCounty() << endl;
 			output << this->getAddress().getCountry() << endl;
-			output << to_string(this->getAddress().getCoordinates().getLatitude()) << endl;
-			output << to_string(this->getAddress().getCoordinates().getLongitude()) << endl << endl;
+			output
+					<< to_string(
+							this->getAddress().getCoordinates().getLatitude())
+					<< endl;
+			output
+					<< to_string(
+							this->getAddress().getCoordinates().getLongitude())
+					<< endl << endl;
 			//nif
 			output << to_string(this->getNif()) << endl << endl;
 			//pass	
 			output << this->getPass() << endl << endl;
 		}
 
-	}
-	else
+	} else
 		return false;
 
 	output.close();
 	return true;
 }
 
-int Client::checkAllDues()
-{
-	double value = 0;
-	for (size_t i = 0; i < this->getServices().size(); i++)
-	{
-		//Assuming EOMPayment
-		if (this->getServices().at(i)->getEOMPay().getDue() == true)
-			value += this->getServices().at(i)->getPrice();
-	}
-	return value;
-}
-
-void Client::payAllDues(Date c_date, Hour c_hour)
-{
-	for (size_t i = 0; i < this->getPayment().size(); i++)
-	{
-		//Assuming EOMPayment
-		if (this->getServices().at(i)->getEOMPay().getDue() == true) {
-			this->getServices().at(i)->getEOMPay().setDue(false);
-			this->getServices().at(i)->getEOMPay().setDueDate(c_date);
-			this->getServices().at(i)->getEOMPay().setDueHour(c_hour);
-		}
-	}
-}

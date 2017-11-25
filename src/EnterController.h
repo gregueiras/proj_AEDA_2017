@@ -20,26 +20,50 @@ private:
 	Utilities *u;
 	Company *company;
 
+	/**
+	 * reads the user option and acts accordingly
+	 */
 	void enterMenu();
+
+	/**
+	 * read the menu option from the keyboard the value of arrival_date
+	 * Date of arrival
+	 * @param lowerBound lower bound of the menu option
+	 * @param upperBound upper bound of the menu option
+	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
+
+	/**
+	 * opens new login menu
+	 */
 	void newLoginMenu();
+
+	/**
+	 * opens new user menu
+	 */
 	void newUserMenu();
+
+	/**
+	 * end program
+	 */
 	void endProgram();
 
-	template<typename T> void getInfo(T& info);
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param company pointer to the company object
+	 */
 	EnterController(Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~EnterController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
-
 };
-
-template<typename T>
-void EnterController::getInfo(T& info) {
-	if (!theView->getInfo(info)) { //ctrlz, fim do ficheiro
-		theView->printEnd();
-		endProgram();
-	}
-}
 
 #endif /* CONTROLLER_ENTERCONTROLLER_H_ */

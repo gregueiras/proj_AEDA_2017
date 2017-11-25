@@ -18,9 +18,10 @@ using std::string;
 
 class SeeServiceView {
 private:
-	const string initialMessage = "\nVer Informacoes do cliente";
+	const string initialMessage = "\nVer Informaçoes do cliente";
 
 	const string end = "\nTerminou Menu Cliente";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 
 public:
@@ -36,6 +37,11 @@ public:
 	 * prints service information message
 	 */
 	void printServiceInformation(const string &information);
+
+	/**
+	 * prints shutdown message
+	 */
+	void printShutdown() const;
 
 	/**
 	 * prints end message

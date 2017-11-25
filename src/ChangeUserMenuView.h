@@ -5,8 +5,8 @@
  *      Author: jotaa
  */
 
-#ifndef CHANGEUSERMENUVIEW_H_
-#define CHANGEUSERMENUVIEW_H_
+#ifndef SRC_VIEW_HEADERS_CHANGEUSERMENUVIEW_H_
+#define SRC_VIEW_HEADERS_CHANGEUSERMENUVIEW_H_
 
 #include <iostream>
 #include "Utilities.h"
@@ -18,20 +18,20 @@ private:
 	Utilities *u;
 
 	const string changeUserMenu =
-			"\nALterar Utilizador\n1->name\n2->NIF\n3->street\n4->Country\n5->city\n6->County\n7->DoorNumber\n8->Latitude\n9->Longitude\n10->voltar atr�s\n0->SAIR";
+			"\nAlterar Utilizador\n1->name\n2->NIF\n3->street\n4->Country\n5->city\n6->County\n7->DoorNumber\n8->Latitude\n9->Longitude\n10->voltar atr�s\n0->SAIR";
 
 	const string enterName = "Introduza novo nome";
 	const string enterNIF = "Introduza novo NIF";
 	const string enterStreet = "Introduza nova rua";
-	const string enterCountry = "Introduza novo pais";
+	const string enterCountry = "Introduza novo pa�s";
 	const string enterCity = "Introduza nova cidade";
 	const string enterCounty = "Introduza novo municipio";
-	const string enterDoorNumber = "Introduza novo numero da porta";
+	const string enterDoorNumber = "Introduza novo n�mero da porta";
 	const string enterLatitude = "Introduza nova latitude";
 	const string enterLongitude = "Introduza nova longitude";
 
-	const string enterOption = "Introduza a sua opcao";
-	const string wrongOption = "Introduziu opcao errada";
+	const string enterOption = "Introduza a sua op��o";
+	const string wrongOption = "Introduziu op��o errada";
 	const string keepContinuing = "Deseja continuar \n0->Nao\n1->Sim";
 
 	const string wrongNIF = "NIF introduzido invalido";
@@ -39,6 +39,7 @@ private:
 	const string wrongLongitude = "Longitude introduzida invalida";
 
 	const string end = "\nTerminou Remover Utilizador";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 public:
 	ChangeUserMenuView();
@@ -135,6 +136,11 @@ public:
 	void printEnd();
 
 	/**
+	 * prints shutdown message
+	 */
+	void printShutdown();
+
+	/**
 	 * reads string from keyboard
 	 */
 	template<typename T> bool getInfo(T &info);
@@ -144,4 +150,4 @@ template<typename T>
 bool ChangeUserMenuView::getInfo(T &info) {
 	return u->readString(info);
 }
-#endif /* CHANGEUSERMENUVIEW_H_ */
+#endif /* SRC_VIEW_HEADERS_CHANGEUSERMENUVIEW_H_ */

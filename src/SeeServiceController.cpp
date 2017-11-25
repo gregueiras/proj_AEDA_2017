@@ -19,8 +19,8 @@ SeeServiceController::~SeeServiceController() {
 	// TODO Auto-generated destructor stub
 }
 void SeeServiceController::menu() {
-	theView->printInitialMessage();
 	if (service->isVisibility()) {
+		theView->printInitialMessage();
 		theView->printServiceInformation(service->toStrComplete());
 	}
 	newListServicesMenu();

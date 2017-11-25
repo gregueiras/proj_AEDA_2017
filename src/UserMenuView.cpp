@@ -33,3 +33,8 @@ void UserMenuView::printWrongOption() {
 void UserMenuView::printEnd() {
 	printMessage(end);
 }
+
+void UserMenuView::printShutdown() {
+	printMessage(shutdown);
+}
+

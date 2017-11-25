@@ -16,20 +16,29 @@ using namespace std;
 class ListServicesView {
 private:
 	Utilities *u;
+	const string servicesListing = "\nListagem dos Serviços:";
 	const string listServicesMenu =
-			"\nListar Servicos\n1->Ver Servico\n2->ordenar\n3->filtrar\n4->alterar\n5->apagar\n6->voltar atras\n0->SAIR";
+			"\nMenu Listagem\n0->SAIR\n1->Ver Serviço\n2->ordenar\n3->filtrar"
+					"\n4->alterar\n5->apagar\n6->voltar atras";
 	const string listServicesMenuForBusinnessClients =
-			"\n1->Ver Servico\n2->ordenar\n3->filtrar\n4->alterar\n5->apagar\n6->pagar\n7->voltar atras\n0->SAIR";
+			"\nMenu Listagem\n0->SAIR\n1->Ver Serviço\n2->ordenar\n3->filtrar"
+					"\n4->alterar\n5->apagar\n6->pagar\n7->voltar atras\n";
 
-	const string enterOption = "Introduza a sua opcao";
-	const string enterServiceID = "Introduza o id do servico";
-	const string wrongOption = "Opcao escolhida invalida";
+	const string enterOption = "\nIntroduza a sua opção 0->SAIR";
+	const string enterServiceID = "\nIntroduza o id do serviço";
+	const string wrongOption = "\nOpção escolhida invalida";
 
-	const string end = "\nTerminou Menu Listar Servicos";
+	const string end = "\nTerminou Menu Listar Serviços";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 public:
 	ListServicesView();
 	virtual ~ListServicesView();
+
+	/**
+	 * prints services listing
+	 */
+	void printServicesListing();
 
 	/**
 	 * prints list services menu
@@ -65,6 +74,11 @@ public:
 	 * prints list services menu
 	 */
 	void printEnd();
+
+	/**
+	 * prints shutdown message
+	 */
+	void printShutdown();
 
 	/**
 	 * prints list services menu

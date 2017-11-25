@@ -6,7 +6,7 @@
  */
 
 #include "ServiceMenuController.h"
-ServiceMenuController::ServiceMenuController(Client *client,Company *company) {
+ServiceMenuController::ServiceMenuController(Client *client, Company *company) {
 	this->theView = new ServiceMenuView;
 	this->company = company;
 	u = new Utilities();
@@ -25,9 +25,10 @@ void ServiceMenuController::menu() {
 void ServiceMenuController::serviceMenuHandler() {
 	theView->printEnterOption();
 	int option = getMenuOption(0, 9);
+
 	switch (option) {
 	case 0:
-		theView->printEnd();
+		theView->printShutdown();
 		endProgram();
 		break;
 	case 1:
@@ -50,7 +51,7 @@ int ServiceMenuController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}
@@ -63,17 +64,22 @@ void ServiceMenuController::endProgram() {
 }
 
 void ServiceMenuController::newRequisitService() {
-	RequisitServiceController *requisitServiceController = new RequisitServiceController(user,company);
+	RequisitServiceController *requisitServiceController =
+			new RequisitServiceController(user, company);
 	requisitServiceController->menu();
 }
 
 void ServiceMenuController::newServiceListMenu() {
-	ListServicesController *listServicesController = new ListServicesController(user,company);
+	user->getId();
+	company->getClients();
+	ListServicesController *listServicesController = new ListServicesController(
+			user, company);
 	listServicesController->menu();
 }
 
 void ServiceMenuController::newClientMenu() {
-	ClientMenuController *clientMenuController = new ClientMenuController(user,company);
+	ClientMenuController *clientMenuController = new ClientMenuController(user,
+			company);
 	clientMenuController->menu();
 }
 

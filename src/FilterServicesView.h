@@ -16,11 +16,11 @@ using namespace std;
 class FilterServicesView {
 private:
 	Utilities *u;
-	const string enterOption = "Introduza a sua opcao";
-	const string wrongOption = "Opcao escolhida invalida";
+	const string enterOption = "Introduza a sua opção";
+	const string wrongOption = "Opção escolhida invalida";
 
 	const string filterMenu =
-			"\nMenu Filtrar\n1->intervalo de id\n2->intevalo de tempo\n3->intervalo de volume\n4->intervalo de distancia\n5->intervalo de preco\n6->cidade\n7->filtrar\n0->SAIR";
+			"\nMenu Filtrar\n0->SAIR\n1->intervalo de id\n2->intevalo de tempo\n3->intervalo de volume\n4->intervalo de distancia\n5->intervalo de preço\n6->cidade\n7->filtrar\n8->voltar atras";
 	const string enterIdInterval =
 			"Introduza intervalo de id (idInferior idSuperior)";
 	const string enterDateInferiorBound =
@@ -32,7 +32,7 @@ private:
 	const string enterDistanceInterval =
 			"Introduza intervalo de distancia (distanciaInferior distanciaSuperior)";
 	const string enterPriceInterval =
-			"Introduza intervalo de preco (precoInferior precoSuperior)";
+			"Introduza intervalo de preço (preçoInferior preçoSuperior)";
 	const string enterCity = "Introduza cidade";
 	const string wrongDate = "Data introduzida invalida";
 	const string wrongTimeInterval = "Data introduzida invalido";
@@ -40,10 +40,11 @@ private:
 			"Intervalo de volume introduzido invalido";
 	const string wrongDistanceInterval =
 			"Intervalo de distancia introduzido invalido";
-	const string wrongPriceInterval = "Intervalo de preco introduzido invalido";
+	const string wrongPriceInterval = "Intervalo de preço introduzido invalido";
 	const string wrongCity = "cidade introduzida invalido";
 
 	const string end = "\nTerminou Menu Cliente";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 
 public:
@@ -134,6 +135,11 @@ public:
 	 * prints end message
 	 */
 	void printEnd();
+
+	/**
+	 * prints shutdown message
+	 */
+	void printShutdown();
 
 	/**
 	 * reads string from keyboard

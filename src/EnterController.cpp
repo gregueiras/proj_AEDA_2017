@@ -27,6 +27,7 @@ void EnterController::enterMenu() {
 	int option = getMenuOption(0, 2);
 	switch (option) {
 	case 0:
+		theView->printShutdown();
 		endProgram();
 		break;
 	case 1:
@@ -46,7 +47,7 @@ int EnterController::getMenuOption(const int lowerBound, const int upperBound) {
 	unsigned int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}

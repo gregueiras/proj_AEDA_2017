@@ -1,30 +1,21 @@
 var indexSectionsWithContent =
 {
-  0: "abcdefghilmnoprstuvw~",
+  0: "abcdefghilmnprstuvw~",
   1: "abcdefghlnprsuv",
-  2: "s",
-  3: "abcdefghlmnprsuv",
-  4: "abcdefghilmnoprstuvw~",
-  5: "s"
+  2: "abcdefghilmnprstuw~"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "namespaces",
-  3: "files",
-  4: "functions",
-  5: "related"
+  2: "functions"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Namespaces",
-  3: "Files",
-  4: "Functions",
-  5: "Friends"
+  2: "Functions"
 };
 

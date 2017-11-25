@@ -19,10 +19,6 @@ SortServicesView::~SortServicesView() {
 	// TODO Auto-generated destructor stub
 }
 
-void SortServicesView::printInitialMessage() {
-	printMessage(initialMessage);
-}
-
 void SortServicesView::printSortServicesMenu() {
 	printMessage(sortServicesMenu);
 }
@@ -37,4 +33,8 @@ void SortServicesView::printWrongOption() {
 
 void SortServicesView::printEnd() {
 	printMessage(end);
+}
+
+void SortServicesView::printShutdown()  {
+	printMessage(shutdown);
 }

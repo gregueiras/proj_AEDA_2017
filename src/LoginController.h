@@ -13,7 +13,7 @@
 #include "ClientMenuController.h"
 #include "EnterController.h"
 #include "Client.h"
-class ClientMenuController; 
+class ClientMenuController;
 
 class LoginController {
 private:
@@ -26,30 +26,52 @@ private:
 	unsigned int id;
 	string pass;
 
+	/**
+	 * user interaction method to read user credentials
+	 */
 	void getUserCredentials();
+
+	/**
+	 * user interaction method to read user ID
+	 */
 	unsigned int getID();
+
+	/**
+	 * user interaction method to read user password
+	 */
 	string getPass();
 
-	template<typename T> void getInfo(T &info);
-	
+	/**
+	 * ends the program
+	 */
 	void endProgram();
 
+	/**
+	 * opens new client menu
+	 */
 	void newClientMenu();
+
+	/**
+	 * opens new enter menu
+	 */
 	void newEnterController();
 
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param company pointer to the company object
+	 */
 	LoginController(Company *company);
-	virtual ~LoginController();
-	void menu();
 
-	/* namespace std */
+	/**
+	 * destructor
+	 */
+	virtual ~LoginController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
+	void menu();
 };
 
-template<typename T>
-void LoginController::getInfo(T &info) {
-	if (!theView->getInfo(info)) { //ctrlz, fim do ficheiro
-		theView->printEnd();
-		newEnterController();
-	}
-}
 #endif /* SRC_CONTROLLER_LOGINCONTROLLER_H_ */

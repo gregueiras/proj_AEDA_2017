@@ -15,18 +15,20 @@ PayServiceView::~PayServiceView() {
 	// TODO Auto-generated destructor stub
 }
 
-void PayServiceView::printMenuNormal() {
-	printMessage(payMenu);
+void PayServiceView::printPayMenuNormal() {
 	printMessage(payMenuNormal);
 }
 
-void PayServiceView::printMenuBusiness() {
-	printMessage(payMenu);
+void PayServiceView::printPayMenuBusiness() {
 	printMessage(payMenuBusiness);
 }
 
-void PayServiceView::printAmountToPay() {
-	printMessage(amountToPay);
+void PayServiceView::printPayEOM() {
+	printMessage(payEOM);
+}
+
+void PayServiceView::printAmountToPay(double value) {
+//	cout << amountToPay << value << endl;
 }
 
 void PayServiceView::printEnterOption() {
@@ -41,6 +43,30 @@ void PayServiceView::printEnd() {
 	printMessage(end);
 }
 
+void PayServiceView::printShutdown() {
+	printMessage(shutdown);
+}
+
 void PayServiceView::printMessage(const string &message) {
 	cout << message << endl;
+}
+
+void PayServiceView::printNoEOMLeftToPay() {
+	printMessage(noEOMLeftToPay);
+}
+
+void PayServiceView::printEntity(string entity) {
+	cout << this->entity << entity << endl;
+}
+
+void PayServiceView::printReference(string reference) {
+	cout << this->reference << reference << endl;
+}
+
+void PayServiceView::printNIB(string nib) {
+	cout << this->nib << nib << endl;
+}
+
+void PayServiceView::printEnterCreditCardNumber() {
+	printMessage(enterCreditCardNumber);
 }

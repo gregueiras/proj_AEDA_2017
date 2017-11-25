@@ -12,29 +12,22 @@ NewUserController::NewUserController(Company *company) {
 	v = new Validation();
 	u = new Utilities();
 	this->company = company;
+	user = NULL;
+	userType = 0, nif = 0, doorNumber = 0;
+	latitude = 0, longitude = 0;
+	name = "", street = "", country = "", city = "", county = "", password = "";
 }
 
 NewUserController::~NewUserController() {
 }
 
 void NewUserController::menu() {
-	double latitude, longitude;
-	unsigned int userType, nif, doorNumber;
-	string name, street, country, city, county;
-	string password; 
-
-	theView->printNewUserMenu(); 
-	getUserInformation(userType, name, nif, street, country, city, county,
-			doorNumber, latitude, longitude, password);
-	createUser(userType, name, nif, street, country, city, county, doorNumber,
-			latitude, longitude, password);
-
+	theView->printNewUserMenu();
+	getUserInformation();
+	createUser();
 }
 
-void NewUserController::getUserInformation(unsigned int &userType, string &name,
-		unsigned int &nif, string &street, string &country, string &city,
-		string &county, unsigned int &doorNumber, double &latitude,
-		double &longitude, string &password) {
+void NewUserController::getUserInformation() {
 	userType = getUserType();
 	name = getName();
 	nif = getNIF();
@@ -43,19 +36,27 @@ void NewUserController::getUserInformation(unsigned int &userType, string &name,
 	city = getCity();
 	county = getCounty();
 	doorNumber = getDoorNumber();
-	latitude = getLatitude();
-	longitude = getLongitude();
-	password = getPassword(); 
+	if (!u->isCapitalDistrito(city)) {
+		latitude = getLatitude();
+		longitude = getLongitude();
+	}
+	if (!(userType == client_type_unregistered)) {
+		password = getPassword();
+	}
 }
 
 unsigned int NewUserController::getUserType() {
-	unsigned int userType;
+	int userType;
 	theView->printEnterUserType();
 	bool flag = false;
 	while (!flag) {
-		getInfo(userType);
-		if (!(flag = v->validateBound(userType, client_type_personal,
-				client_type_business))) {
+		theView->getInfo(userType);
+		if (userType == 0) {
+			newEnterController();
+		}
+		flag = v->validateBound(userType, client_type_personal,
+				client_type_unregistered);
+		if (!flag) {
 			theView->printWrongUserType();
 		}
 	}
@@ -65,15 +66,21 @@ unsigned int NewUserController::getUserType() {
 string NewUserController::getName() {
 	string name;
 	theView->printEnterName();
-	getInfo(name);
-	return name; 
+	name = theView->readLine();
+	if (name == "0") {
+		newEnterController();
+	}
+	return name;
 }
 unsigned int NewUserController::getNIF() {
 	unsigned int nif;
 	theView->printEnterNIF();
 	bool flag = false;
 	while (!flag) {
-		getInfo(nif);
+		theView->getInfo(nif);
+		if (nif == 0) {
+			newEnterController();
+		}
 		if (!(flag = v->validateNIFFormat(std::to_string(nif)))) {
 			theView->printWrongNIF();
 		}
@@ -84,31 +91,51 @@ unsigned int NewUserController::getNIF() {
 string NewUserController::getStreet() {
 	string street;
 	theView->printEnterStreet();
-	getInfo(street);
+	street = theView->readLine();
+	if (street == "0") {
+		newEnterController();
+	}
+
 	return street;
 }
 string NewUserController::getCountry() {
 	string country;
 	theView->printEnterCountry();
-	getInfo(country);
+	country = theView->readLine();
+	if (country == "0") {
+		newEnterController();
+	}
+
 	return country;
 }
 string NewUserController::getCity() {
 	string city;
 	theView->printEnterCity();
-	getInfo(city);
+	city = theView->readLine();
+	if (city == "0") {
+		newEnterController();
+	}
+
 	return city;
 }
 string NewUserController::getCounty() {
 	string county;
 	theView->printEnterCounty();
-	getInfo(county);
+	county = theView->readLine();
+	if (county == "0") {
+		newEnterController();
+	}
+
 	return county;
 }
 unsigned int NewUserController::getDoorNumber() {
 	unsigned int doorNumber;
 	theView->printEnterDoorNumber();
-	getInfo(doorNumber);
+	theView->getInfo(doorNumber);
+	if (doorNumber == 0) {
+		newEnterController();
+	}
+
 	return doorNumber;
 }
 double NewUserController::getLatitude() {
@@ -116,7 +143,10 @@ double NewUserController::getLatitude() {
 	theView->printEnterLatitude();
 	bool flag = false;
 	while (!flag) {
-		getInfo(latitude);
+		theView->getInfo(latitude);
+		if (latitude == 0) {
+			newEnterController();
+		}
 		if (!(flag = v->validateLatitudeFormat(std::to_string(latitude)))) {
 			theView->printWrongLatitude();
 		}
@@ -129,7 +159,10 @@ double NewUserController::getLongitude() {
 	theView->printEnterLongitude();
 	bool flag = false;
 	while (!flag) {
-		getInfo(longitude);
+		theView->getInfo(longitude);
+		if (longitude == 0) {
+			newEnterController();
+		}
 		if (!(flag = v->validateLongitudeFormat(std::to_string(longitude)))) {
 			theView->printWrongLongitude();
 		}
@@ -140,32 +173,41 @@ double NewUserController::getLongitude() {
 string NewUserController::getPassword() {
 	string password;
 	theView->printEnterPassword();
-	getInfo(password);
+	password = theView->readLine();
+	if (password == "0") {
+		newEnterController();
+	}
 	return password;
 }
 
-void NewUserController::createUser(unsigned int &userType, string &name,
-		unsigned int &nif, string &street, string &country, string &city,
-		string &county, unsigned int &doorNumber, double &latitude,
-		double &longitude, string &password) {
-	Client *client;
-	Address address(street, country, city, county, doorNumber,
-			latitude, longitude);
+void NewUserController::createUser() {
+	Address address(street, country, city, county, doorNumber, latitude,
+			longitude);
 	if (userType == client_type_personal) {
-		client = new Personal(name, address, nif, password);
+		user = new Personal(name, address, nif, password);
 	} else if (userType == client_type_business) {
-		client = new Business(name, address, nif, password);
+		user = new Business(name, address, nif, password);
+	} else {
+		user = new Unregistered(name, address, nif);
 	}
 
-cout<<client->getId()<<endl;
-	company->addClient(client);
-	vector<Client*>vec = company->getClients();
-
-	newEnterController();
+	company->addClient(user);
+	if (userType == client_type_unregistered) {
+		newRequisitServiceController();
+	} else {
+		theView->printUserID(user->getId());
+		newEnterController();
+	}
 }
 
 void NewUserController::newEnterController() {
-	EnterController *enterController = new EnterController(company); 
+	EnterController *enterController = new EnterController(company);
+	enterController->menu();
+}
+
+void NewUserController::newRequisitServiceController() {
+	RequisitServiceController *enterController = new RequisitServiceController(
+			user, company);
 	enterController->menu();
 }
 

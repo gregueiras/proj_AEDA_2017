@@ -19,10 +19,11 @@ class EnterView {
 private:
 	Utilities *u;
 	const string options =
-			"----------------------\nSistema Gestao Empresa\n----------------------\n1->Login\n2->Criar Novo Perfil Utilizador\n0->Sair";
-	const string enterOption = "Introduza a sua opcao";
-	const string wrongOption = "Opcao escolhida invalida";
+			"\n----------------------\nSistema Gestão Empresa\n----------------------\n0->Sair\n1->Login\n2->Criar Novo Perfil Utilizador";
+	const string enterOption = "Introduza a sua opção";
+	const string wrongOption = "Opçao escolhida inválida";
 	const string end = "Terminou Programa";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string message) const;
 public:
 	EnterView();
@@ -47,6 +48,11 @@ public:
 	 * prints end message
 	 */
 	void printEnd() const;
+
+	/**
+	 * prints shutdown message
+	 */
+	void printShutdown();
 
 	/**
 	 * reads string from keyboard

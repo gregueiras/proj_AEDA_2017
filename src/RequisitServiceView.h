@@ -16,23 +16,24 @@ using namespace std;
 class RequisitServiceView {
 private:
 	Utilities *u;
-	const string initialMessage = "Requisitar Servico";
+	const string initialMessage = "\nRequisitar Serviço";
 
-	const string departureAddress = "Introduza o endereco de partida";
-	const string arrivalAddress = "Introduza o endereco de chegada";
-	const string enterVolume = "Introduza o volume da mercadoria";
-	const string enterStreet = "Introduza Nome da Rua";
-	const string enterCountry = "Introduza Pais";
-	const string enterCity = "Introduza Cidade";
-	const string enterCounty = "Introduza Municipio";
-	const string enterDoorNumber = "Introduza Numero da Porta";
-	const string enterLatitude = "Introduza Latitude";
-	const string enterLongitude = "Introduza Longitude";
+	const string originAddress = "\nIntroduza o endereço de origem. ";
+	const string destinationAddress = "\nIntroduza o endereço de destino. ";
+
+	const string enterVolume = "Introduza o volume da mercadoria. ";
+	const string enterStreet = "Introduza Nome da Rua. ";
+	const string enterCountry = "Introduza País. ";
+	const string enterCity = "Introduza Cidade. ";
+	const string enterCounty = "Introduza Município. ";
+	const string enterDoorNumber = "Introduza Número da Rua. ";
+	const string enterLatitude = "Introduza Latitude. ";
+	const string enterLongitude = "Introduza Longitude. ";
 
 	const string enterPackagingInitialDate =
-			"Introduza data de inicio do embalamento (dd mm aaaa)";
+			"Introduza data de início do embalamento (dd mm aaaa). ";
 	const string enterPackagingInitialTime =
-			"Introduza tempo de inicio do embalamento (hh mm)";
+			"Introduza tempo de início do embalamento (hh mm). ";
 
 	const string enterStorageTime = "Introduza o tempo de armazenamento";
 
@@ -50,13 +51,13 @@ private:
 	const string wrongLatitude = "Latitude introduzida invalida";
 	const string wrongLongitude = "Longitude introduzida invalida";
 
-	const string addToEOM =
-			"Pretende deixar para o fim do mes?\n1->Sim\n2->Nao\n0->SAIR";
-	const string enterOption = "Introduza a sua opcao";
-	const string wrongOption = "Opcao introduzida invalida";
+	const string addToEOM = "Pretende deixar para o fim do mes?\n1->Sim\n2->Nao";
+	const string enterOption = "Introduza a sua opção";
+	const string wrongOption = "Opçao introduzida invalida";
 
-	const string exit = "\n0->SAIR";
-	const string end = "\nTerminou Requesitar Servico";
+	const string exit = "0->SAIR";
+	const string end = "\nTerminou Requesitar Serviço";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 
 public:
@@ -71,12 +72,12 @@ public:
 	/**
 	 * prints departure address message
 	 */
-	void printDepartureAddress();
+	void printOriginAddress();
 
 	/**
 	 * prints arrival address message
 	 */
-	void printArrivalAddress();
+	void printDestinationAddress();
 
 	/**
 	 * prints enter street message
@@ -181,7 +182,7 @@ public:
 	/**
 	 * prints add to EOM latitude
 	 */
-	void printAddToEOM();
+	void printAskAddToEOM();
 
 	/**
 	 * prints enter option message
@@ -197,6 +198,16 @@ public:
 	 * prints end message
 	 */
 	void printEnd();
+
+	/**
+	 * prints shutdown message
+	 */
+	void printShutdown();
+
+	/**
+	 * reads string from keyboard
+	 */
+	string getLine();
 
 	/**
 	 * reads string from keyboard

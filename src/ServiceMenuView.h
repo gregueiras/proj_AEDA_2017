@@ -17,11 +17,12 @@ class ServiceMenuView {
 private:
 	Utilities *u;
 	const string serviceMenu =
-			"Menu Servicos\n1->requesitar\n2->listar\n3->voltar atras\n0->SAIR";
+			"\nMenu Serviços\n1->requesitar\n2->listar\n3->voltar atras\n0->SAIR";
 
-	const string enterOption = "Introduza a sua opcao";
-	const string wrongOption = "Introduziu opcao errada";
+	const string enterOption = "Introduza a sua opção";
+	const string wrongOption = "Introduziu opção errada";
 	const string end = "\nTerminou Remover Utilizador";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 
 public:
@@ -47,6 +48,11 @@ public:
 	 * prints end message
 	 */
 	void printEnd();
+
+	/**
+	 * prints shutdown message
+	 */
+	void printShutdown();
 
 	/**
 	 * reads string from keyboard

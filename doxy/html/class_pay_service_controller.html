@@ -66,21 +66,19 @@ $(function() {
 <div class="title">PayServiceController Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p><code>#include &lt;<a class="el" href="_pay_service_controller_8h_source.html">PayServiceController.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a646e1476ed3059c7325650218c38835d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pay_service_controller.html#a646e1476ed3059c7325650218c38835d">PayServiceController</a> (<a class="el" href="class_client.html">Client</a> *user, unsigned int serviceID, <a class="el" href="class_company.html">Company</a> *company)</td></tr>
-<tr class="separator:a646e1476ed3059c7325650218c38835d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1f93840ec852780cd94aa8814626658"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pay_service_controller.html#ad1f93840ec852780cd94aa8814626658">PayServiceController</a> (<a class="el" href="class_client.html">Client</a> *client, unsigned int serviceID, <a class="el" href="class_company.html">Company</a> *company)</td></tr>
+<tr class="separator:ad1f93840ec852780cd94aa8814626658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a0c89505d17d7a193db51834751126d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pay_service_controller.html#a1a0c89505d17d7a193db51834751126d">~PayServiceController</a> ()</td></tr>
 <tr class="separator:a1a0c89505d17d7a193db51834751126d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a693570e14ea7f2ce5663c54e31a4231f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pay_service_controller.html#a693570e14ea7f2ce5663c54e31a4231f">menu</a> ()</td></tr>
 <tr class="separator:a693570e14ea7f2ce5663c54e31a4231f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a646e1476ed3059c7325650218c38835d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a646e1476ed3059c7325650218c38835d">&#9670;&nbsp;</a></span>PayServiceController()</h2>
+<a id="ad1f93840ec852780cd94aa8814626658"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1f93840ec852780cd94aa8814626658">&#9670;&nbsp;</a></span>PayServiceController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -89,7 +87,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">PayServiceController::PayServiceController </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_client.html">Client</a> *&#160;</td>
-          <td class="paramname"><em>user</em>, </td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -110,6 +108,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Contructor that initalizes all variables </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client</td><td>log in user </td></tr>
+    <tr><td class="paramname">serviceID</td><td>chosen service id </td></tr>
+    <tr><td class="paramname">company</td><td>pointer to the company object </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -135,6 +141,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>destructor </p>
 
 </div>
 </div>
@@ -153,12 +160,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>prints initial message and calls the user interaction method </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="_pay_service_controller_8h_source.html">PayServiceController.h</a></li>
-<li>src/<a class="el" href="_pay_service_controller_8cpp.html">PayServiceController.cpp</a></li>
+<li>src/PayServiceController.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

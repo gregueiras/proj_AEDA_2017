@@ -11,10 +11,10 @@ RequisitServiceController::RequisitServiceController(Client *client,
 		Company *company) {
 	this->company = company;
 	this->theView = new RequisitServiceView;
+	user = client;
 	u = new Utilities();
 	v = new Validation();
 	service = NULL;
-	user = client;
 	volume = 0;
 	storageDays = 0;
 	latitudeOrigin = 0;
@@ -46,16 +46,17 @@ void RequisitServiceController::menu() {
 	theView->printInitialMessage();
 	getServiceInformation();
 	createService();
-	payServiceEOM();
 	addService();
+	payService();
 }
 
 void RequisitServiceController::RequisitServiceController::getServiceInformation() {
-
 	volume = getVolume();
+	theView->printOriginAddress();
 	getAddressInformation(streetOrigin, countryOrigin, cityOrigin, countyOrigin,
 			doorNumberOrigin, latitudeOrigin, longitudeOrigin);
 
+	theView->printDestinationAddress();
 	getAddressInformation(streetDestination, countryDestination,
 			cityDestination, countyDestination, doorNumberDestination,
 			latitudeDestination, longitudeDestination);
@@ -81,61 +82,50 @@ void RequisitServiceController::getAddressInformation(string &street,
 	}
 }
 
-void RequisitServiceController::createService() {
-
-		Address adressOrigin(streetOrigin, countryOrigin, cityOrigin, countyOrigin, doorNumberOrigin);
-		if (latitudeOrigin != 0)
-			adressOrigin.setCoordinates(GPS(latitudeOrigin, longitudeOrigin));
-
-
-		Address addressDestination(streetDestination, countryDestination, cityDestination, countyDestination, doorNumberDestination);
-		if (latitudeDestination != 0)
-			addressDestination.setCoordinates(GPS(latitudeDestination, longitudeDestination));
-
-	Date packagingInitialDate(packagingInitialDay, packagingInitialMonth, packagingInitialYear);
-	Hour packagingInitialTime(packagingInitialHour, packagingInitialMinute);
-
-	cout << "A1: " << adressOrigin << endl;
-	cout << "A2: " << addressDestination << endl;
-
-
-	service = new Services(adressOrigin, volume, addressDestination,
-			packagingInitialTime, packagingInitialDate, storageDays);
-
-	cout << "A3" << endl;
-}
-
 string RequisitServiceController::getStreet() {
 	string street;
 	theView->printEnterStreet();
-	getInfo(street);
-	cout << street << endl;
-
+	street = theView->getLine();
+	if (street == "0" && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
 	return street;
 }
 string RequisitServiceController::getCountry() {
 	string country;
 	theView->printEnterCountry();
-	getInfo(country);
+	country = theView->getLine();
+	if (country == "0" && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
 	return country;
 }
 string RequisitServiceController::getCity() {
 	string city;
 	theView->printEnterCity();
-	getInfo(city);
+	city = theView->getLine();
+	if (city == "0" && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
 	return city;
 }
 string RequisitServiceController::getCounty() {
 	string county;
 	theView->printEnterCounty();
-	getInfo(county);
+	county = theView->getLine();
+	if (county == "0" && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
 	return county;
 }
 
 unsigned int RequisitServiceController::getDoorNumber() {
 	unsigned int doorNumber;
 	theView->printEnterDoorNumber();
-	getInfo(doorNumber);
+	theView->getInfo(doorNumber);
+	if (doorNumber == 0 && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
 	return doorNumber;
 }
 double RequisitServiceController::getLatitude() {
@@ -143,7 +133,10 @@ double RequisitServiceController::getLatitude() {
 	theView->printEnterLatitude();
 	bool flag = false;
 	while (!flag) {
-		getInfo(latitude);
+		theView->getInfo(latitude);
+		if (latitude == 0 && !dynamic_cast<Unregistered*>(user)) {
+			newServiceMenu();
+		}
 		if (!(flag = v->validateLatitudeFormat(std::to_string(latitude)))) {
 			theView->printWrongLatitude();
 		}
@@ -156,7 +149,10 @@ double RequisitServiceController::getLongitude() {
 	theView->printEnterLongitude();
 	bool flag = false;
 	while (!flag) {
-		getInfo(longitude);
+		theView->getInfo(longitude);
+		if (longitude == 0 && !dynamic_cast<Unregistered*>(user)) {
+			newServiceMenu();
+		}
 		if (!(flag = v->validateLongitudeFormat(std::to_string(longitude)))) {
 			theView->printWrongLongitude();
 		}
@@ -166,65 +162,105 @@ double RequisitServiceController::getLongitude() {
 
 void RequisitServiceController::getPackagingInitialDate() {
 	theView->printEnterPackagingInitialDate();
-
-	getInfo(packagingInitialDay);
-	getInfo(packagingInitialMonth);
-	getInfo(packagingInitialYear);
-	cout << packagingInitialDay << endl; 
-	cout << packagingInitialMonth << endl;
-	cout << packagingInitialYear << endl;
-
+	string date;
+	do {
+		theView->getInfo(packagingInitialDay);
+		if (packagingInitialDay == 0 && !dynamic_cast<Unregistered*>(user)) {
+			newServiceMenu();
+		}
+		theView->getInfo(packagingInitialMonth);
+		if (packagingInitialMonth == 0 && !dynamic_cast<Unregistered*>(user)) {
+			newServiceMenu();
+		}
+		theView->getInfo(packagingInitialYear);
+		if (packagingInitialYear == 0 && !dynamic_cast<Unregistered*>(user)) {
+			newServiceMenu();
+		}
+		date = to_string(packagingInitialDay) + "/"
+				+ to_string(packagingInitialDay) + "/"
+				+ to_string(packagingInitialDay);
+	} while (!v->validateDateFormat(date));
 }
 
 void RequisitServiceController::getPackagingInitialHour() {
 	theView->printEnterPackagingInitialTime();
-	getInfo(packagingInitialHour);
-	getInfo(packagingInitialMinute);
-	cout << packagingInitialHour << endl;
-	cout << packagingInitialMinute << endl;
+	theView->getInfo(packagingInitialHour);
+	if (packagingInitialHour == 0 && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
+	theView->getInfo(packagingInitialMinute);
+	if (packagingInitialMinute == 0 && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
 }
 
 unsigned int RequisitServiceController::getStorageDays() {
 	unsigned int storageDays;
 	theView->printEnterStorageTime();
-	getInfo(storageDays);
+	theView->getInfo(storageDays);
+	if (storageDays == 0 && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
 	return storageDays;
 }
 
 long RequisitServiceController::getVolume() {
-	unsigned int volume;
+	unsigned long volume;
 	theView->printEnterVolume();
-	getInfo(volume);
+	theView->getInfo(volume);
+	if (volume == 0 && !dynamic_cast<Unregistered*>(user)) {
+		newServiceMenu();
+	}
 	return volume;
 }
+void RequisitServiceController::createService() {
+	Address adressOrigin(streetOrigin, countryOrigin, cityOrigin, countyOrigin,
+			doorNumberOrigin);
+	if (latitudeOrigin != 0)
+		adressOrigin.setCoordinates(GPS(latitudeOrigin, longitudeOrigin));
 
-void RequisitServiceController::payServiceEOM() {
-	cout << "B1" << endl;
-	
+	Address addressDestination(streetDestination, countryDestination,
+			cityDestination, countyDestination, doorNumberDestination);
+	if (latitudeDestination != 0)
+		addressDestination.setCoordinates(
+				GPS(latitudeDestination, longitudeDestination));
+
+	Date packagingInitialDate(packagingInitialDay, packagingInitialMonth,
+			packagingInitialYear);
+	Hour packagingInitialTime(packagingInitialHour, packagingInitialMinute);
+
+	service = new Services(adressOrigin, volume, addressDestination,
+			packagingInitialTime, packagingInitialDate, storageDays);
+}
+
+void RequisitServiceController::payService() {
 	if (dynamic_cast<Business*>(user)) {
-		theView->printAddToEOM();
+		theView->printAskAddToEOM();
 		payAtEOMHandler();
 	}
-
-	cout << "B2" << endl;
+	newPayServiceMenu();
 }
 
 void RequisitServiceController::payAtEOMHandler() {
 	theView->printEnterOption();
-	int option = getMenuOption(0, 2);
+	int option = getMenuOption(1, 2);
 	switch (option) {
-	case 0:
-		theView->printEnd();
-		endProgram();
-		break;
 	case 1:
 		addToEOM();
+		newServiceMenu();
 		break;
 	case 2:
-		break;
 	default:
 		break;
 	}
+}
+
+void RequisitServiceController::addToEOM() {
+	Hour *h = new Hour(23, 59);
+	EOMPayment *eomPayment = new EOMPayment(service->getPrice(), true,
+			u->lastDayofMonth(company->getCurrentDate().getMonth(),
+					company->getCurrentDate().getYear()), *h);
+	user->addPayment(eomPayment);
 }
 
 int RequisitServiceController::getMenuOption(const int lowerBound,
@@ -232,7 +268,7 @@ int RequisitServiceController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}
@@ -241,13 +277,13 @@ int RequisitServiceController::getMenuOption(const int lowerBound,
 }
 
 void RequisitServiceController::addService() {
-	/*user->addServices(service);*/
+	user->addServices(service);
 	company->addService(service, user->getId());
 }
 
-void RequisitServiceController::addToEOM() {
-//	service->getPrice().addtoEOM(); TODO
-	//como e que se faz para saber se foi adicionado para o fim do mes e nao e para pagar ja
+void RequisitServiceController::newEnterController() {
+	EnterController *enterController = new EnterController(company);
+	enterController->menu();
 }
 
 void RequisitServiceController::newServiceMenu() {
@@ -257,7 +293,8 @@ void RequisitServiceController::newServiceMenu() {
 }
 
 void RequisitServiceController::newPayServiceMenu() {
-	PayServiceController *payServiceController = new PayServiceController(user, service->getId(), company);
+	PayServiceController *payServiceController = new PayServiceController(user,
+			service->getId(), company);
 	payServiceController->menu();
 }
 

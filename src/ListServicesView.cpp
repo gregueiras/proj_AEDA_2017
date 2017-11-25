@@ -35,8 +35,8 @@ void ListServicesView::printListServicesMenu() {
 	printMessage(listServicesMenu);
 }
 
-void ListServicesView::printServiceInfo(unsigned int i, string userInfo) {
-	cout << i << userInfo;
+void ListServicesView::printServiceInfo(unsigned int id, string userInfo) {
+	cout << "ID: " << id << " " << userInfo << "\n";
 }
 
 void ListServicesView::printEnterServiceID() {
@@ -45,4 +45,12 @@ void ListServicesView::printEnterServiceID() {
 
 void ListServicesView::printListServicesMenuForBusinnessClients() {
 	printMessage(listServicesMenuForBusinnessClients);
+}
+
+void ListServicesView::printServicesListing() {
+	printMessage(servicesListing);
+}
+
+void ListServicesView::printShutdown() {
+	printMessage(shutdown);
 }

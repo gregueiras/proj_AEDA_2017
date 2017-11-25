@@ -21,31 +21,76 @@ private:
 	vector<Services *> vectorToBeSorted;
 	Company *company;
 
+	bool sortedByID;
+	bool sortedByDate;
+	bool sortedByVolume;
+	bool sortedByDistance;
+	bool sortedByPrice;
+
+	/**
+	 * user interface method that reads sort option and acts accordingly
+	 */
 	void sortServicesHandler();
+
+	/**
+	 * sorts services by ID
+	 */
 	void sortByID();
+
+	/**
+	 * sorts services by date
+	 */
 	void sortByDate();
+
+	/**
+	 * sorts services by volume
+	 */
 	void sortbyVolume();
+
+	/**
+	 * sorts services by distance
+	 */
 	void sortByDistance();
+
+	/**
+	 * sorts services by price
+	 */
 	void sortByPrice();
 
+	/**
+	 * read the menu option from the keyboard the value of arrival_date
+	 * Date of arrival
+	 * @param lowerBound lower bound of the menu option
+	 * @param upperBound upper bound of the menu option
+	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
 
-	template<typename T> void getInfo(T &info);
-
+	/**
+	 * ends the program
+	 */
 	void endProgram();
+
+	/**
+	 * opens new list services menu
+	 */
 	void newListServicesMenu();
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param client log in user
+	 * @param company pointer to the company object
+	 */
 	SortServicesController(Client *client, Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~SortServicesController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
 };
-
-template<typename T>
-void SortServicesController::getInfo(T& info) {
-	if (!theView->getInfo(info)) { //ctrlz, fim do ficheiro
-		theView->printEnd();
-		newListServicesMenu();
-	}
-}
 
 #endif /* SRC_CONTROLLER_HEADERS_SORTSERVICESCONTROLLER_H_ */

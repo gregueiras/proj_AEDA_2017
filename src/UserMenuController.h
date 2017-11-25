@@ -24,30 +24,56 @@ private:
 	Client *user;
 	Company *company;
 
+	/**
+	 * reads the user option and acts accordingly
+	 */
 	void menuHandler();
+
+	/**
+	 * read the menu option from the keyboard the value of arrival_date
+	 * Date of arrival
+	 * @param lowerBound lower bound of the menu option
+	 * @param upperBound upper bound of the menu option
+	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
 
+	/**
+	 * ends the program
+	 */
 	void endProgram();
 
+	/**
+	 * opens new client menu
+	 */
 	void newClientMenu();
+
+	/**
+	 * opens new change user menu
+	 */
 	void newChangeUserMenu();
+
+	/**
+	 * opens new remove user menu
+	 */
 	void newRemoveUserMenu();
 
-	template<typename T> void getInfo(T& info);
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param client log in user
+	 * @param company pointer to the company object
+	 */
 	UserMenuController(Client *client, Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~UserMenuController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
-	/* namespace std */
 };
-
-
-template<typename T>
-void UserMenuController::getInfo(T &info) {
-	if (!theView->getInfo(info)) { //ctrlz, fim do ficheiro
-		theView->printEnd();
-		newClientMenu();
-	}
-}
 
 #endif /* SRC_CONTROLLER_HEADERS_USERMENUCONTROLLER_H_ */

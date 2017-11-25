@@ -5,19 +5,17 @@ unsigned int Payment::next_id = 1;
 // Constructors/Destructors
 //  
 
-Payment::Payment(double value, unsigned int service_id) {
+Payment::Payment(double value) {
 	this->value = value;
 	this->due = false;
-	this->service_id = service_id;
 
 }
 
-Payment::Payment(double value, unsigned int service_id, bool due, Date due_date, Hour due_hour) {
+Payment::Payment(double value, bool due, Date due_date, Hour due_hour) {
 	this->value = value;
 	this->due = due;
 	this->due_date = due_date;
 	this->due_hour = due_hour;
-	this->service_id = service_id;
 }
 
 Payment::~Payment() { }
@@ -61,16 +59,6 @@ void Payment::setDueHour(Hour new_var) {
 
 Hour Payment::getDueHour() {
 	return this->due_hour;
-}
-
-unsigned int Payment::getServiceId()
-{
-	return this->service_id;
-}
-
-void Payment::setServiceId(unsigned int new_var)
-{
-	this->service_id = new_var;
 }
 
 // Accessor methods

@@ -35,3 +35,7 @@ void ServiceMenuView::printWrongOption() {
 void ServiceMenuView::printEnd() {
 	printMessage(end);
 }
+
+void ServiceMenuView::printShutdown() {
+	printMessage(shutdown);
+}

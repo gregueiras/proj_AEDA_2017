@@ -66,21 +66,19 @@ $(function() {
 <div class="title">SeeServiceController Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p><code>#include &lt;<a class="el" href="_see_service_controller_8h_source.html">SeeServiceController.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a15e4c7bc90c3a9ac246d8a3e96e2e0dd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_see_service_controller.html#a15e4c7bc90c3a9ac246d8a3e96e2e0dd">SeeServiceController</a> (<a class="el" href="class_services.html">Services</a> *service, <a class="el" href="class_client.html">Client</a> *user, <a class="el" href="class_company.html">Company</a> *company)</td></tr>
-<tr class="separator:a15e4c7bc90c3a9ac246d8a3e96e2e0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2660fe0961a5f718ffccfb70f2dc112a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_see_service_controller.html#a2660fe0961a5f718ffccfb70f2dc112a">SeeServiceController</a> (<a class="el" href="class_services.html">Services</a> *service, <a class="el" href="class_client.html">Client</a> *client, <a class="el" href="class_company.html">Company</a> *company)</td></tr>
+<tr class="separator:a2660fe0961a5f718ffccfb70f2dc112a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dd1eafadec544d6c4eb52e7e478cf28"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_see_service_controller.html#a4dd1eafadec544d6c4eb52e7e478cf28">~SeeServiceController</a> ()</td></tr>
 <tr class="separator:a4dd1eafadec544d6c4eb52e7e478cf28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad61080ba0fb28b191ed153ace5abd4b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_see_service_controller.html#ad61080ba0fb28b191ed153ace5abd4b1">menu</a> ()</td></tr>
 <tr class="separator:ad61080ba0fb28b191ed153ace5abd4b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a15e4c7bc90c3a9ac246d8a3e96e2e0dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15e4c7bc90c3a9ac246d8a3e96e2e0dd">&#9670;&nbsp;</a></span>SeeServiceController()</h2>
+<a id="a2660fe0961a5f718ffccfb70f2dc112a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2660fe0961a5f718ffccfb70f2dc112a">&#9670;&nbsp;</a></span>SeeServiceController()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -95,7 +93,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_client.html">Client</a> *&#160;</td>
-          <td class="paramname"><em>user</em>, </td>
+          <td class="paramname"><em>client</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -110,6 +108,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Contructor that initalizes all variables </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">service</td><td>chosen service </td></tr>
+    <tr><td class="paramname">client</td><td>log in user </td></tr>
+    <tr><td class="paramname">company</td><td>pointer to the company object </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -135,6 +141,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>destructor </p>
 
 </div>
 </div>
@@ -153,12 +160,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>prints initial message and calls the user interaction method </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="_see_service_controller_8h_source.html">SeeServiceController.h</a></li>
-<li>src/<a class="el" href="_see_service_controller_8cpp.html">SeeServiceController.cpp</a></li>
+<li>src/SeeServiceController.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

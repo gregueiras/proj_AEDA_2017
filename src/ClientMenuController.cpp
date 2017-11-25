@@ -29,7 +29,7 @@ void ClientMenuController::clientMenuHandler() {
 	int option = getMenuOption(0, 3);
 	switch (option) {
 	case 0:
-		theView->printEnd();
+		theView->printShutdown();
 		endProgram();
 		break;
 	case 1:
@@ -39,10 +39,10 @@ void ClientMenuController::clientMenuHandler() {
 		newServiceMenu();
 		break;
 	case 3:
-		newLoginMenu();
+		newEnterMenu();
 		break;
 	default:
-		newLoginMenu();
+		newEnterMenu();
 		break;
 	}
 }
@@ -51,7 +51,7 @@ int ClientMenuController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}
@@ -63,9 +63,9 @@ void ClientMenuController::endProgram() {
 	exit(0);
 }
 
-void ClientMenuController::newLoginMenu() {
-	LoginController *loginController = new LoginController(company);
-	loginController->menu();
+void ClientMenuController::newEnterMenu() {
+	EnterController *enterController = new EnterController(company);
+	enterController->menu();
 }
 
 void ClientMenuController::newUserMenu() {

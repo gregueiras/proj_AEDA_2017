@@ -19,23 +19,24 @@ private:
 	Utilities *u;
 	const string newUserMenu = "\nCriar novo perfil utilizador";
 	const string enterUserType =
-			"\nIntroduza Tipo Utilizador\n1->Pessoal\n2->Empresarial";
-	const string enterName = "Introduza Nome";
-	const string enterNIF = "Introduza NIF";
-	const string enterStreet = "Introduza Nome da Rua";
-	const string enterCountry = "Introduza Pais";
-	const string enterCity = "Introduza Cidade";
-	const string enterCounty = "Introduza Municipio";
-	const string enterDoorNumber = "Introduza Numero da Porta";
-	const string enterLatitude = "Introduza Latitude";
-	const string enterLongitude = "Introduza Longitude";
-	const string enterPassword = "Introduza password";
+			"\nIntroduza Tipo Utilizador\n0->SAIR\n1->Pessoal\n2->Empresarial\n3->Nao registado";
+	const string enterName = "Introduza Nome. 0->SAIR";
+	const string enterNIF = "Introduza NIF. 0->SAIR";
+	const string enterStreet = "Introduza Nome da Rua. 0->SAIR";
+	const string enterCountry = "Introduza País. 0->SAIR";
+	const string enterCity = "Introduza Cidade. 0->SAIR";
+	const string enterCounty = "Introduza Município. 0->SAIR";
+	const string enterDoorNumber = "Introduza Número da Rua. 0->SAIR";
+	const string enterLatitude = "Introduza Latitude. 0->SAIR";
+	const string enterLongitude = "Introduza Longitude. 0->SAIR";
+	const string enterPassword = "Introduza password. 0->SAIR";
+
 	const string wrongNIF = "NIF introduzido invalido";
 	const string wrongLatitude = "Latitude introduzida invalida";
 	const string wrongLongitude = "Longitude introduzida invalida";
 	const string wrongUserType = "Tipo Utilizador introduzido invalido";
-	const string exit = "\n0->SAIR";
 	const string end = "Terminou Criar novo perfil utilizador";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message) const;
 
 public:
@@ -118,6 +119,11 @@ public:
 	void printWrongLongitude();
 
 	/**
+	 * prints user ID
+	 */
+	void printUserID(const unsigned int userID);
+
+	/**
 	 * prints wrong user type message
 	 */
 	void printWrongUserType();
@@ -128,9 +134,19 @@ public:
 	void printEnd() const;
 
 	/**
+	 * prints shutdown message
+	 */
+	void printShutdown();
+
+	/**
 	 * reads string from keyboard
 	 */
 	template<typename T> bool getInfo(T &info);
+
+	/**
+	 * reads string representing line from keyboard
+	 */
+	string readLine();
 };
 
 template<typename T>

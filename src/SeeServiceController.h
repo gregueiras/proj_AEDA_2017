@@ -21,13 +21,33 @@ private:
 	Company *company;
 	Client *user;
 
+	/**
+	 * ends the program
+	 */
 	void endProgram();
+
+	/**
+	 * opens new list services menu
+	 */
 	void newListServicesMenu();
 public:
-	SeeServiceController(Services *service, Client *user, Company *company);
-	virtual ~SeeServiceController();
-	void menu();
+	/**
+	 * Contructor that initalizes all variables
+	 * @param service chosen service
+	 * @param client log in user
+	 * @param company pointer to the company object
+	 */
+	SeeServiceController(Services *service, Client *client, Company *company);
 
+	/**
+	 * destructor
+	 */
+	virtual ~SeeServiceController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
+	void menu();
 };
 
 #endif /* SRC_CONTROLLER_HEADERS_SEESERVICECONTROLLER_H_ */

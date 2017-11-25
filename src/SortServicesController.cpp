@@ -13,9 +13,13 @@ SortServicesController::SortServicesController(Client *client,
 	this->company = company;
 	v = new Validation();
 	u = new Utilities();
-
 	user = client;
 	vectorToBeSorted = user->getServices();
+	sortedByID = false;
+	sortedByDate = false;
+	sortedByVolume = false;
+	sortedByDistance = false;
+	sortedByPrice = false;
 }
 
 SortServicesController::~SortServicesController() {
@@ -23,17 +27,17 @@ SortServicesController::~SortServicesController() {
 }
 
 void SortServicesController::menu() {
-	theView->printInitialMessage();
+	theView->printSortServicesMenu();
 	sortServicesHandler();
 	newListServicesMenu();
 }
 
 void SortServicesController::sortServicesHandler() {
 	theView->printEnterOption();
-	int option = getMenuOption(0, 7);
+	int option = getMenuOption(0, 6);
 	switch (option) {
 	case 0:
-		theView->printEnd();
+		theView->printShutdown();
 		endProgram();
 		break;
 	case 1:
@@ -51,6 +55,9 @@ void SortServicesController::sortServicesHandler() {
 	case 5:
 		sortByPrice();
 		break;
+	case 6:
+		newListServicesMenu();
+		break;
 	default:
 		newListServicesMenu();
 		break;
@@ -62,47 +69,99 @@ int SortServicesController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}
 	}
 	return option;
 }
-void SortServicesController::endProgram() {
-	exit(0);
-}
-
-void SortServicesController::newListServicesMenu() {
-	ListServicesController *listServicesController = new ListServicesController(
-			user, company);
-	listServicesController->menu();
-}
 
 void SortServicesController::sortByID() {
-	sort(vectorToBeSorted.begin(), vectorToBeSorted.end(), Sort::auxSortbyID);
-	user->setServices(vectorToBeSorted);
+//	sortedByDate = false;
+//	sortedByVolume = false;
+//	sortedByDistance = false;
+//	sortedByPrice = false;
+//
+//	if (!sortedByID) {
+		sortedByID = !sortedByID;
+		sort(vectorToBeSorted.begin(), vectorToBeSorted.end(),
+				Sort::auxSortbyID);
+		user->setServices(vectorToBeSorted);
+//	} else {
+//		//printReverse
+//	}
 }
 
 void SortServicesController::sortByDate() {
-
-	sort(vectorToBeSorted.begin(), vectorToBeSorted.end(), Sort::auxSortbyDate);
-	user->setServices(vectorToBeSorted);
+//	sortedByID = false;
+//	sortedByVolume = false;
+//	sortedByDistance = false;
+//	sortedByPrice = false;
+//	if (!sortedByDate) {
+		sortedByDate = !sortedByDate;
+		sort(vectorToBeSorted.begin(), vectorToBeSorted.end(),
+				Sort::auxSortbyDate);
+		user->setServices(vectorToBeSorted);
+//	} else {
+//		//printReverse
+//	}
 }
 
-
 void SortServicesController::sortbyVolume() {
-	sort(vectorToBeSorted.begin(), vectorToBeSorted.end(), Sort::auxSortbyVolume);
-	user->setServices(vectorToBeSorted);
+//	sortedByID = false;
+//	sortedByDate = false;
+//	sortedByDistance = false;
+//	sortedByPrice = false;
+//	if (!sortedByVolume) {
+		sortedByVolume = !sortedByVolume;
+		sort(vectorToBeSorted.begin(), vectorToBeSorted.end(),
+				Sort::auxSortbyVolume);
+		user->setServices(vectorToBeSorted);
+//	} else {
+//		//printReverse
+//	}
 }
 
 void SortServicesController::sortByDistance() {
-	sort(vectorToBeSorted.begin(), vectorToBeSorted.end(), Sort::auxSortbyDistance);
+//	sortedByID = false;
+//	sortedByDate = false;
+//	sortedByVolume = false;
+//	sortedByPrice = false;
+//	if (!sortedByDistance) {
+	sortedByDistance = !sortedByDistance;
+	sort(vectorToBeSorted.begin(), vectorToBeSorted.end(),
+			Sort::auxSortbyDistance);
 	user->setServices(vectorToBeSorted);
+//	} else {
+//printReverse
+//	}
 }
 
 void SortServicesController::sortByPrice() {
-	sort(vectorToBeSorted.begin(), vectorToBeSorted.end(), Sort::auxSortbyPrice);
+//	sortedByID = false;
+//	sortedByDate = false;
+//	sortedByVolume = false;
+//	sortedByDistance = false;
+//
+//	if (!sortedByPrice) {
+	sortedByPrice = !sortedByPrice;
+	sort(vectorToBeSorted.begin(), vectorToBeSorted.end(),
+			Sort::auxSortbyPrice);
 	user->setServices(vectorToBeSorted);
+//}
+//else {
+//	//printReverse
+//}
 }
 
+void SortServicesController::newListServicesMenu() {
+
+ListServicesController *listServicesController = new ListServicesController(
+		user, company);
+listServicesController->menu();
+}
+
+void SortServicesController::endProgram() {
+exit(0);
+}

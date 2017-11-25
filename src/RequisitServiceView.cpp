@@ -23,50 +23,50 @@ void RequisitServiceView::printInitialMessage() {
 	printMessage(initialMessage);
 }
 
-void RequisitServiceView::printDepartureAddress() {
-	printMessage(departureAddress);
+void RequisitServiceView::printOriginAddress() {
+	printMessage(originAddress);
 }
 
-void RequisitServiceView::printArrivalAddress() {
-	printMessage(arrivalAddress);
+void RequisitServiceView::printDestinationAddress() {
+	printMessage(destinationAddress);
 }
 
 void RequisitServiceView::printEnterStreet() {
-	printMessage(enterStreet);
+	printMessage(enterStreet + exit);
 }
 void RequisitServiceView::printEnterCountry() {
-	printMessage(enterCountry);
+	printMessage(enterCountry + exit);
 }
 void RequisitServiceView::printEnterCity() {
-	printMessage(enterCity);
+	printMessage(enterCity + exit);
 }
 void RequisitServiceView::printEnterCounty() {
-	printMessage(enterCounty);
+	printMessage(enterCounty + exit);
 }
 void RequisitServiceView::printEnterDoorNumber() {
-	printMessage(enterDoorNumber);
+	printMessage(enterDoorNumber + exit);
 }
 void RequisitServiceView::printEnterLatitude() {
-	printMessage(enterLatitude);
+	printMessage(enterLatitude + exit);
 }
 void RequisitServiceView::printEnterLongitude() {
-	printMessage(enterLongitude);
+	printMessage(enterLongitude + exit);
 }
 
 void RequisitServiceView::printEnterPackagingInitialDate() {
-	printMessage(enterPackagingInitialDate);
+	printMessage(enterPackagingInitialDate + exit);
 }
 
 void RequisitServiceView::printEnterPackagingInitialTime() {
-	printMessage(enterPackagingInitialTime);
+	printMessage(enterPackagingInitialTime + exit);
 }
 
 void RequisitServiceView::printEnterStorageTime() {
-	printMessage(enterStorageTime);
+	printMessage(enterStorageTime + exit);
 }
 
 void RequisitServiceView::printEnterVolume() {
-	printMessage(enterVolume);
+	printMessage(enterVolume + exit);
 }
 
 void RequisitServiceView::printWrongPackagingInitialDay() {
@@ -107,7 +107,7 @@ void RequisitServiceView::printEnd() {
 	printMessage(end);
 }
 
-void RequisitServiceView::printAddToEOM() {
+void RequisitServiceView::printAskAddToEOM() {
 	printMessage(addToEOM);
 }
 
@@ -117,4 +117,17 @@ void RequisitServiceView::printEnterOption() {
 
 void RequisitServiceView::printWrongOption() {
 	printMessage(wrongOption);
+}
+
+void RequisitServiceView::printShutdown() {
+	printMessage(shutdown);
+}
+
+/**
+ * reads string from keyboard
+ */
+string RequisitServiceView::getLine() {
+	string line;
+	getline(cin, line);
+	return line;
 }

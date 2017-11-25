@@ -50,7 +50,7 @@ int RemoveUserMenuController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}
@@ -63,7 +63,7 @@ bool RemoveUserMenuController::getConfirmation() {
 	theView->printEnterConfirmation();
 	bool flag = false;
 	while (!flag) {
-		getInfo(confirmation);
+		theView->getInfo(confirmation);
 		if (!(flag = v->validateBound(confirmation, 0, 2))) {
 			theView->printWrongOption();
 		}

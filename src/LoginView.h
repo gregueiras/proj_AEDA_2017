@@ -19,12 +19,13 @@ private:
 	Utilities *u;
 	const string initialMessage = "\nLogin Menu";
 
-	const string enterID = "Introduza id";
-	const string enterPass = "Introduza pass";
-	const string userNotFound = "Utilizador nao encontrado";
-	const string wrongUserId = "ID introduzido invalido";
-	const string exit = "\n0->SAIR";
+	const string enterID = "Introduza id. ";
+	const string enterPass = "Introduza pass. ";
+	const string userNotFound = "Utilizador nao encontrado. ";
+	const string wrongUserId = "ID introduzido invalido. ";
+	const string exit = "0->SAIR";
 	const string end = "\nTerminou Login";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 
 public:
@@ -62,9 +63,16 @@ public:
 	void printEnd();
 
 	/**
+	 * print shutdown message
+	 */
+	void printShutdown();
+
+	/**
 	 * reads string from keyboard
 	 */
 	template<typename T> bool getInfo(T &info);
+
+	string readLine();
 };
 
 template<typename T>

@@ -23,24 +23,19 @@ LoginController::~LoginController() {
 void LoginController::menu() {
 	theView->printInitialMessage();
 	getUserCredentials();
-	
-	Client* c1 = company->getClient(id, pass);
-	if (c1 != NULL) {
-		this->user = c1;
+	user = company->getClient(id, pass);
+
+	if (user != NULL) {
 		newClientMenu();
 	} else {
 		theView->printUserNotFound();
-		newEnterController();
+		menu();
 	}
 }
 
 void LoginController::getUserCredentials() {
 	id = getID();
-	
-	cout << "ID: " << id << endl;
 	pass = getPass();
-
-
 }
 
 unsigned int LoginController::getID() {
@@ -48,7 +43,10 @@ unsigned int LoginController::getID() {
 	bool flag = false;
 	theView->printEnterID();
 	while (!flag) {
-		getInfo(id);
+		theView->getInfo(id);
+		if (id == 0) {
+			newEnterController();
+		}
 		if (!(flag = v->validateIDFormat(std::to_string(id)))) {
 			theView->printWrongUserID();
 			continue;
@@ -60,9 +58,11 @@ unsigned int LoginController::getID() {
 
 string LoginController::getPass() {
 	string pass;
-//	bool flag = false;
 	theView->printEnterPassword();
-	getInfo(pass);
+	pass = theView->readLine();
+	if (pass == "0") {
+		newEnterController();
+	}
 	return pass;
 }
 
@@ -80,5 +80,4 @@ void LoginController::newEnterController() {
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
 }
-
 /* namespace std */

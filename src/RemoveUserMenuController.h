@@ -27,26 +27,46 @@ private:
 	void removeUserHandler();
 	void removeUser();
 
+	/**
+	 * read the menu option from the keyboard the value of arrival_date
+	 * Date of arrival
+	 * @param lowerBound lower bound of the menu option
+	 * @param upperBound upper bound of the menu option
+	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
 	bool getConfirmation();
 
-	template<typename T> void getInfo(T &info);
-
+	/**
+	 * ends the program
+	 */
 	void endProgram();
+
+	/**
+	 * opens new enter menu
+	 */
 	void newEnterMenuController();
+
+	/**
+	 * opens new user menu
+	 */
 	void newUserMenuController();
 
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param client log in user
+	 * @param company pointer to the company object
+	 */
 	RemoveUserMenuController(Client *client, Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~RemoveUserMenuController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
 };
-
-template<typename T>
-void RemoveUserMenuController::getInfo(T& info) {
-	if (!theView->getInfo(info)) { //ctrlz, fim do ficheiro
-		theView->printEnd();
-		newUserMenuController();
-	}
-}
 #endif /* SRC_CONTROLLER_HEADERS_REMOVEUSERMENUCONTROLLER_H_ */

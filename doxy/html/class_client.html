@@ -68,23 +68,15 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_client_8h_source.html">Client.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Client:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_client.png" usemap="#Client_map" alt=""/>
-  <map id="Client_map" name="Client_map">
-<area href="class_business.html" alt="Business" shape="rect" coords="0,56,84,80"/>
-<area href="class_personal.html" alt="Personal" shape="rect" coords="94,56,178,80"/>
-<area href="class_unregistered.html" alt="Unregistered" shape="rect" coords="188,56,272,80"/>
-</map>
- </div></div>
+
+<p>Inherited by <a class="el" href="class_business.html">Business</a>, <a class="el" href="class_personal.html">Personal</a>, and <a class="el" href="class_unregistered.html">Unregistered</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a466dcb2f75f3f3d5f9dd6d735d52a05c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_client.html#a466dcb2f75f3f3d5f9dd6d735d52a05c">Client</a> (string name, <a class="el" href="class_address.html">Address</a> address, unsigned int nif, string pass)</td></tr>
 <tr class="separator:a466dcb2f75f3f3d5f9dd6d735d52a05c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a8655655d9a756f18c5b5a47a71680e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_client.html#a1a8655655d9a756f18c5b5a47a71680e">Client</a> (string name, <a class="el" href="class_address.html">Address</a> address, unsigned int nif, string pass, unsigned int id)</td></tr>
+<tr class="memitem:a1a8655655d9a756f18c5b5a47a71680e"><td class="memItemLeft" align="right" valign="top"><a id="a1a8655655d9a756f18c5b5a47a71680e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Client</b> (string name, <a class="el" href="class_address.html">Address</a> address, unsigned int nif, string pass, unsigned int id)</td></tr>
 <tr class="separator:a1a8655655d9a756f18c5b5a47a71680e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840e519ca781888cbd54181572ebe3a7"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_client.html#a840e519ca781888cbd54181572ebe3a7">~Client</a> ()</td></tr>
 <tr class="separator:a840e519ca781888cbd54181572ebe3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,16 +130,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3ba9b092477c505c47915ef2a41db258"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e3c10f829e919ed276316ac7b0b30f7"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_client.html#a4e3c10f829e919ed276316ac7b0b30f7">getClientType</a> ()=0</td></tr>
 <tr class="separator:a4e3c10f829e919ed276316ac7b0b30f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b5dc071fd4407257730dca3b4cbc6b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_client.html#a2b5dc071fd4407257730dca3b4cbc6b5">checkAllDues</a> ()</td></tr>
-<tr class="separator:a2b5dc071fd4407257730dca3b4cbc6b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bbcbeac51767d4aa0f9633af8463537"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_client.html#a5bbcbeac51767d4aa0f9633af8463537">payAllDues</a> (<a class="el" href="class_date.html">Date</a> c_date, <a class="el" href="class_hour.html">Hour</a> c_hour)</td></tr>
-<tr class="separator:a5bbcbeac51767d4aa0f9633af8463537"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>class <a class="el" href="class_client.html">Client</a> </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a466dcb2f75f3f3d5f9dd6d735d52a05c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a466dcb2f75f3f3d5f9dd6d735d52a05c">&#9670;&nbsp;</a></span>Client() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a466dcb2f75f3f3d5f9dd6d735d52a05c">&#9670;&nbsp;</a></span>Client()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,52 +172,6 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Constructor for registed clients </p>
-
-</div>
-</div>
-<a id="a1a8655655d9a756f18c5b5a47a71680e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a8655655d9a756f18c5b5a47a71680e">&#9670;&nbsp;</a></span>Client() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Client::Client </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_address.html">Address</a>&#160;</td>
-          <td class="paramname"><em>address</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>nif</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>pass</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -305,24 +247,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a2b5dc071fd4407257730dca3b4cbc6b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b5dc071fd4407257730dca3b4cbc6b5">&#9670;&nbsp;</a></span>checkAllDues()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Client::checkAllDues </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Check if client as dues </p><dl class="section return"><dt>Returns</dt><dd>value of total due </dd></dl>
 
 </div>
 </div>
@@ -577,41 +501,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5bbcbeac51767d4aa0f9633af8463537"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bbcbeac51767d4aa0f9633af8463537">&#9670;&nbsp;</a></span>payAllDues()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Client::payAllDues </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_date.html">Date</a>&#160;</td>
-          <td class="paramname"><em>c_date</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_hour.html">Hour</a>&#160;</td>
-          <td class="paramname"><em>c_hour</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set value of due to false and change due_hour/date to current_hour/date </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">c_date</td><td>is value of clearing due date </td></tr>
-    <tr><td class="paramname">c_hour</td><td>is value of clearing due hour </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ac08961cda34aceb25dd027572121dab7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac08961cda34aceb25dd027572121dab7">&#9670;&nbsp;</a></span>setAddress()</h2>
 
@@ -843,7 +732,7 @@ true if payment method is supported Set the value of visibility client visibilit
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="_client_8h_source.html">Client.h</a></li>
-<li>src/<a class="el" href="_client_8cpp.html">Client.cpp</a></li>
+<li>src/Client.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

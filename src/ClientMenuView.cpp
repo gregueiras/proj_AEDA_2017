@@ -33,3 +33,6 @@ void ClientMenuView::printClientMenu() {
 	printMessage(clientMenu);
 }
 
+void ClientMenuView::printShutdown() {
+	printMessage (shutdown);
+}

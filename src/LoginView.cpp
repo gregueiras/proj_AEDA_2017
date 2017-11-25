@@ -23,13 +23,11 @@ void LoginView::printInitialMessage() {
 }
 
 void LoginView::printEnterID() {
-	printMessage(enterID);
-	printMessage(exit);
+	printMessage(enterID + exit);
 }
 
 void LoginView::printEnterPassword() {
-	printMessage(enterPass);
-	printMessage(exit);
+	printMessage(enterPass + exit);
 }
 
 void LoginView::printUserNotFound() {
@@ -41,6 +39,14 @@ void LoginView::printWrongUserID() {
 
 void LoginView::printEnd() {
 	printMessage(end);
+}
+
+void LoginView::printShutdown() {
+	printMessage(shutdown);
+}
+
+string LoginView::readLine() {
+	return u->readLine();
 }
 
 /* namespace std */

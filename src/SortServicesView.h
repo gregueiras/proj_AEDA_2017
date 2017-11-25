@@ -16,24 +16,19 @@ using namespace std;
 class SortServicesView {
 private:
 	Utilities *u;
-	const string initialMessage = "\nMenu de ordenacao dos servicos";
-	const string enterOption = "Introduza a sua opcao";
-	const string wrongOption = "Opcao escolhida invalida";
-
 	const string sortServicesMenu =
-			"\n1->id\n2->date\n3->volume\n4->distancia\n5->preco\n4->\n3->voltar atras\n0->SAIR";
+			"\nMenu de ordenaçao dos serviços\n0->SAIR\n1->id\n2->date\n3->volume\n4->distancia\n5->preço\n6->voltar atrás";
 
-	const string end = "\nTerminou Menu de ordenacao dos servicos";
+	const string enterOption = "Introduza a sua opção";
+	const string wrongOption = "Opção escolhida invalida";
+
+	const string end = "\nTerminou Menu de ordenaçao dos serviços";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 
 public:
 	SortServicesView();
 	virtual ~SortServicesView();
-
-	/**
-	 * prints user menu initial message
-	 */
-	void printInitialMessage();
 
 	/**
 	 * prints sort services menu
@@ -54,6 +49,11 @@ public:
 	 * prints end message
 	 */
 	void printEnd();
+
+	/**
+	 * prints shutdown message
+	 */
+	void printShutdown() ;
 
 	/**
 	 * reads string from keyboard

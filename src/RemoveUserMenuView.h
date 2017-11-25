@@ -18,14 +18,15 @@ private:
 	Utilities *u;
 
 	const string removeUserMenu =
-			"Remover Utilizador\n1->remover\n2->voltar atras\n0->SAIR";
+			"\nRemover Utilizador\n1->remover\n2->voltar atrás\n0->SAIR";
 
 	const string enterConfirmation =
-			"Deseja mesmo remover utilizador?\n0->Nao\n->Sim";
+			"Deseja mesmo remover utilizador?\n0->Não\n->Sim";
 
-	const string enterOption = "Introduza a sua opcao";
-	const string wrongOption = "Introduziu opcao errada";
+	const string enterOption = "Introduza a sua opção";
+	const string wrongOption = "Introduziu opção errada";
 	const string end = "\nTerminou Remover Utilizador";
+	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 
 public:
@@ -56,6 +57,11 @@ public:
 	 * prints end message
 	 */
 	void printEnd();
+
+	/**
+	 * prints shutdown message
+	 */
+	void printShutdown();
 
 	/**
 	 * reads string from keyboard

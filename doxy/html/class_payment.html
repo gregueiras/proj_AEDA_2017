@@ -68,24 +68,16 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_payment_8h_source.html">Payment.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Payment:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="class_payment.png" usemap="#Payment_map" alt=""/>
-  <map id="Payment_map" name="Payment_map">
-<area href="class_bank_transfer.html" alt="BankTransfer" shape="rect" coords="0,56,88,80"/>
-<area href="class_credit_card.html" alt="CreditCard" shape="rect" coords="98,56,186,80"/>
-<area href="class_debit_card.html" alt="DebitCard" shape="rect" coords="196,56,284,80"/>
-</map>
- </div></div>
+
+<p>Inherited by <a class="el" href="class_bank_transfer.html">BankTransfer</a>, <a class="el" href="class_credit_card.html">CreditCard</a>, <a class="el" href="class_debit_card.html">DebitCard</a>, and <a class="el" href="class_e_o_m_payment.html">EOMPayment</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5992cfe1bab1536245a81abfa1b6e692"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_payment.html#a5992cfe1bab1536245a81abfa1b6e692">Payment</a> (double value, unsigned int service_id)</td></tr>
-<tr class="separator:a5992cfe1bab1536245a81abfa1b6e692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ca7459a5ae2b7b973db28cf994802de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_payment.html#a4ca7459a5ae2b7b973db28cf994802de">Payment</a> (double value, unsigned int service_id, bool due, <a class="el" href="class_date.html">Date</a> due_date, <a class="el" href="class_hour.html">Hour</a> due_hour)</td></tr>
-<tr class="separator:a4ca7459a5ae2b7b973db28cf994802de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a737e4a38c596b39131cb56b4d08fdcb4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_payment.html#a737e4a38c596b39131cb56b4d08fdcb4">Payment</a> (double value)</td></tr>
+<tr class="separator:a737e4a38c596b39131cb56b4d08fdcb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492db8a5b404fc50dbc669b85b65ffa0"><td class="memItemLeft" align="right" valign="top"><a id="a492db8a5b404fc50dbc669b85b65ffa0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Payment</b> (double value, bool due, <a class="el" href="class_date.html">Date</a> due_date, <a class="el" href="class_hour.html">Hour</a> due_hour)</td></tr>
+<tr class="separator:a492db8a5b404fc50dbc669b85b65ffa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc52d8f5b5b333f8acd89611f4926082"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_payment.html#acc52d8f5b5b333f8acd89611f4926082">~Payment</a> ()</td></tr>
 <tr class="separator:acc52d8f5b5b333f8acd89611f4926082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4e3e35f8156dcdf5156b611f28b224c"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_payment.html#ae4e3e35f8156dcdf5156b611f28b224c">getNextId</a> ()</td></tr>
@@ -110,16 +102,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1579dffb22d3b1225645c57a89869839"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a393d8874135e42792867752ffe91ea1b"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_payment.html#a393d8874135e42792867752ffe91ea1b">getPayType</a> ()=0</td></tr>
 <tr class="separator:a393d8874135e42792867752ffe91ea1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af272d6e5c9fe5754815dadca028aa131"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_payment.html#af272d6e5c9fe5754815dadca028aa131">getServiceId</a> ()</td></tr>
-<tr class="separator:af272d6e5c9fe5754815dadca028aa131"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78f9259168e5f217adc86f3e596c8c31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_payment.html#a78f9259168e5f217adc86f3e596c8c31">setServiceId</a> (unsigned int new_var)</td></tr>
-<tr class="separator:a78f9259168e5f217adc86f3e596c8c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>class <a class="el" href="class_payment.html">Payment</a> </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5992cfe1bab1536245a81abfa1b6e692"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5992cfe1bab1536245a81abfa1b6e692">&#9670;&nbsp;</a></span>Payment() <span class="overload">[1/2]</span></h2>
+<a id="a737e4a38c596b39131cb56b4d08fdcb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a737e4a38c596b39131cb56b4d08fdcb4">&#9670;&nbsp;</a></span>Payment()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -128,68 +116,12 @@ Public Member Functions</h2></td></tr>
           <td class="memname">Payment::Payment </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>service_id</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Constructor </p>
-
-</div>
-</div>
-<a id="a4ca7459a5ae2b7b973db28cf994802de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ca7459a5ae2b7b973db28cf994802de">&#9670;&nbsp;</a></span>Payment() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Payment::Payment </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>service_id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>due</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_date.html">Date</a>&#160;</td>
-          <td class="paramname"><em>due_date</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_hour.html">Hour</a>&#160;</td>
-          <td class="paramname"><em>due_hour</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -316,25 +248,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Get string with payment type </p><dl class="section return"><dt>Returns</dt><dd>subclass payment </dd></dl>
 
-<p>Implemented in <a class="el" href="class_credit_card.html#a85cfe09c5bdf3699c8863157a17d4907">CreditCard</a>, <a class="el" href="class_bank_transfer.html#a656c775926e3ff33edc484eaf0460691">BankTransfer</a>, and <a class="el" href="class_debit_card.html#a3bdf982efcc619bf6ed8c3a61c3727a7">DebitCard</a>.</p>
-
-</div>
-</div>
-<a id="af272d6e5c9fe5754815dadca028aa131"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af272d6e5c9fe5754815dadca028aa131">&#9670;&nbsp;</a></span>getServiceId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int Payment::getServiceId </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Get the value of service_id Service ID </p><dl class="section return"><dt>Returns</dt><dd>the value of service_id </dd></dl>
+<p>Implemented in <a class="el" href="class_credit_card.html#a85cfe09c5bdf3699c8863157a17d4907">CreditCard</a>, <a class="el" href="class_bank_transfer.html#a656c775926e3ff33edc484eaf0460691">BankTransfer</a>, <a class="el" href="class_debit_card.html#a3bdf982efcc619bf6ed8c3a61c3727a7">DebitCard</a>, and <a class="el" href="class_e_o_m_payment.html#aa9c9b95e34e2622b0b5211e86da33aa6">EOMPayment</a>.</p>
 
 </div>
 </div>
@@ -398,7 +312,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Create new id ID number of the next payment requested </p><dl class="section return"><dt>Returns</dt><dd>the value of new id </dd></dl>
 
-<p>Implemented in <a class="el" href="class_credit_card.html#a34ee751063325419da9247bc02a0e12c">CreditCard</a>, <a class="el" href="class_bank_transfer.html#a510dfcdc51c5ed52e07665d93f70efb4">BankTransfer</a>, and <a class="el" href="class_debit_card.html#a4c047c2c186ea21501647409c2ec9905">DebitCard</a>.</p>
+<p>Implemented in <a class="el" href="class_credit_card.html#a34ee751063325419da9247bc02a0e12c">CreditCard</a>, <a class="el" href="class_bank_transfer.html#a510dfcdc51c5ed52e07665d93f70efb4">BankTransfer</a>, <a class="el" href="class_debit_card.html#a4c047c2c186ea21501647409c2ec9905">DebitCard</a>, and <a class="el" href="class_e_o_m_payment.html#ac8ad56e76a7054314614df6daf27a89e">EOMPayment</a>.</p>
 
 </div>
 </div>
@@ -474,33 +388,9 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a78f9259168e5f217adc86f3e596c8c31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78f9259168e5f217adc86f3e596c8c31">&#9670;&nbsp;</a></span>setServiceId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Payment::setServiceId </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>new_var</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set the value of service_id Service ID </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">new_var</td><td>the value of service_id </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="_payment_8h_source.html">Payment.h</a></li>
-<li>src/<a class="el" href="_payment_8cpp.html">Payment.cpp</a></li>
+<li>src/Payment.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

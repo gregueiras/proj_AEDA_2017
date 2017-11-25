@@ -42,13 +42,14 @@ void FilterServicesController::menu() {
 }
 
 void FilterServicesController::filterServicesHandler() {
-	theView->printEnterOption();
 	int option;
 	do {
-		option = getMenuOption(0, 7);
+		theView->printFilterMenu();
+		theView->printEnterOption();
+		option = getMenuOption(0, 8);
 		switch (option) {
 		case 0:
-			theView->printEnd();
+			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -70,7 +71,10 @@ void FilterServicesController::filterServicesHandler() {
 			getCity();
 			break;
 		case 7:
-			filterServices();
+			narrowServices();
+			break;
+		case 8:
+			newListServicesMenu();
 			break;
 		default:
 			newListServicesMenu();
@@ -84,7 +88,7 @@ int FilterServicesController::getMenuOption(const int lowerBound,
 	int option;
 	bool flag = false;
 	while (!flag) {
-		getInfo(option);
+		theView->getInfo(option);
 		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
 			theView->printWrongOption();
 		}
@@ -95,6 +99,7 @@ int FilterServicesController::getMenuOption(const int lowerBound,
 void FilterServicesController::getTimeInterval() {
 	theView->printEnterDateInferiorBound();
 	getDateInfo(dayInferiorBound, monthInferiorBound, yearInferiorBound);
+	theView->printEnterDateSuperiorBound();
 	getDateInfo(daySuperiorBound, monthSuperiorBound, yearSuperiorBound);
 	dateInferiorBound->setDay(dayInferiorBound);
 	dateInferiorBound->setMonth(monthInferiorBound);
@@ -106,46 +111,37 @@ void FilterServicesController::getTimeInterval() {
 
 void FilterServicesController::getDateInfo(unsigned int& day,
 		unsigned int& month, unsigned int& year) {
-	getInfo(day);
-	getInfo(month);
-	getInfo(year);
+	theView->getInfo(day);
+	theView->getInfo(month);
+	theView->getInfo(year);
 }
 
 void FilterServicesController::getIDInterval() {
 	theView->printEnterIdInterval();
-	getInterval(idInferiorBound, idSuperiorBound);
+	theView->getInfo(idInferiorBound);
+	theView->getInfo(idSuperiorBound);
 }
 void FilterServicesController::getVolumeInterval() {
 	theView->printEnterVolumeInterval();
-	getInterval(volumeInferiorBound, volumeSuperiorBound);
+	theView->getInfo(volumeInferiorBound);
+	theView->getInfo(volumeSuperiorBound);
 }
 
 void FilterServicesController::getPriceInterval() {
 	theView->printEnterPriceInterval();
-	getInterval(priceInferiorBound, priceSuperiorBound);
+	theView->getInfo(priceInferiorBound);
+	theView->getInfo(priceSuperiorBound);
 }
 
 void FilterServicesController::getDistanceInterval() {
 	theView->printEnterDistanceInterval();
-	getInterval(distanceInferiorBound, distanceSuperiorBound);
+	theView->getInfo(distanceInferiorBound);
+	theView->getInfo(distanceSuperiorBound);
 }
 
 void FilterServicesController::getCity() {
 	theView->printEnterCity();
-	getInfo(city);
-}
-
-/**
- *
- *
- *
- *
- *
- *
- */
-
-void FilterServicesController::filterServices() {
-	narrowServices();
+	theView->getInfo(city);
 }
 
 void FilterServicesController::narrowServices() {
@@ -243,6 +239,7 @@ void FilterServicesController::setVisibility(Services &service,
 		service.setVisibility(false);
 	}
 }
+
 void FilterServicesController::endProgram() {
 	exit(0);
 }

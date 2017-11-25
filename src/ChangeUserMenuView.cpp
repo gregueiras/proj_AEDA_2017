@@ -8,7 +8,7 @@
 #include "ChangeUserMenuView.h"
 
 ChangeUserMenuView::ChangeUserMenuView() {
-	u = new Utilities(); 
+	u = new Utilities();
 }
 
 ChangeUserMenuView::~ChangeUserMenuView() {
@@ -88,3 +88,8 @@ void ChangeUserMenuView::printEnterContinue() {
 void ChangeUserMenuView::printUserInfo(std::string str) {
 	printMessage(str);
 }
+
+void ChangeUserMenuView::printShutdown() {
+	printMessage (shutdown);
+}
+

@@ -18,7 +18,7 @@
 #include "EnterController.h"
 #include "Utilities.h"
 
-using namespace std; 
+using namespace std;
 
 class NewUserController {
 private:
@@ -26,49 +26,112 @@ private:
 	Validation *v;
 	Utilities *u;
 	Company *company;
+	Client *user;
 
 	const unsigned int client_type_personal = 1;
 	const unsigned int client_type_business = 2;
+	const unsigned int client_type_unregistered = 3;
 
-	void getUserInformation(unsigned int &userType, string &name,
-			unsigned int &nif, string &street, string &country, string &city,
-			string &county, unsigned int &doorNumber, double &latitude,
-			double &longitude, string &password);
-	
+	unsigned int userType, nif, doorNumber;
+	double latitude, longitude;
+	string name, street, country, city, county, password;
 
+	/**
+	 * user interaction method to read user information
+	 */
+	void getUserInformation();
+
+	/**
+	 * user interaction method to read user type infomation
+	 */
 	unsigned int getUserType();
+
+	/**
+	 * user interaction method to read name infomation
+	 */
 	string getName();
+
+	/**
+	 * user interaction method to read nif infomation
+	 */
 	unsigned int getNIF();
+
+	/**
+	 * user interaction method to read street infomation
+	 */
 	string getStreet();
+
+	/**
+	 * user interaction method to read country infomation
+	 */
 	string getCountry();
+
+	/**
+	 * user interaction method to read city infomation
+	 */
 	string getCity();
+
+	/**
+	 * user interaction method to read county infomation
+	 */
 	string getCounty();
+
+	/**
+	 * user interaction method to read door number infomation
+	 */
 	unsigned int getDoorNumber();
+
+	/**
+	 * user interaction method to read latitude infomation
+	 */
 	double getLatitude();
+
+	/**
+	 * user interaction method to read longitude infomation
+	 */
 	double getLongitude();
+
+	/**
+	 * user interaction method to read password infomation
+	 */
 	string getPassword();
 
-	void createUser(unsigned int &userType, string &name, unsigned int &nif,
-			string &street, string &country, string &city, string &county,
-			unsigned int &doorNumber, double &latitude, double &longitude,
-		    string &password);
+	/**
+	 * Creates instance of new user
+	 */
+	void createUser();
 
-	template<typename T> void getInfo(T &info);
-
+	/**
+	 * ends the program
+	 */
 	void endProgram();
+
+	/**
+	 * opens new enter menu
+	 */
 	void newEnterController();
 
+	/**
+	 * opens new requisit service menu
+	 */
+	void newRequisitServiceController();
+
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param company pointer to the company object
+	 */
 	NewUserController(Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~NewUserController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
 };
 
-template<typename T>
-void NewUserController::getInfo(T &info) {
-	if (!theView->getInfo(info)) { //ctrlz, fim do ficheiro
-		theView->printEnd();
-		newEnterController();
-	}
-}
 #endif /* SRC_CONTROLLER_NEWUSERCONTROLLER_H_ */
