@@ -20,53 +20,58 @@ ChangeUserMenuController::~ChangeUserMenuController() {
 }
 
 void ChangeUserMenuController::menu() {
-	theView->printUserInfo(user->getInfoDisp());
-	theView->printChangeUser();
 	menuHandler();
+	newUserMenu();
 }
 
 void ChangeUserMenuController::menuHandler() {
-	theView->printEnterOption();
-	int option = getMenuOption(0, 9);
-	switch (option) {
-	case 0:
-		theView->printShutdown();
-		endProgram();
-		break;
-	case 1:
-		changeName();
-		break;
-	case 2:
-		changeNIF();
-		break;
-	case 3:
-		changeStreet();
-		break;
-	case 4:
-		changeCountry();
-		break;
-	case 5:
-		changeCity();
-		break;
-	case 6:
-		changeCounty();
-		break;
-	case 7:
-		changeDoorNumber();
-		break;
-	case 8:
-		changeLatitude();
-		break;
-	case 9:
-		changeLongitude();
-		break;
-	case 10:
-		newUserMenu();
-		break;
-	default:
-		newUserMenu();
-		break;
-	}
+	int option;
+	do {
+		theView->printUserInfo(user->getInfoDisp());
+		theView->printChangeUser();
+		theView->printEnterOption();
+		option = getMenuOption(0, 11);
+		switch (option) {
+		case 0:
+			theView->printShutdown();
+			endProgram();
+			break;
+		case 1:
+			changeName();
+			break;
+		case 2:
+			changeNIF();
+			break;
+		case 3:
+			changeStreet();
+			break;
+		case 4:
+			changeCountry();
+			break;
+		case 5:
+			changeCity();
+			break;
+		case 6:
+			changeCounty();
+			break;
+		case 7:
+			changeDoorNumber();
+			break;
+		case 8:
+			changeLatitude();
+			break;
+		case 9:
+			changeLongitude();
+			break;
+		case 10:
+			changePassword();
+			break;
+		default:
+			newUserMenu();
+			break;
+		}
+	} while (option != 11);
+
 }
 
 int ChangeUserMenuController::getMenuOption(const int lowerBound,
@@ -83,21 +88,17 @@ int ChangeUserMenuController::getMenuOption(const int lowerBound,
 }
 
 void ChangeUserMenuController::changeName() {
-	theView->printEnterNewName();
 	string name = getName();
 	user->setName(name);
-
 }
 
 void ChangeUserMenuController::changeNIF() {
-	theView->printEnterNewNIF();
 	unsigned int nif = getNIF();
 	user->setNif(nif);
 
 }
 
 void ChangeUserMenuController::changeStreet() {
-	theView->printEnterNewStreet();
 	string street = getStreet();
 	Address a = user->getAddress();
 	a.setStreet(street);
@@ -105,7 +106,6 @@ void ChangeUserMenuController::changeStreet() {
 }
 
 void ChangeUserMenuController::changeCountry() {
-	theView->printEnterNewCountry();
 	string country = getCountry();
 	Address a = user->getAddress();
 	a.setCountry(country);
@@ -113,7 +113,6 @@ void ChangeUserMenuController::changeCountry() {
 }
 
 void ChangeUserMenuController::changeCity() {
-	theView->printEnterNewCity();
 	string city = getCity();
 	Address a = user->getAddress();
 	a.setCity(city);
@@ -121,7 +120,6 @@ void ChangeUserMenuController::changeCity() {
 }
 
 void ChangeUserMenuController::changeCounty() {
-	theView->printEnterNewCounty();
 	string county = getCounty();
 	Address a = user->getAddress();
 	a.setCounty(county);
@@ -129,7 +127,6 @@ void ChangeUserMenuController::changeCounty() {
 }
 
 void ChangeUserMenuController::changeDoorNumber() {
-	theView->printEnterNewDoorNumber();
 	unsigned int doorNumber = getDoorNumber();
 	Address a = user->getAddress();
 	a.setDoor_number(doorNumber);
@@ -137,7 +134,6 @@ void ChangeUserMenuController::changeDoorNumber() {
 }
 
 void ChangeUserMenuController::changeLatitude() {
-	theView->printEnterNewLatitude();
 	double latitude = getLatitude();
 	Address a = user->getAddress();
 	GPS gps = a.getCoordinates();
@@ -146,12 +142,16 @@ void ChangeUserMenuController::changeLatitude() {
 }
 
 void ChangeUserMenuController::changeLongitude() {
-	theView->printEnterNewLongitude();
 	double longitude = getLongitude();
 	Address a = user->getAddress();
 	GPS gps = a.getCoordinates();
 	gps.setLongitude(longitude);
 	user->setAddress(a);
+}
+
+void ChangeUserMenuController::changePassword() {
+	string password = getPassword();
+	user->setPass(password);
 }
 
 string ChangeUserMenuController::getName() {
@@ -160,6 +160,7 @@ string ChangeUserMenuController::getName() {
 	theView->getInfo(name);
 	return name;
 }
+
 unsigned int ChangeUserMenuController::getNIF() {
 	unsigned int nif;
 	theView->printEnterNewNIF();
@@ -172,30 +173,35 @@ unsigned int ChangeUserMenuController::getNIF() {
 	}
 	return nif;
 }
+
 string ChangeUserMenuController::getStreet() {
 	string street;
 	theView->printEnterNewStreet();
 	theView->getInfo(street);
 	return street;
 }
+
 string ChangeUserMenuController::getCountry() {
 	string country;
 	theView->printEnterNewCountry();
 	theView->getInfo(country);
 	return country;
 }
+
 string ChangeUserMenuController::getCity() {
 	string city;
 	theView->printEnterNewCity();
 	theView->getInfo(city);
 	return city;
 }
+
 string ChangeUserMenuController::getCounty() {
 	string county;
 	theView->printEnterNewCounty();
 	theView->getInfo(county);
 	return county;
 }
+
 unsigned int ChangeUserMenuController::getDoorNumber() {
 	unsigned int doorNumber;
 	theView->printEnterNewDoorNumber();
@@ -229,21 +235,18 @@ double ChangeUserMenuController::getLongitude() {
 	return longitude;
 }
 
-bool ChangeUserMenuController::getKeepContinuing() {
-	int keepContinuing;
-	theView->printEnterContinue();
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(keepContinuing);
-		if (!(flag = v->validateBound(keepContinuing, 0, 1))) {
-			theView->printWrongOption();
-		}
-	}
-	return keepContinuing == 1;
+string ChangeUserMenuController::getPassword() {
+	string pass;
+	theView->printEnterNewPassword();
+	theView->getInfo(pass);
+	return pass;
 }
 
+//void ChangeUserMenuController::changeInformation() {
+//	company->setclient(user);
+//}
+
 void ChangeUserMenuController::endProgram() {
-	exit(0);
 }
 
 void ChangeUserMenuController::newUserMenu() {

@@ -241,7 +241,6 @@ void FilterServicesController::setVisibility(Services &service,
 }
 
 void FilterServicesController::endProgram() {
-	exit(0);
 }
 
 void FilterServicesController::newListServicesMenu() {

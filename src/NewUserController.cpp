@@ -181,8 +181,13 @@ string NewUserController::getPassword() {
 }
 
 void NewUserController::createUser() {
-	Address address(street, country, city, county, doorNumber, latitude,
+	Address address;
+	if (latitude != 0)
+		address = Address(street, country, city, county, doorNumber, latitude,
 			longitude);
+	else
+		address = Address(street, country, city, county, doorNumber);
+
 	if (userType == client_type_personal) {
 		user = new Personal(name, address, nif, password);
 	} else if (userType == client_type_business) {
@@ -212,6 +217,5 @@ void NewUserController::newRequisitServiceController() {
 }
 
 void NewUserController::endProgram() {
-	exit(0);
 }
 

@@ -21,9 +21,9 @@ public:
   /**
    * Empty Constructor
    */
-  DebitCard (double value, unsigned int service_id);
+  DebitCard (double value);
 
-  DebitCard (double value, unsigned int service_id, bool due, Date due_date, Hour due_hour);
+  DebitCard (double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor

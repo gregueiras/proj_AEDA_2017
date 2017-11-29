@@ -1,19 +1,16 @@
 
 #ifndef EOMPAYMENT_H
 #define EOMPAYMENT_H
-#include "Date.h"
-#include "Hour.h"
+#include "Payment.h"
 
 #include <string>
-
-using namespace std;
 
 /**
   * class EOMPayment
   * 
   */
 
-class EOMPayment
+class EOMPayment : public Payment
 {
 public:
 
@@ -24,10 +21,9 @@ public:
   /**
    * Empty Constructor
    */
+  EOMPayment (double value);
 
-	EOMPayment();
-
-  EOMPayment(bool due, Date due_date, Hour due_hour);
+  EOMPayment(double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -49,64 +45,19 @@ public:
   //  
 
 private:
-	//Due is not cleared
-	bool due;
-
-	//Limit Date for Payment
-	Date due_date;
-
-	//Limit Hour for Payment
-	Hour due_hour;
+	// ID number of the Payment
+	const unsigned int payment_id = 5;
 
 public:
-	
 	/**
-	* Set value of due
-	* Payment is due
-	* @param new_var the value of due
+	* Create new id
+	* ID number of the next payment requested
+	* @return the value of new id
 	*/
-	void setDue(bool new_var);
+	const unsigned int newId();
 
-	/**
-	* Get value of due
-	* Payment is due
-	* @return the value of due
-	*/
-	bool getDue();
+	std::string getPayType();
 
-	/**
-	* Set value of due_date
-	* Payment due date
-	* @param new_var the value of due_date
-	*/
-	void setDueDate(Date new_var);
-
-	/**
-	* Get value of due_date
-	* Payment due date
-	* @return the value of due_date
-	*/
-	Date getDueDate();
-
-	/**
-	* Set value of due_hour
-	* Payment due hour
-	* @param new_var the value of due_hour
-	*/
-	void setDueHour(Hour new_var);
-
-	/**
-	* Set value of due_hour
-	* Payment due hour
-	* @return the value of due_hour
-	*/
-	Hour getDueHour();
-
-	/**
-	* Get EOMPayment 
-	* @return string with EOMPayment
-	*/
-	string getEOMPaymentToWrite();
 
 };
 

@@ -112,6 +112,13 @@ public:
   void setVisibility (bool new_var) ;
 
   /**
+   * Get the value of visibility
+   * client visibility - client is accessible if true
+   * @return the value of visibility
+   */
+  bool getVisibility();
+
+  /**
    * Set the value of name
    * Name/company of the client
    * @param new_name the new value of name
@@ -272,19 +279,6 @@ public:
   * @return subclass payment
   */
   virtual std::string getClientType() = 0;
-
-  /**
-  * Check if client as dues
-  * @return value of total due
-  */
-  int checkAllDues();
-
-  /**
-  * Set value of due to false and change due_hour/date to current_hour/date
-  * @param c_date is value of clearing due date
-  * @param c_hour is value of clearing due hour
-  */
-  void payAllDues(Date c_date, Hour c_hour);
 
 };
 

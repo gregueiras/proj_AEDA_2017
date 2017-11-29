@@ -25,15 +25,55 @@ private:
 
 	void menuHandler();
 
+	/**
+	 * user interaction method to change name
+	 */
 	void changeName();
+
+	/**
+	 * user interaction method to change nif
+	 */
 	void changeNIF();
+
+	/**
+	 * user interaction method to change street
+	 */
 	void changeStreet();
+
+	/**
+	 * user interaction method to change country
+	 */
 	void changeCountry();
+
+	/**
+	 * user interaction method to change city
+	 */
 	void changeCity();
+
+	/**
+	 * user interaction method to change county
+	 */
 	void changeCounty();
+
+	/**
+	 * user interaction method to change door number
+	 */
 	void changeDoorNumber();
+
+	/**
+	 * user interaction method to change latitude
+	 */
 	void changeLatitude();
+
+	/**
+	 * user interaction method to change longitude
+	 */
 	void changeLongitude();
+
+	/**
+	 * user interaction method to change password
+	 */
+	void changePassword();
 
 	/**
 	 * user interaction method to read name information
@@ -81,9 +121,14 @@ private:
 	double getLongitude();
 
 	/**
-	 * user interaction method to read keep continuing information
+	 * user interaction method to read password information
 	 */
-	bool getKeepContinuing();
+	string getPassword();
+
+	/**
+	 * method to set new information of user
+	 */
+	void changeInformation();
 
 	/**
 	 * read the menu option from the keyboard the value of arrival_date
@@ -120,6 +165,7 @@ public:
 	 * prints initial message and calls the user interaction method
 	 */
 	void menu();
-};
+}
+;
 
 #endif /* SRC_CONTROLLER_HEADERS_CHANGEUSERMENUCONTROLLER_H_ */

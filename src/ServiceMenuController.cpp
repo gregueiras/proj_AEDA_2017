@@ -60,7 +60,7 @@ int ServiceMenuController::getMenuOption(const int lowerBound,
 }
 
 void ServiceMenuController::endProgram() {
-	exit(0);
+
 }
 
 void ServiceMenuController::newRequisitService() {

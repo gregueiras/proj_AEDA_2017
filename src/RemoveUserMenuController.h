@@ -24,7 +24,14 @@ private:
 	Client *user;
 	Company *company;
 
+	/**
+	 *
+	 */
 	void removeUserHandler();
+
+	/**
+	 *
+	 */
 	void removeUser();
 
 	/**
@@ -34,7 +41,6 @@ private:
 	 * @param upperBound upper bound of the menu option
 	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
-	bool getConfirmation();
 
 	/**
 	 * ends the program

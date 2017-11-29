@@ -36,39 +36,43 @@ void ChangeUserMenuView::printEnd() {
 }
 
 void ChangeUserMenuView::printEnterNewName() {
-	printMessage(enterName);
+	printMessage(enterNewName);
 }
 
 void ChangeUserMenuView::printEnterNewNIF() {
-	printMessage(enterNIF);
+	printMessage(enterNewNIF);
 }
 
 void ChangeUserMenuView::printEnterNewStreet() {
-	printMessage(enterStreet);
+	printMessage(enterNewStreet);
 }
 
 void ChangeUserMenuView::printEnterNewCounty() {
-	printMessage(enterCounty);
+	printMessage(enterNewCounty);
 }
 
 void ChangeUserMenuView::printEnterNewCity() {
-	printMessage(enterCity);
+	printMessage(enterNewCity);
 }
 
 void ChangeUserMenuView::printEnterNewCountry() {
-	printMessage(enterCountry);
+	printMessage(enterNewCountry);
 }
 
 void ChangeUserMenuView::printEnterNewDoorNumber() {
-	printMessage(enterDoorNumber);
+	printMessage(enterNewDoorNumber);
 }
 
 void ChangeUserMenuView::printEnterNewLatitude() {
-	printMessage(enterLatitude);
+	printMessage(enterNewLatitude);
 }
 
 void ChangeUserMenuView::printEnterNewLongitude() {
-	printMessage(enterLongitude);
+	printMessage(enterNewLongitude);
+}
+
+void ChangeUserMenuView::printEnterNewPassword() {
+	printMessage(enterNewPassword);
 }
 
 void ChangeUserMenuView::printWrongNIF() {
@@ -81,15 +85,10 @@ void ChangeUserMenuView::printWrongLongitude() {
 	printMessage(wrongLongitude);
 }
 
-void ChangeUserMenuView::printEnterContinue() {
-	printMessage(keepContinuing);
-}
-
-void ChangeUserMenuView::printUserInfo(std::string str) {
-	printMessage(str);
+void ChangeUserMenuView::printUserInfo(string str) {
+	printMessage("\n" + str);
 }
 
 void ChangeUserMenuView::printShutdown() {
-	printMessage (shutdown);
+	printMessage(shutdown);
 }
-

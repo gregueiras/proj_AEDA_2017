@@ -98,19 +98,51 @@ bool operator> (const Date& d1, const Date& d2)
 
 std::ostream & operator<< (std::ostream &o, const Date& d1)
 {
-	o << d1.getDay() << "/" << d1.getMonth() << "/" << d1.getYear();
+	if (d1.getDay() < 10)
+		o << "0" << d1.getDay() << "/";
+	else
+		o << d1.getDay() << "/";
+	if (d1.getMonth() < 10)
+		o << "0" << d1.getMonth() << "/";
+	else
+		o << d1.getMonth() << "/";
+	if (d1.getYear() < 10)
+		o << "000" << d1.getYear();
+	else if (d1.getYear() < 100)
+		o << "00" << d1.getYear();
+	else if (d1.getYear() < 1000)
+		o << "0" << d1.getYear();
+	else
+		o << d1.getYear();
 	return o;
 }
 
 unsigned int operator -(const Date& d1, const Date& d2) {
-	
+	unsigned int i = 0;
 
 	if (d1 == d2)
-		return 0;
+		return i;
+	//	else if (d1.getMonth() == d2.g)
+	//	{
+	//		if (d1.getYear() != d2.getYear())
+	//			i += abs((d1.getYear() - d2.getYear()) - 1)*365;
+	//
+	//		if (d1.getMonth() != d2.getMonth())
+	//			i += abs((d1.getMonth() - d2.getMonth()) - 1)*30;
+	//
+	//		if (d1.getDay() != d2.getDay())
+	//		i += abs((d1.getDay() - d2.getDay()));
+	//	}
 	else
 	{
-		return abs(rdn(d1) - rdn(d2));
+		i = abs(rdn(d1) - rdn(d2));
 	}
+
+
+
+
+
+	return i;
 }
 
 Date operator +(const Date& d1, const Hour& h1) {
@@ -185,7 +217,7 @@ Date operator +(const Date& d1, const unsigned int days) {
 		} else
 			if (d_new > 31)
 			{
-				d_new -= 31;
+				d_new -= 31; //TODO
 				d2.setDay(1);
 				d2.setMonth(d2.getMonth()+1);
 

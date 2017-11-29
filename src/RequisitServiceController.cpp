@@ -227,10 +227,12 @@ void RequisitServiceController::createService() {
 
 	Date packagingInitialDate(packagingInitialDay, packagingInitialMonth,
 			packagingInitialYear);
+
 	Hour packagingInitialTime(packagingInitialHour, packagingInitialMinute);
 
 	service = new Services(adressOrigin, volume, addressDestination,
 			packagingInitialTime, packagingInitialDate, storageDays);
+
 }
 
 void RequisitServiceController::payService() {
@@ -238,6 +240,8 @@ void RequisitServiceController::payService() {
 		theView->printAskAddToEOM();
 		payAtEOMHandler();
 	}
+
+	
 	newPayServiceMenu();
 }
 
@@ -299,5 +303,5 @@ void RequisitServiceController::newPayServiceMenu() {
 }
 
 void RequisitServiceController::endProgram() {
-	exit(0);
+
 }

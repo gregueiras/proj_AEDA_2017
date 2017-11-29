@@ -28,7 +28,7 @@ void PayServiceView::printPayEOM() {
 }
 
 void PayServiceView::printAmountToPay(double value) {
-//	cout << amountToPay << value << endl;
+	cout << amountToPay << value << "€" << endl;
 }
 
 void PayServiceView::printEnterOption() {

@@ -18,10 +18,10 @@ private:
 	Utilities *u;
 
 	const string removeUserMenu =
-			"\nRemover Utilizador\n1->remover\n2->voltar atrás\n0->SAIR";
+			"\nRemover Utilizador\n0->SAIR\n1->remover\n2->voltar atrás";
 
 	const string enterConfirmation =
-			"Deseja mesmo remover utilizador?\n0->Não\n->Sim";
+			"Deseja remover definitivamente perfil de utilizador?\n0->Não\n->Sim";
 
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Introduziu opção errada";

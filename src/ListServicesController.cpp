@@ -110,7 +110,7 @@ int ListServicesController::getMenuOption(const int lowerBound,
 }
 
 void ListServicesController::endProgram() {
-	exit(0);
+
 }
 
 void ListServicesController::newSeeService() {

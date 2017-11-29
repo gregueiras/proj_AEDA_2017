@@ -3,9 +3,9 @@
 // Constructors/Destructors
 //  
 
-CreditCard::CreditCard (double value, unsigned int service_id) : Payment::Payment(value, service_id), payment_id(newId()) {}
+CreditCard::CreditCard (double value) : Payment::Payment(value), payment_id(newId()) {}
 
-CreditCard::CreditCard (double value, unsigned int service_id, bool due, Date due_date, Hour due_hour) : Payment::Payment(value, service_id, due, due_date, due_hour) {}
+CreditCard::CreditCard (double value, bool due, Date due_date, Hour due_hour) : Payment::Payment(value, due, due_date, due_hour) {}
 
 CreditCard::~CreditCard () { }
 

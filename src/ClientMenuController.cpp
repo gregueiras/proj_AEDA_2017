@@ -60,7 +60,6 @@ int ClientMenuController::getMenuOption(const int lowerBound,
 }
 
 void ClientMenuController::endProgram() {
-	exit(0);
 }
 
 void ClientMenuController::newEnterMenu() {

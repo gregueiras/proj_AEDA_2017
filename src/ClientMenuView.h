@@ -16,11 +16,11 @@ using namespace std;
 class ClientMenuView {
 private:
 	Utilities *u;
-	const string enterOption = "Introduza a sua opção";
-	const string wrongOption = "Opção escolhida invalida";
+	const string enterOption = "Introduza a sua opcao";
+	const string wrongOption = "Opcao escolhida invalida";
 
 	const string clientMenu =
-			"\nMenu Cliente\n1->utilizador\n2->serviços\n3->voltar atrás\n0->SAIR";
+			"\nMenu Cliente\n1->utilizador\n2->servicos\n3->voltar atras\n0->SAIR";
 
 	const string end = "\nTerminou Menu Cliente";
 	const string shutdown = "\nPrograma terminou";

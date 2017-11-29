@@ -32,5 +32,4 @@ void SeeServiceController::newListServicesMenu() {
 	listServicesController->menu();
 }
 void SeeServiceController::endProgram() {
-	exit(0);
-}
+	}

@@ -19,7 +19,7 @@ private:
 			"\nPagar Serviço\n0->SAIR\n1->multibanco(pagamento de serviços)\n2->transferencia bancaria\n3->Cartao Credito";
 
 	const string payEOM = "\nPagar Serviços do mes anterior\n0->SAIR";
-	const string amountToPay = "\nMontante a pagar ->";
+	const string amountToPay = "\nMontante a pagar-> ";
 	const string noEOMLeftToPay =
 			"\nNao ha pagamentos do final do mes em divida";
 	const string entity = "\nEntidade-> ";

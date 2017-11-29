@@ -15,7 +15,9 @@ PayServiceController::PayServiceController(Client *user, unsigned int serviceID,
 	this->user = user;
 	this->serviceID = serviceID;
 	this->company = company;
-	amountToPay = 0;
+
+	
+	amountToPay = user->getServiceById(serviceID).getPrice();
 	creditCardNumber = 0;
 }
 
@@ -95,6 +97,8 @@ void PayServiceController::payBankTransfer() {
 	theView->printEntity(company->getEntity());
 	theView->printReference(company->getReference());
 	theView->printAmountToPay(amountToPay);
+	
+
 }
 
 void PayServiceController::payMoneyTransfer() {
@@ -115,7 +119,8 @@ unsigned long PayServiceController::getCreditCardNumber() {
 }
 
 int PayServiceController::getAmountToPay() {
-	return company->checkAllDues(user, amountToPay);
+	return amountToPay;
+	
 }
 
 int PayServiceController::getMenuOption(const int lowerBound,

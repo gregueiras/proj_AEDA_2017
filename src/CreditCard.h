@@ -21,9 +21,9 @@ public:
   /**
    * Empty Constructor
    */
-  CreditCard (double value, unsigned int service_id);
+  CreditCard (double value);
 
-  CreditCard (double value, unsigned int service_id, bool due, Date due_date, Hour due_hour);
+  CreditCard (double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor

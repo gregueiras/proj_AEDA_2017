@@ -67,7 +67,6 @@ string LoginController::getPass() {
 }
 
 void LoginController::endProgram() {
-	exit(0);
 }
 
 void LoginController::newClientMenu() {

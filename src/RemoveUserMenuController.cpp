@@ -23,6 +23,7 @@ RemoveUserMenuController::~RemoveUserMenuController() {
 void RemoveUserMenuController::menu() {
 	theView->printRemoveUser();
 	removeUserHandler();
+	newEnterMenuController();
 }
 
 void RemoveUserMenuController::removeUserHandler() {
@@ -35,6 +36,7 @@ void RemoveUserMenuController::removeUserHandler() {
 		break;
 	case 1:
 		removeUser();
+		newEnterMenuController();
 		break;
 	case 2:
 		newUserMenuController();
@@ -58,25 +60,8 @@ int RemoveUserMenuController::getMenuOption(const int lowerBound,
 	return option;
 }
 
-bool RemoveUserMenuController::getConfirmation() {
-	int confirmation;
-	theView->printEnterConfirmation();
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(confirmation);
-		if (!(flag = v->validateBound(confirmation, 0, 2))) {
-			theView->printWrongOption();
-		}
-	}
-	return confirmation == 1;
-}
-void RemoveUserMenuController::endProgram() {
-	exit(0);
-}
-
 void RemoveUserMenuController::removeUser() {
 	user->setVisibility(false);
-	newEnterMenuController();
 }
 
 void RemoveUserMenuController::newEnterMenuController() {
@@ -88,4 +73,7 @@ void RemoveUserMenuController::newUserMenuController() {
 	UserMenuController *userMenuController = new UserMenuController(user,
 			company);
 	userMenuController->menu();
+}
+
+void RemoveUserMenuController::endProgram() {
 }

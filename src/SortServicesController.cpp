@@ -163,5 +163,5 @@ listServicesController->menu();
 }
 
 void SortServicesController::endProgram() {
-exit(0);
+
 }

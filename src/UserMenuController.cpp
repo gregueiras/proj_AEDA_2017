@@ -61,7 +61,6 @@ int UserMenuController::getMenuOption(const int lowerBound,
 }
 
 void UserMenuController::endProgram() {
-	exit(0);
 }
 
 void UserMenuController::newRemoveUserMenu() {

@@ -66,5 +66,8 @@ void EnterController::newUserMenu() {
 }
 
 void EnterController::endProgram() {
-	exit(0);
+
+	//company->writeCompanyToFile();
+	//company->writeClientsToFile();
+	//exit(0);
 }
