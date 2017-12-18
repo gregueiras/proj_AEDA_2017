@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <queue>
 
 #include "Services.h"
 
@@ -17,6 +18,9 @@
 #include "CreditCard.h"
 #include "DebitCard.h"
 #include "EOMPayment.h"
+
+#include "Vehicle.h"
+
 
 /**
  * class Company
@@ -62,6 +66,12 @@ private:
 
 	// Regist of payments of the company's clients
 	vector<Payment*> payments_regist;
+
+	//Queue of next services
+	std::queue<Services*> next_services;
+
+	//Heap of available vehicles
+	std::priority_queue<Vehicle> vehicles;
 
 	// Company nib - 21 digits
 	string nib;
@@ -195,6 +205,42 @@ public:
 	 */
 	vector<Services*> getServicesQueue();
 
+
+	/**
+	 * Get the queue of next services
+	 * Queue of  next services of the company
+	 * @return next_services queue
+	 */
+	const std::queue<Services*>& getNextServices() const {
+		return next_services;
+	}
+
+	/**
+	 * Set the queue of next services
+	 * Queue of  next services of the company
+	 */
+	void setNextServices(const std::queue<Services*>& nextServices) {
+		next_services = nextServices;
+	}
+
+	/**
+	 * Get the priority_queue of vehicles, ordered by least expectable time
+	 * Queue of vehicles of the company
+	 * @return vehicles priority_queue
+	 */
+	const std::priority_queue<Vehicle>& getVehicles() const {
+		return vehicles;
+	}
+
+	/**
+	 * Set the priority_queue of vehicles, ordered by least expectable time
+	 * Queue of vehicles of the company
+	 * @return vehicles priority_queue
+	 */
+	void setVehicles(const std::priority_queue<Vehicle>& vehicles) {
+		this->vehicles = vehicles;
+	}
+
 	/**
 	 * Add new service to services_queue vector
 	 * Queue of services of the company
@@ -268,6 +314,17 @@ public:
 	 * Set value of due to false and change due_hour/date to current_hour/date
 	 */
 	void payAllDues(Client * c);
+
+	/**
+	 * If vehicle exists with that characteristics set its "available" flag to false
+	 * @param brand brand of car
+	 * @param model model of car
+	 * @param name name of car
+	 * @return true if that vehicle was found, false if not
+	 */
+	bool removeVehicleMaintenance(string brand, string model, string name);
+
+	bool addVehicle(Vehicle v1);
 
 };
 

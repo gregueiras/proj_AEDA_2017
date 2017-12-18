@@ -8,137 +8,141 @@
 
 
 /**
-  * class Hour
-  * 
-  */
+ * class Hour
+ *
+ */
 class Hour
 {
 public:
 
-  // Constructors/Destructors
-  //  
-  Hour(unsigned int h, unsigned int m);
+	// Constructors/Destructors
+	//
+	Hour(unsigned int h, unsigned int m);
 
-  Hour(unsigned int h, unsigned int m, bool b);
+	Hour(unsigned int h, unsigned int m, bool b);
 
-  /**
-   * Empty Constructor
-   */
-  Hour ();
+	/**
+	 * Empty Constructor
+	 */
+	Hour ();
 
-  /**
-   * Empty Destructor
-   */
-  virtual ~Hour ();
+	/**
+	 * Empty Destructor
+	 */
+	virtual ~Hour ();
 
-  // Static Public attributes
-  //  
+	// Static Public attributes
+	//
 
-  // Public attributes
-  //  
-
-
-  // Public attribute accessor methods
-  //  
+	// Public attributes
+	//
 
 
-  // Public attribute accessor methods
-  //  
+	// Public attribute accessor methods
+	//
+
+
+	// Public attribute accessor methods
+	//
 
 
 protected:
 
-  // Static Protected attributes
-  //  
+	// Static Protected attributes
+	//
 
-  // Protected attributes
-  //  
+	// Protected attributes
+	//
 
 public:
 
 
-  // Protected attribute accessor methods
-  //  
+	// Protected attribute accessor methods
+	//
 
 protected:
 
 public:
 
 
-  // Protected attribute accessor methods
-  //  
+	// Protected attribute accessor methods
+	//
 
 protected:
 
 
 private:
 
-  // Static Private attributes
-  //  
+	// Static Private attributes
+	//
 
-  // Private attributes
-  //  
+	// Private attributes
+	//
 
-  unsigned int hour; /*!< Hour*/
-  unsigned int minute; /*!< Minute*/
+	unsigned int hour; /*!< Hour*/
+	unsigned int minute; /*!< Minute*/
 public:
 
 
-  // Private attribute accessor methods
-  //  
+	// Private attribute accessor methods
+	//
 
 private:
 
 public:
 
 
-  // Private attribute accessor methods
-  //  
+	// Private attribute accessor methods
+	//
 
 
-  /**
-   * Set the value of hour
-   * Hour
-   * @param new_var the new value of hour
-   */
-  void setHour (unsigned int new_var)   {
-      hour = new_var;
-  }
+	/**
+	 * Set the value of hour
+	 * Hour
+	 * @param new_var the new value of hour
+	 */
+	void setHour (unsigned int new_var)   {
+		hour = new_var;
+	}
 
-  /**
-   * Get the value of hour
-   * Hour
-   * @return the value of hour
-   */
-  unsigned int getHour ()  const {
-    return hour;
-  }
+	/**
+	 * Get the value of hour
+	 * Hour
+	 * @return the value of hour
+	 */
+	unsigned int getHour ()  const {
+		return hour;
+	}
 
-  /**
-   * Set the value of minute
-   * Minute
-   * @param new_var the new value of minute
-   */
-  void setMinute (unsigned int new_var)   {
-      minute = new_var;
-  }
+	/**
+	 * Set the value of minute
+	 * Minute
+	 * @param new_var the new value of minute
+	 */
+	void setMinute (unsigned int new_var)   {
+		minute = new_var;
+	}
 
-  /**
-   * Get the value of minute
-   * Minute
-   * @return the value of minute
-   */
-  unsigned int getMinute () const  {
-    return minute;
-  }
+	/**
+	 * Get the value of minute
+	 * Minute
+	 * @return the value of minute
+	 */
+	unsigned int getMinute () const  {
+		return minute;
+	}
+
+
+	bool operator<(const Hour &v1) const;
+
 private:
 
 
-  void initAttributes () ;
+	void initAttributes () ;
 
 public:
 
-  std::string toStr();
+	std::string toStr();
 
 };
 
@@ -179,9 +183,9 @@ Hour operator+(const unsigned int add ,const Hour& h1);
 
 
 /**
-  * class HourInvalidHour
-  *
-  */
+ * class HourInvalidHour
+ *
+ */
 class HourInvalidHour {
 private:
 	unsigned int hour;
@@ -191,9 +195,9 @@ public:
 };
 
 /**
-  * class HourInvalidMinute
-  *
-  */
+ * class HourInvalidMinute
+ *
+ */
 class HourInvalidMinute {
 private:
 	unsigned int minute;
