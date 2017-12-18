@@ -84,3 +84,9 @@ std::string Hour::toStr() {
 	s1 << *this;
 	return s1.str();
 }
+
+bool Hour::operator <(const Hour& v1) const {
+	if (this->hour == v1.hour)
+		return this->minute < v1.minute;
+	return this->hour < v1.hour;
+}

@@ -437,7 +437,7 @@ vector<Client*> Company::readClientsFromFile() {
 	} while (ptr != NULL);
 
 	this->clients = c_tmp;
-	
+
 	return c_tmp;
 }
 
@@ -452,7 +452,7 @@ bool Company::writeClientsToFile() {
 
 	}
 
-	
+
 
 	return true;
 }
@@ -567,4 +567,49 @@ void Company::payAllDues(Client * c) {
 			c->getPayment().at(i)->setDueHour(this->current_hour);
 		}
 	}
+}
+
+bool Company::removeVehicleMaintenance(string brand, string model, string name) {
+
+	vector <Vehicle> temp;
+
+	Vehicle toFound(name, brand, model);
+	Vehicle v_temp;
+	bool found = false;
+
+	while ( (this->vehicles.empty() == false) && (found == false) )
+	{
+		v_temp = vehicles.top();
+
+		vehicles.pop();
+
+		if ( (v_temp == toFound) && (v_temp.isAvailable()) )
+		{
+			if (v_temp.isAvailable())
+			{
+				v_temp.setAvailable(false);
+				found = true;
+			}
+		}
+
+		temp.push_back(v_temp);
+
+
+	}
+
+	unsigned c = 0;
+	for (unsigned int i = 0; i < temp.size(); i++)
+	{
+
+		vehicles.push(temp.at(i));
+
+	}
+
+	return found;
+
+}
+
+bool Company::addVehicle(Vehicle v1) {
+
+	vehicles.push(v1);
 }
