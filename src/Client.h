@@ -26,6 +26,7 @@ class Client
 //	friend class Personal;
 public:
 
+	friend class ClientRecord;
   // Constructors/Destructors
   //  
 
@@ -116,7 +117,7 @@ public:
    * client visibility - client is accessible if true
    * @return the value of visibility
    */
-  bool getVisibility();
+  bool getVisibility() const;
 
   /**
    * Set the value of name
@@ -129,7 +130,7 @@ public:
    * Name/company of the client
    * @return the value of name
    */
-  string getName ();
+  string getName () const;
 
   /**
    * Set the value of address
@@ -143,14 +144,14 @@ public:
    * Address of the client
    * @return the value of address
    */
-  Address getAddress ();
+  Address getAddress () const;
 
   /**
   * Get the value of id
   * Client ID
   * @return the value of id
   */
-  const unsigned int getId();
+  unsigned int getId() const;
 
   /**
    * Set the value of nif
@@ -164,7 +165,7 @@ public:
    * NIF of the client
    * @return the value of nif
    */
-  unsigned int getNif ();
+  unsigned int getNif () const;
 
   /**
    * Set the value of services
@@ -178,7 +179,7 @@ public:
    * History of services of the client
    * @return the value of services
    */
-  vector<Services*> getServices ();
+  vector<Services*> getServices () const;
 
   /**
     * Add a new service to the client
@@ -193,7 +194,7 @@ public:
   * @param id the service to get id
   * @return the service with this->id == id or service with volume == 0 if not found any 
   */
-  Services getServiceById(const unsigned int &id);
+  Services getServiceById(const unsigned int &id) const;
 
   /**
   * Get the value of next_id
@@ -227,7 +228,7 @@ public:
   * History of payments of the client
   * @return the value of payments
   */
-  vector<Payment*> getPayment();
+  vector<Payment*> getPayment() const;
 
   /**
   * Add a new payment to the client
@@ -240,7 +241,7 @@ public:
     * Get client info in a string
     * Client
     */
-  string getInfoDisp();
+  string getInfoDisp() const;
 
   /**
    * Set the value of pass
@@ -254,7 +255,7 @@ public:
    * Login password
    * @return the value of pass
    */
-  string getPass ();
+  string getPass () const;
 
   /**
   * writes all the services to a file named "client" + id +"_services.txt"
@@ -280,6 +281,29 @@ public:
   */
   virtual std::string getClientType() = 0;
 
+};
+
+class ClientRecord {
+	Client* clientPtr;
+public:
+	ClientRecord(Client* c);
+
+	bool getVisibility() const;
+	void setVisibility(bool new_var);
+
+	string getName() const;
+
+	Address getAddress() const;
+
+	unsigned int getId() const;
+
+	unsigned int getNif() const;
+	
+	vector<Services*> getServices() const;
+
+	vector<Payment*> getPayment() const;
+
+	string getPass() const;
 };
 
 #endif // CLIENT_H

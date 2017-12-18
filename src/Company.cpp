@@ -16,7 +16,7 @@ Company::Company(string nib, string entity, string reference) {
 Company::~Company() {
 }
 
-Date Company::getCurrentDate() {
+Date Company::getCurrentDate() const {
 	return this->current_date;
 }
 
@@ -24,7 +24,7 @@ void Company::setCurrentDate(Date new_var) {
 	this->current_date = new_var;
 }
 
-Hour Company::getCurrentHour() {
+Hour Company::getCurrentHour() const {
 	return this->current_hour;
 }
 
@@ -32,7 +32,48 @@ void Company::setCurrentHour(Hour new_var) {
 	this->current_hour = new_var;
 }
 
-string Company::getNib() {
+int Company::findClient(Client * c)
+{
+	int pos = -1;
+	for (size_t i = 0; i < clients.size(); i++)
+	{
+		if (clients.at(i)->getId() == c->getId()) {
+			pos = i;
+			break;
+		}
+	}
+	return pos;
+}
+
+void Company::deactivateClientRecord(Client * c)
+{
+	c->setVisibility(false);
+
+	int pos = findClient(c);
+
+	if (pos == -1)
+		return;
+
+	inactive_clients.insert(ClientRecord(c));
+
+	clients.erase(clients.begin() + pos);
+}
+
+void Company::activateClientRecord(Client * c)
+{
+	auto it = inactive_clients.find(ClientRecord(c));
+
+	if (it == inactive_clients.end())
+		return;
+
+	inactive_clients.erase(it);
+
+	c->setVisibility(true);
+
+	clients.push_back(c);
+}
+
+string Company::getNib() const {
 	return this->nib;
 }
 
@@ -40,7 +81,7 @@ void Company::setNib(string new_var) {
 	this->nib = new_var;
 }
 
-string Company::getEntity() {
+string Company::getEntity() const {
 	return this->entity;
 }
 
@@ -48,7 +89,7 @@ void Company::setEntity(string new_var) {
 	this->entity = new_var;
 }
 
-string Company::getReference() {
+string Company::getReference() const {
 	return this->reference;
 }
 
@@ -74,7 +115,7 @@ void Company::setClients(vector<Client*> new_var) {
 	this->clients = new_var;
 }
 
-vector<Client*> Company::getClients() {
+vector<Client*> Company::getClients() const {
 	return this->clients;
 }
 
@@ -90,7 +131,7 @@ bool Company::addClient(Client *new_var) {
 	return true;
 }
 
-Client * Company::getClient(unsigned int id, string pass) {
+Client * Company::getClient(unsigned int id, string pass) const {
 	int clients_size = this->clients.size();
 	for (int i = 0; i < clients_size; ++i) {
 		if (id == this->clients.at(i)->getId() && this->clients.at(i)->getVisibility() == true
@@ -106,7 +147,7 @@ void Company::setServicesQueue(vector<Services*> new_var) {
 	this->services_queue = new_var;
 }
 
-vector<Services*> Company::getServicesQueue() {
+vector<Services*> Company::getServicesQueue() const {
 	return this->services_queue;
 }
 

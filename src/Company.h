@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <unordered_set>/*tr1/*/
 
 #include "Services.h"
 
@@ -17,6 +18,22 @@
 #include "CreditCard.h"
 #include "DebitCard.h"
 #include "EOMPayment.h"
+
+struct inactiveClientsHash
+{
+	int operator() (const ClientRecord& cr) const
+	{
+		return cr.getId();
+	}
+
+	bool operator() (const ClientRecord& cr1, const ClientRecord& cr2) const
+	{
+		return (cr1.getId() == cr2.getId());
+	}
+};
+
+
+typedef /*tr1::*/unordered_set<ClientRecord, inactiveClientsHash, inactiveClientsHash> HashTabClientRecord;
 
 /**
  * class Company
@@ -57,6 +74,9 @@ private:
 	// Vector of clients of the company
 	vector<Client*> clients;
 
+	//Hash table of inactive clients of the company
+	HashTabClientRecord inactive_clients;
+
 	// Queue of services of the company
 	vector<Services*> services_queue;
 
@@ -86,7 +106,7 @@ public:
 	 * World Time - Date
 	 * @return the value of current_date
 	 */
-	Date getCurrentDate();
+	Date getCurrentDate() const;
 
 	/**
 	 * Set the value of current_date
@@ -100,7 +120,7 @@ public:
 	 * World Time - Hour
 	 * @return the value of current_hour
 	 */
-	Hour getCurrentHour();
+	Hour getCurrentHour() const;
 
 	/**
 	 * Set the value of current_hour
@@ -110,11 +130,30 @@ public:
 	void setCurrentHour(Hour new_var);
 
 	/**
+	* Get the position of client c from clients vector
+	* @param c the client to find
+	* @return the position if client c
+	*/
+	int findClient(Client* c);
+
+	/**
+	* Get a client from inactive_clients  hash table to clients vector
+	* @param c the client in question
+	*/
+	void deactivateClientRecord(Client* c);
+
+	/**
+	* Get a client from clients vector to inactive_clients hash table
+	* @param c the client in question
+	*/
+	void activateClientRecord(Client* c);
+
+	/**
 	 * Get the value of nib
 	 * Company nib - 21 digits
 	 * @return the value of nib
 	 */
-	string getNib();
+	string getNib() const;
 
 	/**
 	 * Set the value of nib
@@ -128,7 +167,7 @@ public:
 	 * Company entity - 5 digits
 	 * @return the value of entity
 	 */
-	string getEntity();
+	string getEntity() const;
 
 	/**
 	 * Set the value of entity
@@ -142,7 +181,7 @@ public:
 	 * Company reference - 9 digits
 	 * @return the value of reference
 	 */
-	string getReference();
+	string getReference() const;
 
 	/**
 	 * Set the value of reference
@@ -163,7 +202,7 @@ public:
 	 * Vector of clients of the company
 	 * @return the value of clients
 	 */
-	vector<Client*> getClients();
+	vector<Client*> getClients() const;
 
 	/**
 	 * Add new client to clients vector
@@ -179,7 +218,7 @@ public:
 	 * @param id the client id
 	 * @param pass the client pass
 	 */
-	Client * getClient(unsigned int id, string pass);
+	Client * getClient(unsigned int id, string pass) const;
 
 	/**
 	 * Set the vector of services_queue
@@ -193,7 +232,7 @@ public:
 	 * Queue of services of the company
 	 * @return the value of services vector
 	 */
-	vector<Services*> getServicesQueue();
+	vector<Services*> getServicesQueue() const;
 
 	/**
 	 * Add new service to services_queue vector

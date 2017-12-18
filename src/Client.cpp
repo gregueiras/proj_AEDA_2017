@@ -56,7 +56,7 @@ void Client::setVisibility(bool new_var) {
 	this->visibility = new_var;
 }
 
-bool Client::getVisibility() {
+bool Client::getVisibility() const {
 	return this->visibility;
 }
 
@@ -64,7 +64,7 @@ void Client::setName(string new_name) {
 	this->name = new_name;
 }
 
-string Client::getName() {
+string Client::getName() const {
 	return this->name;
 }
 
@@ -72,11 +72,11 @@ void Client::setAddress(Address new_add) {
 	this->address = new_add;
 }
 
-Address Client::getAddress() {
+Address Client::getAddress() const {
 	return this->address;
 }
 
-const unsigned int Client::getId() {
+unsigned int Client::getId() const {
 	return this->id;
 }
 
@@ -84,7 +84,7 @@ void Client::setNif(unsigned int new_nif) {
 	this->nif = new_nif;
 }
 
-unsigned int Client::getNif() {
+unsigned int Client::getNif() const {
 	return this->nif;
 }
 
@@ -92,7 +92,7 @@ void Client::setServices(vector<Services*> new_serv_vec) {
 	this->services = new_serv_vec;
 }
 
-vector<Services*> Client::getServices() {
+vector<Services*> Client::getServices() const {
 	return this->services;
 }
 
@@ -100,7 +100,7 @@ void Client::addServices(Services *new_serv) {
 	this->services.push_back(new_serv);
 }
 
-Services Client::getServiceById(const unsigned int &id) {
+Services Client::getServiceById(const unsigned int &id) const {
 	for (unsigned int i = 0; i < this->getServices().size(); i++) {
 		if (this->getServices().at(i)->getId() == id)
 			return *this->getServices().at(i);
@@ -130,7 +130,7 @@ void Client::setPayment(vector<Payment*> new_pay_vec) {
 	this->payments = new_pay_vec;
 }
 
-vector<Payment*> Client::getPayment() {
+vector<Payment*> Client::getPayment() const {
 	return this->payments;
 }
 
@@ -138,7 +138,7 @@ void Client::addPayment(Payment *new_pay) {
 	this->payments.push_back(new_pay);
 }
 
-string Client::getInfoDisp() {
+string Client::getInfoDisp() const {
 	string ret = "Client ID: ";
 	ret += std::to_string(this->id);
 	ret += "\n";
@@ -153,7 +153,7 @@ void Client::setPass(string new_var) {
 	this->pass = new_var;
 }
 
-string Client::getPass() {
+string Client::getPass() const {
 	return this->pass;
 }
 
@@ -303,3 +303,52 @@ bool Client::writeClientToFile() {
 	return true;
 }
 
+ClientRecord::ClientRecord(Client * c)
+{
+	this->clientPtr = c;
+}
+
+bool ClientRecord::getVisibility() const
+{
+	return this->clientPtr->visibility;
+}
+
+void ClientRecord::setVisibility(bool new_var)
+{
+	this->clientPtr->visibility = new_var;
+}
+
+string ClientRecord::getName() const
+{
+	return this->clientPtr->name;
+}
+
+Address ClientRecord::getAddress() const
+{
+	return this->clientPtr->address ;
+}
+
+unsigned int ClientRecord::getId() const
+{
+	return this->clientPtr->id;
+}
+
+unsigned int ClientRecord::getNif() const
+{
+	return this->clientPtr->nif;
+}
+
+vector<Services*> ClientRecord::getServices() const
+{
+	return this->clientPtr->services;
+}
+
+vector<Payment*> ClientRecord::getPayment() const
+{
+	return this->clientPtr->payments;
+}
+
+string ClientRecord::getPass() const
+{
+	return this->clientPtr->pass;
+}
