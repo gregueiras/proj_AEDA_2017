@@ -58,7 +58,7 @@ private:
 	/**
 	 * method that calculates the amount to pay
 	 */
-	int getAmountToPay();
+	double getAmountToPay();
 
 	/**
 	 * user interaction method to read volume infomation

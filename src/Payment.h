@@ -7,6 +7,8 @@
 
 #include <string>
 
+using namespace std;
+
 /**
   * class Payment
   * 
@@ -23,9 +25,13 @@ public:
   /**
    * Constructor
    */
-  Payment (double value);
 
-  Payment(double value, bool due, Date due_date, Hour due_hour);
+	//ONLY FOR BST FIND PURPOSES
+  Payment (unsigned int set_id);
+
+  Payment(double value, string name);
+
+  Payment(double value, string name, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -33,6 +39,12 @@ public:
   virtual ~Payment ();
 
 private:
+	//Client's name
+	string name;
+
+	// Biil ID Number
+	const unsigned int id;
+
 	// ID number of the next payment requested
 	static unsigned int next_id;
 
@@ -49,25 +61,30 @@ private:
 	Hour due_hour;
 
 public:
+	//Operators overload
+	bool operator<(const Payment &p1) const;
+	bool operator==(const Payment &p1) const;
+
+	/**
+	* Get the value of name
+	* Client's name
+	* @return the value of name
+	*/
+	string getClientName();
+
+	/**
+	* Get the value of id
+	* Biil ID Number
+	* @return the value of id
+	*/
+	unsigned int getId() const;
+
 	/**
 	* Get the value of next_id
 	* ID number of the next payment requested
 	* @return the value of next_id
 	*/
-	unsigned int getNextId();
-
-	/**
-	* ++next_id
-	* ID number of the next payment requested
-	*/
-	void incNextId();
-
-	/**
-	* Create new id
-	* ID number of the next payment requested
-	* @return the value of new id
-	*/
-	virtual const unsigned int newId() = 0;
+	unsigned int getNextId() const;
 
 	/**
 	 * Set value of due
@@ -81,7 +98,7 @@ public:
 	  * Payment is due
 	  * @return the value of due
 	  */
-	 bool getDue();
+	 bool getDue() const;
 
 	 /**
 	 * Set value of due_date
@@ -95,7 +112,7 @@ public:
 	 * Payment due date
 	 * @return the value of due_date
 	 */
-	 Date getDueDate();
+	 Date getDueDate() const;
 
 	 /**
 	 * Get value of value
@@ -116,7 +133,7 @@ public:
 	 * Payment due hour
 	 * @return the value of due_hour
 	 */
-	 Hour getDueHour();
+	 Hour getDueHour() const;
 
 	 /**
 	 * Get string with payment type

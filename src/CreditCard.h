@@ -5,6 +5,8 @@
 
 #include <string>
 
+using namespace std;
+
 /**
   * class CreditCard
   * 
@@ -21,9 +23,12 @@ public:
   /**
    * Empty Constructor
    */
-  CreditCard (double value);
+   //ONLY FOR BST FIND PURPOSES
+  CreditCard (unsigned int id);
 
-  CreditCard (double value, bool due, Date due_date, Hour due_hour);
+  CreditCard(double value, string name);
+
+  CreditCard (double value, string name, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -45,19 +50,10 @@ public:
   //  
 
 private:
-	// ID number of the Payment
-	const unsigned int payment_id = 3;
-
 
 public:
-	/**
-	* Create new id
-	* ID number of the next payment requested
-	* @return the value of new id
-	*/
-	const unsigned int newId();
 
-	std::string getPayType();
+	string getPayType();
 };
 
 #endif // CREDITCARD_H

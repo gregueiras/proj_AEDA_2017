@@ -6,6 +6,7 @@
 #include <array>
 #include <queue>
 #include <unordered_set>/*tr1/*/
+#include "BST.h"
 
 #include "Services.h"
 
@@ -83,7 +84,7 @@ private:
 	vector<Services*> services_queue;
 
 	// Regist of payments of the company's clients
-	vector<Payment*> payments_regist;
+	BST<Payment*> payments_regist;
 
 	//Queue of next services
 	std::queue<Services*> next_services;
@@ -287,12 +288,19 @@ public:
 	void addService(Services *new_var, unsigned int client_id);
 
 	/**
-	 * Add new payment to payments_regist vector
+	 * Add new payment to payments_regist BST
 	 * Regist of payments of the company's clients
 	 * @param new_var the new payment
 	 * @param client_id the client who requested the new service
 	 */
 	void addPayment(Payment *new_var, unsigned int client_id);
+
+	/**
+	* Get payment pointer from payments_regist BST
+	* Regist of payments of the company's clients
+	* @param pay_id the payment id
+	*/
+	Payment* getPayment(unsigned int pay_id);
 
 	/**
 	 * Reads all the services from a file named "client" + id +"_services.txt"
@@ -317,9 +325,10 @@ public:
 	/**
 	 * Reads all the payments from a file named "client" + id +"_payments.txt"
 	 * @param id Id of the client to be read
+	 * @param ptr pointer of the client to be read
 	 * @return Payments read from file
 	 */
-	vector<Payment*> readPaymentsFromFile(const unsigned int id);
+	vector<Payment*> readPaymentsFromFile(Client* ptr, const unsigned int id);
 
 	/**
 	 * writes client to a file named "client" + id +".txt"

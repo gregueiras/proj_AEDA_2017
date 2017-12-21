@@ -298,7 +298,7 @@ public:
 	unsigned int getId() const;
 
 	unsigned int getNif() const;
-	
+
 	vector<Services*> getServices() const;
 
 	vector<Payment*> getPayment() const;

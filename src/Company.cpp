@@ -4,10 +4,12 @@ using namespace std;
 // Constructors/Destructors
 //  
 
-Company::Company() {
+Company::Company() : payments_regist(&BankTransfer(0, NULL)){
+	payments_regist.makeEmpty();
 }
 
-Company::Company(string nib, string entity, string reference) {
+Company::Company(string nib, string entity, string reference) : payments_regist(&BankTransfer(0, NULL)) {
+	payments_regist.makeEmpty();
 	this->nib = nib;
 	this->entity = entity;
 	this->reference = reference;
@@ -190,7 +192,13 @@ void Company::addPayment(Payment *new_var, unsigned int client_id) {
 	}
 
 	if (client_identified)
-		this->payments_regist.push_back(new_var);
+		this->payments_regist.insert(new_var);
+}
+
+Payment * Company::getPayment(unsigned int pay_id)
+{
+	Payment *ptr = &BankTransfer(pay_id);
+	return this->payments_regist.find(ptr);
 }
 
 vector<Services*> Company::readServicesFromFile(const unsigned int id) {
@@ -347,9 +355,9 @@ Client* Company::readClientFromFile(const unsigned int id) {
 	return ptr;
 }
 
-vector<Payment*> Company::readPaymentsFromFile(const unsigned int id) {
+vector<Payment*> Company::readPaymentsFromFile(Client* ptr, const unsigned int id) {
 	vector<Payment*> temp_v;
-	Payment* ptr = NULL;
+	Payment* pptr = NULL;
 	string temp, pay_type;
 	double value;
 	bool due;
@@ -389,15 +397,15 @@ vector<Payment*> Company::readPaymentsFromFile(const unsigned int id) {
 			//////////////////////
 
 			if (pay_type == "BankTransfer")
-				ptr = new BankTransfer(value, due, due_date, due_hour);
+				pptr = new BankTransfer(value, ptr->getName(), due, due_date, due_hour);
 			else if (pay_type == "CreditCard")
-				ptr = new CreditCard(value, due, due_date, due_hour);
+				pptr = new CreditCard(value, ptr->getName(), due, due_date, due_hour);
 			else if (pay_type == "DebitCard")
-				ptr = new DebitCard(value, due, due_date, due_hour);
+				pptr = new DebitCard(value, ptr->getName(), due, due_date, due_hour);
 			else if (pay_type == "EOMPayment")
-				ptr = new EOMPayment(value, due, due_date, due_hour);
+				pptr = new EOMPayment(value, ptr->getName(), due, due_date, due_hour);
 
-			temp_v.push_back(ptr);
+			temp_v.push_back(pptr);
 		}
 
 		input.close();
@@ -416,23 +424,22 @@ vector<Client*> Company::readClientsFromFile() {
 	Client* ptr = NULL;
 
 	do {
-		if (id > 1) {
-			s_tmp = readServicesFromFile(id - 1);
-			ptr->setServices(s_tmp);
-			//add services to company registers
-			this->services_queue.insert(this->services_queue.end(),
-					s_tmp.begin(), s_tmp.end());
-
-			p_tmp = readPaymentsFromFile(id - 1);
-			ptr->setPayment(p_tmp);
-			//add payments to company registers
-			this->payments_regist.insert(this->payments_regist.end(),
-					p_tmp.begin(), p_tmp.end());
-
-			c_tmp.push_back(ptr);
-		}
-
 		ptr = readClientFromFile(id);
+
+		s_tmp = readServicesFromFile(id);
+		ptr->setServices(s_tmp);
+		//add services to company registers
+		this->services_queue.insert(this->services_queue.end(),
+				s_tmp.begin(), s_tmp.end());
+
+		p_tmp = readPaymentsFromFile(ptr, id);
+		ptr->setPayment(p_tmp);
+		//add payments to company registers
+		for (size_t i = 0; i < p_tmp.size(); i++)
+			this->payments_regist.insert(p_tmp.at(i));
+
+		c_tmp.push_back(ptr);
+
 		++id;
 	} while (ptr != NULL);
 

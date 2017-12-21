@@ -3,9 +3,11 @@
 // Constructors/Destructors
 //  
 
-CreditCard::CreditCard (double value) : Payment::Payment(value), payment_id(newId()) {}
+CreditCard::CreditCard(unsigned int id) : Payment::Payment(id) {}
 
-CreditCard::CreditCard (double value, bool due, Date due_date, Hour due_hour) : Payment::Payment(value, due, due_date, due_hour) {}
+CreditCard::CreditCard (double value, string name) : Payment::Payment(value, name) {}
+
+CreditCard::CreditCard (double value, string name, bool due, Date due_date, Hour due_hour) : Payment::Payment(value, name, due, due_date, due_hour) {}
 
 CreditCard::~CreditCard () { }
 
@@ -13,13 +15,7 @@ CreditCard::~CreditCard () { }
 // Methods
 //  
 
-const unsigned int CreditCard::newId() {
-	const unsigned int newId = this->getNextId() * 10 + this->payment_id;
-	this->incNextId();
-	return newId;
-}
-
-std::string CreditCard::getPayType() {
+string CreditCard::getPayType() {
 	return "CreditCard";
 }
 

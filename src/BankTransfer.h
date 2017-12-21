@@ -5,6 +5,8 @@
 
 #include <string>
 
+using namespace std;
+
 /**
   * class BankTransfer
   * 
@@ -21,9 +23,12 @@ public:
   /**
    * Empty Constructor
    */
-  BankTransfer (double value);
+   //ONLY FOR BST FIND PURPOSES
+	BankTransfer(unsigned int id);
 
-  BankTransfer(double value, bool due, Date due_date, Hour due_hour);
+	BankTransfer (double value, string name);
+
+	BankTransfer(double value, string name, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -45,18 +50,9 @@ public:
   //  
 
 private:
-	// ID number of the Payment
-	const unsigned int payment_id = 5;
 
 public:
-	/**
-	* Create new id
-	* ID number of the next payment requested
-	* @return the value of new id
-	*/
-	const unsigned int newId();
-
-	std::string getPayType();
+	string getPayType();
 
 
 };

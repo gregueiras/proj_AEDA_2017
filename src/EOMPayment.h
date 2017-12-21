@@ -5,6 +5,8 @@
 
 #include <string>
 
+using namespace std;
+
 /**
   * class EOMPayment
   * 
@@ -21,9 +23,12 @@ public:
   /**
    * Empty Constructor
    */
-  EOMPayment (double value);
+   //ONLY FOR BST FIND PURPOSES
+  EOMPayment (unsigned int id);
 
-  EOMPayment(double value, bool due, Date due_date, Hour due_hour);
+  EOMPayment(double value, string name);
+
+  EOMPayment(double value, string name, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -45,19 +50,10 @@ public:
   //  
 
 private:
-	// ID number of the Payment
-	const unsigned int payment_id = 5;
 
 public:
-	/**
-	* Create new id
-	* ID number of the next payment requested
-	* @return the value of new id
-	*/
-	const unsigned int newId();
-
-	std::string getPayType();
-
+	
+	string getPayType();
 
 };
 

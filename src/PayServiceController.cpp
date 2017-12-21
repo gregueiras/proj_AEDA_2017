@@ -118,7 +118,7 @@ unsigned long PayServiceController::getCreditCardNumber() {
 	return creditCardNumber;
 }
 
-int PayServiceController::getAmountToPay() {
+double PayServiceController::getAmountToPay() {
 	return amountToPay;
 	
 }
