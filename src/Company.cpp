@@ -427,6 +427,9 @@ vector<Client*> Company::readClientsFromFile() {
 	do {
 		ptr = readClientFromFile(id);
 
+		if (ptr == NULL)
+			break;
+
 		s_tmp = readServicesFromFile(id);
 		ptr->setServices(s_tmp);
 		//add services to company registers
@@ -435,10 +438,11 @@ vector<Client*> Company::readClientsFromFile() {
 
 		p_tmp = readPaymentsFromFile(ptr, id);
 		ptr->setPayment(p_tmp);
+
 		//add payments to company registers
 		for (size_t i = 0; i < p_tmp.size(); i++) 
 			this->payments_regist.insert(PaymentRecord(ptr->getName(), p_tmp.at(i)));
-
+		
 		c_tmp.push_back(ptr);
 
 		++id;

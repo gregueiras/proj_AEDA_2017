@@ -34,14 +34,18 @@ int main() {
 //	cout << "Utilizador pessoal" << endl;
 //	cout << "ID: " << p1->getId() << endl;
 //	cout << "pass: " << p1->getPass() << endl;
-
+	
 	Company* c1 = new Company();
+	
 	c1->readCompanyFromFile();
+	
 
 	//c1->addClient(p1);
 //
 	c1->readClientsFromFile();
+	
 	c1->readVehiclesFromFile();
+	
 
 
 	//cout << c1->getNib() << endl;
@@ -50,8 +54,8 @@ int main() {
 //	sortServicesController->menu();
 
 	EnterController enter = EnterController(c1);
+	
 	enter.menu();
-
 
 	c1->writeCompanyToFile();
 	c1->writeClientsToFile();
