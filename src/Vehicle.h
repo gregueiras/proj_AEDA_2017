@@ -14,7 +14,7 @@
 
 class Vehicle {
 public:
-	std::string name;
+	std::string plate;
 	std::string brand;
 	std::string model;
 	Date birthday;
@@ -23,8 +23,8 @@ public:
 	bool available;
 
 	Vehicle();
-	Vehicle(std::string name, std::string brand, std::string model, Date birthday, Hour expectable_time, Date maintenance);
-	Vehicle(std::string name, std::string brand, std::string model);
+	Vehicle(std::string plate, std::string brand, std::string model, Date birthday, Hour expectable_time, Date maintenance);
+	Vehicle(std::string plate, std::string brand, std::string model);
 
 
 	virtual ~Vehicle();
@@ -61,12 +61,12 @@ public:
 		this->model = model;
 	}
 
-	const std::string& getName() const {
-		return name;
+	const std::string& getPlate() const {
+		return plate;
 	}
 
-	void setName(const std::string& name) {
-		this->name = name;
+	void setPlate(const std::string& name) {
+		this->plate = name;
 	}
 
 	const Date& getMaintenance() const {

@@ -28,20 +28,20 @@ bool Vehicle::operator <(const Vehicle& v1) const {
 
 bool Vehicle::operator ==(const Vehicle& v1) const {
 
-	return ( (this->brand == v1.brand) && (this->model == v1.model) && (this->name == v1.name) );
+	return ( (this->brand == v1.brand) && (this->model == v1.model) && (this->plate == v1.plate) );
 }
 
 std::ostream& operator <<(std::ostream& os, const Vehicle& dt) {
 
-	os << dt.name << ": " << dt.brand << " " << dt.model << std::endl << "Birthday: "
+	os << dt.plate << ": " << dt.brand << " " << dt.model << std::endl << "Birthday: "
 			<< dt.birthday << " Expectable time: " << dt.expectable_time << std::endl;
 	return os;
 }
 
-Vehicle::Vehicle(std::string name, std::string brand, std::string model,
+Vehicle::Vehicle(std::string plate, std::string brand, std::string model,
 		Date birthday, Hour expectable_time, Date maintenance) {
 
-	this->name = name;
+	this->plate = plate;
 	this->brand = brand;
 	this->model = model;
 	this->birthday = birthday;
@@ -50,8 +50,9 @@ Vehicle::Vehicle(std::string name, std::string brand, std::string model,
 	this->available = true;
 }
 
-Vehicle::Vehicle(std::string name, std::string brand, std::string model) {
-	this->name = name;
+Vehicle::Vehicle(std::string plate, std::string brand, std::string model) {
+	this->plate = plate;
 	this->brand = brand;
 	this->model = model;
+	this->available = true;
 }

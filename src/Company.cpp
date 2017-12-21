@@ -580,43 +580,137 @@ bool Company::removeVehicleMaintenance(string brand, string model, string name) 
 
 	vector <Vehicle> temp;
 
-	Vehicle toFound(name, brand, model);
+	Vehicle toFound(plate, brand, model);
 	Vehicle v_temp;
 	bool found = false;
 
-	while ( (this->vehicles.empty() == false) && (found == false) )
+	while ((!this->vehicles.empty()) && (found == false))
 	{
 		v_temp = vehicles.top();
-
 		vehicles.pop();
 
 		if ( (v_temp == toFound) && (v_temp.isAvailable()) )
 		{
-			if (v_temp.isAvailable())
-			{
-				v_temp.setAvailable(false);
-				found = true;
-			}
+			v_temp.setAvailable(false);
+			found = true;
 		}
-
 		temp.push_back(v_temp);
-
-
 	}
 
-	unsigned c = 0;
 	for (unsigned int i = 0; i < temp.size(); i++)
-	{
-
 		vehicles.push(temp.at(i));
 
-	}
-
 	return found;
-
 }
 
-bool Company::addVehicle(Vehicle v1) {
+bool Company::addVehicle(Vehicle v1)
+{
 
-	vehicles.push(v1);
+	priority_queue<Vehicle> temp = this->vehicles;
+
+	while (!temp.empty())
+	{
+		Vehicle attempt = temp.top();
+
+		if (attempt == v1)
+			return false;
+
+		temp.pop();
+	}
+
+	this->vehicles.push(v1);
+	return true;
+}
+
+bool Company::writeVehiclesToFile()
+{
+
+	string file = "vehicles.txt";
+	ofstream output(file);
+
+	if (output.is_open())
+	{
+
+		while (!this->vehicles.empty())
+		{
+			Vehicle temp = vehicles.top();
+
+			output << temp.getPlate() << std::endl;
+
+			output << temp.getBrand() << std::endl;
+
+			output << temp.getModel() << std::endl;
+
+			output << temp.getMaintenance() << std::endl;
+
+			output << temp.getBirthday() << std::endl;
+
+			output << temp.getExpectableTime() << std::endl;
+
+			output << ((temp.isAvailable()) ? "1" : "0") << std::endl
+				   << std::endl;
+
+			vehicles.pop();
+		}
+	}
+	else
+		return false;
+
+	output.close();
+	return true;
+}
+
+bool Company::readVehiclesFromFile()
+{
+	string plate, brand, model, temp;
+
+	string file = "vehicles.txt";
+
+	ifstream input;
+	input.open(file);
+	if (input.is_open())
+	{
+
+		while (!input.eof())
+		{
+
+			getline(input, plate);
+
+			if (plate == "")
+				break;
+			getline(input, brand);
+
+			getline(input, model);
+
+			getline(input, temp);
+			Date maintenance(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
+							 stoul(temp.substr(6)));
+
+			getline(input, temp);
+			Date birthday(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
+						  stoul(temp.substr(6)));
+
+			getline(input, temp);
+			Hour expectable_time(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
+
+			getline(input, temp);
+			bool available;
+
+			((temp[0] == 1) ? available = true : available = false);
+
+			Vehicle v1 = Vehicle(plate, brand, model, birthday, expectable_time, maintenance);
+
+			vehicles.push(v1);
+
+			getline(input, temp);
+		}
+
+		input.close();
+
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
