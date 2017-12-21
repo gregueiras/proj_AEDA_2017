@@ -23,12 +23,10 @@ public:
   /**
    * Empty Constructor
    */
-   //ONLY FOR BST FIND PURPOSES
-  DebitCard (unsigned int id);
 
-  DebitCard(double value, string name);
+  DebitCard(double value);
 
-  DebitCard (double value, string name, bool due, Date due_date, Hour due_hour);
+  DebitCard (double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor

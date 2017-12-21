@@ -23,7 +23,7 @@ LoginController::~LoginController() {
 void LoginController::menu() {
 	theView->printInitialMessage();
 	getUserCredentials();
-	user = company->getClient(id, pass);
+	user = company->getClient(id);
 
 	if (user != NULL) {
 		newClientMenu();

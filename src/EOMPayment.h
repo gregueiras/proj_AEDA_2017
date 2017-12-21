@@ -23,12 +23,10 @@ public:
   /**
    * Empty Constructor
    */
-   //ONLY FOR BST FIND PURPOSES
-  EOMPayment (unsigned int id);
 
-  EOMPayment(double value, string name);
+  EOMPayment(double value);
 
-  EOMPayment(double value, string name, bool due, Date due_date, Hour due_hour);
+  EOMPayment(double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor

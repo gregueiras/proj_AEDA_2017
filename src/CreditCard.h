@@ -23,12 +23,10 @@ public:
   /**
    * Empty Constructor
    */
-   //ONLY FOR BST FIND PURPOSES
-  CreditCard (unsigned int id);
 
-  CreditCard(double value, string name);
+  CreditCard(double value);
 
-  CreditCard (double value, string name, bool due, Date due_date, Hour due_hour);
+  CreditCard (double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor

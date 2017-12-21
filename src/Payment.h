@@ -26,12 +26,9 @@ public:
    * Constructor
    */
 
-	//ONLY FOR BST FIND PURPOSES
-  Payment (unsigned int set_id);
+  Payment(double value);
 
-  Payment(double value, string name);
-
-  Payment(double value, string name, bool due, Date due_date, Hour due_hour);
+  Payment(double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -39,9 +36,6 @@ public:
   virtual ~Payment ();
 
 private:
-	//Client's name
-	string name;
-
 	// Biil ID Number
 	const unsigned int id;
 
@@ -61,16 +55,6 @@ private:
 	Hour due_hour;
 
 public:
-	//Operators overload
-	bool operator<(const Payment &p1) const;
-	bool operator==(const Payment &p1) const;
-
-	/**
-	* Get the value of name
-	* Client's name
-	* @return the value of name
-	*/
-	string getClientName();
 
 	/**
 	* Get the value of id
@@ -139,7 +123,51 @@ public:
 	 * Get string with payment type
 	 * @return subclass payment 
 	 */
-	 virtual std::string getPayType() = 0;
+	 virtual string getPayType() = 0;
+};
+
+class PaymentRecord {
+	// Biil ID Number
+	unsigned int id;
+
+	//Client's name
+	string name;
+
+	//Pointer to Payment
+	Payment* ptr;
+
+public:
+	//Constructor
+	PaymentRecord(string name, Payment* ptr);
+
+	PaymentRecord(unsigned int ident);
+
+	/**
+	* Get the value of name
+	* Client's name
+	* @return the value of name
+	*/
+	string getName() const;
+
+	/**
+	* Set the value of name
+	* Client's name
+	* @param new_var the value of name
+	*/
+	void setName(string new_var);
+
+	unsigned int getId() const;
+
+	bool getDue() const;
+
+	Date getDueDate() const;
+
+	Hour getDueHour() const;
+
+	//Operators overload
+	bool operator<(const PaymentRecord &pr1) const;
+	bool operator==(const PaymentRecord &pr1) const;
+
 };
 
 #endif // PAYMENT_H

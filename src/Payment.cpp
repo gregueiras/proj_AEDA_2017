@@ -2,20 +2,17 @@
 
 unsigned int Payment::next_id = 1;
 
+//PAYMENTS
+
 // Constructors/Destructors
 //  
 
-Payment::Payment(unsigned int set_id) : id(set_id) {}
-
-Payment::Payment(double value, string name) : id(next_id++) {
-	this->name = name;
+Payment::Payment(double value) : id(next_id++) {
 	this->value = value;
 	this->due = false;
-
 }
 
-Payment::Payment(double value, string name, bool due, Date due_date, Hour due_hour) : id(next_id++) {
-	this->name = name;
+Payment::Payment(double value, bool due, Date due_date, Hour due_hour) : id(next_id++) {
 	this->value = value;
 	this->due = due;
 	this->due_date = due_date;
@@ -27,27 +24,6 @@ Payment::~Payment() { }
 //  
 // Methods
 //  
-
-bool Payment::operator<(const Payment & p1) const
-{
-	if (name == p1.name) {
-		if(this->due_date == p1.due_date)
-			return (this->due_hour < p1.due_hour);
-		else
-			return (this->due_date < p1.due_date);
-	}	
-	else
-		return (name < p1.name);
-}
-
-bool Payment::operator==(const Payment & p1) const
-{
-	return (this->id == p1.id);
-}
-
-string Payment::getClientName() {
-	return this->name;
-}
 
 unsigned int Payment::getId() const
 {
@@ -94,4 +70,65 @@ Hour Payment::getDueHour() const{
 // Other methods
 //  
 
+//PAYMENTS RECORD
 
+PaymentRecord::PaymentRecord(string name, Payment * ptr)
+{
+	this->name = name;
+	this->ptr = ptr;
+
+	if (ptr != NULL)
+		this->id = ptr->getId();
+}
+
+PaymentRecord::PaymentRecord(unsigned int ident)
+{
+	id = ident;
+}
+
+string PaymentRecord::getName() const
+{
+	return name;
+}
+
+void PaymentRecord::setName(string new_var)
+{
+	name = new_var;
+}
+
+unsigned int PaymentRecord::getId() const
+{
+	return ptr->getId();
+}
+
+bool PaymentRecord::getDue() const
+{
+	return ptr->getDue();
+}
+
+Date PaymentRecord::getDueDate() const
+{
+	return ptr->getDueDate();
+}
+
+Hour PaymentRecord::getDueHour() const
+{
+	return ptr->getDueHour();
+}
+
+bool PaymentRecord::operator<(const PaymentRecord & pr1) const
+{
+	if (name == pr1.name) {
+		if (this->ptr->getDueDate() == pr1.ptr->getDueDate())
+			return (this->ptr->getDueHour() < pr1.ptr->getDueHour());
+		else
+			return (this->ptr->getDueDate() < pr1.ptr->getDueDate());
+	}
+	else
+		return (name < pr1.name);
+}
+
+bool PaymentRecord::operator==(const PaymentRecord & pr1) const
+{
+	return (this->id == pr1.id);
+}

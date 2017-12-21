@@ -84,7 +84,7 @@ private:
 	vector<Services*> services_queue;
 
 	// Regist of payments of the company's clients
-	BST<Payment*> payments_regist;
+	BST<PaymentRecord> payments_regist;
 
 	//Queue of next services
 	std::queue<Services*> next_services;
@@ -225,9 +225,8 @@ public:
 	 * Vector of clients of the company
 	 * @param new_var the client, if found
 	 * @param id the client id
-	 * @param pass the client pass
 	 */
-	Client * getClient(unsigned int id, string pass) const;
+	Client * getClient(unsigned int id) const;
 
 	/**
 	 * Set the vector of services_queue
@@ -296,11 +295,11 @@ public:
 	void addPayment(Payment *new_var, unsigned int client_id);
 
 	/**
-	* Get payment pointer from payments_regist BST
+	* Get payment record pointer from payments_regist BST
 	* Regist of payments of the company's clients
 	* @param pay_id the payment id
 	*/
-	Payment* getPayment(unsigned int pay_id);
+	PaymentRecord getPayment(unsigned int pay_id);
 
 	/**
 	 * Reads all the services from a file named "client" + id +"_services.txt"

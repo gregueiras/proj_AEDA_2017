@@ -3,11 +3,9 @@
 // Constructors/Destructors
 //  
 
-EOMPayment::EOMPayment(unsigned int id) : Payment::Payment(id) {}
+EOMPayment::EOMPayment (double value) : Payment::Payment(value) {}
 
-EOMPayment::EOMPayment (double value, string name) : Payment::Payment(value, name) {}
-
-EOMPayment::EOMPayment(double value, string name, bool due, Date due_date, Hour due_hour) : Payment::Payment(value, name, due, due_date, due_hour) {}
+EOMPayment::EOMPayment(double value, bool due, Date due_date, Hour due_hour) : Payment::Payment(value, due, due_date, due_hour) {}
 
 EOMPayment::~EOMPayment () { }
 

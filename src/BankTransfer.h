@@ -23,12 +23,10 @@ public:
   /**
    * Empty Constructor
    */
-   //ONLY FOR BST FIND PURPOSES
-	BankTransfer(unsigned int id);
 
-	BankTransfer (double value, string name);
+	BankTransfer (double value);
 
-	BankTransfer(double value, string name, bool due, Date due_date, Hour due_hour);
+	BankTransfer(double value, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor

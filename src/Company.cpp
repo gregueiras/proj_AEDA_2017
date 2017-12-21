@@ -4,11 +4,11 @@ using namespace std;
 // Constructors/Destructors
 //  
 
-Company::Company() : payments_regist(&BankTransfer(0, NULL)){
+Company::Company() : payments_regist(PaymentRecord(0)){
 	payments_regist.makeEmpty();
 }
 
-Company::Company(string nib, string entity, string reference) : payments_regist(&BankTransfer(0, NULL)) {
+Company::Company(string nib, string entity, string reference) : payments_regist(PaymentRecord(0)) {
 	payments_regist.makeEmpty();
 	this->nib = nib;
 	this->entity = entity;
@@ -133,13 +133,11 @@ bool Company::addClient(Client *new_var) {
 	return true;
 }
 
-Client * Company::getClient(unsigned int id, string pass) const {
+Client * Company::getClient(unsigned int id) const {
 	int clients_size = this->clients.size();
 	for (int i = 0; i < clients_size; ++i) {
-		if (id == this->clients.at(i)->getId() && this->clients.at(i)->getVisibility() == true
-				&& pass == this->clients.at(i)->getPass()) {
+		if (id == this->clients.at(i)->getId() && this->clients.at(i)->getVisibility() == true) {
 			return this->clients.at(i);
-
 		}
 	}
 	return NULL;
@@ -176,6 +174,7 @@ void Company::addService(Services *new_var, unsigned int client_id) {
 
 void Company::addPayment(Payment *new_var, unsigned int client_id) {
 	bool client_identified = false;
+	string name;
 
 	int clients_size = this->getClients().size();
 	for (int i = 0; i < clients_size; i++) {
@@ -185,20 +184,22 @@ void Company::addPayment(Payment *new_var, unsigned int client_id) {
 		if (i_Client->getId() == client_id) {
 			//client is identified 
 			client_identified = true;
+			name = i_Client->getName();
 			//add service to client
 			i_Client->addPayment(new_var);
 			break;
 		}
 	}
 
-	if (client_identified)
-		this->payments_regist.insert(new_var);
+	if (client_identified) {
+		this->payments_regist.insert(PaymentRecord(name, new_var));
+	}
+		
 }
 
-Payment * Company::getPayment(unsigned int pay_id)
+PaymentRecord Company::getPayment(unsigned int pay_id)
 {
-	Payment *ptr = &BankTransfer(pay_id);
-	return this->payments_regist.find(ptr);
+	return this->payments_regist.find(PaymentRecord(pay_id));
 }
 
 vector<Services*> Company::readServicesFromFile(const unsigned int id) {
@@ -397,13 +398,13 @@ vector<Payment*> Company::readPaymentsFromFile(Client* ptr, const unsigned int i
 			//////////////////////
 
 			if (pay_type == "BankTransfer")
-				pptr = new BankTransfer(value, ptr->getName(), due, due_date, due_hour);
+				pptr = new BankTransfer(value, due, due_date, due_hour);
 			else if (pay_type == "CreditCard")
-				pptr = new CreditCard(value, ptr->getName(), due, due_date, due_hour);
+				pptr = new CreditCard(value, due, due_date, due_hour);
 			else if (pay_type == "DebitCard")
-				pptr = new DebitCard(value, ptr->getName(), due, due_date, due_hour);
+				pptr = new DebitCard(value, due, due_date, due_hour);
 			else if (pay_type == "EOMPayment")
-				pptr = new EOMPayment(value, ptr->getName(), due, due_date, due_hour);
+				pptr = new EOMPayment(value, due, due_date, due_hour);
 
 			temp_v.push_back(pptr);
 		}
@@ -435,8 +436,8 @@ vector<Client*> Company::readClientsFromFile() {
 		p_tmp = readPaymentsFromFile(ptr, id);
 		ptr->setPayment(p_tmp);
 		//add payments to company registers
-		for (size_t i = 0; i < p_tmp.size(); i++)
-			this->payments_regist.insert(p_tmp.at(i));
+		for (size_t i = 0; i < p_tmp.size(); i++) 
+			this->payments_regist.insert(PaymentRecord(ptr->getName(), p_tmp.at(i)));
 
 		c_tmp.push_back(ptr);
 
