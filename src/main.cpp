@@ -30,7 +30,7 @@ int main() {
 
 	//Company *c1 = new Company("2020 0000 4030 6790 3012 3", "10345",
 	//		"129654342");
-	
+
 //	cout << "Utilizador pessoal" << endl;
 //	cout << "ID: " << p1->getId() << endl;
 //	cout << "pass: " << p1->getPass() << endl;
@@ -41,8 +41,8 @@ int main() {
 	//c1->addClient(p1);
 //
 	c1->readClientsFromFile();
+	c1->readVehiclesFromFile();
 
-	
 
 	//cout << c1->getNib() << endl;
 
@@ -52,9 +52,10 @@ int main() {
 	EnterController enter = EnterController(c1);
 	enter.menu();
 
-	
+
 	c1->writeCompanyToFile();
 	c1->writeClientsToFile();
-	
+	c1->writeVehiclesToFile();
+
 
 }

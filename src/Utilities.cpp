@@ -140,3 +140,8 @@ string Utilities::readLine() {
 	getline(cin, line);
 	return line;
 }
+
+bool Sort::auxSortbyMaintenanceDate(Vehicle a, Vehicle b) {
+
+	return (a.getMaintenance() < b.getMaintenance());
+}

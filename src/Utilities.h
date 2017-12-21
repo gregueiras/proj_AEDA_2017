@@ -13,6 +13,7 @@
 #include <time.h> 
 
 #include "Services.h"
+#include "Vehicle.h"
 
 using namespace std;
 
@@ -48,6 +49,7 @@ bool Utilities::readString(T &s) {
 }
 
 namespace Sort {
+
 /**
  * Auxiliary for SortByDate
  * @param a1 lhs service
@@ -87,6 +89,14 @@ bool auxSortbyDistance(Services* a, Services* b);
  * @return True a1 ID < a2 ID, false if a1 ID >= a2 ID
  */
 bool auxSortbyID(Services* a, Services* b);
+
+/**
+ * Auxiliary for SortbyMaintenanceDate
+ * @param a lhs vehicle
+ * @param b rhs vehicle
+ * @return True if a has to go to maintenance before b, false otherwise
+ */
+bool auxSortbyMaintenanceDate(Vehicle a, Vehicle b);
 
 }
 
