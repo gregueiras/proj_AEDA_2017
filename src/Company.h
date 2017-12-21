@@ -370,22 +370,22 @@ public:
 	bool removeVehicleMaintenance(string brand, string model, string plate);
 
 	/**
-		 * Try to add vehicle, to vehicles priority_queue
-		 * @param v1 vehicle to be added
-		 * @return true if vehicle didn't exist in priority_queue, false if it already existed
-		 */
+	* Try to add vehicle, to vehicles priority_queue
+	* @param v1 vehicle to be added
+	* @return true if vehicle didn't exist in priority_queue, false if it already existed
+	*/
 	bool addVehicle(Vehicle v1);
 
 	/**
-		 * writes vehicles to a file named "vehicles.txt"
-		 * @return True in case of success, false if failure
-		 */
+	* writes vehicles to a file named "vehicles.txt"
+	* @return True in case of success, false if failure
+	*/
 	bool writeVehiclesToFile();
 
 	/**
-		 * read vehicles from a file named "vehicles.txt"
-		 * @return True in case of success, false if failure
-		 */
+	* read vehicles from a file named "vehicles.txt"
+	* @return True in case of success, false if failure
+	*/
 	bool readVehiclesFromFile();
 };
 

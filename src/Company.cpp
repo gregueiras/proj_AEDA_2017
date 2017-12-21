@@ -577,7 +577,7 @@ void Company::payAllDues(Client * c) {
 	}
 }
 
-bool Company::removeVehicleMaintenance(string brand, string model, string name) {
+bool Company::removeVehicleMaintenance(string brand, string model, string plate) {
 
 	vector <Vehicle> temp;
 
