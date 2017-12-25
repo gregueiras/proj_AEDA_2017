@@ -12,6 +12,7 @@
 #include "EnterController.h"
 #include "LoginController.h"
 #include "NewUserController.h"
+#include "LoginController.h"
 
 class EnterController {
 private:

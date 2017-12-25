@@ -13,7 +13,6 @@
 #include "ClientMenuController.h"
 #include "EnterController.h"
 #include "Client.h"
-class ClientMenuController;
 
 class LoginController {
 private:

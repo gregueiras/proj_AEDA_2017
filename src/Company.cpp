@@ -4,11 +4,15 @@ using namespace std;
 // Constructors/Destructors
 //  
 
-Company::Company() : payments_regist(PaymentRecord(0)){
+Company::Company() :
+		payments_regist(PaymentRecord(0)) {
 	payments_regist.makeEmpty();
+	admin_id = 0;
+	admin_pass = "0";
 }
 
-Company::Company(string nib, string entity, string reference) : payments_regist(PaymentRecord(0)) {
+Company::Company(string nib, string entity, string reference) :
+		payments_regist(PaymentRecord(0)) {
 	payments_regist.makeEmpty();
 	this->nib = nib;
 	this->entity = entity;
@@ -34,11 +38,9 @@ void Company::setCurrentHour(Hour new_var) {
 	this->current_hour = new_var;
 }
 
-int Company::findClient(Client * c)
-{
+int Company::findClient(Client * c) {
 	int pos = -1;
-	for (size_t i = 0; i < clients.size(); i++)
-	{
+	for (size_t i = 0; i < clients.size(); i++) {
 		if (clients.at(i)->getId() == c->getId()) {
 			pos = i;
 			break;
@@ -47,8 +49,7 @@ int Company::findClient(Client * c)
 	return pos;
 }
 
-void Company::deactivateClientRecord(Client * c)
-{
+void Company::deactivateClientRecord(Client * c) {
 	c->setVisibility(false);
 
 	int pos = findClient(c);
@@ -61,8 +62,7 @@ void Company::deactivateClientRecord(Client * c)
 	clients.erase(clients.begin() + pos);
 }
 
-void Company::activateClientRecord(Client * c)
-{
+void Company::activateClientRecord(Client * c) {
 	auto it = inactive_clients.find(ClientRecord(c));
 
 	if (it == inactive_clients.end())
@@ -136,7 +136,8 @@ bool Company::addClient(Client *new_var) {
 Client * Company::getClient(unsigned int id) const {
 	int clients_size = this->clients.size();
 	for (int i = 0; i < clients_size; ++i) {
-		if (id == this->clients.at(i)->getId() && this->clients.at(i)->getVisibility() == true) {
+		if (id == this->clients.at(i)->getId()
+				&& this->clients.at(i)->getVisibility() == true) {
 			return this->clients.at(i);
 		}
 	}
@@ -194,11 +195,10 @@ void Company::addPayment(Payment *new_var, unsigned int client_id) {
 	if (client_identified) {
 		this->payments_regist.insert(PaymentRecord(name, new_var));
 	}
-		
+
 }
 
-PaymentRecord Company::getPayment(unsigned int pay_id)
-{
+PaymentRecord Company::getPayment(unsigned int pay_id) {
 	return this->payments_regist.find(PaymentRecord(pay_id));
 }
 
@@ -356,7 +356,8 @@ Client* Company::readClientFromFile(const unsigned int id) {
 	return ptr;
 }
 
-vector<Payment*> Company::readPaymentsFromFile(Client* ptr, const unsigned int id) {
+vector<Payment*> Company::readPaymentsFromFile(Client* ptr,
+		const unsigned int id) {
 	vector<Payment*> temp_v;
 	Payment* pptr = NULL;
 	string temp, pay_type;
@@ -433,16 +434,17 @@ vector<Client*> Company::readClientsFromFile() {
 		s_tmp = readServicesFromFile(id);
 		ptr->setServices(s_tmp);
 		//add services to company registers
-		this->services_queue.insert(this->services_queue.end(),
-				s_tmp.begin(), s_tmp.end());
+		this->services_queue.insert(this->services_queue.end(), s_tmp.begin(),
+				s_tmp.end());
 
 		p_tmp = readPaymentsFromFile(ptr, id);
 		ptr->setPayment(p_tmp);
 
 		//add payments to company registers
-		for (size_t i = 0; i < p_tmp.size(); i++) 
-			this->payments_regist.insert(PaymentRecord(ptr->getName(), p_tmp.at(i)));
-		
+		for (size_t i = 0; i < p_tmp.size(); i++)
+			this->payments_regist.insert(
+					PaymentRecord(ptr->getName(), p_tmp.at(i)));
+
 		c_tmp.push_back(ptr);
 
 		++id;
@@ -454,8 +456,7 @@ vector<Client*> Company::readClientsFromFile() {
 }
 
 bool Company::writeClientsToFile() {
-	for (size_t i = 0; i < this->getClients().size(); i++)
-	{
+	for (size_t i = 0; i < this->getClients().size(); i++) {
 		if (!(this->getClients().at(i)->writeClientToFile()))
 			return false;
 
@@ -463,8 +464,6 @@ bool Company::writeClientsToFile() {
 			return false;
 
 	}
-
-
 
 	return true;
 }
@@ -526,22 +525,24 @@ bool Company::readCompanyFromFile() {
 		//get current_date and current_hour
 		getline(input, temp);
 		try {
-			Date current_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
-		} catch (DateInvalidDay& d){
+			Date current_date(stoul(temp.substr(0, 2)),
+					stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
+		} catch (DateInvalidDay& d) {
 			cout << "Error reading current day \n";
 			input.close();
 			return false;
-		} catch (DateInvalidMonth& d){
+		} catch (DateInvalidMonth& d) {
 			cout << "Error reading current month \n";
 			input.close();
 			return false;
-		} catch (DateInvalidYear& d){
+		} catch (DateInvalidYear& d) {
 			cout << "Error reading current year \n";
 			input.close();
 			return false;
 		}
 
-		Date current_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
+		Date current_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
+				stoul(temp.substr(6)));
 
 		this->setCurrentDate(current_date);
 		getline(input, temp);
@@ -581,21 +582,20 @@ void Company::payAllDues(Client * c) {
 	}
 }
 
-bool Company::removeVehicleMaintenance(string brand, string model, string plate) {
+bool Company::removeVehicleMaintenance(string brand, string model,
+		string plate) {
 
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 
 	Vehicle toFound(plate, brand, model);
 	Vehicle v_temp;
 	bool found = false;
 
-	while ((!this->vehicles.empty()) && (found == false))
-	{
+	while ((!this->vehicles.empty()) && (found == false)) {
 		v_temp = vehicles.top();
 		vehicles.pop();
 
-		if ( (v_temp == toFound) && (v_temp.isAvailable()) )
-		{
+		if ((v_temp == toFound) && (v_temp.isAvailable())) {
 			v_temp.setAvailable(false);
 			found = true;
 		}
@@ -608,13 +608,11 @@ bool Company::removeVehicleMaintenance(string brand, string model, string plate)
 	return found;
 }
 
-bool Company::addVehicle(Vehicle v1)
-{
+bool Company::addVehicle(Vehicle v1) {
 
 	priority_queue<Vehicle> temp = this->vehicles;
 
-	while (!temp.empty())
-	{
+	while (!temp.empty()) {
 		Vehicle attempt = temp.top();
 
 		if (attempt == v1)
@@ -627,17 +625,14 @@ bool Company::addVehicle(Vehicle v1)
 	return true;
 }
 
-bool Company::writeVehiclesToFile()
-{
+bool Company::writeVehiclesToFile() {
 
 	string file = "vehicles.txt";
 	ofstream output(file);
 
-	if (output.is_open())
-	{
+	if (output.is_open()) {
 
-		while (!this->vehicles.empty())
-		{
+		while (!this->vehicles.empty()) {
 			Vehicle temp = vehicles.top();
 
 			output << temp.getPlate() << std::endl;
@@ -653,31 +648,27 @@ bool Company::writeVehiclesToFile()
 			output << temp.getExpectableTime() << std::endl;
 
 			output << ((temp.isAvailable()) ? "1" : "0") << std::endl
-				   << std::endl;
+					<< std::endl;
 
 			vehicles.pop();
 		}
-	}
-	else
+	} else
 		return false;
 
 	output.close();
 	return true;
 }
 
-bool Company::readVehiclesFromFile()
-{
+bool Company::readVehiclesFromFile() {
 	string plate, brand, model, temp;
 
 	string file = "vehicles.txt";
 
 	ifstream input;
 	input.open(file);
-	if (input.is_open())
-	{
+	if (input.is_open()) {
 
-		while (!input.eof())
-		{
+		while (!input.eof()) {
 
 			getline(input, plate);
 
@@ -689,21 +680,23 @@ bool Company::readVehiclesFromFile()
 
 			getline(input, temp);
 			Date maintenance(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
-							 stoul(temp.substr(6)));
+					stoul(temp.substr(6)));
 
 			getline(input, temp);
 			Date birthday(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
-						  stoul(temp.substr(6)));
+					stoul(temp.substr(6)));
 
 			getline(input, temp);
-			Hour expectable_time(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
+			Hour expectable_time(stoul(temp.substr(0, 2)),
+					stoul(temp.substr(3)));
 
 			getline(input, temp);
 			bool available;
 
 			((temp[0] == 1) ? available = true : available = false);
 
-			Vehicle v1 = Vehicle(plate, brand, model, birthday, expectable_time, maintenance);
+			Vehicle v1 = Vehicle(plate, brand, model, birthday, expectable_time,
+					maintenance);
 
 			vehicles.push(v1);
 
@@ -713,9 +706,11 @@ bool Company::readVehiclesFromFile()
 		input.close();
 
 		return true;
-	}
-	else
-	{
+	} else {
 		return false;
 	}
+}
+
+bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
+	return (this->admin_id == admin_id && this->admin_pass == admin_pass);
 }

@@ -27,6 +27,8 @@ void LoginController::menu() {
 
 	if (user != NULL) {
 		newClientMenu();
+	} else if (company->checkAdminCredentials(id, pass)) {
+		//	newAdminMenu();
 	} else {
 		theView->printUserNotFound();
 		menu();

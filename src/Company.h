@@ -23,20 +23,18 @@
 
 #include "Vehicle.h"
 
-struct inactiveClientsHash
-{
-	int operator() (const ClientRecord& cr) const
-	{
+struct inactiveClientsHash {
+	int operator()(const ClientRecord& cr) const {
 		return cr.getId();
 	}
 
-	bool operator() (const ClientRecord& cr1, const ClientRecord& cr2) const
-	{
+	bool operator()(const ClientRecord& cr1, const ClientRecord& cr2) const {
 		return (cr1.getId() == cr2.getId());
 	}
 };
 
-typedef /*tr1::*/unordered_set<ClientRecord, inactiveClientsHash, inactiveClientsHash> HashTabClientRecord;
+typedef/*tr1::*/unordered_set<ClientRecord, inactiveClientsHash,
+		inactiveClientsHash> HashTabClientRecord;
 
 /**
  * class Company
@@ -108,6 +106,10 @@ private:
 	//Hour
 	Hour current_hour;
 
+	std::string admin_pass;
+
+	unsigned int admin_id;
+
 public:
 
 	/**
@@ -139,22 +141,22 @@ public:
 	void setCurrentHour(Hour new_var);
 
 	/**
-	* Get the position of client c from clients vector
-	* @param c the client to find
-	* @return the position if client c
-	*/
+	 * Get the position of client c from clients vector
+	 * @param c the client to find
+	 * @return the position if client c
+	 */
 	int findClient(Client* c);
 
 	/**
-	* Get a client from inactive_clients  hash table to clients vector
-	* @param c the client in question
-	*/
+	 * Get a client from inactive_clients  hash table to clients vector
+	 * @param c the client in question
+	 */
 	void deactivateClientRecord(Client* c);
 
 	/**
-	* Get a client from clients vector to inactive_clients hash table
-	* @param c the client in question
-	*/
+	 * Get a client from clients vector to inactive_clients hash table
+	 * @param c the client in question
+	 */
 	void activateClientRecord(Client* c);
 
 	/**
@@ -242,7 +244,6 @@ public:
 	 */
 	vector<Services*> getServicesQueue() const;
 
-
 	/**
 	 * Get the queue of next services
 	 * Queue of  next services of the company
@@ -295,10 +296,10 @@ public:
 	void addPayment(Payment *new_var, unsigned int client_id);
 
 	/**
-	* Get payment record pointer from payments_regist BST
-	* Regist of payments of the company's clients
-	* @param pay_id the payment id
-	*/
+	 * Get payment record pointer from payments_regist BST
+	 * Regist of payments of the company's clients
+	 * @param pay_id the payment id
+	 */
 	PaymentRecord getPayment(unsigned int pay_id);
 
 	/**
@@ -370,23 +371,25 @@ public:
 	bool removeVehicleMaintenance(string brand, string model, string plate);
 
 	/**
-	* Try to add vehicle, to vehicles priority_queue
-	* @param v1 vehicle to be added
-	* @return true if vehicle didn't exist in priority_queue, false if it already existed
-	*/
+	 * Try to add vehicle, to vehicles priority_queue
+	 * @param v1 vehicle to be added
+	 * @return true if vehicle didn't exist in priority_queue, false if it already existed
+	 */
 	bool addVehicle(Vehicle v1);
 
 	/**
-	* writes vehicles to a file named "vehicles.txt"
-	* @return True in case of success, false if failure
-	*/
+	 * writes vehicles to a file named "vehicles.txt"
+	 * @return True in case of success, false if failure
+	 */
 	bool writeVehiclesToFile();
 
 	/**
-	* read vehicles from a file named "vehicles.txt"
-	* @return True in case of success, false if failure
-	*/
+	 * read vehicles from a file named "vehicles.txt"
+	 * @return True in case of success, false if failure
+	 */
 	bool readVehiclesFromFile();
+
+	bool checkAdminCredentials(unsigned int admin_id, string admin_pass);
 };
 
 #endif // COMPANY_H
