@@ -363,6 +363,7 @@ vector<Payment*> Company::readPaymentsFromFile(Client* ptr,
 	string temp, pay_type;
 	double value;
 	bool due;
+	unsigned int service_id;
 
 	string file = "client" + to_string(id) + "_payments.txt";
 
@@ -372,6 +373,13 @@ vector<Payment*> Company::readPaymentsFromFile(Client* ptr,
 		while (!input.eof()) {
 			//get pay_type
 			getline(input, pay_type);
+			//////////////////////
+
+			getline(input, temp);
+
+			//get service id
+			getline(input, temp);
+			service_id = (unsigned int)stoi(temp);
 			//////////////////////
 
 			getline(input, temp);
@@ -399,13 +407,13 @@ vector<Payment*> Company::readPaymentsFromFile(Client* ptr,
 			//////////////////////
 
 			if (pay_type == "BankTransfer")
-				pptr = new BankTransfer(value, due, due_date, due_hour);
+				pptr = new BankTransfer(value, service_id, due, due_date, due_hour);
 			else if (pay_type == "CreditCard")
-				pptr = new CreditCard(value, due, due_date, due_hour);
+				pptr = new CreditCard(value, service_id, due, due_date, due_hour);
 			else if (pay_type == "DebitCard")
-				pptr = new DebitCard(value, due, due_date, due_hour);
+				pptr = new DebitCard(value, service_id, due, due_date, due_hour);
 			else if (pay_type == "EOMPayment")
-				pptr = new EOMPayment(value, due, due_date, due_hour);
+				pptr = new EOMPayment(value, service_id, due, due_date, due_hour);
 
 			temp_v.push_back(pptr);
 		}

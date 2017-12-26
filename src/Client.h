@@ -238,6 +238,14 @@ public:
   void addPayment(Payment *new_pay);
 
   /**
+  * get payment id
+  * History of payments of the client
+  * @param s_id the id of the payment service
+  * @return the value of the payment id
+  */
+  unsigned int getPaymentId(unsigned int s_id);
+
+  /**
     * Get client info in a string
     * Client
     */

@@ -141,6 +141,16 @@ void Client::addPayment(Payment *new_pay) {
 	this->payments.push_back(new_pay);
 }
 
+unsigned int Client::getPaymentId(unsigned int s_id)
+{
+	for (size_t i = 0; i < payments.size(); i++)
+	{
+		if (payments.at(i)->getServiceId() == s_id)
+			return payments.at(i)->getId();
+	}
+	return 0;
+}
+
 string Client::getInfoDisp() const {
 	string ret = "Client ID: ";
 	ret += std::to_string(this->id);
@@ -248,6 +258,8 @@ bool Client::writePaymentsToFile() {
 		for (unsigned int i = 0; i < this->payments.size(); i++) {
 			//Pay Type
 			output << this->getPayment().at(i)->getPayType() << endl << endl;
+			//Service id
+			output << to_string(this->getPayment().at(i)->getServiceId()) << endl << endl;
 			//Value
 			output << to_string(this->getPayment().at(i)->getValue()) << endl
 					<< endl;

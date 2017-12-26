@@ -26,9 +26,9 @@ public:
    * Constructor
    */
 
-  Payment(double value);
+  Payment(double value, unsigned int s_id);
 
-  Payment(double value, bool due, Date due_date, Hour due_hour);
+  Payment(double value, unsigned int s_id, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor
@@ -36,7 +36,7 @@ public:
   virtual ~Payment ();
 
 private:
-	// Biil ID Number
+	// Bill ID Number
 	const unsigned int id;
 
 	// ID number of the next payment requested
@@ -44,6 +44,9 @@ private:
 
 	// Payment's value
 	double value;
+
+	// Payment's id
+	const unsigned int service_id;
 
 	// Payment is due
 	bool due;
@@ -55,6 +58,13 @@ private:
 	Hour due_hour;
 
 public:
+
+	/**
+	* Get the value of service_id
+	* Payment's id
+	* @return the value of service_id
+	*/
+	unsigned int getServiceId() const;
 
 	/**
 	* Get the value of id
@@ -158,7 +168,11 @@ public:
 
 	unsigned int getId() const;
 
+	unsigned int getServiceId() const;
+
 	bool getDue() const;
+
+	void setDue(bool new_due);
 
 	Date getDueDate() const;
 

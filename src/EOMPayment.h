@@ -24,9 +24,9 @@ public:
    * Empty Constructor
    */
 
-  EOMPayment(double value);
+  EOMPayment(double value, unsigned int s_id);
 
-  EOMPayment(double value, bool due, Date due_date, Hour due_hour);
+  EOMPayment(double value, unsigned int s_id, bool due, Date due_date, Hour due_hour);
 
   /**
    * Empty Destructor

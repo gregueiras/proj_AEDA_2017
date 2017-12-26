@@ -7,12 +7,12 @@ unsigned int Payment::next_id = 1;
 // Constructors/Destructors
 //  
 
-Payment::Payment(double value) : id(next_id++) {
+Payment::Payment(double value, unsigned int s_id) : id(next_id++), service_id(s_id) {
 	this->value = value;
 	this->due = false;
 }
 
-Payment::Payment(double value, bool due, Date due_date, Hour due_hour) : id(next_id++) {
+Payment::Payment(double value, unsigned int s_id, bool due, Date due_date, Hour due_hour) : id(next_id++), service_id(s_id) {
 	this->value = value;
 	this->due = due;
 	this->due_date = due_date;
@@ -24,6 +24,11 @@ Payment::~Payment() { }
 //  
 // Methods
 //  
+
+unsigned int Payment::getServiceId() const
+{
+	return service_id;
+}
 
 unsigned int Payment::getId() const
 {
@@ -101,9 +106,19 @@ unsigned int PaymentRecord::getId() const
 	return ptr->getId();
 }
 
+unsigned int PaymentRecord::getServiceId() const
+{
+	return ptr->getServiceId();
+}
+
 bool PaymentRecord::getDue() const
 {
 	return ptr->getDue();
+}
+
+void PaymentRecord::setDue(bool new_due)
+{
+	ptr->setDue(new_due);
 }
 
 Date PaymentRecord::getDueDate() const
