@@ -463,6 +463,8 @@ bool Company::writeClientsToFile() {
 		if (!(this->getClients().at(i)->writeServicesToFile()))
 			return false;
 
+		if (!(this->getClients().at(i)->writePaymentsToFile()))
+			return false;
 	}
 
 	return true;

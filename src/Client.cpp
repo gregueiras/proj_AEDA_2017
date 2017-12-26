@@ -1,6 +1,9 @@
 #include "Client.h"
 
 using namespace std;
+
+//CLIENT
+
 unsigned int Client::next_id = 1;
 // Constructors/Destructors
 //  
@@ -302,6 +305,18 @@ bool Client::writeClientToFile() {
 	output.close();
 	return true;
 }
+
+string Client::clientToString(bool service)
+{
+	string ret;
+	ret = to_string(id) + '\t' + name + '\n';
+	if(service)
+		for (size_t i = 0; i < services.size(); i++)
+			ret += '\t' + services.at(i)->toStrShort();
+	return ret;
+}
+
+//CLIENT RECORD
 
 ClientRecord::ClientRecord(Client * c)
 {

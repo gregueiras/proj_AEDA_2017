@@ -276,6 +276,13 @@ public:
   bool writeClientToFile();
 
   /**
+  * get client's info into a string
+  * @param service says if string should include service's info
+  * @return string with client's info
+  */
+  string Client::clientToString(bool service);
+
+  /**
   * Get string with Client type
   * @return subclass payment
   */
