@@ -197,6 +197,13 @@ public:
   Services getServiceById(const unsigned int &id) const;
 
   /**
+  * Get last service based on date
+  * History of services of the client
+  * @return the pointer of service with the most recent date
+  */
+  Services* getClientLastService();
+
+  /**
   * Get the value of next_id
   * ID number of the next client added
   * @return the value of next_id

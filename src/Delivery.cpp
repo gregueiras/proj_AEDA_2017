@@ -32,3 +32,14 @@ Delivery::~Delivery () { }
 void Delivery::initAttributes () {
 }
 
+bool operator<(const Delivery & d1, const Delivery & d2)
+{
+	if (d1.getEnd_date() < d2.getEnd_date()) {
+		return true;
+	}
+	else if (d1.getEnd_date() == d2.getEnd_date()) {
+		if (d1.getEnd_hour() < d2.getEnd_hour())
+			return true;
+	}
+	return false;
+}

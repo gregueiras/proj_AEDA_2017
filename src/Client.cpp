@@ -112,6 +112,17 @@ Services Client::getServiceById(const unsigned int &id) const {
 	return Services(Address(), 0, Address());
 }
 
+Services* Client::getClientLastService()
+{
+	Services* ret = services.at(0);
+	for (size_t i = 1; i < services.size(); i++)
+	{
+		if(services.at(i)->getDelivery() < ret->getDelivery())
+			ret = services.at(i);
+	}
+	return ret;
+}
+
 unsigned int Client::getNextId() {
 	return this->next_id;
 }

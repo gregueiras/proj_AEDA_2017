@@ -53,6 +53,8 @@ public:
 
 	Company(string nib, string entity, string reference);
 
+	Company(string nib, string entity, string reference, unsigned int period);
+
 	/**
 	 * Empty Destructor
 	 */
@@ -106,9 +108,14 @@ private:
 	//Hour
 	Hour current_hour;
 
+	//Administrator password
 	std::string admin_pass;
 
+	//Administrator Id
 	unsigned int admin_id;
+
+	//Set as inactive period - value in days
+	unsigned int period_to_ianctive;
 
 public:
 
@@ -158,6 +165,13 @@ public:
 	 * @param c the client in question
 	 */
 	void activateClientRecord(Client* c);
+
+	/**
+	* Check all clients on clients vector to see if any should be moved to
+	* inactivity. If so, moves them.
+	*The comparison is done with the current timezone time
+	*/
+	void setInactiveClients();
 
 	/**
 	 * Get the value of nib

@@ -1,4 +1,5 @@
 #include "Company.h"
+#include <time.h>
 
 using namespace std;
 // Constructors/Destructors
@@ -9,14 +10,22 @@ Company::Company() :
 	payments_regist.makeEmpty();
 	admin_id = 1;
 	admin_pass = "admin";
+	this->period_to_ianctive = 60;
 }
 
 Company::Company(string nib, string entity, string reference) :
 		payments_regist(PaymentRecord(0)) {
 	payments_regist.makeEmpty();
+	admin_id = 1;
+	admin_pass = "admin";
 	this->nib = nib;
 	this->entity = entity;
 	this->reference = reference;
+	this->period_to_ianctive = 60;
+}
+
+Company::Company(string nib, string entity, string reference, unsigned int period) : Company::Company(nib, entity, reference) {
+	this->period_to_ianctive = period;
 }
 
 Company::~Company() {
@@ -73,6 +82,44 @@ void Company::activateClientRecord(Client * c) {
 	c->setVisibility(true);
 
 	clients.push_back(c);
+}
+
+void Company::setInactiveClients() {
+	for (size_t i = 0; i < clients.size(); i++)
+	{
+		bool set = false;
+		Services* current_serv;
+
+		if(clients.at(i)->getServices().size() != 0)
+			current_serv = (clients.at(i)->getClientLastService());
+		else {
+			set = true;
+		}
+		
+		Date tmp_d = current_serv->getDelivery().getEnd_date() + this->period_to_ianctive;
+		Hour tmp_h = current_serv->getDelivery().getEnd_hour();
+
+		time_t timer;
+		struct tm lim = { 0 };
+		double sec;
+
+		lim.tm_sec = 0;
+		lim.tm_min = tmp_h.getMinute();
+		lim.tm_hour = tmp_h.getHour();
+		lim.tm_year = tmp_d.getYear() - 1900;
+		lim.tm_mon = tmp_d.getMonth() - 1;
+		lim.tm_mday = tmp_d.getDay();
+
+		time(&timer);
+
+		sec = difftime(timer, mktime(&lim));
+
+		if (sec <= 0)
+			set = true;
+		
+		if(set)
+			deactivateClientRecord(clients.at(i));
+	}
 }
 
 string Company::getNib() const {

@@ -179,4 +179,6 @@ private:
 
 };
 
+bool operator< (const Delivery& d1, const Delivery& d2);
+
 #endif // DELIVERY_H
