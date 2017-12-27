@@ -70,6 +70,8 @@ private:
 	Packaging packaging;
 	//
 	Delivery delivery;
+	// Plate of the vehicle that will do the service
+	std::string vehicle_plate;
 
 
 public:
@@ -297,6 +299,22 @@ public:
 	unsigned int getServiceId() const {
 		return service_id;
 	}
+
+	/**
+	 * Get the vehicle plate of the service
+	 * @return vehicle plate of the service
+	 */
+	std::string getVehiclePlate() const {
+		return vehicle_plate;
+	}
+
+	/**
+	 * Set the vehicle plate of the service
+	 * @param vehiclePlate the vehicle plate of the service
+	 */
+	void setVehiclePlate(const std::string& vehiclePlate) {
+		vehicle_plate = vehiclePlate;
+	}
 public:
 
 
@@ -368,6 +386,7 @@ public:
 	 * @return True if service ID is between those IDs
 	 */
 	bool isBetweenID(const unsigned int &d1, const unsigned int &d2);
+
 
 };
 

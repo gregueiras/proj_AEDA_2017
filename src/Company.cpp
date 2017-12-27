@@ -610,8 +610,8 @@ bool Company::removeVehicleMaintenance(string brand, string model,
 		v_temp = vehicles.top();
 		vehicles.pop();
 
-		if ((v_temp == toFound) && (v_temp.isAvailable())) {
-			v_temp.setAvailable(false);
+		if ((v_temp == toFound) && (!v_temp.isIsMaintenance()) && v_temp.isAvailable()) {
+			v_temp.setIsMaintenance(false);
 			found = true;
 		}
 		temp.push_back(v_temp);
@@ -626,6 +626,7 @@ bool Company::removeVehicleMaintenance(string brand, string model,
 bool Company::addVehicle(Vehicle v1) {
 
 	priority_queue<Vehicle> temp = this->vehicles;
+	Vehicle v_temp = v1;
 
 	while (!temp.empty()) {
 		Vehicle attempt = temp.top();
@@ -636,7 +637,16 @@ bool Company::addVehicle(Vehicle v1) {
 		temp.pop();
 	}
 
-	this->vehicles.push(v1);
+
+	if (!next_services.empty())
+	{
+		next_services.front()->setVehiclePlate(v1.getPlate());
+		v_temp.setAvailable(false);
+		next_services.pop();
+	}
+
+	this->vehicles.push(v_temp);
+
 	return true;
 }
 
@@ -662,7 +672,9 @@ bool Company::writeVehiclesToFile() {
 
 			output << temp.getExpectableTime() << std::endl;
 
-			output << ((temp.isAvailable()) ? "1" : "0") << std::endl
+			output << ((temp.isAvailable()) ? "1" : "0") << std::endl;
+
+			output << ((temp.isIsMaintenance()) ? "1" : "0") << std::endl
 					<< std::endl;
 
 			vehicles.pop();
@@ -710,8 +722,13 @@ bool Company::readVehiclesFromFile() {
 
 			((temp[0] == 1) ? available = true : available = false);
 
+			getline(input, temp);
+			bool isMaintenance;
+
+			((temp[0] == 1) ? isMaintenance = true : isMaintenance = false);
+
 			Vehicle v1 = Vehicle(plate, brand, model, birthday, expectable_time,
-					maintenance);
+					maintenance, available, isMaintenance);
 
 			vehicles.push(v1);
 
@@ -724,6 +741,33 @@ bool Company::readVehiclesFromFile() {
 	} else {
 		return false;
 	}
+}
+
+bool Company::isVehicleAvailable() {
+	if (this->vehicles.empty())
+		return false;
+	else
+		return (this->vehicles.top().available);
+
+}
+
+void Company::addServiceToNext_Services(Services* s1) {
+	this->next_services.push(s1);
+}
+
+bool Company::assignVehicle(Hour expe_time) {
+	if (!isVehicleAvailable())
+		return false;
+
+	Vehicle temp = vehicles.top();
+	vehicles.pop();
+
+	temp.setAvailable(false);
+	temp.setExpectableTime(expe_time);
+
+	vehicles.push(temp);
+
+	return true;
 }
 
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {

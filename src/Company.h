@@ -372,6 +372,7 @@ public:
 
 	/**
 	 * Try to add vehicle, to vehicles priority_queue
+	 * If there is a service in "next_services" queue, assigns the vehicle to it and sends the Services* to services_queue
 	 * @param v1 vehicle to be added
 	 * @return true if vehicle didn't exist in priority_queue, false if it already existed
 	 */
@@ -388,6 +389,25 @@ public:
 	 * @return True in case of success, false if failure
 	 */
 	bool readVehiclesFromFile();
+
+	/**
+	 * checks if there is a vehicle available
+	 * @return true if there is a vehicle available, false if not
+	 */
+	bool isVehicleAvailable();
+
+	/**
+	 * Try to assign vehicle to a service
+	 * @param expe_time new expected time
+	 * @return true if vehicle didn't exist in priority_queue, false if it already existed
+	 */
+	bool assignVehicle(Hour expe_time);
+
+	/**
+	 * adds a service to next_services queue
+	 */
+	void addServiceToNext_Services(Services* s1);
+
 
 	bool checkAdminCredentials(unsigned int admin_id, string admin_pass);
 };

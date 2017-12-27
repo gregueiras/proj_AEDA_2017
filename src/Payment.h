@@ -137,7 +137,7 @@ public:
 };
 
 class PaymentRecord {
-	// Biil ID Number
+	// Bill ID Number
 	unsigned int id;
 
 	//Client's name
