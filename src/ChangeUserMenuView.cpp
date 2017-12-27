@@ -19,7 +19,7 @@ void ChangeUserMenuView::printMessage(const string &message) {
 	cout << message << endl;
 }
 
-void ChangeUserMenuView::printChangeUser() {
+void ChangeUserMenuView::printChangeUserMenu() {
 	printMessage(changeUserMenu);
 }
 

@@ -241,7 +241,6 @@ void RequisitServiceController::payService() {
 		payAtEOMHandler();
 	}
 
-	
 	newPayServiceMenu();
 }
 
@@ -261,7 +260,8 @@ void RequisitServiceController::payAtEOMHandler() {
 
 void RequisitServiceController::addToEOM() {
 	Hour *h = new Hour(23, 59);
-	EOMPayment *eomPayment = new EOMPayment(service->getPrice(), true,
+	EOMPayment *eomPayment = new EOMPayment(service->getPrice(),
+			service->getId(), true,
 			u->lastDayofMonth(company->getCurrentDate().getMonth(),
 					company->getCurrentDate().getYear()), *h);
 	user->addPayment(eomPayment);

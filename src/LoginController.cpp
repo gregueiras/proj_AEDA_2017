@@ -23,12 +23,12 @@ LoginController::~LoginController() {
 void LoginController::menu() {
 	theView->printInitialMessage();
 	getUserCredentials();
-	user = company->getClient(id);
+	user = company->getClient(id, pass);
 
 	if (user != NULL) {
 		newClientMenu();
 	} else if (company->checkAdminCredentials(id, pass)) {
-		//	newAdminMenu();
+		newAdministratorController();
 	} else {
 		theView->printUserNotFound();
 		menu();
@@ -77,8 +77,15 @@ void LoginController::newClientMenu() {
 	clientMenuController->menu();
 }
 
+void LoginController::newAdministratorController() {
+	AdministratorMenuController *administratorMenuController =
+			new AdministratorMenuController(company);
+	administratorMenuController->menu();
+}
+
 void LoginController::newEnterController() {
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
 }
+
 /* namespace std */

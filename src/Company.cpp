@@ -7,8 +7,8 @@ using namespace std;
 Company::Company() :
 		payments_regist(PaymentRecord(0)) {
 	payments_regist.makeEmpty();
-	admin_id = 0;
-	admin_pass = "0";
+	admin_id = 1;
+	admin_pass = "admin";
 }
 
 Company::Company(string nib, string entity, string reference) :
@@ -133,10 +133,11 @@ bool Company::addClient(Client *new_var) {
 	return true;
 }
 
-Client * Company::getClient(unsigned int id) const {
+Client * Company::getClient(unsigned int id, string pass) const {
 	int clients_size = this->clients.size();
 	for (int i = 0; i < clients_size; ++i) {
 		if (id == this->clients.at(i)->getId()
+				&& pass == this->clients.at(i)->getPass()
 				&& this->clients.at(i)->getVisibility() == true) {
 			return this->clients.at(i);
 		}
@@ -379,7 +380,7 @@ vector<Payment*> Company::readPaymentsFromFile(Client* ptr,
 
 			//get service id
 			getline(input, temp);
-			service_id = (unsigned int)stoi(temp);
+			service_id = (unsigned int) stoi(temp);
 			//////////////////////
 
 			getline(input, temp);
@@ -407,13 +408,17 @@ vector<Payment*> Company::readPaymentsFromFile(Client* ptr,
 			//////////////////////
 
 			if (pay_type == "BankTransfer")
-				pptr = new BankTransfer(value, service_id, due, due_date, due_hour);
+				pptr = new BankTransfer(value, service_id, due, due_date,
+						due_hour);
 			else if (pay_type == "CreditCard")
-				pptr = new CreditCard(value, service_id, due, due_date, due_hour);
+				pptr = new CreditCard(value, service_id, due, due_date,
+						due_hour);
 			else if (pay_type == "DebitCard")
-				pptr = new DebitCard(value, service_id, due, due_date, due_hour);
+				pptr = new DebitCard(value, service_id, due, due_date,
+						due_hour);
 			else if (pay_type == "EOMPayment")
-				pptr = new EOMPayment(value, service_id, due, due_date, due_hour);
+				pptr = new EOMPayment(value, service_id, due, due_date,
+						due_hour);
 
 			temp_v.push_back(pptr);
 		}

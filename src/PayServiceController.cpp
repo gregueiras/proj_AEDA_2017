@@ -16,7 +16,6 @@ PayServiceController::PayServiceController(Client *user, unsigned int serviceID,
 	this->serviceID = serviceID;
 	this->company = company;
 
-	
 	amountToPay = user->getServiceById(serviceID).getPrice();
 	creditCardNumber = 0;
 }
@@ -30,19 +29,24 @@ void PayServiceController::menu() {
 		if (serviceID == -1) {
 			theView->printPayEOM();
 			payEOM();
+			setUserActive();
 			newListServicesMenu();
 		} else {
 			theView->printPayMenuBusiness();
 			payMenuBusiness();
+			setServicePaid();
+			setUserActive();
 			newServiceMenu();
 		}
 	} else {
 		theView->printPayMenuNormal();
 		payMenu();
+		setServicePaid();
 		if (dynamic_cast<Personal*>(user)) {
+			setUserActive();
 			newServiceMenu();
 		} else {
-			newEnterController();
+			newEnterMenu();
 		}
 	}
 }
@@ -52,25 +56,9 @@ void PayServiceController::payEOM() {
 	if (amountToPay == 0) {
 		theView->printNoEOMLeftToPay();
 	} else {
-		company->payAllDues(user);
 		theView->printPayMenuBusiness();
 		payMenuBusiness();
-	}
-}
-
-void PayServiceController::payMenu() {
-	theView->printEnterOption();
-	int option = getMenuOption(1, 2);
-	switch (option) {
-	case 1:
-		payBankTransfer();
-		break;
-	case 2:
-		payMoneyTransfer();
-		break;
-	default:
-		payMenu();
-		break;
+		company->payAllDues(user);
 	}
 }
 
@@ -93,12 +81,26 @@ void PayServiceController::payMenuBusiness() {
 	}
 }
 
+void PayServiceController::payMenu() {
+	theView->printEnterOption();
+	int option = getMenuOption(1, 2);
+	switch (option) {
+	case 1:
+		payBankTransfer();
+		break;
+	case 2:
+		payMoneyTransfer();
+		break;
+	default:
+		payMenu();
+		break;
+	}
+}
+
 void PayServiceController::payBankTransfer() {
 	theView->printEntity(company->getEntity());
 	theView->printReference(company->getReference());
 	theView->printAmountToPay(amountToPay);
-	
-
 }
 
 void PayServiceController::payMoneyTransfer() {
@@ -110,7 +112,14 @@ void PayServiceController::payCreditCard() {
 	theView->printAmountToPay(amountToPay);
 	creditCardNumber = getCreditCardNumber();
 }
-
+//-----------------------------
+void PayServiceController::setServicePaid() {
+	int payment_id = user->getPaymentId(serviceID);
+	if (payment_id != 0) {
+		company->getPayment(payment_id).setDue(false);
+	}
+}
+//--------------------
 unsigned long PayServiceController::getCreditCardNumber() {
 	unsigned int creditCardNumber;
 	theView->printEnterCreditCardNumber();
@@ -120,7 +129,12 @@ unsigned long PayServiceController::getCreditCardNumber() {
 
 double PayServiceController::getAmountToPay() {
 	return amountToPay;
-	
+}
+
+void PayServiceController::setUserActive() {
+	if (user->getVisibility() == false) {
+		company->activateClientRecord(user);
+	}
 }
 
 int PayServiceController::getMenuOption(const int lowerBound,
@@ -142,7 +156,7 @@ void PayServiceController::newListServicesMenu() {
 	listServicesController->menu();
 }
 
-void PayServiceController::newEnterController() {
+void PayServiceController::newEnterMenu() {
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
 }

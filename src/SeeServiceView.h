@@ -14,7 +14,7 @@
 #include "Client.h"
 
 #include <string>
-using std::string;
+using namespace std;
 
 class SeeServiceView {
 private:

@@ -228,7 +228,7 @@ public:
 	 * @param new_var the client, if found
 	 * @param id the client id
 	 */
-	Client * getClient(unsigned int id) const;
+	Client * getClient(unsigned int id, string pass) const;
 
 	/**
 	 * Set the vector of services_queue

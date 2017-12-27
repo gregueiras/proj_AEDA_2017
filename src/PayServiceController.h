@@ -56,6 +56,11 @@ private:
 	void payCreditCard();
 
 	/**
+	 * sets service as paid
+	 */
+	void setServicePaid();
+
+	/**
 	 * method that calculates the amount to pay
 	 */
 	double getAmountToPay();
@@ -64,6 +69,8 @@ private:
 	 * user interaction method to read volume infomation
 	 */
 	unsigned long getCreditCardNumber();
+
+	void setUserActive();
 
 	/**
 	 * read the menu option from the keyboard the value of arrival_date
@@ -86,7 +93,7 @@ private:
 	/**
 	 * opens new enter menu
 	 */
-	void newEnterController();
+	void newEnterMenu();
 
 public:
 	/**

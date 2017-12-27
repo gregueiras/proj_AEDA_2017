@@ -13,6 +13,7 @@
 #include "ClientMenuController.h"
 #include "EnterController.h"
 #include "Client.h"
+#include "AdministratorMenuController.h"
 
 class LoginController {
 private:
@@ -54,6 +55,11 @@ private:
 	 * opens new enter menu
 	 */
 	void newEnterController();
+
+	/**
+	 * opens new company administrator menu
+	 */
+	void newAdministratorController();
 
 public:
 	/**

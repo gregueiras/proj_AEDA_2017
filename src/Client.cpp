@@ -4,7 +4,7 @@ using namespace std;
 
 //CLIENT
 
-unsigned int Client::next_id = 1;
+unsigned int Client::next_id = 2;
 // Constructors/Destructors
 //  
 
@@ -29,7 +29,7 @@ Client::Client(string name, Address address, unsigned int nif, string pass,
 	std::vector<Services*> v1;
 	this->services = v1;
 	this->id = id;
-	this->next_id = id+1;
+	this->next_id = id + 1;
 }
 
 Client::~Client() {
@@ -141,10 +141,8 @@ void Client::addPayment(Payment *new_pay) {
 	this->payments.push_back(new_pay);
 }
 
-unsigned int Client::getPaymentId(unsigned int s_id)
-{
-	for (size_t i = 0; i < payments.size(); i++)
-	{
+unsigned int Client::getPaymentId(unsigned int s_id) {
+	for (size_t i = 0; i < payments.size(); i++) {
 		if (payments.at(i)->getServiceId() == s_id)
 			return payments.at(i)->getId();
 	}
@@ -259,7 +257,8 @@ bool Client::writePaymentsToFile() {
 			//Pay Type
 			output << this->getPayment().at(i)->getPayType() << endl << endl;
 			//Service id
-			output << to_string(this->getPayment().at(i)->getServiceId()) << endl << endl;
+			output << to_string(this->getPayment().at(i)->getServiceId())
+					<< endl << endl;
 			//Value
 			output << to_string(this->getPayment().at(i)->getValue()) << endl
 					<< endl;
@@ -287,42 +286,37 @@ bool Client::writeClientToFile() {
 	if (output.is_open()) {
 
 		//for (unsigned int i = 0; i < this->payments.size(); i++) {
-			//Client Type
-			output << this->getClientType() << endl << endl;
-			//Name
-			output << this->getName() << endl << endl;
-			//Address info
-			output << this->getAddress().getStreet() << endl;
-			output << to_string(this->getAddress().getDoor_number()) << endl;
-			output << this->getAddress().getCity() << endl;
-			output << this->getAddress().getCounty() << endl;
-			output << this->getAddress().getCountry() << endl;
-			output
-					<< to_string(
-							this->getAddress().getCoordinates().getLatitude())
-					<< endl;
-			output
-					<< to_string(
-							this->getAddress().getCoordinates().getLongitude())
-					<< endl << endl;
-			//nif
-			output << to_string(this->getNif()) << endl << endl;
-			//pass	
-			output << this->getPass() << endl << endl;
+		//Client Type
+		output << this->getClientType() << endl << endl;
+		//Name
+		output << this->getName() << endl << endl;
+		//Address info
+		output << this->getAddress().getStreet() << endl;
+		output << to_string(this->getAddress().getDoor_number()) << endl;
+		output << this->getAddress().getCity() << endl;
+		output << this->getAddress().getCounty() << endl;
+		output << this->getAddress().getCountry() << endl;
+		output << to_string(this->getAddress().getCoordinates().getLatitude())
+				<< endl;
+		output << to_string(this->getAddress().getCoordinates().getLongitude())
+				<< endl << endl;
+		//nif
+		output << to_string(this->getNif()) << endl << endl;
+		//pass
+		output << this->getPass() << endl << endl;
 		//}
 
-		} else
+	} else
 		return false;
 
 	output.close();
 	return true;
 }
 
-string Client::clientToString(bool service)
-{
+string Client::clientToString(bool service) {
 	string ret;
 	ret = to_string(id) + '\t' + name + '\n';
-	if(service)
+	if (service)
 		for (size_t i = 0; i < services.size(); i++)
 			ret += '\t' + services.at(i)->toStrShort();
 	return ret;
@@ -330,52 +324,42 @@ string Client::clientToString(bool service)
 
 //CLIENT RECORD
 
-ClientRecord::ClientRecord(Client * c)
-{
+ClientRecord::ClientRecord(Client * c) {
 	this->clientPtr = c;
 }
 
-bool ClientRecord::getVisibility() const
-{
+bool ClientRecord::getVisibility() const {
 	return this->clientPtr->visibility;
 }
 
-void ClientRecord::setVisibility(bool new_var)
-{
+void ClientRecord::setVisibility(bool new_var) {
 	this->clientPtr->visibility = new_var;
 }
 
-string ClientRecord::getName() const
-{
+string ClientRecord::getName() const {
 	return this->clientPtr->name;
 }
 
-Address ClientRecord::getAddress() const
-{
-	return this->clientPtr->address ;
+Address ClientRecord::getAddress() const {
+	return this->clientPtr->address;
 }
 
-unsigned int ClientRecord::getId() const
-{
+unsigned int ClientRecord::getId() const {
 	return this->clientPtr->id;
 }
 
-unsigned int ClientRecord::getNif() const
-{
+unsigned int ClientRecord::getNif() const {
 	return this->clientPtr->nif;
 }
 
-vector<Services*> ClientRecord::getServices() const
-{
+vector<Services*> ClientRecord::getServices() const {
 	return this->clientPtr->services;
 }
 
-vector<Payment*> ClientRecord::getPayment() const
-{
+vector<Payment*> ClientRecord::getPayment() const {
 	return this->clientPtr->payments;
 }
 
-string ClientRecord::getPass() const
-{
+string ClientRecord::getPass() const {
 	return this->clientPtr->pass;
 }

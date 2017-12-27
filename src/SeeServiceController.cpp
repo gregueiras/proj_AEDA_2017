@@ -31,5 +31,6 @@ void SeeServiceController::newListServicesMenu() {
 			user, company);
 	listServicesController->menu();
 }
+
 void SeeServiceController::endProgram() {
-	}
+}

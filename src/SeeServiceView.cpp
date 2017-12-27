@@ -8,7 +8,6 @@
 #include "SeeServiceView.h"
 
 SeeServiceView::SeeServiceView() {
-	// TODO Auto-generated constructor stub
 
 }
 
@@ -32,3 +31,4 @@ void SeeServiceView::printServiceInformation(const string& information) {
 void SeeServiceView::printEnd() {
 	printMessage(end);
 }
+

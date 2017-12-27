@@ -28,7 +28,7 @@ void ChangeUserMenuController::menuHandler() {
 	int option;
 	do {
 		theView->printUserInfo(user->getInfoDisp());
-		theView->printChangeUser();
+		theView->printChangeUserMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 11);
 		switch (option) {

@@ -11,8 +11,6 @@
 #include <iostream>
 #include "Utilities.h"
 
-using namespace std;
-
 class ChangeUserMenuView {
 private:
 	Utilities *u;
@@ -40,7 +38,7 @@ private:
 	const string wrongNIF = "NIF introduzido invalido";
 	const string wrongLatitude = "Latitude introduzida invalida";
 	const string wrongLongitude = "Longitude introduzida invalida";
-	const string wrongOption = "Introduziu op��o errada";
+	const string wrongOption = "Introduziu opcao errada";
 
 	const string end = "Terminou Criar novo perfil utilizador";
 	const string shutdown = "\nPrograma terminou";
@@ -53,7 +51,7 @@ public:
 	/**
 	 * prints change user
 	 */
-	void printChangeUser();
+	void printChangeUserMenu();
 
 	/**
 	 * prints enter new name

@@ -288,7 +288,7 @@ public:
   * @param service says if string should include service's info
   * @return string with client's info
   */
-  string Client::clientToString(bool service);
+  string clientToString(bool service);
 
   /**
   * Get string with Client type
