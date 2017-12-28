@@ -242,7 +242,7 @@ int rdn(Date d1)
 	return d1.getDay() + (153*month - 457)/5 + 365*year + year/4 - year/100 + year/400 - 306;
 }
 
-std::string Date::toStr() {
+std::string Date::toStr() const{
 	std::stringstream s1;
 	s1 << *this;
 	return s1.str();

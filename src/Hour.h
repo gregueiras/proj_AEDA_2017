@@ -142,7 +142,7 @@ private:
 
 public:
 
-	std::string toStr();
+	std::string toStr() const;
 
 };
 

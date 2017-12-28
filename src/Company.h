@@ -493,6 +493,12 @@ public:
 	 */
 	void addServiceToNext_Services(Services* s1);
 
+	/**
+	 * List all vehicles in a string, with the following format:
+	 * <plate>: <brand> <model> Birthday: <birthday> Expected time: <expected_time> <available> <inMaintenance> Maintenance date: <maintenance> \n
+	 * @return string in this format
+	 */
+	std::string listAllVehicles();
 
 	bool checkAdminCredentials(unsigned int admin_id, string admin_pass);
 };

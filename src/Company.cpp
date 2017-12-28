@@ -1,5 +1,6 @@
 #include "Company.h"
 #include <time.h>
+#include <iomanip>
 
 using namespace std;
 // Constructors/Destructors
@@ -815,6 +816,28 @@ bool Company::assignVehicle(Hour expe_time) {
 	vehicles.push(temp);
 
 	return true;
+}
+
+std::string Company::listAllVehicles() {
+	priority_queue <Vehicle> temp = vehicles;
+	std::stringstream s1;
+
+	while (!temp.empty())
+	{
+		Vehicle v_temp = temp.top();
+		std::string birthday = v_temp.getBirthday().toStr();
+		temp.pop();
+
+		s1 << v_temp.getPlate() << ": ";
+		s1 << left << setw(8) << setfill(' ') << v_temp.getBrand() << " ";
+		s1 << left << setw(8) << setfill(' ') << v_temp.getModel();
+		s1 << " Birthday: " << birthday << " Expected time: " << v_temp.getExpectableTime().toStr();
+		s1 << left << setw(15) << setfill(' ') << ( (v_temp.isAvailable()) ? " Available " : " Not Available ");
+		s1 << left << setw(20) << setfill(' ') << ( (v_temp.isInMaintenance()) ? " In Maintenance " : " Not In Maintenance ") << "Maintenance date: " << v_temp.getMaintenance().toStr() << endl;
+
+	}
+
+	return s1.str();
 }
 
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {

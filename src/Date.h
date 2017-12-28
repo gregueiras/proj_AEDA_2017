@@ -159,7 +159,7 @@ public:
 
   //Other methods
   //
-  std::string toStr();
+  std::string toStr() const;
 
 };
 
