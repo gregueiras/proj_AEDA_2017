@@ -22,9 +22,9 @@ bool Vehicle::operator <(const Vehicle& v1) const {
 		return false;
 	else if ( ((this->available) == false) &&  ((v1.available) == true) )
 		return true;
-	else if ( ((this->isMaintenance) == true) && ((v1.isMaintenance) == false) )
+	else if ( ((this->inMaintenance) == true) && ((v1.inMaintenance) == false) )
 		return false;
-	else if ( ((this->isMaintenance) == false) &&  ((v1.isMaintenance) == true) )
+	else if ( ((this->inMaintenance) == false) &&  ((v1.inMaintenance) == true) )
 		return true;
 	else
 		return	(!(this->expectable_time < v1.expectable_time));
@@ -52,12 +52,12 @@ Vehicle::Vehicle(std::string plate, std::string brand, std::string model,
 	this->expectable_time = expectable_time;
 	this->maintenance = maintenance;
 	this->available = true;
-	this->isMaintenance = false;
+	this->inMaintenance = false;
 }
 
 
 Vehicle::Vehicle(std::string plate, std::string brand, std::string model,
-		Date birthday, Hour expectable_time, Date maintenance, bool available, bool isMaintenance) {
+		Date birthday, Hour expectable_time, Date maintenance, bool available, bool inMaintenance) {
 
 	this->plate = plate;
 	this->brand = brand;
@@ -66,7 +66,7 @@ Vehicle::Vehicle(std::string plate, std::string brand, std::string model,
 	this->expectable_time = expectable_time;
 	this->maintenance = maintenance;
 	this->available = available;
-	this->isMaintenance = isMaintenance;
+	this->inMaintenance = inMaintenance;
 }
 
 Vehicle::Vehicle(std::string plate, std::string brand, std::string model) {
@@ -74,5 +74,5 @@ Vehicle::Vehicle(std::string plate, std::string brand, std::string model) {
 	this->brand = brand;
 	this->model = model;
 	this->available = true;
-	this->isMaintenance = false;
+	this->inMaintenance = false;
 }

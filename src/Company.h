@@ -167,10 +167,10 @@ public:
 	void activateClientRecord(Client* c);
 
 	/**
-	* Check all clients on clients vector to see if any should be moved to
-	* inactivity. If so, moves them.
-	*The comparison is done with the current timezone time
-	*/
+	 * Check all clients on clients vector to see if any should be moved to
+	 * inactivity. If so, moves them.
+	 *The comparison is done with the current timezone time
+	 */
 	void setInactiveClients();
 
 	/**
@@ -391,6 +391,77 @@ public:
 	 * @return true if vehicle didn't exist in priority_queue, false if it already existed
 	 */
 	bool addVehicle(Vehicle v1);
+
+	/**
+	 * Try to remove a vehicle, from vehicles priority_queue
+	 * @param plate plate of the vehicle to be removed
+	 * @return true if a vehicle with that plate  exists in priority_queue, false if it doesn't
+	 */
+	bool removeVehicle(std::string plate);
+
+	/**
+	 * Try to change a vehicle plate, from vehicles priority_queue
+	 * @param old_plate plate of the vehicle to be changed
+	 * @param new_plate new plate of the vehicle
+	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
+	 */
+	bool changeVehiclePlate(std::string old_plate, std::string new_plate);
+
+	/**
+	 * Try to change a vehicle model, from vehicles priority_queue
+	 * @param plate plate of the vehicle to be changed
+	 * @param new_model new model of the vehicle
+	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
+	 */
+	bool changeVehicleModel(std::string plate, std::string new_model);
+
+	/**
+	 * Try to change a vehicle brand, from vehicles priority_queue
+	 * @param plate plate of the vehicle to be changed
+	 * @param new_brand new brand of the vehicle
+	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
+	 */
+	bool changeVehicleBrand(std::string plate, std::string new_brand);
+
+	/**
+	 * Try to change a vehicle expected time, from vehicles priority_queue
+	 * @param plate plate of the vehicle to be changed
+	 * @param new_expected_time new expected_time of the vehicle
+	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
+	 */
+	bool changeVehicleExpectedTime(std::string plate, Hour new_expected_time);
+
+	/**
+	 * Try to change a vehicle birthday, from vehicles priority_queue
+	 * @param plate plate of the vehicle to be changed
+	 * @param new_birthday new birthday of the vehicle
+	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
+	 */
+	bool changeVehicleBirthday(std::string plate, Date new_birthday);
+
+	/**
+	 * Try to change a vehicle maintenance date, from vehicles priority_queue
+	 * @param plate plate of the vehicle to be changed
+	 * @param new_maintenance new maintenance date of the vehicle
+	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
+	 */
+	bool changeVehicleMaintenance(std::string plate, Date new_maintenance);
+
+	/**
+	 * Try to change a vehicle available flag, from vehicles priority_queue
+	 * @param plate plate of the vehicle to be changed
+	 * @param new_available_flag new available flag of the vehicle
+	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
+	 */
+	bool changeVehicleAvailability(std::string plate, bool new_available_flag);
+
+	/**
+	 * Try to change a vehicle inMaintenance flag, from vehicles priority_queue
+	 * @param plate plate of the vehicle to be changed
+	 * @param new_inMaintenance_flag new inMaintenance flag of the vehicle
+	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
+	 */
+	bool changeVehicleInMaintenance(std::string plate, bool new_inMaintenance_flag);
 
 	/**
 	 * writes vehicles to a file named "vehicles.txt"

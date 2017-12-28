@@ -21,12 +21,12 @@ public:
 	Hour expectable_time;
 	Date maintenance;
 	bool available;
-	bool isMaintenance;
+	bool inMaintenance;
 
 	Vehicle();
 	Vehicle(std::string plate, std::string brand, std::string model, Date birthday, Hour expectable_time, Date maintenance);
 	Vehicle(std::string plate, std::string brand, std::string model);
-	Vehicle(std::string plate, std::string brand, std::string model, Date birthday, Hour expectable_time, Date maintenance, bool available, bool isMaintenance);
+	Vehicle(std::string plate, std::string brand, std::string model, Date birthday, Hour expectable_time, Date maintenance, bool available, bool inMaintenance);
 
 
 	virtual ~Vehicle();
@@ -94,12 +94,12 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const Vehicle& dt);
 
-	bool isIsMaintenance() const {
-		return isMaintenance;
+	bool isInMaintenance() const {
+		return inMaintenance;
 	}
 
-	void setIsMaintenance(bool isMaintenance) {
-		this->isMaintenance = isMaintenance;
+	void setInMaintenance(bool inMaintenance) {
+		this->inMaintenance = inMaintenance;
 	}
 };
 
