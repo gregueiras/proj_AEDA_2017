@@ -115,8 +115,10 @@ private:
 	unsigned int admin_id;
 
 	//Set as inactive period - value in days
-	unsigned int period_to_ianctive;
+	unsigned int period_to_inactive;
 
+	//discount percentage, between 0 and 1 (0 is minimum)
+	float discount;
 public:
 
 	/**
@@ -287,7 +289,6 @@ public:
 	/**
 	 * Set the priority_queue of vehicles, ordered by least expectable time
 	 * Queue of vehicles of the company
-	 * @return vehicles priority_queue
 	 */
 	void setVehicles(const std::priority_queue<Vehicle>& vehicles) {
 		this->vehicles = vehicles;
@@ -315,6 +316,18 @@ public:
 	 * @param pay_id the payment id
 	 */
 	PaymentRecord getPayment(unsigned int pay_id);
+
+	/**
+	 * Get discount percentage, given in promotional campaigns
+	 * @return discount value between 0 to 1
+	 */
+	float getDiscount() const;
+
+	/**
+	 * Set the discount value, given in promotional campaigns
+	 * @param discount value of the new discount
+	 */
+	void setDiscount(float discount);
 
 	/**
 	 * Reads all the services from a file named "client" + id +"_services.txt"
@@ -500,7 +513,14 @@ public:
 	 */
 	std::string listAllVehicles();
 
+
+	/**
+	 * Sends all vehicles with a maintenance date before current date to maintenance
+	 */
+	void sendVehiclesToMaintenance();
+
 	bool checkAdminCredentials(unsigned int admin_id, string admin_pass);
+
 };
 
 #endif // COMPANY_H

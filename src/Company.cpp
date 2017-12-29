@@ -11,7 +11,7 @@ Company::Company() :
 	payments_regist.makeEmpty();
 	admin_id = 1;
 	admin_pass = "admin";
-	this->period_to_ianctive = 60;
+	this->period_to_inactive = 60;
 }
 
 Company::Company(string nib, string entity, string reference) :
@@ -22,11 +22,11 @@ Company::Company(string nib, string entity, string reference) :
 	this->nib = nib;
 	this->entity = entity;
 	this->reference = reference;
-	this->period_to_ianctive = 60;
+	this->period_to_inactive = 60;
 }
 
 Company::Company(string nib, string entity, string reference, unsigned int period) : Company::Company(nib, entity, reference) {
-	this->period_to_ianctive = period;
+	this->period_to_inactive = period;
 }
 
 Company::~Company() {
@@ -97,7 +97,7 @@ void Company::setInactiveClients() {
 			set = true;
 		}
 
-		Date tmp_d = current_serv->getDelivery().getEnd_date() + this->period_to_ianctive;
+		Date tmp_d = current_serv->getDelivery().getEnd_date() + this->period_to_inactive;
 		Hour tmp_h = current_serv->getDelivery().getEnd_hour();
 
 		time_t timer;
@@ -820,24 +820,41 @@ bool Company::assignVehicle(Hour expe_time) {
 
 std::string Company::listAllVehicles() {
 	priority_queue <Vehicle> temp = vehicles;
-	std::stringstream s1;
+	std::string res;
 
 	while (!temp.empty())
 	{
 		Vehicle v_temp = temp.top();
-		std::string birthday = v_temp.getBirthday().toStr();
 		temp.pop();
 
-		s1 << v_temp.getPlate() << ": ";
-		s1 << left << setw(8) << setfill(' ') << v_temp.getBrand() << " ";
-		s1 << left << setw(8) << setfill(' ') << v_temp.getModel();
-		s1 << " Birthday: " << birthday << " Expected time: " << v_temp.getExpectableTime().toStr();
-		s1 << left << setw(15) << setfill(' ') << ( (v_temp.isAvailable()) ? " Available " : " Not Available ");
-		s1 << left << setw(20) << setfill(' ') << ( (v_temp.isInMaintenance()) ? " In Maintenance " : " Not In Maintenance ") << "Maintenance date: " << v_temp.getMaintenance().toStr() << endl;
+		res += v_temp.toStrComplete();
 
 	}
 
-	return s1.str();
+	return res;
+}
+
+void Company::sendVehiclesToMaintenance() {
+	vector <Vehicle> temp;
+
+	while (!vehicles.empty())
+	{
+		Vehicle v_temp = vehicles.top();
+
+		if ( ( v_temp.getMaintenance() < current_date) && (v_temp.isAvailable()) && (!v_temp.isInMaintenance()))
+			v_temp.setInMaintenance(false);
+		temp.push_back(v_temp);
+		vehicles.pop();
+	}
+
+}
+
+float Company::getDiscount() const {
+	return discount;
+}
+
+void Company::setDiscount(float discount) {
+	this->discount = discount;
 }
 
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
@@ -856,6 +873,12 @@ bool Company::removeVehicle(std::string plate) {
 
 		if (v_temp.getPlate() == plate)
 		{
+			if (!v_temp.isAvailable())
+			{
+				found = false; //vehicle is in a service
+				temp.push_back(v_temp);
+				break;
+			}
 			found = true;
 		} else
 		{
