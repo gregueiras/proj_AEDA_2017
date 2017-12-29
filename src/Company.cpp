@@ -857,6 +857,60 @@ void Company::setDiscount(float discount) {
 	this->discount = discount;
 }
 
+std::string Company::getVehicleInfoComplete(std::string plate) {
+	vector <Vehicle> temp;
+	bool found = false;
+	std::string res;
+
+	while ( (!vehicles.empty()) && (!found))
+	{
+		Vehicle v_temp = vehicles.top();
+		if (v_temp.getPlate() == plate)
+		{
+			found = true;
+			res = v_temp.toStrComplete();
+		} else
+		{
+			temp.push_back(v_temp);
+			vehicles.pop();
+		}
+	}
+
+	for (auto i : temp)
+	{
+		vehicles.push(i);
+	}
+
+	return res;
+}
+
+std::string Company::getVehicleInfoShort(std::string plate) {
+	vector <Vehicle> temp;
+	bool found = false;
+	std::string res;
+
+	while ( (!vehicles.empty()) && (!found))
+	{
+		Vehicle v_temp = vehicles.top();
+		if (v_temp.getPlate() == plate)
+		{
+			found = true;
+			res = v_temp.toStrShort();
+		} else
+		{
+			temp.push_back(v_temp);
+			vehicles.pop();
+		}
+	}
+
+	for (auto i : temp)
+	{
+		vehicles.push(i);
+	}
+
+	return res;
+}
+
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
 	return (this->admin_id == admin_id && this->admin_pass == admin_pass);
 }

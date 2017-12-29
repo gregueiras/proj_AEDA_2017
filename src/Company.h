@@ -461,6 +461,20 @@ public:
 	bool changeVehicleMaintenance(std::string plate, Date new_maintenance);
 
 	/**
+	 * Gets complete info from a vehicle in vehicles priority_queue
+	 * @param plate plate of the vehicle to be searched
+	 * @return string with complete vehicles info
+	 */
+	std::string getVehicleInfoComplete(std::string plate);
+
+	/**
+	 * Gets short info from a vehicle in vehicles priority_queue
+	 * @param plate plate of the vehicle to be searched
+	 * @return string with shortvehicles info
+	 */
+	std::string getVehicleInfoShort(std::string plate);
+
+	/**
 	 * Try to change a vehicle available flag, from vehicles priority_queue
 	 * @param plate plate of the vehicle to be changed
 	 * @param new_available_flag new available flag of the vehicle
