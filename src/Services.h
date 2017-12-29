@@ -14,6 +14,7 @@
 
 //#include "Payment.h"
 
+
 /**
  * class Services
  *
@@ -48,8 +49,8 @@ private:
 	// Private attributes
 	//
 
-//	//Payment of the service
-//	Payment* pay;
+	//	//Payment of the service
+	//	Payment* pay;
 	// ID of the service
 	const unsigned int service_id;
 	//Visibility
@@ -276,21 +277,21 @@ public:
 		this->visibility = visibility;
 	}
 
-//	/**
-//	 * Get the value of Payment
-//	 * @return the payment of service
-//	 */
-//	const Payment*& getPay() const {
-//		return pay;
-//	}
-//
-//	/**
-//	 * Set the value of Payment
-//	 * @param pay the payment of service
-//	 */
-//	void setPay(const Payment*& pay) {
-//		this->pay = pay;
-//	}
+	//	/**
+	//	 * Get the value of Payment
+	//	 * @return the payment of service
+	//	 */
+	//	const Payment*& getPay() const {
+	//		return pay;
+	//	}
+	//
+	//	/**
+	//	 * Set the value of Payment
+	//	 * @param pay the payment of service
+	//	 */
+	//	void setPay(const Payment*& pay) {
+	//		this->pay = pay;
+	//	}
 
 	/**
 	 * Get serviceId
@@ -386,6 +387,12 @@ public:
 	 * @return True if service ID is between those IDs
 	 */
 	bool isBetweenID(const unsigned int &d1, const unsigned int &d2);
+
+	/**
+	 * Apply the discount given in a promotional offer to the price of the service
+	 * @param discount Discount percentage, from 0 to 1 (0 means no discount)
+	 */
+	void applyDiscount(float discount);
 
 
 };

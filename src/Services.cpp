@@ -249,3 +249,7 @@ bool Services::isBetweenID(const unsigned int& d1, const unsigned int& d2) {
 		return false;
 }
 
+void Services::applyDiscount(float discount) {
+	if (discount != 0)
+		this->price = price*(1 - discount);
+}
