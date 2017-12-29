@@ -71,7 +71,6 @@ void ChangeUserMenuController::menuHandler() {
 			break;
 		}
 	} while (option != 11);
-
 }
 
 int ChangeUserMenuController::getMenuOption(const int lowerBound,

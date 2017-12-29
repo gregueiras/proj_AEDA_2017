@@ -279,11 +279,17 @@ int RequisitServiceController::getMenuOption(const int lowerBound,
 	}
 	return option;
 }
-
+//---------------------------
 void RequisitServiceController::addService() {
+	if (company->isAnyVehicleAvailable()) {
+		company->addService(service, user->getId());
+	} else {
+		company->addServiceToNext_Services(service);
+	}
 	user->addServices(service);
-	company->addService(service, user->getId());
+//	company->addService(service, user->getId());
 }
+//-----------------------------------------------
 
 void RequisitServiceController::newEnterController() {
 	EnterController *enterController = new EnterController(company);

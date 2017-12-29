@@ -17,6 +17,10 @@ PayServiceController::PayServiceController(Client *user, unsigned int serviceID,
 	this->company = company;
 
 	amountToPay = user->getServiceById(serviceID).getPrice();
+	if (company->getDiscount() != 0) {
+		//--------------
+		user->getServiceById(serviceID).applyDiscount(company->getDiscount());
+	}
 	creditCardNumber = 0;
 }
 

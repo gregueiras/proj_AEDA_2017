@@ -21,6 +21,8 @@ private:
 	Utilities *u;
 	Company *company;
 
+	void setInactiveUsers();
+
 	/**
 	 * reads the user option and acts accordingly
 	 */

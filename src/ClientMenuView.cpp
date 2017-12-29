@@ -34,5 +34,13 @@ void ClientMenuView::printClientMenu() {
 }
 
 void ClientMenuView::printShutdown() {
-	printMessage (shutdown);
+	printMessage(shutdown);
+}
+
+void ClientMenuView::printNotificationsHeader() {
+	printMessage(notificationHeader);
+}
+
+void ClientMenuView::printPendingChangeAdress() {
+	printMessage(pendingChangeAdress);
 }

@@ -77,6 +77,7 @@ void ListServicesController::listServicesMenuHandler() {
 		newFilterServicesMenu();
 		break;
 	case 4:
+		serviceID = getServiceID();
 		newChangeServiceMenu();
 		break;
 	case 5:
@@ -126,10 +127,8 @@ void ListServicesController::newSeeService() {
 void ListServicesController::newChangeServiceMenu() {
 
 	Services s1 = user->getServiceById(serviceID);
-	Services* ss1 = &s1;
-
 	ChangeServiceController *changeServiceController =
-			new ChangeServiceController(ss1, user, company);
+			new ChangeServiceController(&s1, user, company);
 
 	changeServiceController->menu();
 }

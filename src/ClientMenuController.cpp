@@ -20,11 +20,12 @@ ClientMenuController::~ClientMenuController() {
 }
 
 void ClientMenuController::menu() {
-	theView->printClientMenu();
+	notificationHandler();
 	clientMenuHandler();
 }
 
 void ClientMenuController::clientMenuHandler() {
+	theView->printClientMenu();
 	theView->printEnterOption();
 	int option = getMenuOption(0, 3);
 	switch (option) {
@@ -46,6 +47,14 @@ void ClientMenuController::clientMenuHandler() {
 		break;
 	}
 }
+
+void ClientMenuController::notificationHandler() {
+	theView->printNotificationsHeader();
+	if (user->getVisibility() == false && company->getDiscount() != 0) {
+		theView->printPendingChangeAdress();
+	}
+}
+
 int ClientMenuController::getMenuOption(const int lowerBound,
 		const int upperBound) {
 	int option;

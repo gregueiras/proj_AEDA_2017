@@ -21,9 +21,8 @@ RemoveUserMenuController::~RemoveUserMenuController() {
 }
 
 void RemoveUserMenuController::menu() {
-	theView->printRemoveUser();
+	theView->printRemoveUserMenu();
 	removeUserHandler();
-	newEnterMenuController();
 }
 
 void RemoveUserMenuController::removeUserHandler() {
@@ -61,7 +60,12 @@ int RemoveUserMenuController::getMenuOption(const int lowerBound,
 }
 
 void RemoveUserMenuController::removeUser() {
-	user->setVisibility(false);
+	theView->printEnterConfirmation();
+	int option;
+	theView->getInfo(option);
+	if (option == 1) {
+		user->setVisibility(false);
+	}
 }
 
 void RemoveUserMenuController::newEnterMenuController() {

@@ -22,14 +22,15 @@ void PromotionCampaignController::menu() {
 	theView->printInitialMessage();
 	theView->printEnterDiscountPercentage();
 	theView->getInfo(discountPercentage);
-//	if (company->getDiscount() == 0) {
-//		if (theView->getInfo(discountPercentage) == true) {
-//			company->setDiscountPercentage(discountPercentage);
-//		}
-//	} else {
-//		company->setDiscountPercentage(0);
-//		theView->printPreviousPromotionalCampaignEnded();
-//	}
+	if (company->getDiscount() == 0) {
+		theView->printEnterDiscountPercentage();
+		if (theView->getInfo(discountPercentage) == true) {
+			company->setDiscount(discountPercentage);
+		}
+	} else {
+		company->setDiscount(0);
+		theView->printPreviousPromotionalCampaignEnded();
+	}
 	newAdministratorMenu();
 }
 

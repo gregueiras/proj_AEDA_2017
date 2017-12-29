@@ -18,12 +18,6 @@ AdministratorMenuController::~AdministratorMenuController() {
 	// TODO Auto-generated destructor stub
 }
 
-void AdministratorMenuController::newPromotionalCampaign() {
-	PromotionCampaignController *promotionCampaignController =
-			new PromotionCampaignController(company);
-	promotionCampaignController->menu();
-}
-
 void AdministratorMenuController::menu() {
 	int option;
 	do {
@@ -42,6 +36,9 @@ void AdministratorMenuController::menu() {
 			newPromotionalCampaign();
 			break;
 		case 3:
+			newVehiclesMenu();
+			break;
+		case 4:
 			newEnterMenu();
 			break;
 		default:
@@ -64,15 +61,27 @@ int AdministratorMenuController::getMenuOption(const int lowerBound,
 	return option;
 }
 
-void AdministratorMenuController::newEnterMenu() {
-	EnterController *enterController = new EnterController(company);
-	enterController->menu();
-}
-
 void AdministratorMenuController::newSeeServices() {
 	SeeServicesController *seeServiceController = new SeeServicesController(
 			company);
 	seeServiceController->menu();
+}
+
+void AdministratorMenuController::newPromotionalCampaign() {
+	PromotionCampaignController *promotionCampaignController =
+			new PromotionCampaignController(company);
+	promotionCampaignController->menu();
+}
+
+void AdministratorMenuController::newVehiclesMenu() {
+	VehicleMenuController *vehicleMenuController = new VehicleMenuController(
+			company);
+	vehicleMenuController->menu();
+}
+
+void AdministratorMenuController::newEnterMenu() {
+	EnterController *enterController = new EnterController(company);
+	enterController->menu();
 }
 
 void AdministratorMenuController::endProgram() {

@@ -17,12 +17,17 @@ EnterController::EnterController(Company *company) {
 EnterController::~EnterController() {
 }
 
+void EnterController::setInactiveUsers() {
+	company->setInactiveClients();
+}
+
 void EnterController::menu() {
-	theView->printEnterMenu();
+	setInactiveUsers();
 	enterMenu();
 }
 
 void EnterController::enterMenu() {
+	theView->printEnterMenu();
 	theView->printEnterOption();
 	int option = getMenuOption(0, 2);
 	switch (option) {
