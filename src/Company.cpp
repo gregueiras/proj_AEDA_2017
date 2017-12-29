@@ -911,6 +911,20 @@ std::string Company::getVehicleInfoShort(std::string plate) {
 	return res;
 }
 
+bool Company::existVehicle(std::string plate) {
+	priority_queue <Vehicle> temp = vehicles;
+
+	while( !temp.empty())
+	{
+		if (temp.top().getPlate() == plate)
+			return true;
+		else
+			temp.pop();
+	}
+
+	return false;
+}
+
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
 	return (this->admin_id == admin_id && this->admin_pass == admin_pass);
 }
