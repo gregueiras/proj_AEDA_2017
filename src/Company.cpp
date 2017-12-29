@@ -932,6 +932,13 @@ bool Company::existVehicle(std::string plate) {
 	return false;
 }
 
+bool Company::isAnyVehicleAvailable() {
+	if (vehicles.empty())
+		return false;
+
+	return vehicles.top().isAvailable();
+}
+
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
 	return (this->admin_id == admin_id && this->admin_pass == admin_pass);
 }

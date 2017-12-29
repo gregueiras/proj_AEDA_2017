@@ -535,7 +535,11 @@ public:
 	 */
 	std::string listAllVehicles();
 
-
+	/**
+	 * Checks if there is any vehicle available
+	 * @return true if there is at least one vehicle available, false if not
+	 */
+	bool isAnyVehicleAvailable();
 	/**
 	 * Sends all vehicles with a maintenance date before current date to maintenance
 	 */
