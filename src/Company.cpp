@@ -791,11 +791,18 @@ bool Company::readVehiclesFromFile() {
 	}
 }
 
-bool Company::isVehicleAvailable() {
-	if (this->vehicles.empty())
-		return false;
-	else
-		return (this->vehicles.top().available);
+bool Company::isVehicleAvailable(std::string plate) {
+	priority_queue <Vehicle> temp = vehicles;
+
+	while( !temp.empty())
+	{
+		if ((temp.top().getPlate() == plate) && (temp.top().isAvailable()))
+			return true;
+		else
+			temp.pop();
+	}
+
+	return false;
 
 }
 
@@ -804,7 +811,7 @@ void Company::addServiceToNext_Services(Services* s1) {
 }
 
 bool Company::assignVehicle(Hour expe_time) {
-	if (!isVehicleAvailable())
+	if (!vehicles.top().isAvailable())
 		return false;
 
 	Vehicle temp = vehicles.top();

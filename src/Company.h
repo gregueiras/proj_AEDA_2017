@@ -510,10 +510,11 @@ public:
 	bool readVehiclesFromFile();
 
 	/**
-	 * checks if there is a vehicle available
-	 * @return true if there is a vehicle available, false if not
+	 * Check if a vehicle is available
+	 * @param plate plate of the vehicle to be searched
+	 * @return True if the vehicle exists and is available, false if it doesn't
 	 */
-	bool isVehicleAvailable();
+	bool isVehicleAvailable(std::string plate);
 
 	/**
 	 * Try to assign vehicle to a service
