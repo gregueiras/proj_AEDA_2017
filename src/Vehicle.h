@@ -101,6 +101,18 @@ public:
 	void setInMaintenance(bool inMaintenance) {
 		this->inMaintenance = inMaintenance;
 	}
+
+	/**
+	 * Converts the Vehicle to a string with all info
+	 * @return Vehicle info
+	 */
+	std::string toStrComplete();
+
+	/**
+	 * Converts the Vehicle to a string with just the plate, brand and model
+	 * @return plate, brand and model of the Vehicle
+	 */
+	std::string toStrShort();
 };
 
 

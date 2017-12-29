@@ -6,7 +6,9 @@
  */
 
 #include "Vehicle.h"
-
+#include <iomanip>
+#include <sstream>
+using namespace std;
 Vehicle::Vehicle() {
 	// TODO Auto-generated constructor stub
 
@@ -75,4 +77,27 @@ Vehicle::Vehicle(std::string plate, std::string brand, std::string model) {
 	this->model = model;
 	this->available = true;
 	this->inMaintenance = false;
+}
+
+std::string Vehicle::toStrComplete() {
+	std::stringstream s1;
+
+	s1 << this->getPlate() << ": ";
+	s1 << left << setw(8) << setfill(' ') << this->getBrand() << " ";
+	s1 << left << setw(8) << setfill(' ') << this->getModel();
+	s1 << " Birthday: " << this->getBirthday().toStr() << " Expected time: " << this->getExpectableTime().toStr();
+	s1 << left << setw(15) << setfill(' ') << ( (this->isAvailable()) ? " Available " : " Not Available ");
+	s1 << left << setw(20) << setfill(' ') << ( (this->isInMaintenance()) ? " In Maintenance " : " Not In Maintenance ") << "Maintenance date: " << this->getMaintenance().toStr() << endl;
+
+	return s1.str();
+}
+
+std::string Vehicle::toStrShort() {
+	std::stringstream s1;
+
+	s1 << this->getPlate() << ": ";
+	s1 << left << setw(8) << setfill(' ') << this->getBrand() << " ";
+	s1 << left << setw(8) << setfill(' ') << this->getModel() << endl;
+
+	return s1.str();
 }
