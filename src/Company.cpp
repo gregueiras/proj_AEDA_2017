@@ -1186,7 +1186,19 @@ bool Company::changeVehicleInMaintenance(std::string plate, bool new_inMaintenan
 		if (v_temp.getPlate() == plate)
 		{
 			found = true;
-			v_temp.setInMaintenance(new_inMaintenance_flag);
+			if (!new_inMaintenance_flag)
+				v_temp.setInMaintenance(new_inMaintenance_flag);
+			else if (v_temp.isAvailable())
+				{
+					v_temp.setInMaintenance(new_inMaintenance_flag); //only sends vehicle to maintenance if it is available
+					v_temp.setMaintenance(this->current_date);
+				}
+			else
+			{
+				found = false;
+				break;
+			}
+
 			vehicles.pop();
 			vehicles.push(v_temp);
 		} else
