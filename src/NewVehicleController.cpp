@@ -33,6 +33,7 @@ void NewVehicleController::menu() {
 	theView->printInitialMessage();
 	getVehicleInformation();
 	createVehicle();
+	newVehicleMenuController();
 }
 
 void NewVehicleController::getVehicleInformation() {
@@ -101,6 +102,7 @@ void NewVehicleController::getExpectableTime() {
 	if (expectableHour == 0) {
 		newVehicleMenuController();
 	}
+
 	theView->printEnterExpectableMinute();
 	theView->getInfo(expectableMinute);
 	if (expectableMinute == 0) {

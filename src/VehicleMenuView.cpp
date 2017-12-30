@@ -50,3 +50,11 @@ void VehicleMenuView::printPlateNotFound() {
 void VehicleMenuView::printEnterPlate() {
 	printMessage(enterPlate);
 }
+
+void VehicleMenuView::printVehicleList() {
+	printMessage(vehicleList);
+}
+
+void VehicleMenuView::printVehicleNotAvailable() {
+	printMessage(vehicleNotAvailable);
+}

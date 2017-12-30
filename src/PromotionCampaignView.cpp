@@ -42,3 +42,8 @@ void PromotionCampaignView::printEnd() {
 void PromotionCampaignView::printPreviousPromotionalCampaignEnded() {
 	printMessage(previousPromotionalCampaignEnded);
 }
+
+void PromotionCampaignView::printCompanyDiscountPercentage(
+		const float discount) {
+	cout << companyDiscountPercentage << discount << endl;
+}

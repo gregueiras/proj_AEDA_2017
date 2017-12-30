@@ -17,8 +17,8 @@ private:
 
 	const string initialMessage = "\nAlterar informaçoes do veículo";
 	const string changeVehicleMenu =
-			"Alterar Utilizador\n0->SAIR\n1->name\n2->NIF\n3->street\n4->Country\n5->city"
-					"\n6->County\n7->DoorNumber\n8->Latitude\n9->Longitude\n10->Password\n11->voltar atras";
+			"Alterar Veículo\n0->SAIR\n1->matrícula\n2->marca\n3->modelo\n4->data de construção\n5->tempo expecctavel de espera na manutençao"
+					"\n6->proxima data de manutençao\n7->voltar atras";
 	const string end = "Terminou alterar informaçoes do veículo";
 	const string shutdown = "Terminou programa";
 	const string enterOption = "Introduza a sua opção";

@@ -28,12 +28,12 @@ private:
 	void menuHandler();
 	void listVehicles();
 	int getMenuOption(const int lowerBound, const int upperBound);
-	bool getVehicle();
-	string getVehiclePlate();
+	bool getVehiclePlate();
+	bool askVehiclePlate();
 
-	void seeVehicleMenu(const string plate);
+	void seeVehicleMenu();
 	void newVehicleMenu();
-	void changeVehicleMenu(const string plate);
+	void changeVehicleMenu();
 	void sendVehicleToMaintenanceMenu();
 	void removeVehicleMenu();
 	void newAdministratorMenu();

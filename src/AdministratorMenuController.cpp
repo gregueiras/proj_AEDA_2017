@@ -20,10 +20,10 @@ AdministratorMenuController::~AdministratorMenuController() {
 
 void AdministratorMenuController::menu() {
 	int option;
+	theView->printAdministratorMenu();
 	do {
-		theView->printAdministratorMenu();
 		theView->printEnterOption();
-		option = getMenuOption(0, 11);
+		option = getMenuOption(0, 4);
 		switch (option) {
 		case 0:
 			theView->printShutdown();
@@ -41,22 +41,18 @@ void AdministratorMenuController::menu() {
 		case 4:
 			newEnterMenu();
 			break;
-		default:
-			newEnterMenu();
-			break;
 		}
-	} while (option != 11);
+	} while (option == -1);
 }
 
 int AdministratorMenuController::getMenuOption(const int lowerBound,
 		const int upperBound) {
 	int option;
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(option);
-		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
-			theView->printWrongOption();
-		}
+	bool flag1 = theView->getInfo(option);
+	bool flag2 = v->validateBound(option, lowerBound, upperBound);
+	if (flag1 == false || flag2 == false) {
+		theView->printWrongOption();
+		return -1;
 	}
 	return option;
 }

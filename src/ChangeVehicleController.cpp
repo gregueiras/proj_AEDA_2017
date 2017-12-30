@@ -26,14 +26,14 @@ void ChangeVehicleController::menu() {
 
 void ChangeVehicleController::menuHandler() {
 	int option;
-	do {
-//		theView->printInformation(company->getVehicleInfoComplete(plate));
-//		theView->printChangeVehicleMenu();
-//		theView->printEnterOption();
-		option = getMenuOption(0, 7);
+	theView->printInformation(company->getVehicleInfoComplete(plate));
+	theView->printChangeVehicleMenu();
+		do {
+		theView->printEnterOption();
+		option = getMenuOption(0, 6);
 		switch (option) {
 		case 0:
-//			theView->printShutdown();
+			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -54,23 +54,19 @@ void ChangeVehicleController::menuHandler() {
 		case 6:
 			changeMaintenanceDate();
 			break;
-		default:
-			newVehicleMenuController();
-			break;
 		}
-	} while (option != 7);
-//	theView->printEnd();
+	} while (option == -1);
+	theView->printEnd();
 }
 
 int ChangeVehicleController::getMenuOption(const int lowerBound,
 		const int upperBound) {
 	int option;
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(option);
-		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
-//			theView->printWrongOption();
-		}
+	bool flag1 = theView->getInfo(option);
+	bool flag2 = v->validateBound(option, lowerBound, upperBound);
+	if (flag1 == false || flag2 == false) {
+		theView->printWrongOption();
+		return -1;
 	}
 	return option;
 }
@@ -79,11 +75,14 @@ void ChangeVehicleController::endProgram() {
 }
 
 void ChangeVehicleController::changePlate() {
-	company->changeVehiclePlate(plate, getPlate());
+	string newPlate = getPlate();
+	company->changeVehiclePlate(plate, newPlate);
+	this->plate = newPlate;
 }
 
 void ChangeVehicleController::changeBrand() {
-	company->changeVehicleBrand(plate, getBrand());
+	string brand = getBrand();
+	company->changeVehicleBrand(plate, brand);
 }
 
 void ChangeVehicleController::changeModel() {
@@ -104,49 +103,52 @@ void ChangeVehicleController::changeMaintenanceDate() {
 
 string ChangeVehicleController::getPlate() {
 	string plate;
-//	theView->printEnterNewPlate();
-	theView->getInfo(plate);
+	theView->printEnterNewPlate();
+	bool flag = theView->getInfo(plate);
 	if (plate == "0") {
 		newVehicleMenuController();
 	}
+	return plate;
 }
 
 string ChangeVehicleController::getBrand() {
 	string brand;
-//	theView->printEnterNewBrand();
-	theView->getInfo(brand);
+	theView->printEnterNewBrand();
+	bool flag = theView->getInfo(brand);
 	if (brand == "0") {
 		newVehicleMenuController();
 	}
+	return brand;
 }
 
 string ChangeVehicleController::getModel() {
 	string model;
-//	theView->printEnterNewModel();
+	theView->printEnterNewModel();
 	bool flag = theView->getInfo(model);
 	if (model == "0") {
 		newVehicleMenuController();
 	}
+	return model;
 }
 
 Date * ChangeVehicleController::getBirthdayDate() {
-//	theView->printEnterNewBirthdayDate();
+	theView->printEnterNewBirthdayDate();
 	string date;
 	unsigned int birthdayDay, birthdayMonth, birthdayYear;
 	do {
-//		theView->printEnterNewBirthdayDay();
+		theView->printEnterNewBirthdayDay();
 		theView->getInfo(birthdayDay);
 		if (birthdayDay == 0) {
 			newVehicleMenuController();
 		}
 
-//		theView->printEnterNewBirthdayMonth();
+		theView->printEnterNewBirthdayMonth();
 		theView->getInfo(birthdayMonth);
 		if (birthdayMonth == 0) {
 			newVehicleMenuController();
 		}
 
-//		theView->printEnterNewBirthdayYear();
+		theView->printEnterNewBirthdayYear();
 		theView->getInfo(birthdayYear);
 		if (birthdayYear == 0) {
 			newVehicleMenuController();
@@ -158,14 +160,14 @@ Date * ChangeVehicleController::getBirthdayDate() {
 }
 
 Hour* ChangeVehicleController::getExpectableTime() {
-//	theView->printEnterNewExpectableTime();
+	theView->printEnterNewExpectableTime();
 	unsigned int expectableHour, expectableMinute;
-//	theView->printEnterNewExpectableHour();
+	theView->printEnterNewExpectableHour();
 	theView->getInfo(expectableHour);
 	if (expectableHour == 0) {
 		newVehicleMenuController();
 	}
-//	theView->printEnterNewExpectableMinute();
+	theView->printEnterNewExpectableMinute();
 	theView->getInfo(expectableMinute);
 	if (expectableMinute == 0) {
 		newVehicleMenuController();
@@ -174,23 +176,23 @@ Hour* ChangeVehicleController::getExpectableTime() {
 }
 
 Date * ChangeVehicleController::getMaintenanceDate() {
-//	theView->printEnterNewMaintenanceDate();
+	theView->printEnterNewMaintenanceDate();
 	string date;
 	unsigned int maintenanceDay, maintenanceMonth, maintenanceYear;
 	do {
-//		theView->printEnterNewMaintenanceDay();
+		theView->printEnterNewMaintenanceDay();
 		theView->getInfo(maintenanceDay);
 		if (maintenanceDay == 0) {
 			newVehicleMenuController();
 		}
 
-//		theView->printEnterNewMaintenanceMonth();
+		theView->printEnterNewMaintenanceMonth();
 		theView->getInfo(maintenanceMonth);
 		if (maintenanceMonth == 0) {
 			newVehicleMenuController();
 		}
 
-//		theView->printEnterNewMaintenanceYear();
+		theView->printEnterNewMaintenanceYear();
 		theView->getInfo(maintenanceYear);
 		if (maintenanceYear == 0) {
 			newVehicleMenuController();

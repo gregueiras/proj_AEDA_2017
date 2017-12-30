@@ -37,11 +37,11 @@ bool Utilities::readString(T &s) {
 	//validate string
 	if (cin.fail()) {
 		if (cin.eof()) {
-			return false;
 		} else {
 			cin.clear(); // reset failbit, clear error state
 			cin.ignore(numeric_limits<streamsize>::max(), '\n'); //clear input buffer
 		}
+		return false;
 	} else {
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //clear input buffer
 	}

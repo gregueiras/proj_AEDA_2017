@@ -16,12 +16,14 @@ using namespace std;
 class VehicleMenuView {
 private:
 	Utilities *u;
+	const string vehicleList = "\nListagem dos veículos:";
 	const string vehicleMenu =
-			"Menu Veículos \n1->Adicionar Veículo\n2->Alterar Veículo\n3->Enviar Veículo para Manutenção\n4->Remover Veículo\5->Voltar Atrás";
+			"\nMenu Veículos \n1->Adicionar Veículo\n2->Ver Veículo\n3->Alterar Veículo\n4->Enviar Veículo para Manutenção\n5->Remover Veículo\n6->Voltar Atrás";
 	const string enterOption = "Introduza a sua opcao";
 	const string wrongOption = "Opcao escolhida invalida";
 	const string enterPlate = "Introduza a matricula do veículo";
 	const string plateNotFound = "Veículo com a matricula dada não encontrado";
+	const string vehicleNotAvailable = "Veículo não está disponível";
 
 	const string end = "\nTerminou Menu Veículos";
 	const string shutdown = "\nPrograma terminou";
@@ -31,12 +33,14 @@ public:
 	VehicleMenuView();
 	virtual ~VehicleMenuView();
 
+	void printVehicleList();
 	void printVehicleMenu();
 	void printEnterOption();
 	void printWrongOption();
 
 	void printEnterPlate();
 	void printPlateNotFound();
+	void printVehicleNotAvailable();
 
 	void printEnd();
 	void printShutdown();
