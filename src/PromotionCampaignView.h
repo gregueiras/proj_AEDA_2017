@@ -17,8 +17,10 @@ class PromotionCampaignView {
 
 private:
 	Utilities *u;
-	const string initialMessage = "Definir Campanha Promocional";
+	const string initialMessage = "\nDefinir Campanha Promocional";
 	const string enterDiscountPercentage = "Introduza a percentagem de desconto";
+	const string companyDiscountPercentage =
+			"Percentagem de desconto da atual campanha promocional: ";
 	const string previousPromotionalCampaignEnded =
 			"Campanha Promocional anteriormente em  vigor terminada";
 	const string end = "Terminou Definir Campanha Promocional";
@@ -31,7 +33,7 @@ public:
 	virtual ~PromotionCampaignView();
 
 	void printInitialMessage();
-
+	void printCompanyDiscountPercentage(const float discount);
 	void printEnterDiscountPercentage();
 
 	void printPreviousPromotionalCampaignEnded();

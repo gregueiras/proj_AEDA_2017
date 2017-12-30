@@ -26,11 +26,11 @@ void ChangeUserMenuController::menu() {
 
 void ChangeUserMenuController::menuHandler() {
 	int option;
+	theView->printUserInfo(user->getInfoDisp());
+	theView->printChangeUserMenu();
 	do {
-		theView->printUserInfo(user->getInfoDisp());
-		theView->printChangeUserMenu();
 		theView->printEnterOption();
-		option = getMenuOption(0, 11);
+		option = getMenuOption(0, 10);
 		switch (option) {
 		case 0:
 			theView->printShutdown();
@@ -66,23 +66,18 @@ void ChangeUserMenuController::menuHandler() {
 		case 10:
 			changePassword();
 			break;
-		default:
-			newUserMenu();
-			break;
 		}
-	} while (option != 11);
-
+	} while (option == -1);
 }
 
 int ChangeUserMenuController::getMenuOption(const int lowerBound,
 		const int upperBound) {
 	int option;
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(option);
-		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
-			theView->printWrongOption();
-		}
+	bool flag1 = theView->getInfo(option);
+	bool flag2 = v->validateBound(option, lowerBound, upperBound);
+	if (flag1 == false || flag2 == false) {
+		theView->printWrongOption();
+		return -1;
 	}
 	return option;
 }

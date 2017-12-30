@@ -20,41 +20,49 @@ ClientMenuController::~ClientMenuController() {
 }
 
 void ClientMenuController::menu() {
-	theView->printClientMenu();
+	notificationHandler();
 	clientMenuHandler();
 }
 
 void ClientMenuController::clientMenuHandler() {
-	theView->printEnterOption();
-	int option = getMenuOption(0, 3);
-	switch (option) {
-	case 0:
-		theView->printShutdown();
-		endProgram();
-		break;
-	case 1:
-		newUserMenu();
-		break;
-	case 2:
-		newServiceMenu();
-		break;
-	case 3:
-		newEnterMenu();
-		break;
-	default:
-		newEnterMenu();
-		break;
+	int option;
+	theView->printClientMenu();
+	do {
+		theView->printEnterOption();
+		option = getMenuOption(0, 3);
+		switch (option) {
+		case 0:
+			theView->printShutdown();
+			endProgram();
+			break;
+		case 1:
+			newUserMenu();
+			break;
+		case 2:
+			newServiceMenu();
+			break;
+		case 3:
+			newEnterMenu();
+			break;
+		}
+	} while (option == -1);
+}
+
+void ClientMenuController::notificationHandler() {
+	theView->printNotificationsHeader();
+	if (user->getVisibility() == false && company->getDiscount() != 0) {
+		theView->printPendingChangeAdress();
 	}
 }
+
 int ClientMenuController::getMenuOption(const int lowerBound,
 		const int upperBound) {
 	int option;
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(option);
-		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
-			theView->printWrongOption();
-		}
+	bool flag1 = theView->getInfo(option);
+	bool flag2 = v->validateBound(option, lowerBound, upperBound);
+	if (flag1 == false || flag2 == false) {
+		theView->printWrongOption();
+		return -1;
 	}
 	return option;
 }

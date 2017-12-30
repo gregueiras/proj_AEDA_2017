@@ -7,15 +7,16 @@ using namespace std;
 //  
 
 Company::Company() :
-	payments_regist(PaymentRecord(0)) {
+		payments_regist(PaymentRecord(0)) {
 	payments_regist.makeEmpty();
 	admin_id = 1;
 	admin_pass = "admin";
 	this->period_to_inactive = 60;
+	this->discount = 0;
 }
 
 Company::Company(string nib, string entity, string reference) :
-	payments_regist(PaymentRecord(0)) {
+		payments_regist(PaymentRecord(0)) {
 	payments_regist.makeEmpty();
 	admin_id = 1;
 	admin_pass = "admin";
@@ -23,9 +24,12 @@ Company::Company(string nib, string entity, string reference) :
 	this->entity = entity;
 	this->reference = reference;
 	this->period_to_inactive = 60;
+	this->discount = 0;
 }
 
-Company::Company(string nib, string entity, string reference, unsigned int period) : Company::Company(nib, entity, reference) {
+Company::Company(string nib, string entity, string reference,
+		unsigned int period) :
+		Company::Company(nib, entity, reference) {
 	this->period_to_inactive = period;
 }
 
@@ -86,18 +90,18 @@ void Company::activateClientRecord(Client * c) {
 }
 
 void Company::setInactiveClients() {
-	for (size_t i = 0; i < clients.size(); i++)
-	{
+	for (size_t i = 0; i < clients.size(); i++) {
 		bool set = false;
 		Services* current_serv;
 
-		if(clients.at(i)->getServices().size() != 0)
+		if (clients.at(i)->getServices().size() != 0)
 			current_serv = (clients.at(i)->getClientLastService());
 		else {
 			set = true;
 		}
 
-		Date tmp_d = current_serv->getDelivery().getEnd_date() + this->period_to_inactive;
+		Date tmp_d = current_serv->getDelivery().getEnd_date()
+				+ this->period_to_inactive;
 		Hour tmp_h = current_serv->getDelivery().getEnd_hour();
 
 		time_t timer;
@@ -118,7 +122,7 @@ void Company::setInactiveClients() {
 		if (sec <= 0)
 			set = true;
 
-		if(set)
+		if (set)
 			deactivateClientRecord(clients.at(i));
 	}
 }
@@ -658,7 +662,8 @@ bool Company::removeVehicleMaintenance(string brand, string model,
 		v_temp = vehicles.top();
 		vehicles.pop();
 
-		if ((v_temp == toFound) && (!v_temp.isInMaintenance()) && v_temp.isAvailable()) {
+		if ((v_temp == toFound) && (!v_temp.isInMaintenance())
+				&& v_temp.isAvailable()) {
 			v_temp.setInMaintenance(false);
 			found = true;
 		}
@@ -685,9 +690,7 @@ bool Company::addVehicle(Vehicle v1) {
 		temp.pop();
 	}
 
-
-	if (!next_services.empty())
-	{
+	if (!next_services.empty()) {
 		next_services.front()->setVehiclePlate(v1.getPlate());
 		v_temp.setAvailable(false);
 		next_services.pop();
@@ -792,10 +795,9 @@ bool Company::readVehiclesFromFile() {
 }
 
 bool Company::isVehicleAvailable(std::string plate) {
-	priority_queue <Vehicle> temp = vehicles;
+	priority_queue<Vehicle> temp = vehicles;
 
-	while( !temp.empty())
-	{
+	while (!temp.empty()) {
 		if ((temp.top().getPlate() == plate) && (temp.top().isAvailable()))
 			return true;
 		else
@@ -826,11 +828,10 @@ bool Company::assignVehicle(Hour expe_time) {
 }
 
 std::string Company::listAllVehicles() {
-	priority_queue <Vehicle> temp = vehicles;
+	priority_queue<Vehicle> temp = vehicles;
 	std::string res;
 
-	while (!temp.empty())
-	{
+	while (!temp.empty()) {
 		Vehicle v_temp = temp.top();
 		temp.pop();
 
@@ -842,13 +843,13 @@ std::string Company::listAllVehicles() {
 }
 
 void Company::sendVehiclesToMaintenance() {
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 
-	while (!vehicles.empty())
-	{
+	while (!vehicles.empty()) {
 		Vehicle v_temp = vehicles.top();
 
-		if ( ( v_temp.getMaintenance() < current_date) && (v_temp.isAvailable()) && (!v_temp.isInMaintenance()))
+		if ((v_temp.getMaintenance() < current_date) && (v_temp.isAvailable())
+				&& (!v_temp.isInMaintenance()))
 			v_temp.setInMaintenance(false);
 		temp.push_back(v_temp);
 		vehicles.pop();
@@ -865,26 +866,22 @@ void Company::setDiscount(float discount) {
 }
 
 std::string Company::getVehicleInfoComplete(std::string plate) {
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 	bool found = false;
 	std::string res;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			res = v_temp.toStrComplete();
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
@@ -892,26 +889,22 @@ std::string Company::getVehicleInfoComplete(std::string plate) {
 }
 
 std::string Company::getVehicleInfoShort(std::string plate) {
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 	bool found = false;
 	std::string res;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			res = v_temp.toStrShort();
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
@@ -919,10 +912,9 @@ std::string Company::getVehicleInfoShort(std::string plate) {
 }
 
 bool Company::existVehicle(std::string plate) {
-	priority_queue <Vehicle> temp = vehicles;
+	priority_queue<Vehicle> temp = vehicles;
 
-	while( !temp.empty())
-	{
+	while (!temp.empty()) {
 		if (temp.top().getPlate() == plate)
 			return true;
 		else
@@ -944,34 +936,29 @@ bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
 }
 
 bool Company::removeVehicle(std::string plate) {
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
 
 		cout << v_temp.getPlate() << endl;
 
-		if (v_temp.getPlate() == plate)
-		{
-			if (!v_temp.isAvailable())
-			{
+		if (v_temp.getPlate() == plate) {
+			if (!v_temp.isAvailable()) {
 				found = false; //vehicle is in a service
 				temp.push_back(v_temp);
 				break;
 			}
 			found = true;
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 		}
 
 		vehicles.pop();
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
@@ -979,27 +966,23 @@ bool Company::removeVehicle(std::string plate) {
 }
 
 bool Company::changeVehiclePlate(std::string old_plate, std::string new_plate) {
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == old_plate)
-		{
+		if (v_temp.getPlate() == old_plate) {
 			found = true;
 			v_temp.setPlate(new_plate);
 			vehicles.pop();
 			vehicles.push(v_temp);
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
@@ -1007,29 +990,24 @@ bool Company::changeVehiclePlate(std::string old_plate, std::string new_plate) {
 
 }
 
-
 bool Company::changeVehicleModel(std::string plate, std::string new_model) {
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			v_temp.setModel(new_model);
 			vehicles.pop();
 			vehicles.push(v_temp);
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
@@ -1037,55 +1015,48 @@ bool Company::changeVehicleModel(std::string plate, std::string new_model) {
 }
 
 bool Company::changeVehicleBrand(std::string plate, std::string new_brand) {
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			v_temp.setBrand(new_brand);
 			vehicles.pop();
 			vehicles.push(v_temp);
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
 	return found;
 }
 
-bool Company::changeVehicleExpectedTime(std::string plate, Hour new_expected_time) {
-	vector <Vehicle> temp;
+bool Company::changeVehicleExpectedTime(std::string plate,
+		Hour new_expected_time) {
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			v_temp.setExpectableTime(new_expected_time);
 			vehicles.pop();
 			vehicles.push(v_temp);
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
@@ -1093,98 +1064,87 @@ bool Company::changeVehicleExpectedTime(std::string plate, Hour new_expected_tim
 }
 
 bool Company::changeVehicleBirthday(std::string plate, Date new_birthday) {
-	vector <Vehicle> temp;
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			v_temp.setBirthday(new_birthday);
 			vehicles.pop();
 			vehicles.push(v_temp);
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
 	return found;
 }
 
-bool Company::changeVehicleMaintenance(std::string plate, Date new_maintenance) {
-	vector <Vehicle> temp;
+bool Company::changeVehicleMaintenance(std::string plate,
+		Date new_maintenance) {
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			v_temp.setMaintenance(new_maintenance);
 			vehicles.pop();
 			vehicles.push(v_temp);
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
 	return found;
 }
 
-bool Company::changeVehicleAvailability(std::string plate, bool new_available_flag) {
-	vector <Vehicle> temp;
+bool Company::changeVehicleAvailability(std::string plate,
+		bool new_available_flag) {
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			v_temp.setAvailable(new_available_flag);
 			vehicles.pop();
 			vehicles.push(v_temp);
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 
 	return found;
 }
 
-bool Company::changeVehicleInMaintenance(std::string plate, bool new_inMaintenance_flag) {
-	vector <Vehicle> temp;
+bool Company::changeVehicleInMaintenance(std::string plate,
+		bool new_inMaintenance_flag) {
+	vector<Vehicle> temp;
 	bool found = false;
 
-	while ( (!vehicles.empty()) && (!found))
-	{
+	while ((!vehicles.empty()) && (!found)) {
 		Vehicle v_temp = vehicles.top();
-		if (v_temp.getPlate() == plate)
-		{
+		if (v_temp.getPlate() == plate) {
 			found = true;
 			if (!new_inMaintenance_flag)
 				v_temp.setInMaintenance(new_inMaintenance_flag);
@@ -1201,15 +1161,13 @@ bool Company::changeVehicleInMaintenance(std::string plate, bool new_inMaintenan
 
 			vehicles.pop();
 			vehicles.push(v_temp);
-		} else
-		{
+		} else {
 			temp.push_back(v_temp);
 			vehicles.pop();
 		}
 	}
 
-	for (auto i : temp)
-	{
+	for (auto i : temp) {
 		vehicles.push(i);
 	}
 

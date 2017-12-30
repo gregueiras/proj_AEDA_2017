@@ -20,16 +20,11 @@ PromotionCampaignController::~PromotionCampaignController() {
 
 void PromotionCampaignController::menu() {
 	theView->printInitialMessage();
+	theView->printCompanyDiscountPercentage(company->getDiscount());
 	theView->printEnterDiscountPercentage();
-	theView->getInfo(discountPercentage);
-//	if (company->getDiscount() == 0) {
-//		if (theView->getInfo(discountPercentage) == true) {
-//			company->setDiscountPercentage(discountPercentage);
-//		}
-//	} else {
-//		company->setDiscountPercentage(0);
-//		theView->printPreviousPromotionalCampaignEnded();
-//	}
+	if (theView->getInfo(discountPercentage) == true) {
+		company->setDiscount(discountPercentage);
+	}
 	newAdministratorMenu();
 }
 

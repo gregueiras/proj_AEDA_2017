@@ -17,6 +17,10 @@ PayServiceController::PayServiceController(Client *user, unsigned int serviceID,
 	this->company = company;
 
 	amountToPay = user->getServiceById(serviceID).getPrice();
+	if (company->getDiscount() != 0) {
+		//--------------
+		user->getServiceById(serviceID).applyDiscount(company->getDiscount());
+	}
 	creditCardNumber = 0;
 }
 
@@ -63,22 +67,22 @@ void PayServiceController::payEOM() {
 }
 
 void PayServiceController::payMenuBusiness() {
-	theView->printEnterOption();
-	int option = getMenuOption(1, 3);
-	switch (option) {
-	case 1:
-		payBankTransfer();
-		break;
-	case 2:
-		payMoneyTransfer();
-		break;
-	case 3:
-		payCreditCard();
-		break;
-	default:
-		payMenu();
-		break;
-	}
+	int option;
+	do {
+		theView->printEnterOption();
+		option = getMenuOption(1, 3);
+		switch (option) {
+		case 1:
+			payBankTransfer();
+			break;
+		case 2:
+			payMoneyTransfer();
+			break;
+		case 3:
+			payCreditCard();
+			break;
+		}
+	} while (option == -1);
 }
 
 void PayServiceController::payMenu() {
@@ -139,13 +143,12 @@ void PayServiceController::setUserActive() {
 
 int PayServiceController::getMenuOption(const int lowerBound,
 		const int upperBound) {
-	unsigned int option;
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(option);
-		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
-			theView->printWrongOption();
-		}
+	int option;
+	bool flag1 = theView->getInfo(option);
+	bool flag2 = v->validateBound(option, lowerBound, upperBound);
+	if (flag1 == false || flag2 == false) {
+		theView->printWrongOption();
+		return -1;
 	}
 	return option;
 }

@@ -1,42 +1,37 @@
 /*
- * RemoveMenuView.h
+ * RemoveVehicleView.h
  *
- *  Created on: 08/11/2017
+ *  Created on: 28 Dec 2017
  *      Author: jotaa
  */
 
-#ifndef SRC_VIEW_HEADERS_REMOVEUSERMENUVIEW_H_
-#define SRC_VIEW_HEADERS_REMOVEUSERMENUVIEW_H_
+#ifndef SRC_REMOVEVEHICLEVIEW_H_
+#define SRC_REMOVEVEHICLEVIEW_H_
 
 #include <iostream>
 #include "Utilities.h"
 
 using namespace std;
 
-class RemoveMenuView {
+class RemoveVehicleView {
 private:
 	Utilities *u;
 
-	const string removeUserMenu =
-			"\nRemover Utilizador\n0->SAIR\n1->remover\n2->voltar atrás";
-
+	const string removeVehicleMenu =
+			"\nRemover Veículo\n0->SAIR\n1->remover\n2->voltar atrás";
 	const string enterConfirmation =
-			"Deseja remover definitivamente perfil de utilizador?\n0->Não\n1->Sim";
+			"Deseja remover definitivamente veículo?\n0->Não\n1->Sim";
 
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Introduziu opção errada";
 	const string end = "\nTerminou Remover Utilizador";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
-
 public:
-	RemoveMenuView();
-	virtual ~RemoveMenuView();
+	RemoveVehicleView();
+	virtual ~RemoveVehicleView();
 
-	/**
-	 * prints remove user menu initial message
-	 */
-	void printRemoveUserMenu();
+	void printRemoveVehicleMenu();
 
 	/**
 	 * prints enter option message
@@ -70,7 +65,8 @@ public:
 };
 
 template<typename T>
-bool RemoveMenuView::getInfo(T& info) {
+bool RemoveVehicleView::getInfo(T& info) {
 	return u->readString(info);
 }
-#endif /* SRC_VIEW_HEADERS_REMOVEUSERMENUVIEW_H_ */
+
+#endif /* SRC_REMOVEVEHICLEVIEW_H_ */

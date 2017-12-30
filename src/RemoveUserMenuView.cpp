@@ -19,7 +19,7 @@ void RemoveMenuView::printMessage(const string &message) {
 	cout << message << endl;
 }
 
-void RemoveMenuView::printRemoveUser() {
+void RemoveMenuView::printRemoveUserMenu() {
 	printMessage(removeUserMenu);
 }
 

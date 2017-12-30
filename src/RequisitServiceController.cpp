@@ -245,17 +245,17 @@ void RequisitServiceController::payService() {
 }
 
 void RequisitServiceController::payAtEOMHandler() {
-	theView->printEnterOption();
-	int option = getMenuOption(1, 2);
-	switch (option) {
-	case 1:
-		addToEOM();
-		newServiceMenu();
-		break;
-	case 2:
-	default:
-		break;
-	}
+	int option;
+	do {
+		theView->printEnterOption();
+		option = getMenuOption(1, 2);
+		switch (option) {
+		case 1:
+			addToEOM();
+			newServiceMenu();
+			break;
+		}
+	} while (option == -1);
 }
 
 void RequisitServiceController::addToEOM() {
@@ -270,20 +270,25 @@ void RequisitServiceController::addToEOM() {
 int RequisitServiceController::getMenuOption(const int lowerBound,
 		const int upperBound) {
 	int option;
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(option);
-		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
-			theView->printWrongOption();
-		}
+	bool flag1 = theView->getInfo(option);
+	bool flag2 = v->validateBound(option, lowerBound, upperBound);
+	if (flag1 == false || flag2 == false) {
+		theView->printWrongOption();
+		return -1;
 	}
 	return option;
 }
-
+//---------------------------
 void RequisitServiceController::addService() {
+	if (company->isAnyVehicleAvailable()) {
+		company->addService(service, user->getId());
+	} else {
+		company->addServiceToNext_Services(service);
+	}
 	user->addServices(service);
-	company->addService(service, user->getId());
+//	company->addService(service, user->getId());
 }
+//-----------------------------------------------
 
 void RequisitServiceController::newEnterController() {
 	EnterController *enterController = new EnterController(company);

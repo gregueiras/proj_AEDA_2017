@@ -59,52 +59,54 @@ int ListServicesController::getServiceID() {
 	return id;
 }
 void ListServicesController::listServicesMenuHandler() {
-	theView->printEnterOption();
-	int option = getMenuOption(0, 7);
-	switch (option) {
-	case 0:
-		theView->printEnd();
-		endProgram();
-		break;
-	case 1:
-		serviceID = getServiceID();
-		newSeeService();
-		break;
-	case 2:
-		newSortServicesMenu();
-		break;
-	case 3:
-		newFilterServicesMenu();
-		break;
-	case 4:
-		newChangeServiceMenu();
-		break;
-	case 5:
-		newRemoveServiceMenu();
-		break;
-	case 6:
-		if (dynamic_cast<Business*>(user)) {
-			newPayServiceMenu();
-		} else {
+	int option;
+	do {
+		theView->printEnterOption();
+		option = getMenuOption(0, 7);
+		switch (option) {
+		case 0:
+			theView->printEnd();
+			endProgram();
+			break;
+		case 1:
+			serviceID = getServiceID();
+			newSeeService();
+			break;
+		case 2:
+			newSortServicesMenu();
+			break;
+		case 3:
+			newFilterServicesMenu();
+			break;
+		case 4:
+			serviceID = getServiceID();
+			newChangeServiceMenu();
+			break;
+		case 5:
+			newRemoveServiceMenu();
+			break;
+		case 6:
+			if (dynamic_cast<Business*>(user)) {
+				newPayServiceMenu();
+			} else {
+				newServiceMenu();
+			}
+			break;
+		case 7:
 			newServiceMenu();
+			break;
 		}
-		break;
-	case 7:
-	default:
-		newServiceMenu();
-		break;
-	}
+	} while (option == -1);
 }
 
 int ListServicesController::getMenuOption(const int lowerBound,
 		const int upperBound) {
 	int option;
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(option);
-		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
-			theView->printWrongOption();
-		}
+	bool flag1 = theView->getInfo(option);
+	bool flag2 = v->validateBound(option, lowerBound, upperBound);
+	if (flag1 == false || flag2 == false) {
+		theView->printWrongOption();
+		return -1;
 	}
 	return option;
 }
@@ -126,10 +128,8 @@ void ListServicesController::newSeeService() {
 void ListServicesController::newChangeServiceMenu() {
 
 	Services s1 = user->getServiceById(serviceID);
-	Services* ss1 = &s1;
-
 	ChangeServiceController *changeServiceController =
-			new ChangeServiceController(ss1, user, company);
+			new ChangeServiceController(&s1, user, company);
 
 	changeServiceController->menu();
 }

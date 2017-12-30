@@ -36,6 +36,8 @@ private:
 	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
 
+	void notificationHandler();
+
 	/**
 	 * end program
 	 */

@@ -43,8 +43,8 @@ void FilterServicesController::menu() {
 
 void FilterServicesController::filterServicesHandler() {
 	int option;
+	theView->printFilterMenu();
 	do {
-		theView->printFilterMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 8);
 		switch (option) {
@@ -76,22 +76,18 @@ void FilterServicesController::filterServicesHandler() {
 		case 8:
 			newListServicesMenu();
 			break;
-		default:
-			newListServicesMenu();
-			break;
 		}
-	} while (option != 7);
+	} while (option == -1);
 }
 
 int FilterServicesController::getMenuOption(const int lowerBound,
 		const int upperBound) {
 	int option;
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(option);
-		if (!(flag = v->validateBound(option, lowerBound, upperBound))) {
-			theView->printWrongOption();
-		}
+	bool flag1 = theView->getInfo(option);
+	bool flag2 = v->validateBound(option, lowerBound, upperBound);
+	if (flag1 == false || flag2 == false) {
+		theView->printWrongOption();
+		return -1;
 	}
 	return option;
 }
