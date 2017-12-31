@@ -316,7 +316,14 @@ public:
 	void setVehiclePlate(const std::string& vehiclePlate) {
 		vehicle_plate = vehiclePlate;
 	}
-public:
+
+	/**
+	 * Get the travel time of the service
+	 * @param days used to return number of full days of travel
+	 * @param hours used to return number of hours of travel
+	 */
+	void getTravelTime(unsigned int &days, Hour &hours);
+	public:
 
 
 	/**

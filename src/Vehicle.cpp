@@ -39,8 +39,13 @@ bool Vehicle::operator ==(const Vehicle& v1) const {
 
 std::ostream& operator <<(std::ostream& os, const Vehicle& dt) {
 
-	os << dt.plate << ": " << dt.brand << " " << dt.model << std::endl << "Birthday: "
-			<< dt.birthday << " Expectable time: " << dt.expectable_time << std::endl;
+	os << dt.getPlate() << ": ";
+	os << left << setw(8) << setfill(' ') << dt.getBrand() << " ";
+	os << left << setw(8) << setfill(' ') << dt.getModel();
+	os << " Birthday: " << dt.getBirthday().toStr() << " Expected time: " << dt.getExpectableDay().toStr() << " " << dt.getExpectableTime().toStr();
+	os << left << setw(15) << setfill(' ') << ( (dt.isAvailable()) ? " Available " : " Not Available ");
+	os << left << setw(20) << setfill(' ') << ( (dt.isInMaintenance()) ? " In Maintenance " : " Not In Maintenance ") << "Maintenance date: " << dt.getMaintenance().toStr() << endl;
+
 	return os;
 }
 
@@ -55,11 +60,13 @@ Vehicle::Vehicle(std::string plate, std::string brand, std::string model,
 	this->maintenance = maintenance;
 	this->available = true;
 	this->inMaintenance = false;
+	this->expectable_day = Date(0,0,0);
+
 }
 
 
 Vehicle::Vehicle(std::string plate, std::string brand, std::string model,
-		Date birthday, Hour expectable_time, Date maintenance, bool available, bool inMaintenance) {
+		Date birthday, Hour expectable_time, Date maintenance, bool available, bool inMaintenance, Date expectable_day) {
 
 	this->plate = plate;
 	this->brand = brand;
@@ -69,6 +76,7 @@ Vehicle::Vehicle(std::string plate, std::string brand, std::string model,
 	this->maintenance = maintenance;
 	this->available = available;
 	this->inMaintenance = inMaintenance;
+	this->expectable_day = expectable_day;
 }
 
 Vehicle::Vehicle(std::string plate, std::string brand, std::string model) {
@@ -77,6 +85,8 @@ Vehicle::Vehicle(std::string plate, std::string brand, std::string model) {
 	this->model = model;
 	this->available = true;
 	this->inMaintenance = false;
+	this->expectable_day = Date(0,0,0);
+	this->expectable_time = Hour (0,0);
 }
 
 std::string Vehicle::toStrComplete() {
@@ -85,7 +95,7 @@ std::string Vehicle::toStrComplete() {
 	s1 << this->getPlate() << ": ";
 	s1 << left << setw(8) << setfill(' ') << this->getBrand() << " ";
 	s1 << left << setw(8) << setfill(' ') << this->getModel();
-	s1 << " Birthday: " << this->getBirthday().toStr() << " Expected time: " << this->getExpectableTime().toStr();
+	s1 << " Birthday: " << this->getBirthday().toStr() << " Expected time: " << this->getExpectableDay().toStr() << " " << this->getExpectableTime().toStr();
 	s1 << left << setw(15) << setfill(' ') << ( (this->isAvailable()) ? " Available " : " Not Available ");
 	s1 << left << setw(20) << setfill(' ') << ( (this->isInMaintenance()) ? " In Maintenance " : " Not In Maintenance ") << "Maintenance date: " << this->getMaintenance().toStr() << endl;
 
@@ -100,4 +110,27 @@ std::string Vehicle::toStrShort() {
 	s1 << left << setw(8) << setfill(' ') << this->getModel() << endl;
 
 	return s1.str();
+}
+
+const Date& Vehicle::getExpectableDay() const {
+	return expectable_day;
+}
+
+void Vehicle::setExpectableDay(const Date& expectableDay) {
+	expectable_day = expectableDay;
+}
+
+Vehicle::Vehicle(std::string plate, std::string brand, std::string model,
+		Date birthday, Hour expectable_time, Date maintenance, bool available,
+		bool inMaintenance) {
+
+	this->plate = plate;
+	this->brand = brand;
+	this->model = model;
+	this->birthday = birthday;
+	this->expectable_time = expectable_time;
+	this->maintenance = maintenance;
+	this->available = available;
+	this->inMaintenance = inMaintenance;
+	this->expectable_day = Date(0,0,0);
 }

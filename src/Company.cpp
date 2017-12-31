@@ -86,17 +86,18 @@ void Company::activateClientRecord(Client * c) {
 }
 
 void Company::setInactiveClients() {
-	for (size_t i = 0; i < clients.size(); i++) {
+	for (size_t i = 0; i < clients.size(); i++)
+	{
 		bool set = false;
 		Services* current_serv;
 
+		if(clients.at(i)->getServices().size() != 0)
 			current_serv = (clients.at(i)->getClientLastService());
 		else {
 			set = true;
 		}
 
-		Date tmp_d = current_serv->getDelivery().getEnd_date()
-				+ this->period_to_inactive;
+		Date tmp_d = current_serv->getDelivery().getEnd_date() + this->period_to_inactive;
 		Hour tmp_h = current_serv->getDelivery().getEnd_hour();
 
 		time_t timer;
@@ -117,7 +118,7 @@ void Company::setInactiveClients() {
 		if (sec <= 0)
 			set = true;
 
-		if (set)
+		if(set)
 			deactivateClientRecord(clients.at(i));
 	}
 }
