@@ -104,6 +104,7 @@ double Services::calcDistance ()   {
 
 double Services::calcPrice (unsigned int days_in_storage)   {
 
+
 	if (distance > 2000000)
 		return (volume*distance/1000*cost_km_m3 + days_in_storage*cost_day_in_storage*volume)*1.1;
 	else
@@ -252,4 +253,14 @@ bool Services::isBetweenID(const unsigned int& d1, const unsigned int& d2) {
 void Services::applyDiscount(float discount) {
 	if (discount != 0)
 		this->price = price*(1 - discount);
+}
+
+void Services::getTravelTime(unsigned int& days, Hour& hours) {
+
+	hours = shipping.getDispatch_hour() - shipping.getArrival_hour();
+	days = shipping.getArrival_date() - shipping.getDispatch_date();
+
+	if (shipping.getArrival_hour() < shipping.getDispatch_hour())
+		days--;
+
 }

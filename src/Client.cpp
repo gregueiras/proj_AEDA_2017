@@ -243,6 +243,8 @@ bool Client::writeServicesToFile() {
 									- this->services.at(i)->getShipping().getArrival_date())
 					<< endl;
 
+			output << this->services.at(i)->getVehiclePlate() << endl;
+
 			if ((i + 1) != this->services.size())
 				output << this->services.at(i)->getVolume() << endl;
 			else

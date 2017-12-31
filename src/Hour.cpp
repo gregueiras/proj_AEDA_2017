@@ -75,6 +75,36 @@ Hour operator +(const Hour& h1, const unsigned int add) {
 
 }
 
+Hour operator -(const Hour& h1, const Hour& h2) {
+	unsigned int hour, minutes;
+
+	if ( (h1.getHour() < h2.getHour()) || ( (h1.getHour() == h2.getHour()) && (h1.getMinute() < h2.getMinute()) ) )
+	{
+		hour = h2.getHour() - h1.getHour();
+		if (h2.getMinute() > h1.getMinute())
+			minutes = h2.getMinute() - h1.getMinute();
+		else
+		{
+			minutes = 60 - h1.getMinute() + h2.getMinute();
+			if (hour > 0)
+				hour--;
+		}
+	} else {
+		hour = 24 - h1.getHour() + h2.getHour();
+		if (h2.getMinute() > h1.getMinute())
+		{
+			minutes = h2.getMinute() - h1.getMinute();
+			hour--;
+		}
+		else
+		{
+			minutes = 60 - h1.getMinute() + h2.getMinute();
+		}
+	}
+
+	return Hour(hour, minutes);
+}
+
 Hour operator +(const unsigned int add, const Hour& h1) {
 	return h1 + add;
 }
@@ -90,3 +120,4 @@ bool Hour::operator <(const Hour& v1) const {
 		return this->minute < v1.minute;
 	return this->hour < v1.hour;
 }
+

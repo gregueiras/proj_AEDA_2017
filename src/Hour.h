@@ -165,6 +165,14 @@ std::ostream & operator<< (std::ostream &o, const Hour& h1);
 Hour operator+(const Hour& h1, const Hour& h2);
 
 /**
+ * Overload of operator-, to subtract 2 Hours
+ * @param h1 lhs hour
+ * @param h2 rhs hour
+ * @return Returns a new hour, with the difference between 2 hours
+ */
+Hour operator-(const Hour& h1, const Hour& h2);
+
+/**
  * Overload of operator+, to add an Hour to an amount of hours
  * @param h1 lhs hour
  * @param add amount of hours to be added

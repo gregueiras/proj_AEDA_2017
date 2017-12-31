@@ -19,6 +19,7 @@ public:
 	std::string model;
 	Date birthday;
 	Hour expectable_time;
+	Date expectable_day;
 	Date maintenance;
 	bool available;
 	bool inMaintenance;
@@ -26,6 +27,7 @@ public:
 	Vehicle();
 	Vehicle(std::string plate, std::string brand, std::string model, Date birthday, Hour expectable_time, Date maintenance);
 	Vehicle(std::string plate, std::string brand, std::string model);
+	Vehicle(std::string plate, std::string brand, std::string model, Date birthday, Hour expectable_time, Date maintenance, bool available, bool inMaintenance, Date expectable_day);
 	Vehicle(std::string plate, std::string brand, std::string model, Date birthday, Hour expectable_time, Date maintenance, bool available, bool inMaintenance);
 
 
@@ -113,6 +115,8 @@ public:
 	 * @return plate, brand and model of the Vehicle
 	 */
 	std::string toStrShort();
+	const Date& getExpectableDay() const;
+	void setExpectableDay(const Date& expectableDay);
 };
 
 

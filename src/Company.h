@@ -517,11 +517,14 @@ public:
 	bool isVehicleAvailable(std::string plate);
 
 	/**
-	 * Try to assign vehicle to a service
-	 * @param expe_time new expected time
-	 * @return true if vehicle didn't exist in priority_queue, false if it already existed
+	 * Try to assign vehicle to a service, changes expected_time and expected_date of vehicle, the available flag and changes service vehicle_plate
+	 * @param expe_time new expected time (hour when vehicle is available again)
+	 * @param plate used to return the plate of the vehicle assigned
+	 * @param s1 service to assign the vehicle
+	 * @return true if there is any available vehicle, false if it doesn't
 	 */
-	bool assignVehicle(Hour expe_time);
+	bool assignVehicle(Hour expe_time, std::string &plate, Services* s1);
+
 
 	/**
 	 * adds a service to next_services queue
