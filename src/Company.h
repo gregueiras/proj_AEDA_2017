@@ -560,6 +560,12 @@ public:
 	 */
 	bool freeAvailableVehicles();
 	/**
+	 * Get const Vehicle* from vehicles priority_queue
+	 * @param plate plate of the vehicle to be returned
+	 * @return pointer to Vehicle in vehicles priority_queue
+	 */
+	const Vehicle* getVehicle(std::string plate);
+	/**
 	 * Sends all vehicles with a maintenance date before current date to maintenance
 	 */
 	void sendVehiclesToMaintenance();

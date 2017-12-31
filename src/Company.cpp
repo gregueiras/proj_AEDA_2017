@@ -1188,6 +1188,34 @@ bool Company::changeVehicleExpectedTime(std::string plate, Hour new_expected_tim
 	return found;
 }
 
+const Vehicle* Company::getVehicle(std::string plate){
+	vector <Vehicle> temp;
+	Vehicle* toReturn = NULL;
+	bool found = false;
+
+	while ( (!vehicles.empty()) && (!found))
+	{
+		Vehicle v_temp = vehicles.top();
+		if (v_temp.getPlate() == plate)
+		{
+			found = true;
+			toReturn = &v_temp;
+		} else
+		{
+			temp.push_back(v_temp);
+			vehicles.pop();
+		}
+	}
+
+	for (auto i : temp)
+	{
+		vehicles.push(i);
+	}
+
+	return toReturn;
+
+}
+
 bool Company::changeVehicleBirthday(std::string plate, Date new_birthday) {
 	vector <Vehicle> temp;
 	bool found = false;
