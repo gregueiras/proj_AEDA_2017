@@ -322,8 +322,11 @@ vector<Services*> Company::readServicesFromFile(const unsigned int id) {
 			getline(input, temp);
 			volume = stod(temp);
 
+			getline(input, temp);
+			Hour expected_time(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
+
 			Services* s1 = new Services(origin, volume, destination, start_h,
-					start_d, days_in_storage);
+					start_d, expected_time, days_in_storage);
 
 			s1->setVehiclePlate(plate);
 
@@ -821,7 +824,7 @@ void Company::addServiceToNext_Services(Services* s1) {
 	this->next_services.push(s1);
 }
 
-bool Company::assignVehicle(Hour expe_time, Services* s1) {
+bool Company::assignVehicle(Services* s1) {
 	if (!vehicles.top().isAvailable())
 		return false;
 
@@ -834,10 +837,10 @@ bool Company::assignVehicle(Hour expe_time, Services* s1) {
 	Hour hoursOfTravel;
 	s1->getTravelTime(daysOfTravel, hoursOfTravel);
 
-	unsigned int temp_h = (s1->getDelivery().getEnd_hour().getHour() + expe_time.getHour() + hoursOfTravel.getHour() + ((s1->getDelivery().getEnd_hour().getMinute() + expe_time.getMinute() + hoursOfTravel.getMinute()) / 60)) / 24;
+	unsigned int temp_h = (s1->getDelivery().getEnd_hour().getHour() + s1->getExpectedTime().getHour() + hoursOfTravel.getHour() + ((s1->getDelivery().getEnd_hour().getMinute() + s1->getExpectedTime().getMinute() + hoursOfTravel.getMinute()) / 60)) / 24;
 
 	temp.setExpectableDay(s1->getDelivery().getEnd_date() + daysOfTravel + temp_h);
-	temp.setExpectableTime(expe_time + hoursOfTravel + s1->getDelivery().getEnd_hour());
+	temp.setExpectableTime(s1->getExpectedTime() + hoursOfTravel + s1->getDelivery().getEnd_hour());
 
 	vehicles.push(temp);
 
@@ -960,6 +963,23 @@ bool Company::isAnyVehicleAvailable() {
 	return vehicles.top().isAvailable();
 }
 
+bool Company::assignAllAvailableVehicles() {
+
+	if (!isAnyVehicleAvailable() || next_services.empty())
+		return false;
+
+	while (isAnyVehicleAvailable() && !next_services.empty())
+	{
+		assignVehicle(next_services.front());
+		next_services.pop();
+	}
+
+	return true;
+
+
+
+}
+
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
 	return (this->admin_id == admin_id && this->admin_pass == admin_pass);
 }
@@ -1024,6 +1044,12 @@ bool Company::changeVehiclePlate(std::string old_plate, std::string new_plate) {
 		vehicles.push(i);
 	}
 
+	for (auto i : this->services_queue)
+	{
+		if (i->getVehiclePlate() == old_plate)
+			i->setVehiclePlate(new_plate);
+	}
+
 	return found;
 
 }
@@ -1085,7 +1111,7 @@ bool Company::changeVehicleBrand(std::string plate, std::string new_brand) {
 	return found;
 }
 
-bool Company::changeVehicleExpectedTime(std::string plate, Hour new_expected_time) {
+bool Company::changeVehicleExpectedTime(std::string plate, Hour new_expected_time, Date new_expected_date) {
 	vector <Vehicle> temp;
 	bool found = false;
 
@@ -1096,6 +1122,7 @@ bool Company::changeVehicleExpectedTime(std::string plate, Hour new_expected_tim
 		{
 			found = true;
 			v_temp.setExpectableTime(new_expected_time);
+			v_temp.setExpectableDay(new_expected_date);
 			vehicles.pop();
 			vehicles.push(v_temp);
 		} else

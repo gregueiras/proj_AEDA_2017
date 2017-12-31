@@ -440,9 +440,10 @@ public:
 	 * Try to change a vehicle expected time, from vehicles priority_queue
 	 * @param plate plate of the vehicle to be changed
 	 * @param new_expected_time new expected_time of the vehicle
+	 * @param new_expected_date new expected_day of the vehicle
 	 * @return true if a vehicle with that plate exists in priority_queue, false if it doesn't
 	 */
-	bool changeVehicleExpectedTime(std::string plate, Hour new_expected_time);
+	bool changeVehicleExpectedTime(std::string plate, Hour new_expected_time, Date new_expected_date);
 
 	/**
 	 * Try to change a vehicle birthday, from vehicles priority_queue
@@ -518,12 +519,16 @@ public:
 
 	/**
 	 * Try to assign vehicle to a service, changes expected_time and expected_date of vehicle, the available flag and changes service vehicle_plate
-	 * @param expe_time new expected time (hour when vehicle is available again)
 	 * @param s1 service to assign the vehicle
 	 * @return true if there is any available vehicle, false if it doesn't
 	 */
-	bool assignVehicle(Hour expe_time, Services* s1);
+	bool assignVehicle(Services* s1);
 
+	/**
+	 * Try to assign all available vehicles to services in next_services queue
+	 * @return true if at least one service/vehicle was assigned, false if not
+	 */
+	bool assignAllAvailableVehicles();
 
 	/**
 	 * adds a service to next_services queue

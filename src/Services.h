@@ -26,8 +26,8 @@ public:
 	// Constructors/Destructors
 	//
 	Services(Address origin_address, double volume, Address destination_address);
-	Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery);
-	Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage = 0);
+	Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery, Hour expected_time);
+	Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, Hour expected_time, unsigned int days_in_storage = 0);
 	Services();
 	/**
 	 * Empty Destructor
@@ -73,7 +73,8 @@ private:
 	Delivery delivery;
 	// Plate of the vehicle that will do the service
 	std::string vehicle_plate;
-
+	//expected time for the vehicle to be not available after the service
+	Hour expected_time;
 
 public:
 
@@ -400,8 +401,8 @@ public:
 	 * @param discount Discount percentage, from 0 to 1 (0 means no discount)
 	 */
 	void applyDiscount(float discount);
-
-
+	const Hour& getExpectedTime() const;
+	void setExpectedTime(const Hour& expectedTime);
 };
 
 std::ostream& operator<< (std::ostream& o, const Services& c);

@@ -26,7 +26,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 }
 
-Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, unsigned int days_in_storage)
+Services::Services(Address origin_address, double volume, Address destination_address, Hour initial_hour, Date initial_date, Hour expected_time, unsigned int days_in_storage)
 : service_id(service_no++) {
 
 	this->origin_address = origin_address;
@@ -67,11 +67,12 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 
 	this->price = calcPrice(days_in_storage);
+	this->expected_time = expected_time;
 }
 
 
 
-Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery) : service_id(service_no++) {
+Services::Services(Address origin_address, double volume, Address destination_address, Packaging packaging, Shipping shipping, Delivery delivery, Hour expected_time) : service_id(service_no++) {
 
 	this->origin_address = origin_address;
 	this->destination_address = destination_address;
@@ -87,7 +88,7 @@ Services::Services(Address origin_address, double volume, Address destination_ad
 
 	this->distance = calcDistance();
 	this->price = calcPrice(delivery.getStart_date() - shipping.getDispatch_date());
-
+	this->expected_time = expected_time;
 
 }
 
@@ -263,4 +264,12 @@ void Services::getTravelTime(unsigned int& days, Hour& hours) {
 	if (shipping.getArrival_hour() < shipping.getDispatch_hour())
 		days--;
 
+}
+
+const Hour& Services::getExpectedTime() const {
+	return expected_time;
+}
+
+void Services::setExpectedTime(const Hour& expectedTime) {
+	expected_time = expectedTime;
 }

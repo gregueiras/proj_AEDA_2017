@@ -245,6 +245,8 @@ bool Client::writeServicesToFile() {
 
 			output << this->services.at(i)->getVehiclePlate() << endl;
 
+			output << this->services.at(i)->getExpectedTime() << endl;
+
 			if ((i + 1) != this->services.size())
 				output << this->services.at(i)->getVolume() << endl;
 			else
