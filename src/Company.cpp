@@ -821,7 +821,7 @@ void Company::addServiceToNext_Services(Services* s1) {
 	this->next_services.push(s1);
 }
 
-bool Company::assignVehicle(Hour expe_time, std::string &plate, Services* s1) {
+bool Company::assignVehicle(Hour expe_time, Services* s1) {
 	if (!vehicles.top().isAvailable())
 		return false;
 
@@ -841,8 +841,8 @@ bool Company::assignVehicle(Hour expe_time, std::string &plate, Services* s1) {
 
 	vehicles.push(temp);
 
-	plate = temp.getPlate();
-	s1->setVehiclePlate(plate);
+
+	s1->setVehiclePlate(temp.getPlate());
 	return true;
 }
 
