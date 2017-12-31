@@ -531,6 +531,12 @@ public:
 	bool assignAllAvailableVehicles();
 
 	/**
+	 * Try to free all available vehicles and then allocate services to them
+	 * @return true if at least one service was allocated or a vehicle was made available/not in maintenance
+	 */
+	bool updateAvailableVehicles();
+
+	/**
 	 * Add a service to next_services queue
 	 */
 	void addServiceToNext_Services(Services* s1);

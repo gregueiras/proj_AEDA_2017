@@ -1016,6 +1016,18 @@ bool Company::freeAvailableVehicles() {
 	return res;
 }
 
+bool Company::updateAvailableVehicles() {
+	bool res = false;
+
+	if (freeAvailableVehicles())
+		res = true;
+
+	if (assignAllAvailableVehicles())
+		res = true;
+
+	return res;
+}
+
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
 	return (this->admin_id == admin_id && this->admin_pass == admin_pass);
 }
