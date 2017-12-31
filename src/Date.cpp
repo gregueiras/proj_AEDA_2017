@@ -230,6 +230,10 @@ Date operator +(const Date& d1, const unsigned int days) {
 
 }
 
+bool operator <=(const Date& d1, const Date& d2) {
+	return (d1 < d2 || d1 == d2);
+}
+
 /* Rata Die day one is 0001-01-01 */
 int rdn(Date d1)
 {
