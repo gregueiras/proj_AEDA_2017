@@ -531,7 +531,7 @@ public:
 	bool assignAllAvailableVehicles();
 
 	/**
-	 * adds a service to next_services queue
+	 * Add a service to next_services queue
 	 */
 	void addServiceToNext_Services(Services* s1);
 
@@ -547,6 +547,12 @@ public:
 	 * @return true if there is at least one vehicle available, false if not
 	 */
 	bool isAnyVehicleAvailable();
+
+	/**
+	 * Check if there is any Vehicle that should be available/not in maintenance, and fixes it
+	 * @return true if at least one vehicle was made available, false if not
+	 */
+	bool freeAvailableVehicles();
 	/**
 	 * Sends all vehicles with a maintenance date before current date to maintenance
 	 */

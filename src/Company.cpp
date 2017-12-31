@@ -980,6 +980,42 @@ bool Company::assignAllAvailableVehicles() {
 
 }
 
+bool Company::freeAvailableVehicles() {
+	vector <Vehicle> temp;
+	bool res = false;
+
+	while (!vehicles.empty())
+	{
+		Vehicle v_temp = vehicles.top();
+		vehicles.pop();
+
+		if (!v_temp.isAvailable())
+		{
+			if ( (v_temp.expectable_day <= this->current_date) && (v_temp.expectable_time <= this->current_hour) )
+			{
+				v_temp.setAvailable(true);
+				res = true;
+			}
+		}
+
+		if (!v_temp.isInMaintenance())
+		{
+			if (v_temp.maintenance < this->current_date)
+			{
+				v_temp.setInMaintenance(true);
+				res = true;
+			}
+		}
+	}
+
+	for (auto i : temp)
+	{
+		vehicles.push(i);
+	}
+
+	return res;
+}
+
 bool Company::checkAdminCredentials(unsigned int admin_id, string admin_pass) {
 	return (this->admin_id == admin_id && this->admin_pass == admin_pass);
 }
