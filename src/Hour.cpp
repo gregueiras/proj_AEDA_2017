@@ -121,3 +121,11 @@ bool Hour::operator <(const Hour& v1) const {
 	return this->hour < v1.hour;
 }
 
+bool Hour::operator <=(const Hour& v1) const {
+	return ((*this) < v1 || (*this) == v1);
+}
+
+bool Hour::operator ==(const Hour& v1) const {
+	return (this->minute == v1.minute && this->hour == v1.hour);
+
+}

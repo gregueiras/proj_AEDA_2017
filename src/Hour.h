@@ -134,6 +134,8 @@ public:
 
 
 	bool operator<(const Hour &v1) const;
+	bool operator<=(const Hour &v1) const;
+	bool operator==(const Hour &v1) const;
 
 private:
 
