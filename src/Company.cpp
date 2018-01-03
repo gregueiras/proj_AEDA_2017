@@ -1047,7 +1047,6 @@ bool Company::removeVehicle(std::string plate) {
 			if (!v_temp.isAvailable())
 			{
 				found = false; //vehicle is in a service
-				temp.push_back(v_temp);
 				break;
 			}
 			found = true;
