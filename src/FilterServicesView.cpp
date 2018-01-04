@@ -40,28 +40,88 @@ void FilterServicesView::printEnd() {
 
 }
 
-void FilterServicesView::printEnterIdInterval() {
+void FilterServicesView::printEnterIDInterval() {
 	printMessage(enterIdInterval);
+}
+
+void FilterServicesView::printEnterIDInferiorBound() {
+	printMessage(enterIdInferiorBound);
+}
+
+void FilterServicesView::printEnterIDSuperiorBound() {
+	printMessage(enterIdSuperiorBound);
+}
+
+void FilterServicesView::printEnterDateInterval() {
+	printMessage(enterDateInterval);
 }
 
 void FilterServicesView::printEnterDateInferiorBound() {
 	printMessage(enterDateInferiorBound);
 }
 
+void FilterServicesView::printEnterDayInferiorBound() {
+	printMessage(enterDayInferiorBound);
+}
+
+void FilterServicesView::printEnterMonthInferiorBound() {
+	printMessage(enterMonthInferiorBound);
+}
+
+void FilterServicesView::printEnterYearInferiorBound() {
+	printMessage(enterYearInferiorBound);
+}
+
 void FilterServicesView::printEnterDateSuperiorBound() {
 	printMessage(enterDateSuperiorBound);
+}
+
+void FilterServicesView::printEnterDaySuperiorBound() {
+	printMessage(enterDaySuperiorBound);
+}
+
+void FilterServicesView::printEnterMonthSuperiorBound() {
+	printMessage(enterMonthSuperiorBound);
+}
+
+void FilterServicesView::printEnterYearSuperiorBound() {
+	printMessage(enterYearSuperiorBound);
 }
 
 void FilterServicesView::printEnterVolumeInterval() {
 	printMessage(enterVolumeInterval);
 }
 
+void FilterServicesView::printEnterVolumeInferiorBound() {
+	printMessage(enterVolumeInferiorBound);
+}
+
+void FilterServicesView::printEnterVolumeSuperiorBound() {
+	printMessage(enterVolumeSuperiorBound);
+}
+
 void FilterServicesView::printEnterPriceInterval() {
 	printMessage(enterPriceInterval);
 }
 
+void FilterServicesView::printEnterPriceInferiorBound() {
+	printMessage(enterDistanceInferiorBound);
+}
+
+void FilterServicesView::printEnterPriceSuperiorBound() {
+	printMessage(enterDistanceSuperiorBound);
+}
+
 void FilterServicesView::printEnterDistanceInterval() {
 	printMessage(enterDistanceInterval);
+}
+
+void FilterServicesView::printEnterDistanceInferiorBound() {
+	printMessage(enterPriceInferiorBound);
+}
+
+void FilterServicesView::printEnterDistanceSuperiorBound() {
+	printMessage(enterPriceSuperiorBound);
 }
 
 void FilterServicesView::printEnterCity() {
@@ -95,4 +155,3 @@ void FilterServicesView::printWrongDate() {
 void FilterServicesView::printShutdown() {
 	printMessage(shutdown);
 }
-

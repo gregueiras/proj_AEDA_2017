@@ -23,7 +23,7 @@ void AdministratorMenuController::menu() {
 	do {
 		theView->printAdministratorMenu();
 		theView->printEnterOption();
-		option = getMenuOption(0, 4);
+		option = getMenuOption(0, 5);
 		switch (option) {
 		case 0:
 			theView->printShutdown();
@@ -39,6 +39,9 @@ void AdministratorMenuController::menu() {
 			newVehiclesMenu();
 			break;
 		case 4:
+			newAdvanceTime();
+			break;
+		case 5:
 			newEnterController();
 			break;
 		}
@@ -73,6 +76,12 @@ void AdministratorMenuController::newVehiclesMenu() {
 	VehicleMenuController *vehicleMenuController = new VehicleMenuController(
 			company);
 	vehicleMenuController->menu();
+}
+
+void AdministratorMenuController::newAdvanceTime() {
+	AdvanceTimeController *advanceTimeController = new AdvanceTimeController(
+			company);
+	advanceTimeController->menu();
 }
 
 void AdministratorMenuController::newEnterController() {

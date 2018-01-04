@@ -17,7 +17,8 @@ class AdministratorMenuView {
 private:
 	Utilities *u;
 	const string administratorMenu =
-			"\nMenu Administrador\n0->SAIR\n1->Ver Registo de Serviços\n2->Criar Nova Campanha Promocional\n3->Menu dos Veículos\n4->Voltar Atras";
+			"\nMenu Administrador\n0->SAIR\n1->Ver Registo de Serviços\n2->Criar Nova Campanha Promocional\n3->Menu dos Veículos"
+					"\n4->Avançar tempo\n5->Voltar Atras";
 	const string enterOption = "Introduza a sua opção";
 	const string end = "Terminou Menu de Administrador";
 	const string shutdown = "\nPrograma terminou";

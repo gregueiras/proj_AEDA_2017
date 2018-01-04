@@ -93,53 +93,279 @@ int FilterServicesController::getMenuOption(const int lowerBound,
 }
 
 void FilterServicesController::getTimeInterval() {
+	theView->printEnterDateInterval();
 	theView->printEnterDateInferiorBound();
-	getDateInfo(dayInferiorBound, monthInferiorBound, yearInferiorBound);
-	theView->printEnterDateSuperiorBound();
-	getDateInfo(daySuperiorBound, monthSuperiorBound, yearSuperiorBound);
-	dateInferiorBound->setDay(dayInferiorBound);
-	dateInferiorBound->setMonth(monthInferiorBound);
-	dateInferiorBound->setYear(yearInferiorBound);
-	dateInferiorBound->setDay(daySuperiorBound);
-	dateInferiorBound->setMonth(monthSuperiorBound);
-	dateInferiorBound->setYear(yearSuperiorBound);
+	theView->printEnterDayInferiorBound();
+	dayInferiorBound = getDayInferiorBound();
+	if (dayInferiorBound != 0) {
+		theView->printEnterMonthInferiorBound();
+		monthInferiorBound = getMonthInferiorBound();
+		if (monthInferiorBound != 0) {
+			theView->printEnterYearInferiorBound();
+			yearInferiorBound = getYearInferiorBound();
+			if (yearInferiorBound != 0) {
+				theView->printEnterDaySuperiorBound();
+				daySuperiorBound = getDaySuperiorBound();
+				if (daySuperiorBound != 0) {
+					theView->printEnterMonthSuperiorBound();
+					monthSuperiorBound = getMonthSuperiorBound();
+					if (monthSuperiorBound != 0) {
+						theView->printEnterYearSuperiorBound();
+						yearSuperiorBound = getYearSuperiorBound();
+						if (yearSuperiorBound != 0) {
+							dateInferiorBound->setDay(dayInferiorBound);
+							dateInferiorBound->setMonth(monthInferiorBound);
+							dateInferiorBound->setYear(yearInferiorBound);
+							dateInferiorBound->setDay(daySuperiorBound);
+							dateInferiorBound->setMonth(monthSuperiorBound);
+							dateInferiorBound->setYear(yearSuperiorBound);
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
-void FilterServicesController::getDateInfo(unsigned int& day,
-		unsigned int& month, unsigned int& year) {
-	theView->getInfo(day);
-	theView->getInfo(month);
-	theView->getInfo(year);
+unsigned int FilterServicesController::getDayInferiorBound() {
+	unsigned int dayInferiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterDayInferiorBound();
+		flag1 = theView->getInfo(dayInferiorBound);
+		if (flag1 == true && dayInferiorBound == 0) {
+			return dayInferiorBound;
+		}
+	} while (flag1 == false);
+	return dayInferiorBound;
+}
+
+unsigned int FilterServicesController::getMonthInferiorBound() {
+	unsigned int monthInferiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterMonthInferiorBound();
+		flag1 = theView->getInfo(monthInferiorBound);
+		if (flag1 == true && monthInferiorBound == 0) {
+			return monthInferiorBound;
+		}
+	} while (flag1 == false);
+	return monthInferiorBound;
+}
+
+unsigned int FilterServicesController::getYearInferiorBound() {
+	unsigned int yearInferiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterYearInferiorBound();
+		flag1 = theView->getInfo(yearInferiorBound);
+		if (flag1 == true && yearInferiorBound == 0) {
+			return yearInferiorBound;
+		}
+	} while (flag1 == false);
+	return yearInferiorBound;
+}
+
+unsigned int FilterServicesController::getDaySuperiorBound() {
+	unsigned int daySuperiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterDaySuperiorBound();
+		flag1 = theView->getInfo(daySuperiorBound);
+		if (flag1 == true && daySuperiorBound == 0) {
+			return daySuperiorBound;
+		}
+	} while (flag1 == false);
+	return daySuperiorBound;
+}
+
+unsigned int FilterServicesController::getMonthSuperiorBound() {
+	unsigned int monthSuperiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterMonthSuperiorBound();
+		flag1 = theView->getInfo(monthSuperiorBound);
+		if (flag1 == true && monthSuperiorBound == 0) {
+			return monthSuperiorBound;
+		}
+	} while (flag1 == false);
+	return monthSuperiorBound;
+}
+
+unsigned int FilterServicesController::getYearSuperiorBound() {
+	unsigned int yearSuperiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterYearSuperiorBound();
+		flag1 = theView->getInfo(yearSuperiorBound);
+		if (flag1 == true && yearSuperiorBound == 0) {
+			return yearSuperiorBound;
+		}
+	} while (flag1 == false);
+	return yearSuperiorBound;
 }
 
 void FilterServicesController::getIDInterval() {
-	theView->printEnterIdInterval();
-	theView->getInfo(idInferiorBound);
-	theView->getInfo(idSuperiorBound);
+	theView->printEnterIDInterval();
+	idInferiorBound = getIDInferiorBound();
+	if (idInferiorBound != 0) {
+		idSuperiorBound = getIDSuperiorBound();
+		if (idSuperiorBound == 0) {
+			idInferiorBound = 0;
+		}
+	}
 }
+
+unsigned int FilterServicesController::getIDInferiorBound() {
+	unsigned int idInferiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterIDInferiorBound();
+		flag1 = theView->getInfo(idInferiorBound);
+		if (flag1 == true && idInferiorBound == 0) {
+			return idInferiorBound;
+		}
+	} while (flag1 == false);
+	return idInferiorBound;
+}
+
+unsigned int FilterServicesController::getIDSuperiorBound() {
+	unsigned int idSuperiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterIDSuperiorBound();
+		flag1 = theView->getInfo(idSuperiorBound);
+		if (flag1 == true && idSuperiorBound == 0) {
+			return idSuperiorBound;
+		}
+	} while (flag1 == false);
+	return idSuperiorBound;
+}
+
 void FilterServicesController::getVolumeInterval() {
 	theView->printEnterVolumeInterval();
-	theView->getInfo(volumeInferiorBound);
-	theView->getInfo(volumeSuperiorBound);
+	volumeInferiorBound = getVolumeInferiorBound();
+	if (volumeInferiorBound != 0) {
+		volumeSuperiorBound = getVolumeSuperiorBound();
+		if (volumeSuperiorBound == 0) {
+			volumeInferiorBound = 0;
+		}
+	}
+}
+
+unsigned long FilterServicesController::getVolumeInferiorBound() {
+	unsigned long volumeInferiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterVolumeInferiorBound();
+		flag1 = theView->getInfo(volumeInferiorBound);
+		if (flag1 == true && volumeInferiorBound == 0) {
+			return volumeInferiorBound;
+		}
+	} while (flag1 == false);
+	return volumeInferiorBound;
+}
+
+unsigned long FilterServicesController::getVolumeSuperiorBound() {
+	unsigned long idSuperiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterVolumeSuperiorBound();
+		flag1 = theView->getInfo(idSuperiorBound);
+		if (flag1 == true && idSuperiorBound == 0) {
+			return idSuperiorBound;
+		}
+	} while (flag1 == false);
+	return idSuperiorBound;
 }
 
 void FilterServicesController::getPriceInterval() {
 	theView->printEnterPriceInterval();
-	theView->getInfo(priceInferiorBound);
-	theView->getInfo(priceSuperiorBound);
+	priceInferiorBound = getPriceInferiorBound();
+	if (priceInferiorBound != 0) {
+		priceSuperiorBound = getPriceSuperiorBound();
+		if (priceSuperiorBound == 0) {
+			priceInferiorBound = 0;
+		}
+	}
+}
+
+unsigned long FilterServicesController::getPriceInferiorBound() {
+	unsigned long priceInferiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterPriceInferiorBound();
+		flag1 = theView->getInfo(priceInferiorBound);
+		if (flag1 == true && priceInferiorBound == 0) {
+			return priceInferiorBound;
+		}
+	} while (flag1 == false);
+	return priceInferiorBound;
+}
+
+unsigned long FilterServicesController::getPriceSuperiorBound() {
+	unsigned long priceSuperiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterPriceSuperiorBound();
+		flag1 = theView->getInfo(priceSuperiorBound);
+		if (flag1 == true && priceSuperiorBound == 0) {
+			return priceSuperiorBound;
+		}
+	} while (flag1 == false);
+	return priceSuperiorBound;
 }
 
 void FilterServicesController::getDistanceInterval() {
 	theView->printEnterDistanceInterval();
-	theView->getInfo(distanceInferiorBound);
-	theView->getInfo(distanceSuperiorBound);
+	distanceInferiorBound = getDistanceInferiorBound();
+	if (distanceInferiorBound != 0) {
+		distanceSuperiorBound = getDistanceSuperiorBound();
+		if (distanceSuperiorBound == 0) {
+			distanceInferiorBound = 0;
+		}
+	}
+}
+
+unsigned long FilterServicesController::getDistanceInferiorBound() {
+	unsigned long distanceInferiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterDistanceInferiorBound();
+		flag1 = theView->getInfo(distanceInferiorBound);
+		if (flag1 == true && distanceInferiorBound == 0) {
+			return distanceInferiorBound;
+		}
+	} while (flag1 == false);
+	return distanceInferiorBound;
+}
+
+unsigned long FilterServicesController::getDistanceSuperiorBound() {
+	unsigned int distanceSuperiorBound = 0;
+	bool flag1;
+	do {
+		theView->printEnterDistanceSuperiorBound();
+		flag1 = theView->getInfo(distanceSuperiorBound);
+		if (flag1 == true && distanceSuperiorBound == 0) {
+			return distanceSuperiorBound;
+		}
+	} while (flag1 == false);
+	return distanceSuperiorBound;
 }
 
 void FilterServicesController::getCity() {
 	theView->printEnterCity();
 	theView->getInfo(city);
+	if (city == "0") {
+		city = "";
+	}
 }
 
+/**
+ *
+ *
+ *
+ */
 void FilterServicesController::narrowServices() {
 	for (size_t i = 0; i < user->getServices().size(); i++) {
 		Services *service = user->getServices().at(i);

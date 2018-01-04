@@ -15,12 +15,7 @@ PayServiceController::PayServiceController(Client *user, unsigned int serviceID,
 	this->user = user;
 	this->serviceID = serviceID;
 	this->company = company;
-
-	amountToPay = user->getServiceById(serviceID).getPrice();
-	if (company->getDiscount() != 0) {
-		//--------------
-		user->getServiceById(serviceID).applyDiscount(company->getDiscount());
-	}
+	amountToPay = 0;
 	creditCardNumber = 0;
 }
 
@@ -37,13 +32,15 @@ void PayServiceController::menu() {
 			newServiceMenu();
 		} else {
 			theView->printPayMenuBusiness();
+			amountToPay = getAmountToPay();
 			payMenuBusiness();
 			setServicePaid();
 			setUserActive();
 			newServiceMenu();
 		}
 	} else {
-		theView->printPayMenuNormal();
+		theView->printPayMenu();
+		amountToPay = getAmountToPay();
 		payMenu();
 		setServicePaid();
 		if (dynamic_cast<Personal*>(user)) {
@@ -55,9 +52,12 @@ void PayServiceController::menu() {
 	}
 }
 
+double PayServiceController::getAmountToPay() {
+	user->getServiceById(serviceID).getPrice();
+}
+
 void PayServiceController::payEOM() {
-	getAmountToPay();
-	if (amountToPay == 0) {
+	if (company->checkAllDues(user, amountToPay) == false) {
 		theView->printNoEOMLeftToPay();
 	} else {
 		theView->printPayMenuBusiness();
@@ -125,14 +125,16 @@ void PayServiceController::setServicePaid() {
 }
 //--------------------
 unsigned long PayServiceController::getCreditCardNumber() {
-	unsigned int creditCardNumber;
-	theView->printEnterCreditCardNumber();
-	theView->getInfo(creditCardNumber);
+	unsigned long creditCardNumber;
+	bool flag;
+	do {
+		theView->printEnterCreditCardNumber();
+		flag = theView->getInfo(creditCardNumber);
+		if (flag == false) {
+			theView->printInvalidCreditCardNumber();
+		}
+	} while (flag == false);
 	return creditCardNumber;
-}
-
-double PayServiceController::getAmountToPay() {
-	return amountToPay;
 }
 
 void PayServiceController::setUserActive() {

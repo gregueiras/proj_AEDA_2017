@@ -61,14 +61,11 @@ private:
 	void setServicePaid();
 
 	/**
-	 * method that calculates the amount to pay
-	 */
-	double getAmountToPay();
-
-	/**
 	 * user interaction method to read volume infomation
 	 */
 	unsigned long getCreditCardNumber();
+
+	double getAmountToPay();
 
 	void setUserActive();
 

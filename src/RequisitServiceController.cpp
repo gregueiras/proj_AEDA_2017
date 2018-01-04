@@ -271,6 +271,7 @@ void RequisitServiceController::createService() {
 	service = new Services(adressOrigin, volume, addressDestination,
 			packagingInitialTime, packagingInitialDate, vehicleExpectedTime,
 			storageDays);
+	service->applyDiscount(company->getDiscount());
 
 }
 

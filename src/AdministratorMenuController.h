@@ -13,6 +13,7 @@
 #include "PromotionCampaignController.h"
 #include "SeeServicesController.h"
 #include "VehicleMenuController.h"
+#include "AdvanceTimeController.h"
 
 class AdministratorMenuController {
 private:
@@ -28,6 +29,8 @@ private:
 	void newPromotionalCampaign();
 
 	void newVehiclesMenu();
+
+	void newAdvanceTime();
 
 	void newEnterController();
 

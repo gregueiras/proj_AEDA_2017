@@ -49,32 +49,41 @@ private:
 	 */
 	void getTimeInterval();
 
-	/**
-	 * user interaction method to read date infomation
-	 */
-	void getDateInfo(unsigned int& day, unsigned int& month,
-			unsigned int& year);
+	unsigned int getDayInferiorBound();
+	unsigned int getMonthInferiorBound();
+	unsigned int getYearInferiorBound();
+	unsigned int getDaySuperiorBound();
+	unsigned int getMonthSuperiorBound();
+	unsigned int getYearSuperiorBound();
 
 	/**
 	 * user interaction method to read id interval information
 	 */
 	void getIDInterval();
 
+	unsigned int getIDInferiorBound();
+	unsigned int getIDSuperiorBound();
 	/**
 	 * user interaction method to read volume interval information
 	 */
 	void getVolumeInterval();
 
+	unsigned long getVolumeInferiorBound();
+	unsigned long getVolumeSuperiorBound();
 	/**
 	 * user interaction method to read price interval information
 	 */
 	void getPriceInterval();
 
+	unsigned long getPriceInferiorBound();
+	unsigned long getPriceSuperiorBound();
 	/**
 	 * user interaction method to read distance interval information
 	 */
 	void getDistanceInterval();
 
+	unsigned long getDistanceInferiorBound();
+	unsigned long getDistanceSuperiorBound();
 	/**
 	 * user interaction method to read city infomation
 	 */

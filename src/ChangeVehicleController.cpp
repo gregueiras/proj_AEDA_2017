@@ -100,7 +100,7 @@ void ChangeVehicleController::changeModel() {
 
 void ChangeVehicleController::changeBirthdayDate() {
 	Date *d = getBirthdayDate();
-	if (d->getDay() == 1 && d->getMonth() == 1 && d->getYear() == 1) {
+	if (!(d->getDay() == 1 && d->getMonth() == 1 && d->getYear() == 1)) {
 		company->changeVehicleBirthday(plate, *d);
 	}
 }
@@ -112,7 +112,7 @@ void ChangeVehicleController::changeExpectableTime() {
 
 void ChangeVehicleController::changeMaintenanceDate() {
 	Date *d = getMaintenanceDate();
-	if (d->getDay() == 1 && d->getMonth() == 1 && d->getYear() == 1) {
+	if (!(d->getDay() == 1 && d->getMonth() == 1 && d->getYear() == 1)) {
 		company->changeVehicleMaintenance(plate, *d);
 	}
 }

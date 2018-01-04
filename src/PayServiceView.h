@@ -27,6 +27,8 @@ private:
 	const string reference = "\nReferencia-> ";
 	const string enterCreditCardNumber =
 			"\nIntroduza o numero do cartao de credito";
+	const string invalidCreditCardNumber =
+			"\nNumero de cartao de credito introduzido invalido";
 
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Introduziu opção errada";
@@ -41,7 +43,7 @@ public:
 	/**
 	 * prints pay service normal menu
 	 */
-	void printPayMenuNormal();
+	void printPayMenu();
 
 	/**
 	 * prints pay service normal menu
@@ -77,6 +79,12 @@ public:
 	 *
 	 */
 	void printEnterCreditCardNumber();
+
+	/**
+	 * prints invalid credit card number message
+	 */
+	void printInvalidCreditCardNumber();
+
 	/**
 	 * prints enter option message
 	 */

@@ -193,7 +193,6 @@ unsigned int ChangeUserMenuController::getNIF() {
 		}
 	} while (flag1 == false || flag2 == false);
 	return nif;
-
 }
 
 string ChangeUserMenuController::getStreet() {
@@ -235,7 +234,6 @@ unsigned int ChangeUserMenuController::getDoorNumber() {
 		}
 	} while (flag1 == false);
 	return doorNumber;
-
 }
 
 double ChangeUserMenuController::getLatitude() {

@@ -15,7 +15,7 @@ PayServiceView::~PayServiceView() {
 	// TODO Auto-generated destructor stub
 }
 
-void PayServiceView::printPayMenuNormal() {
+void PayServiceView::printPayMenu() {
 	printMessage(payMenuNormal);
 }
 
@@ -69,4 +69,8 @@ void PayServiceView::printNIB(string nib) {
 
 void PayServiceView::printEnterCreditCardNumber() {
 	printMessage(enterCreditCardNumber);
+}
+
+void PayServiceView::printInvalidCreditCardNumber() {
+	printMessage(invalidCreditCardNumber);
 }
