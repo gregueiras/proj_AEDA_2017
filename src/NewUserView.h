@@ -35,7 +35,7 @@ private:
 	const string wrongLatitude = "Latitude introduzida invalida";
 	const string wrongLongitude = "Longitude introduzida invalida";
 	const string wrongUserType = "Tipo Utilizador introduzido invalido";
-	const string end = "Terminou Criar novo perfil utilizador";
+	const string end = "Terminou Registar-se";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message) const;
 

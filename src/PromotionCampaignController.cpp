@@ -12,7 +12,6 @@ PromotionCampaignController::PromotionCampaignController(Company *company) {
 	this->theView = new PromotionCampaignView();
 	this->u = new Utilities();
 	this->v = new Validation();
-	discountPercentage = 0;
 }
 
 PromotionCampaignController::~PromotionCampaignController() {
@@ -24,11 +23,11 @@ void PromotionCampaignController::menu() {
 }
 
 void PromotionCampaignController::promotionCampaignHandler() {
-	getPromotionCampaignPercentage();
-	company->setDiscount(discountPercentage);
+	company->setDiscount(getPromotionCampaignPercentage());
 }
 
 float PromotionCampaignController::getPromotionCampaignPercentage() {
+	float discountPercentage;
 	bool flag;
 	theView->printInitialMessage();
 	theView->printCompanyDiscountPercentage(company->getDiscount());
@@ -39,9 +38,11 @@ float PromotionCampaignController::getPromotionCampaignPercentage() {
 			theView->printWrongPercentage();
 		}
 	} while (!flag);
+	return discountPercentage;
 }
 
 void PromotionCampaignController::newAdministratorMenu() {
+	theView->printEnd();
 	AdministratorMenuController *administratorMenu =
 			new AdministratorMenuController(company);
 	administratorMenu->menu();

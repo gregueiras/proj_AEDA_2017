@@ -20,9 +20,9 @@ private:
 			"\nMenu Administrador\n0->SAIR\n1->Ver Registo de Serviços\n2->Criar Nova Campanha Promocional\n3->Menu dos Veículos"
 					"\n4->Avançar tempo\n5->Voltar Atras";
 	const string enterOption = "Introduza a sua opção";
-	const string end = "Terminou Menu de Administrador";
-	const string shutdown = "\nPrograma terminou";
 	const string wrongOption = "Introduziu opcao errada";
+	const string end = "Terminou Menu Administrador";
+	const string shutdown = "\nPrograma terminou";
 
 	void printMessage(const string &message);
 public:
@@ -34,6 +34,7 @@ public:
 	void printEnterOption();
 
 	void printShutdown();
+	void printEnd();
 	void printWrongOption();
 
 	template<typename T> bool getInfo(T &info);

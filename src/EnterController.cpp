@@ -18,13 +18,8 @@ EnterController::~EnterController() {
 }
 
 void EnterController::menu() {
-	setInactiveUsers();
 	updateAvailableVehicles();
 	enterMenu();
-}
-
-void EnterController::setInactiveUsers() {
-	company->setInactiveClients();
 }
 
 void EnterController::updateAvailableVehicles() {
@@ -39,7 +34,6 @@ void EnterController::enterMenu() {
 		option = getMenuOption(0, 2);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -74,7 +68,9 @@ void EnterController::newUserMenu() {
 }
 
 void EnterController::endProgram() {
-	//company->writeCompanyToFile();
-	//company->writeClientsToFile();
-	//exit(0);
+	theView->printEnd();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }

@@ -46,23 +46,22 @@ void VehicleMenuController::menuHandler() {
 		option = getMenuOption(0, 6);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
 			newVehicleMenu();
 			break;
 		case 2:
-			seeVehicleMenu();
+			newSeeVehicleMenu();
 			break;
 		case 3:
-			changeVehicleMenu();
+			newChangeVehicleMenu();
 			break;
 		case 4:
 			sendVehicleToMaintenanceMenu();
 			break;
 		case 5:
-			removeVehicleMenu();
+			newRemoveVehicleMenu();
 			break;
 		case 6:
 			newAdministratorMenu();
@@ -94,15 +93,17 @@ string VehicleMenuController::getVehiclePlate() {
 }
 
 void VehicleMenuController::newVehicleMenu() {
+	theView->printEnd();
 	NewVehicleController *newVehicleController = new NewVehicleController(
 			company);
 	newVehicleController->menu();
 }
 
-void VehicleMenuController::seeVehicleMenu() {
+void VehicleMenuController::newSeeVehicleMenu() {
 	plate = getVehiclePlate();
 	if (plate != "0") {
 		if (company->getVehicle(plate) != NULL) {
+			theView->printEnd();
 			SeeVehicleController *seeVehicleController =
 					new SeeVehicleController(company, plate);
 			seeVehicleController->menu();
@@ -112,11 +113,12 @@ void VehicleMenuController::seeVehicleMenu() {
 	}
 }
 
-void VehicleMenuController::changeVehicleMenu() {
+void VehicleMenuController::newChangeVehicleMenu() {
 	plate = getVehiclePlate();
 	if (plate != "0") {
 		if (company->getVehicle(plate) != NULL) {
 			if (company->isVehicleAvailable(plate)) {
+				theView->printEnd();
 				ChangeVehicleController *changeVehicleController =
 						new ChangeVehicleController(company, plate);
 				changeVehicleController->menu();
@@ -144,11 +146,12 @@ void VehicleMenuController::sendVehicleToMaintenanceMenu() {
 	}
 }
 
-void VehicleMenuController::removeVehicleMenu() {
+void VehicleMenuController::newRemoveVehicleMenu() {
 	plate = getVehiclePlate();
 	if (plate != "0") {
 		if (company->getVehicle(plate) != NULL) {
 			if (company->isVehicleAvailable(plate)) {
+				theView->printEnd();
 				RemoveVehicleController *removeVehicleController =
 						new RemoveVehicleController(company, plate);
 				removeVehicleController->menu();
@@ -162,9 +165,17 @@ void VehicleMenuController::removeVehicleMenu() {
 }
 
 void VehicleMenuController::newAdministratorMenu() {
+	theView->printEnd();
 	AdministratorMenuController *administratorMenuController =
 			new AdministratorMenuController(company);
 	administratorMenuController->menu();
 }
+
 void VehicleMenuController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }

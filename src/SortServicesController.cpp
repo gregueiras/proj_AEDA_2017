@@ -38,7 +38,6 @@ void SortServicesController::sortServicesHandler() {
 		option = getMenuOption(0, 6);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -152,11 +151,17 @@ void SortServicesController::sortByPrice() {
 }
 
 void SortServicesController::newServiceMenu() {
+	theView->printEnd();
 	ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
 	serviceMenuController->menu();
 }
 
 void SortServicesController::endProgram() {
-
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }

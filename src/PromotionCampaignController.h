@@ -19,7 +19,6 @@ private:
 	Company *company;
 	Utilities *u;
 	Validation *v;
-	float discountPercentage;
 	void promotionCampaignHandler();
 	float getPromotionCampaignPercentage();
 	void newAdministratorMenu();

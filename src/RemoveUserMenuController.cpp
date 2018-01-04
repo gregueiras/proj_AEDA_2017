@@ -32,7 +32,6 @@ void RemoveUserMenuController::removeUserHandler() {
 		option = getMenuOption(0, 2);
 		switch (option) {
 		case 0:
-			theView->printEnd();
 			endProgram();
 			break;
 		case 1:
@@ -68,15 +67,23 @@ void RemoveUserMenuController::removeUser() {
 }
 
 void RemoveUserMenuController::newEnterMenuController() {
+	theView->printEnd();
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
 }
 
 void RemoveUserMenuController::newUserMenuController() {
+	theView->printEnd();
 	UserMenuController *userMenuController = new UserMenuController(user,
 			company);
 	userMenuController->menu();
 }
 
 void RemoveUserMenuController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }

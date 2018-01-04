@@ -24,7 +24,7 @@ private:
 	const string pendingChangeAdress =
 			"Esteve algum tempo afastado. Atualize a sua morada";
 
-	const string end = "\nTerminou Menu Cliente";
+	const string end = "Terminou Menu Cliente";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 

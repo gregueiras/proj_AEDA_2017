@@ -30,11 +30,11 @@ private:
 	int getMenuOption(const int lowerBound, const int upperBound);
 	string getVehiclePlate();
 
-	void seeVehicleMenu();
+	void newSeeVehicleMenu();
 	void newVehicleMenu();
-	void changeVehicleMenu();
+	void newChangeVehicleMenu();
 	void sendVehicleToMaintenanceMenu();
-	void removeVehicleMenu();
+	void newRemoveVehicleMenu();
 	void newAdministratorMenu();
 	void endProgram();
 public:

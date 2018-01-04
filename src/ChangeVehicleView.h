@@ -15,12 +15,9 @@ class ChangeVehicleView {
 private:
 	Utilities *u;
 
-	const string initialMessage = "\nAlterar informaçoes do veículo";
 	const string changeVehicleMenu =
-			"Alterar Veículo\n0->SAIR\n1->matrícula\n2->marca\n3->modelo\n4->data de construção\n5->tempo expecctavel de espera na manutençao"
+			"Menu Alterar Veículo\n0->SAIR\n1->matrícula\n2->marca\n3->modelo\n4->data de construção\n5->tempo expecctavel de espera na manutençao"
 					"\n6->proxima data de manutençao\n7->voltar atras";
-	const string end = "Terminou alterar informaçoes do veículo";
-	const string shutdown = "Terminou programa";
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Opção introduzida errada";
 
@@ -52,12 +49,14 @@ private:
 			"Introduza novo mes da proxima manutençao do carro 0->SAIR";
 	const string enterNewMaintenanceYear =
 			"Introduza novo ano da proxima manutençao do carro 0->SAIR";
+
+	const string end = "Terminou Menu Alterar Veículo";
+	const string shutdown = "Terminou programa";
 	void printMessage(const string& message);
 public:
 	ChangeVehicleView();
 	virtual ~ChangeVehicleView();
 
-	void printInitialMessage();
 	void printChangeVehicleMenu();
 	void printEnterOption();
 	void printWrongOption();

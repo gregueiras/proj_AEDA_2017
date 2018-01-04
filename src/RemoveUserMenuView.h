@@ -25,7 +25,7 @@ private:
 
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Introduziu opção errada";
-	const string end = "\nTerminou Remover Utilizador";
+	const string end = "Terminou Remover Utilizador";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 

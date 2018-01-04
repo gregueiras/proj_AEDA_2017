@@ -20,7 +20,7 @@ private:
 	const string wrongOption = "Opção escolhida invalida";
 
 	const string filterMenu =
-			"\nMenu Filtrar\n0->SAIR\n1->Intervalo de ID\n2->Intervalo de Tempo\n3->Intervalo de Volume\n4->Intervalo de Distancia"
+			"\nMenu Filtrar Serviços\n0->SAIR\n1->Intervalo de ID\n2->Intervalo de Tempo\n3->Intervalo de Volume\n4->Intervalo de Distancia"
 					"\n5->Intervalo de Preço\n6->Cidade\n7->Filtrar\n8->Voltar Atras";
 
 	const string enterIdInterval = "Introduza intervalo de id";
@@ -70,7 +70,7 @@ private:
 	const string wrongPriceInterval = "Intervalo de preço introduzido invalido";
 	const string wrongCity = "cidade introduzida invalido";
 
-	const string end = "\nTerminou Menu Cliente";
+	const string end = "Terminou Menu Filtrar Serviços";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 

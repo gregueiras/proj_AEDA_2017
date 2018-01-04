@@ -68,7 +68,7 @@ private:
 	const string wrongOption = "Opçao introduzida invalida";
 
 	const string exit = "0->SAIR";
-	const string end = "\nTerminou Requesitar Serviço";
+	const string end = "Terminou Requesitar Serviço";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 

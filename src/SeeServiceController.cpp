@@ -27,10 +27,8 @@ void SeeServiceController::menu() {
 }
 
 void SeeServiceController::newServiceMenu() {
-	ServiceMenuController *serviceMenuController = new ServiceMenuController(
+	theView->printEnd();
+ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
 	serviceMenuController->menu();
-}
-
-void SeeServiceController::endProgram() {
 }

@@ -32,6 +32,7 @@ void ChangeVehicleController::menuHandler() {
 		option = getMenuOption(0, 7);
 		switch (option) {
 		case 0:
+
 			theView->printShutdown();
 			endProgram();
 			break;
@@ -54,11 +55,12 @@ void ChangeVehicleController::menuHandler() {
 			changeMaintenanceDate();
 			break;
 		case 7:
+
 			newVehicleMenuController();
 			break;
 		}
 	} while (option != 0);
-	theView->printEnd();
+
 }
 
 int ChangeVehicleController::getMenuOption(const int lowerBound,
@@ -71,9 +73,6 @@ int ChangeVehicleController::getMenuOption(const int lowerBound,
 		return -1;
 	}
 	return option;
-}
-
-void ChangeVehicleController::endProgram() {
 }
 
 void ChangeVehicleController::changePlate() {
@@ -239,7 +238,17 @@ Date * ChangeVehicleController::getMaintenanceDate() {
 	return new Date(maintenanceDay, maintenanceMonth, maintenanceYear);
 }
 
+void ChangeVehicleController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
+}
+
 void ChangeVehicleController::newVehicleMenuController() {
+	theView->printEnd();
 	VehicleMenuController *vehicleMenuController = new VehicleMenuController(
 			company);
 	vehicleMenuController->menu();

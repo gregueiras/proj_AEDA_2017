@@ -87,6 +87,7 @@ string RequisitServiceController::getStreet() {
 	theView->printEnterStreet();
 	street = theView->getLine();
 	if (street == "0" && !dynamic_cast<Unregistered*>(user)) {
+
 		newServiceMenu();
 	}
 	return street;
@@ -96,6 +97,7 @@ string RequisitServiceController::getCountry() {
 	theView->printEnterCountry();
 	country = theView->getLine();
 	if (country == "0" && !dynamic_cast<Unregistered*>(user)) {
+
 		newServiceMenu();
 	}
 	return country;
@@ -105,6 +107,7 @@ string RequisitServiceController::getCity() {
 	theView->printEnterCity();
 	city = theView->getLine();
 	if (city == "0" && !dynamic_cast<Unregistered*>(user)) {
+
 		newServiceMenu();
 	}
 	return city;
@@ -114,6 +117,7 @@ string RequisitServiceController::getCounty() {
 	theView->printEnterCounty();
 	county = theView->getLine();
 	if (county == "0" && !dynamic_cast<Unregistered*>(user)) {
+
 		newServiceMenu();
 	}
 	return county;
@@ -127,6 +131,7 @@ unsigned int RequisitServiceController::getDoorNumber() {
 		flag1 = theView->getInfo(doorNumber);
 		if (flag1 == true && doorNumber == 0
 				&& !dynamic_cast<Unregistered*>(user)) {
+
 			newServiceMenu();
 		}
 	} while (flag1 == false);
@@ -141,6 +146,7 @@ double RequisitServiceController::getLatitude() {
 		flag1 = theView->getInfo(latitude);
 		if (flag1 == true && latitude == 0
 				&& !dynamic_cast<Unregistered*>(user)) {
+
 			newServiceMenu();
 		}
 		flag2 = v->validateLatitudeFormat(std::to_string(latitude));
@@ -159,6 +165,7 @@ double RequisitServiceController::getLongitude() {
 		flag1 = theView->getInfo(longitude);
 		if (flag1 == true && longitude == 0
 				&& !dynamic_cast<Unregistered*>(user)) {
+
 			newEnterController();
 		}
 		flag2 = v->validateLongitudeFormat(std::to_string(longitude));
@@ -179,6 +186,7 @@ void RequisitServiceController::getPackagingInitialDate() {
 			flag = theView->getInfo(packagingInitialDay);
 		} while (flag == false);
 		if (packagingInitialDay == 0 && !dynamic_cast<Unregistered*>(user)) {
+
 			newServiceMenu();
 		}
 
@@ -187,6 +195,7 @@ void RequisitServiceController::getPackagingInitialDate() {
 			flag = theView->getInfo(packagingInitialMonth);
 		} while (flag == false);
 		if (packagingInitialMonth == 0 && !dynamic_cast<Unregistered*>(user)) {
+
 			newServiceMenu();
 		}
 
@@ -195,6 +204,7 @@ void RequisitServiceController::getPackagingInitialDate() {
 			flag = theView->getInfo(packagingInitialYear);
 		} while (flag == false);
 		if (packagingInitialYear == 0 && !dynamic_cast<Unregistered*>(user)) {
+
 			newServiceMenu();
 		}
 		date = to_string(packagingInitialDay) + "/"
@@ -231,6 +241,7 @@ unsigned int RequisitServiceController::getStorageDays() {
 		flag1 = theView->getInfo(storageDays);
 		if (flag1 == true && storageDays == 0
 				&& !dynamic_cast<Unregistered*>(user)) {
+
 			newServiceMenu();
 		}
 	} while (flag1 == false);
@@ -245,6 +256,7 @@ long RequisitServiceController::getVolume() {
 		flag1 = theView->getInfo(volume);
 		if (flag1 == true && volume == 0
 				&& !dynamic_cast<Unregistered*>(user)) {
+
 			newServiceMenu();
 		}
 	} while (flag1 == false);
@@ -280,6 +292,7 @@ void RequisitServiceController::payService() {
 		theView->printAskAddToEOM();
 		payAtEOMHandler();
 	}
+
 	newPayServiceMenu();
 }
 
@@ -291,6 +304,7 @@ void RequisitServiceController::payAtEOMHandler() {
 		switch (option) {
 		case 1:
 			addToEOM();
+
 			newServiceMenu();
 			break;
 		}
@@ -328,22 +342,30 @@ void RequisitServiceController::addService() {
 }
 
 void RequisitServiceController::newEnterController() {
+	theView->printEnd();
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
 }
 
 void RequisitServiceController::newServiceMenu() {
+	theView->printEnd();
 	ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
 	serviceMenuController->menu();
 }
 
 void RequisitServiceController::newPayServiceMenu() {
+	theView->printEnd();
 	PayServiceController *payServiceController = new PayServiceController(user,
 			service->getId(), company);
 	payServiceController->menu();
 }
 
 void RequisitServiceController::endProgram() {
-
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }

@@ -33,7 +33,6 @@ void ChangeUserMenuController::menuHandler() {
 		option = getMenuOption(0, 11);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -67,6 +66,7 @@ void ChangeUserMenuController::menuHandler() {
 			changePassword();
 			break;
 		case 11:
+
 			newUserMenu();
 			break;
 		}
@@ -281,9 +281,16 @@ string ChangeUserMenuController::getPassword() {
 //}
 
 void ChangeUserMenuController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }
 
 void ChangeUserMenuController::newUserMenu() {
+	theView->printEnd();
 	UserMenuController *userMenuController = new UserMenuController(user,
 			company);
 	userMenuController->menu();

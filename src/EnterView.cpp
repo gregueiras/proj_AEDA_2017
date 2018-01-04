@@ -32,7 +32,3 @@ void EnterView::printEnterOption() const {
 void EnterView::printEnd() const {
 	printMessage(end);
 }
-
-void EnterView::printShutdown() {
-	printMessage(shutdown);
-}

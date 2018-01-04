@@ -17,9 +17,9 @@ using namespace std;
 
 class SeeServiceView {
 private:
-	const string initialMessage = "\nVer Informaçoes do cliente";
+	const string initialMessage = "\nVer Informacoes do cliente";
 
-	const string end = "\nTerminou Menu Cliente";
+	const string end = "Terminou Ver Informacoes Cliente";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 

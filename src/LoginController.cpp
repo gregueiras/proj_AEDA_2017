@@ -23,16 +23,20 @@ void LoginController::menu() {
 	string pass;
 	do {
 		theView->printInitialMessage();
-		if ((id = getID()) == 0) {
+		id = getID();
+		if (id == 0) {
 			break;
 		}
-		if ((pass = getPass()) == "0") {
+		pass = getPass();
+		if (pass == "0") {
 			break;
 		}
 		user = company->getClient(id, pass);
 		if (user != NULL) {
+
 			newClientMenu();
 		} else if (company->checkAdminCredentials(id, pass)) {
+
 			newAdministratorController();
 		} else {
 			theView->printUserNotFound();
@@ -59,15 +63,23 @@ string LoginController::getPass() {
 }
 
 void LoginController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }
 
 void LoginController::newClientMenu() {
+	theView->printEnd();
 	ClientMenuController *clientMenuController = new ClientMenuController(user,
 			company);
 	clientMenuController->menu();
 }
 
 void LoginController::newAdministratorController() {
+	theView->printEnd();
 	AdministratorMenuController *administratorMenuController =
 			new AdministratorMenuController(company);
 	administratorMenuController->menu();

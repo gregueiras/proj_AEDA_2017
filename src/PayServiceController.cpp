@@ -53,7 +53,7 @@ void PayServiceController::menu() {
 }
 
 double PayServiceController::getAmountToPay() {
-	user->getServiceById(serviceID).getPrice();
+	return user->getServiceById(serviceID).getPrice();
 }
 
 void PayServiceController::payEOM() {
@@ -156,12 +156,14 @@ int PayServiceController::getMenuOption(const int lowerBound,
 }
 
 void PayServiceController::newServiceMenu() {
+	theView->printEnd();
 	ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
 	serviceMenuController->menu();
 }
 
 void PayServiceController::newEnterMenu() {
+	theView->printEnd();
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
 }

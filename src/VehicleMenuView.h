@@ -26,7 +26,7 @@ private:
 	const string vehicleNotAvailable = "Veículo não está disponível";
 	const string noVehicleRegistered = "Nao ha veículos registados no sistema";
 
-	const string end = "\nTerminou Menu Veículos";
+	const string end = "Terminou Menu Veículos";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 

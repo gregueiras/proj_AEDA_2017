@@ -176,6 +176,7 @@ void NewVehicleController::createVehicle() {
 }
 
 void NewVehicleController::newVehicleMenuController() {
+	theView->printEnd();
 	VehicleMenuController *vehicleMenuController = new VehicleMenuController(
 			company);
 	vehicleMenuController->menu();

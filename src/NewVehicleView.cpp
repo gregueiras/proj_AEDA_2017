@@ -82,3 +82,7 @@ void NewVehicleView::printEnterMaintenanceYear() {
 void NewVehicleView::printRepeatedVehicle() {
 	printMessage(repeatedVehicle);
 }
+
+void NewVehicleView::printEnd() {
+	printMessage(end);
+}

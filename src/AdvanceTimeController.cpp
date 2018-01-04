@@ -28,7 +28,6 @@ void AdvanceTimeController::menu() {
 		option = getMenuOption(0, 3);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -54,12 +53,6 @@ int AdvanceTimeController::getMenuOption(const int lowerBound,
 		return -1;
 	}
 	return option;
-}
-
-void AdvanceTimeController::newAdministratorMenu() {
-	AdministratorMenuController *administratorMenu =
-			new AdministratorMenuController(company);
-	administratorMenu->menu();
 }
 
 void AdvanceTimeController::changeCompanyDate() {
@@ -137,5 +130,19 @@ Hour* AdvanceTimeController::getNewCurrentTime() {
 	} while (!v->validateHourFormat(time));
 	return new Hour(currentHour, currentMinute);
 }
+
+void AdvanceTimeController::newAdministratorMenu() {
+	theView->printEnd();
+	AdministratorMenuController *administratorMenu =
+			new AdministratorMenuController(company);
+	administratorMenu->menu();
+}
+
 void AdvanceTimeController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }

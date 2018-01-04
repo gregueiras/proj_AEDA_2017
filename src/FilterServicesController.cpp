@@ -49,7 +49,6 @@ void FilterServicesController::filterServicesHandler() {
 		option = getMenuOption(0, 8);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -463,9 +462,16 @@ void FilterServicesController::setVisibility(Services &service,
 }
 
 void FilterServicesController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }
 
 void FilterServicesController::newServiceMenu() {
+	theView->printEnd();
 	ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
 	serviceMenuController->menu();

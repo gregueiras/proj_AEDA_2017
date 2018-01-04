@@ -39,6 +39,6 @@ void SeeServicesView::printListServices() {
 	printMessage(listServices);
 }
 
-void SeeServicesView::printNoVehiclesRegistered() {
-	printMessage(noVehiclesRegistered);
+void SeeServicesView::printNoServicesRegistered() {
+	printMessage(noServicesRegistered);
 }

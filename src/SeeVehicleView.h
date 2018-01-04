@@ -17,9 +17,8 @@ using namespace std;
 class SeeVehicleView {
 private:
 	Utilities *u;
-	const string initialMessage = "\nVer InformaÃ§oes do veículo";
-
-	const string end = "\nTerminou Ver InformaÃ§oes do veículo";
+	const string initialMessage = "\nVer Informacoes do veículo";
+	const string end = "Terminou Ver Informacoes do veículo";
 	void printMessage(const string &message);
 
 public:

@@ -19,7 +19,6 @@ class SeeServicesController {
 
 	void printServicesInvoices();
 	void newAdministratorMenu();
-	void endProgram();
 
 public:
 	SeeServicesController(Company *company);

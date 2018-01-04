@@ -16,7 +16,7 @@ using namespace std;
 class ServiceMenuView {
 private:
 	Utilities *u;
-	const string servicesListing = "\nListagem dos Serviços:";
+	const string servicesListing = "\nMenu Serviços:";
 	const string noServicesRegistered = "\nNão tem serviços registados:";
 	const string serviceMenu =
 			"\nMenu Serviços\n0->SAIR\n1->Requesitar Novo Serviço\n2->Ver Serviço\n3->Ordenar Listagem dos Serviços\n4->Filtrar Listagem dos Serviços"
@@ -31,7 +31,7 @@ private:
 	const string serviceTermExpired = "Prazo  a sua opção";
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Introduziu opção errada";
-	const string end = "\nTerminou Remover Utilizador";
+	const string end = "Terminou Menu Serviços";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 

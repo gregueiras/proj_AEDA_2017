@@ -19,10 +19,6 @@ void ChangeVehicleView::printMessage(const string& message) {
 	cout << message << endl;
 }
 
-void ChangeVehicleView::printInitialMessage() {
-	printMessage(initialMessage);
-}
-
 void ChangeVehicleView::printChangeVehicleMenu() {
 	printMessage(changeVehicleMenu);
 }

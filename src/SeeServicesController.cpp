@@ -23,22 +23,19 @@ void SeeServicesController::menu() {
 
 void SeeServicesController::printServicesInvoices() {
 	vector<Client*> clients_temp = company->getClients();
-	if (clients_temp.size() == 0) {
-		theView->printNoVehiclesRegistered();
+	if (company->getServicesQueue().size() == 0) {
+		theView->printNoServicesRegistered();
 	} else {
 		theView->printListServices();
 		for (size_t i = 0; i < clients_temp.size(); i++) {
 			theView->printInformation(clients_temp.at(i)->clientToString(true));
 		}
 	}
-
 }
 
 void SeeServicesController::newAdministratorMenu() {
+	theView->printEnd();
 	AdministratorMenuController *administratorMenu =
 			new AdministratorMenuController(company);
 	administratorMenu->menu();
-}
-
-void SeeServicesController::endProgram() {
 }

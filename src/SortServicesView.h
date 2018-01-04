@@ -17,12 +17,12 @@ class SortServicesView {
 private:
 	Utilities *u;
 	const string sortServicesMenu =
-			"\nMenu de Ordenaçao dos Serviços\n0->SAIR\n1->ID\n2->Data\n3->Volume\n4->Distancia\n5->Preço\n6->Voltar Atrás";
+			"\nMenu Ordenaçao dos Serviços\n0->SAIR\n1->ID\n2->Data\n3->Volume\n4->Distancia\n5->Preço\n6->Voltar Atrás";
 
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Opção escolhida invalida";
 
-	const string end = "\nTerminou Menu de ordenaçao dos serviços";
+	const string end = "Terminou Menu ordenaçao dos serviços";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);
 
@@ -53,7 +53,7 @@ public:
 	/**
 	 * prints shutdown message
 	 */
-	void printShutdown() ;
+	void printShutdown();
 
 	/**
 	 * reads string from keyboard

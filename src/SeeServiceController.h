@@ -23,11 +23,6 @@ private:
 	Client *user;
 
 	/**
-	 * ends the program
-	 */
-	void endProgram();
-
-	/**
 	 * opens new list services menu
 	 */
 	void newServiceMenu();

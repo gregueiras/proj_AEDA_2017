@@ -31,7 +31,6 @@ void UserMenuController::menuHandler() {
 		option = getMenuOption(0, 3);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -59,24 +58,32 @@ int UserMenuController::getMenuOption(const int lowerBound,
 	return option;
 }
 
-void UserMenuController::endProgram() {
-}
-
-
 void UserMenuController::newChangeUserMenu() {
+	theView->printEnd();
 	ChangeUserMenuController *changeUserMenuController =
 			new ChangeUserMenuController(user, company);
 	changeUserMenuController->menu();
 }
 
 void UserMenuController::newRemoveUserMenu() {
+	theView->printEnd();
 	RemoveUserMenuController *removeUserMenuController =
 			new RemoveUserMenuController(user, company);
 	removeUserMenuController->menu();
 }
 void UserMenuController::newClientMenu() {
+	theView->printEnd();
 	ClientMenuController *clientMenuController = new ClientMenuController(user,
 			company);
 	clientMenuController->menu();
+}
+
+void UserMenuController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }
 

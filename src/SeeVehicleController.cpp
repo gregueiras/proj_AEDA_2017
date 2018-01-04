@@ -24,6 +24,7 @@ void SeeVehicleController::menu() {
 }
 
 void SeeVehicleController::newVehicleMenuController() {
+	theView->printEnd();
 	VehicleMenuController *vehicleMenuController = new VehicleMenuController(
 			company);
 	vehicleMenuController->menu();

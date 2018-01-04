@@ -50,13 +50,11 @@ int main() {
 	//SortServicesController *sortServicesController = new SortServicesController(
 //	sortServicesController->menu();
 
+	c1->setInactiveClients();
 	EnterController enter = EnterController(c1);
 
 	enter.menu();
 
-	c1->writeCompanyToFile();
-	c1->writeClientsToFile();
-	c1->writeVehiclesToFile();
 	cout << "chegou a main e terminou" << endl;
 
 }

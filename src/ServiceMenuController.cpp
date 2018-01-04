@@ -54,7 +54,6 @@ void ServiceMenuController::serviceMenuHandler() {
 		option = getMenuOption(0, 6);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -108,6 +107,7 @@ int ServiceMenuController::getServiceID() {
 }
 
 void ServiceMenuController::newRequisitService() {
+	theView->printEnd();
 	RequisitServiceController *requisitServiceController =
 			new RequisitServiceController(user, company);
 	requisitServiceController->menu();
@@ -118,6 +118,7 @@ void ServiceMenuController::newSeeService() {
 	if (serviceID != 0) {
 		Services s = user->getServiceById(serviceID);
 		if (s.getVolume() != 0) {
+			theView->printEnd();
 			SeeServiceController *seeServiceController =
 					new SeeServiceController(&s, user, company);
 			seeServiceController->menu();
@@ -128,30 +129,39 @@ void ServiceMenuController::newSeeService() {
 }
 
 void ServiceMenuController::newSortServicesMenu() {
+	theView->printEnd();
 	SortServicesController *sortServicesController = new SortServicesController(
 			user, company);
 	sortServicesController->menu();
 }
 
 void ServiceMenuController::newFilterServicesMenu() {
+	theView->printEnd();
 	FilterServicesController *filterServicesController =
 			new FilterServicesController(user, company);
 	filterServicesController->menu();
 }
 
 void ServiceMenuController::newPayServiceMenu() {
+	theView->printEnd();
 	PayServiceController *payServiceController = new PayServiceController(user,
 			-1, company);
 	payServiceController->menu();
 }
 
 void ServiceMenuController::newClientMenu() {
+	theView->printEnd();
 	ClientMenuController *clientMenuController = new ClientMenuController(user,
 			company);
 	clientMenuController->menu();
 }
 
 void ServiceMenuController::endProgram() {
-
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }
 

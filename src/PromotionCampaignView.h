@@ -19,12 +19,12 @@ private:
 	Utilities *u;
 	const string initialMessage = "\nDefinir Campanha Promocional";
 	const string enterDiscountPercentage = "Introduza a percentagem de desconto";
+	const string wrongPercentage = "Percentagem introduzida inválida";
 	const string companyDiscountPercentage =
 			"Percentagem de desconto da atual campanha promocional: ";
 	const string previousPromotionalCampaignEnded =
 			"Campanha Promocional anteriormente em  vigor terminada";
 	const string end = "Terminou Definir Campanha Promocional";
-	const string wrongPercentage = "Percentagem introduzida inválida";
 	const string shutdown = "\nPrograma terminou";
 
 	void printMessage(const string &message);

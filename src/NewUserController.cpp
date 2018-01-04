@@ -59,6 +59,7 @@ void NewUserController::getUserType() {
 		theView->printEnterUserType();
 		flag1 = theView->getInfo(userType);
 		if (flag1 == true && userType == 0) {
+
 			newEnterController();
 		}
 		flag2 = v->validateBound(userType, client_type_personal,
@@ -73,6 +74,7 @@ void NewUserController::getName() {
 	theView->printEnterName();
 	name = theView->readLine();
 	if (name == "0") {
+
 		newEnterController();
 	}
 }
@@ -83,6 +85,7 @@ void NewUserController::getNIF() {
 		theView->printEnterNIF();
 		flag1 = theView->getInfo(nif);
 		if (flag1 == true && nif == 0) {
+
 			newEnterController();
 		}
 		flag2 = v->validateNIFFormat(std::to_string(nif));
@@ -96,6 +99,7 @@ void NewUserController::getStreet() {
 	theView->printEnterStreet();
 	street = theView->readLine();
 	if (street == "0") {
+
 		newEnterController();
 	}
 }
@@ -103,6 +107,7 @@ void NewUserController::getCountry() {
 	theView->printEnterCountry();
 	country = theView->readLine();
 	if (country == "0") {
+
 		newEnterController();
 	}
 }
@@ -110,6 +115,7 @@ void NewUserController::getCity() {
 	theView->printEnterCity();
 	city = theView->readLine();
 	if (city == "0") {
+
 		newEnterController();
 	}
 }
@@ -117,6 +123,7 @@ void NewUserController::getCounty() {
 	theView->printEnterCounty();
 	county = theView->readLine();
 	if (county == "0") {
+
 		newEnterController();
 	}
 }
@@ -126,6 +133,7 @@ void NewUserController::getDoorNumber() {
 		theView->printEnterDoorNumber();
 		flag1 = theView->getInfo(doorNumber);
 		if (flag1 == true && doorNumber == 0) {
+
 			newEnterController();
 		}
 	} while (flag1 == false);
@@ -137,6 +145,7 @@ void NewUserController::getLatitude() {
 		theView->printEnterLatitude();
 		flag1 = theView->getInfo(latitude);
 		if (flag1 == true && latitude == 0) {
+
 			newEnterController();
 		}
 		flag2 = v->validateLatitudeFormat(std::to_string(latitude));
@@ -152,6 +161,7 @@ void NewUserController::getLongitude() {
 		theView->printEnterLongitude();
 		flag1 = theView->getInfo(longitude);
 		if (flag1 == true && longitude == 0) {
+
 			newEnterController();
 		}
 		flag2 = v->validateLongitudeFormat(std::to_string(longitude));
@@ -166,6 +176,7 @@ string NewUserController::getPassword() {
 	theView->printEnterPassword();
 	password = theView->readLine();
 	if (password == "0") {
+
 		newEnterController();
 	}
 	return password;
@@ -187,25 +198,38 @@ void NewUserController::createUser() {
 		user = new Unregistered(name, address, nif);
 	}
 	company->addClient(user);
+
 	if (userType == client_type_unregistered) {
+
 		newRequisitServiceController();
 	} else {
 		theView->printUserID(user->getId());
+
 		newEnterController();
 	}
 }
 
 void NewUserController::newEnterController() {
+	theView->printEnd();
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
+
 }
 
 void NewUserController::newRequisitServiceController() {
+	theView->printEnd();
 	RequisitServiceController *enterController = new RequisitServiceController(
 			user, company);
 	enterController->menu();
 }
 
 void NewUserController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }
 

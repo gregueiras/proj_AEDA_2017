@@ -15,11 +15,11 @@ using namespace std;
 class SeeServicesView {
 private:
 	const string initialMessage = "\nListagem de Serviços dos Clientes";
-	const string end = "\nTerminou Listagem de Serviços dos Clientes";
-	const string shutdown = "\nPrograma terminou";
 	const string listServices = "\nListagem dos serviços registados:";
-	const string noVehiclesRegistered =
-			"\nNão ha veiculos registados no sistema";
+	const string noServicesRegistered =
+			"\nNão ha servicos registados no sistema";
+	const string end = "Terminou Listagem de Serviços dos Clientes";
+	const string shutdown = "\nPrograma terminou";
 
 	void printMessage(const string &message);
 
@@ -43,7 +43,7 @@ public:
 	void printShutdown() const;
 
 	void printListServices();
-	void printNoVehiclesRegistered();
+	void printNoServicesRegistered();
 	/**
 	 * prints end message
 	 */

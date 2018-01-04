@@ -16,7 +16,7 @@ private:
 	Utilities *u;
 
 	const string changeUserMenu =
-			"\nAlterar Perfil de Utilizador\n0->SAIR\n1->Nome\n2->NIF\n3->Estrada\n4->País\n5->Cidade"
+			"\nMenu Alterar Perfil de Utilizador\n0->SAIR\n1->Nome\n2->NIF\n3->Estrada\n4->País\n5->Cidade"
 					"\n6->Município\n7->Número da Porta\n8->Latitude\n9->Longitude\n10->Password\n11->Voltar Atras";
 	const string enterOption = "Introduza a sua opção";
 
@@ -36,7 +36,7 @@ private:
 	const string wrongLongitude = "Longitude introduzida invalida";
 	const string wrongOption = "Introduziu opcao errada";
 
-	const string end = "Terminou Criar novo perfil utilizador";
+	const string end = "Terminou Menu Alterar Perfil de Utilizador";
 	const string shutdown = "\nPrograma terminou";
 
 	void printMessage(const string &message);

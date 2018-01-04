@@ -26,7 +26,6 @@ void AdministratorMenuController::menu() {
 		option = getMenuOption(0, 5);
 		switch (option) {
 		case 0:
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -42,6 +41,7 @@ void AdministratorMenuController::menu() {
 			newAdvanceTime();
 			break;
 		case 5:
+
 			newEnterController();
 			break;
 		}
@@ -61,33 +61,44 @@ int AdministratorMenuController::getMenuOption(const int lowerBound,
 }
 
 void AdministratorMenuController::newSeeServices() {
+	theView->printEnd();
 	SeeServicesController *seeServiceController = new SeeServicesController(
 			company);
 	seeServiceController->menu();
 }
 
 void AdministratorMenuController::newPromotionalCampaign() {
+	theView->printEnd();
 	PromotionCampaignController *promotionCampaignController =
 			new PromotionCampaignController(company);
 	promotionCampaignController->menu();
 }
 
 void AdministratorMenuController::newVehiclesMenu() {
+	theView->printEnd();
 	VehicleMenuController *vehicleMenuController = new VehicleMenuController(
 			company);
 	vehicleMenuController->menu();
 }
 
 void AdministratorMenuController::newAdvanceTime() {
+	theView->printEnd();
 	AdvanceTimeController *advanceTimeController = new AdvanceTimeController(
 			company);
 	advanceTimeController->menu();
 }
 
 void AdministratorMenuController::newEnterController() {
+	theView->printEnd();
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
 }
 
 void AdministratorMenuController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }

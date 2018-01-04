@@ -32,7 +32,6 @@ void RemoveVehicleController::removeVehicleHandler() {
 		option = getMenuOption(0, 2);
 		switch (option) {
 		case 0:
-			theView->printEnd();
 			endProgram();
 			break;
 		case 1:
@@ -67,10 +66,17 @@ void RemoveVehicleController::removeVehicle() {
 }
 
 void RemoveVehicleController::newVehicleMenuController() {
+	theView->printEnd();
 	VehicleMenuController *vehicleMenuController = new VehicleMenuController(
 			company);
 	vehicleMenuController->menu();
 }
 
 void RemoveVehicleController::endProgram() {
+	theView->printEnd();
+	theView->printShutdown();
+	company->writeCompanyToFile();
+	company->writeClientsToFile();
+	company->writeVehiclesToFile();
+	exit(0);
 }

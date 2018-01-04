@@ -35,3 +35,6 @@ void AdministratorMenuView::printMessage(const string& message) {
 	cout << message << endl;
 }
 
+void AdministratorMenuView::printEnd() {
+	printMessage(end);
+}
