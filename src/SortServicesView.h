@@ -17,7 +17,7 @@ class SortServicesView {
 private:
 	Utilities *u;
 	const string sortServicesMenu =
-			"\nMenu de ordenaçao dos serviços\n0->SAIR\n1->id\n2->date\n3->volume\n4->distancia\n5->preço\n6->voltar atrás";
+			"\nMenu de Ordenaçao dos Serviços\n0->SAIR\n1->ID\n2->Data\n3->Volume\n4->Distancia\n5->Preço\n6->Voltar Atrás";
 
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Opção escolhida invalida";

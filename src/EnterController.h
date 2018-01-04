@@ -23,6 +23,7 @@ private:
 
 	void setInactiveUsers();
 
+	void updateAvailableVehicles();
 	/**
 	 * reads the user option and acts accordingly
 	 */

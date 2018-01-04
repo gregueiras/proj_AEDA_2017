@@ -44,52 +44,52 @@ private:
 	/**
 	 * user interaction method to read user type infomation
 	 */
-	unsigned int getUserType();
+	void getUserType();
 
 	/**
 	 * user interaction method to read name infomation
 	 */
-	string getName();
+	void getName();
 
 	/**
 	 * user interaction method to read nif infomation
 	 */
-	unsigned int getNIF();
+	void getNIF();
 
 	/**
 	 * user interaction method to read street infomation
 	 */
-	string getStreet();
+	void getStreet();
 
 	/**
 	 * user interaction method to read country infomation
 	 */
-	string getCountry();
+	void getCountry();
 
 	/**
 	 * user interaction method to read city infomation
 	 */
-	string getCity();
+	void getCity();
 
 	/**
 	 * user interaction method to read county infomation
 	 */
-	string getCounty();
+	void getCounty();
 
 	/**
 	 * user interaction method to read door number infomation
 	 */
-	unsigned int getDoorNumber();
+	void getDoorNumber();
 
 	/**
 	 * user interaction method to read latitude infomation
 	 */
-	double getLatitude();
+	void getLatitude();
 
 	/**
 	 * user interaction method to read longitude infomation
 	 */
-	double getLongitude();
+	void getLongitude();
 
 	/**
 	 * user interaction method to read password infomation

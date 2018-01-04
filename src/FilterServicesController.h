@@ -10,7 +10,7 @@
 
 #include  "Validation.h"
 #include "FilterServicesView.h"
-#include "ListServicesController.h"
+#include "ServiceMenuController.h"
 #include "Company.h"
 
 class FilterServicesController {
@@ -141,7 +141,7 @@ private:
 	/**
 	 * opens new list services menu
 	 */
-	void newListServicesMenu();
+	void newServiceMenu();
 
 public:
 	/**

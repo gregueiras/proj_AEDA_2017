@@ -29,7 +29,7 @@ private:
 
 	void newVehiclesMenu();
 
-	void newEnterMenu();
+	void newEnterController();
 
 	void endProgram();
 

@@ -58,3 +58,7 @@ void VehicleMenuView::printVehicleList() {
 void VehicleMenuView::printVehicleNotAvailable() {
 	printMessage(vehicleNotAvailable);
 }
+
+void VehicleMenuView::printNoVehicleRegistered() {
+	printMessage(noVehicleRegistered);
+}

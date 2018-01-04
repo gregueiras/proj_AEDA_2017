@@ -131,3 +131,27 @@ string RequisitServiceView::getLine() {
 	getline(cin, line);
 	return line;
 }
+
+void RequisitServiceView::printEnterVehicleExpectedTime() {
+	printMessage(enterVehicleExpectedTime);
+}
+
+void RequisitServiceView::printEnterPackagingInitialDay() {
+	printMessage(enterPackagingInitialDay);
+}
+
+void RequisitServiceView::printEnterPackagingInitialMonth() {
+	printMessage(enterPackagingInitialMonth);
+}
+
+void RequisitServiceView::printEnterMaintenanceYear() {
+	printMessage(enterPackagingInitialYear);
+}
+
+void RequisitServiceView::printEnterPackagingInitialHour() {
+	printMessage(enterPackagingInitialHour);
+}
+
+void RequisitServiceView::printEnterPackagingInitialMinute() {
+	printMessage(enterPackagingInitialMinute);
+}

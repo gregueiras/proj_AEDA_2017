@@ -17,19 +17,24 @@ EnterController::EnterController(Company *company) {
 EnterController::~EnterController() {
 }
 
+void EnterController::menu() {
+	setInactiveUsers();
+	updateAvailableVehicles();
+	enterMenu();
+}
+
 void EnterController::setInactiveUsers() {
 	company->setInactiveClients();
 }
 
-void EnterController::menu() {
-	setInactiveUsers();
-	enterMenu();
+void EnterController::updateAvailableVehicles() {
+	company->updateAvailableVehicles();
 }
 
 void EnterController::enterMenu() {
 	int option;
-	theView->printEnterMenu();
 	do {
+		theView->printEnterMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 2);
 		switch (option) {
@@ -44,7 +49,7 @@ void EnterController::enterMenu() {
 			newUserMenu();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int EnterController::getMenuOption(const int lowerBound, const int upperBound) {
@@ -69,7 +74,6 @@ void EnterController::newUserMenu() {
 }
 
 void EnterController::endProgram() {
-
 	//company->writeCompanyToFile();
 	//company->writeClientsToFile();
 	//exit(0);

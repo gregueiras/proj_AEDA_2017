@@ -16,9 +16,19 @@ using namespace std;
 class ServiceMenuView {
 private:
 	Utilities *u;
+	const string servicesListing = "\nListagem dos Serviços:";
+	const string noServicesRegistered = "\nNão tem serviços registados:";
 	const string serviceMenu =
-			"\nMenu Serviços\n1->requesitar\n2->listar\n3->voltar atras\n0->SAIR";
+			"\nMenu Serviços\n0->SAIR\n1->Requesitar Novo Serviço\n2->Ver Serviço\n3->Ordenar Listagem dos Serviços\n4->Filtrar Listagem dos Serviços"
+					"\n5->Voltar Atrás";
+	const string serviceMenuForBusinnessClients =
+			"\nMenu Serviços\n0->SAIR\n1->Requesitar Novo Serviço\n2->Ver Serviço\n3->Ordenar Listagem dos Serviços\n4->Filtrar Listagem dos Serviços"
+					"\n5->Pagar Serviços\n6->Voltar Atras\n";
 
+	const string enterServiceID = "Introduza o id do serviço";
+	const string serviceIDNotFound = "Serviço com o id dado não foi encontrado";
+
+	const string serviceTermExpired = "Prazo  a sua opção";
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Introduziu opção errada";
 	const string end = "\nTerminou Remover Utilizador";
@@ -30,9 +40,29 @@ public:
 	virtual ~ServiceMenuView();
 
 	/**
-	 * prints user menu initial message
+	 * prints services listing
+	 */
+	void printServicesListing();
+
+	/**
+	 * prints message for no services registered
+	 */
+	void printNoServicesRegistered();
+
+	/**
+	 * prints list services menu
+	 */
+	void printServiceInfo(unsigned int id, string userInfo);
+
+	/**
+	 * prints services menu
 	 */
 	void printServiceMenu();
+
+	/**
+	 * prints services menu for business clientes
+	 */
+	void printServiceMenuForBusinnessClients();
 
 	/**
 	 * prints enter option message
@@ -44,6 +74,20 @@ public:
 	 */
 	void printWrongOption();
 
+	/**
+	 * prints list services menu
+	 */
+	void printEnterServiceID();
+
+	/**
+	 * print id of service not found message
+	 */
+	void printServiceIDNotFound();
+
+	/**
+	 * print message that service term of change has expired
+	 */
+	void printServiceTermExpired();
 	/**
 	 * prints end message
 	 */

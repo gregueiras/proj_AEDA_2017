@@ -16,7 +16,7 @@ using namespace std;
 class RequisitServiceView {
 private:
 	Utilities *u;
-	const string initialMessage = "\nRequisitar Serviço";
+	const string initialMessage = "\nRequisitar Novo Serviço";
 
 	const string originAddress = "\nIntroduza o endereço de origem. ";
 	const string destinationAddress = "\nIntroduza o endereço de destino. ";
@@ -31,11 +31,23 @@ private:
 	const string enterLongitude = "Introduza Longitude. ";
 
 	const string enterPackagingInitialDate =
-			"Introduza data de início do embalamento (dd mm aaaa). ";
+			"Introduza data de início do embalamento";
+	const string enterPackagingInitialDay =
+			"Introduza dia de início do embalamento";
+	const string enterPackagingInitialMonth =
+			"Introduza mes de início do embalamento";
+	const string enterPackagingInitialYear =
+			"Introduza ano de início do embalamento";
 	const string enterPackagingInitialTime =
-			"Introduza tempo de início do embalamento (hh mm). ";
+			"Introduza tempo de início do embalamento";
+	const string enterPackagingInitialHour =
+			"Introduza hora de início do embalamento";
+	const string enterPackagingInitialMinute =
+			"Introduza minuto de início do embalamento. ";
 
 	const string enterStorageTime = "Introduza o tempo de armazenamento";
+	const string enterVehicleExpectedTime =
+			"Introduza o tempo expectavel para o veículo voltar a estar disponivel";
 
 	const string wrongPackagingInitialDay = "dia inicio do embalamento invalido";
 	const string wrongPackagingInitialMonth =
@@ -120,9 +132,34 @@ public:
 	void printEnterPackagingInitialDate();
 
 	/**
+	 * prints enter packaging initial day message
+	 */
+	void printEnterPackagingInitialDay();
+
+	/**
+	 * prints enter packaging initial month message
+	 */
+	void printEnterPackagingInitialMonth();
+
+	/**
+	 * prints enter packaging initial year message
+	 */
+	void printEnterMaintenanceYear();
+
+	/**
 	 * prints enter packaging initial time message
 	 */
 	void printEnterPackagingInitialTime();
+
+	/**
+	 * prints enter packaging initial hour message
+	 */
+	void printEnterPackagingInitialHour();
+
+	/**
+	 * prints enter packaging initial minute message
+	 */
+	void printEnterPackagingInitialMinute();
 
 	/**
 	 * prints enter storage time message
@@ -133,6 +170,8 @@ public:
 	 * prints enter volume message
 	 */
 	void printEnterVolume();
+
+	void printEnterVehicleExpectedTime();
 
 	/**
 	 * prints enter intial day message

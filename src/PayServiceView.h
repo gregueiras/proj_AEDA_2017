@@ -14,9 +14,9 @@ class PayServiceView {
 private:
 	Utilities *u;
 	const string payMenuNormal =
-			"\nPagar Serviço\n1->multibanco(pagamento de serviços)\n2->transferencia bancaria";
+			"\nPagar Serviço\n1->Multibanco(pagamento de serviços)\n2->Transferencia Bancaria";
 	const string payMenuBusiness =
-			"\nPagar Serviço\n0->SAIR\n1->multibanco(pagamento de serviços)\n2->transferencia bancaria\n3->Cartao Credito";
+			"\nPagar Serviço\n0->SAIR\n1->Multibanco(pagamento de serviços)\n2->Transferencia Bancaria\n3->Cartao Credito";
 
 	const string payEOM = "\nPagar Serviços do mes anterior\n0->SAIR";
 	const string amountToPay = "\nMontante a pagar-> ";

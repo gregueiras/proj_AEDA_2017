@@ -19,7 +19,8 @@ class EnterView {
 private:
 	Utilities *u;
 	const string options =
-			"\n----------------------\nSistema Gestao Empresa\n----------------------\n0->Sair\n1->Login\n2->Criar Novo Perfil Utilizador";
+			"\n----------------------\nSistema Gestao Empresa da Empresa de Mudanças\n----------------------"
+					"\n0->SAIR\n1->Login\n2->Registar-se";
 	const string enterOption = "Introduza a sua opcao";
 	const string wrongOption = "Opcao escolhida invï¿½lida";
 	const string end = "Terminou Programa";

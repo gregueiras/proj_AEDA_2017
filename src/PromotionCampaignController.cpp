@@ -19,13 +19,26 @@ PromotionCampaignController::~PromotionCampaignController() {
 }
 
 void PromotionCampaignController::menu() {
+	promotionCampaignHandler();
+	newAdministratorMenu();
+}
+
+void PromotionCampaignController::promotionCampaignHandler() {
+	getPromotionCampaignPercentage();
+	company->setDiscount(discountPercentage);
+}
+
+float PromotionCampaignController::getPromotionCampaignPercentage() {
+	bool flag;
 	theView->printInitialMessage();
 	theView->printCompanyDiscountPercentage(company->getDiscount());
-	theView->printEnterDiscountPercentage();
-	if (theView->getInfo(discountPercentage) == true) {
-		company->setDiscount(discountPercentage);
-	}
-	newAdministratorMenu();
+	do {
+		theView->printEnterDiscountPercentage();
+		flag = theView->getInfo(discountPercentage);
+		if (flag == false) {
+			theView->printWrongPercentage();
+		}
+	} while (!flag);
 }
 
 void PromotionCampaignController::newAdministratorMenu() {

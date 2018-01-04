@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include "SeeServiceView.h"
-#include "ListServicesController.h"
+#include "ServiceMenuController.h"
 #include "Company.h"
 
 using namespace std;
@@ -30,7 +30,7 @@ private:
 	/**
 	 * opens new list services menu
 	 */
-	void newListServicesMenu();
+	void newServiceMenu();
 public:
 	/**
 	 * Contructor that initalizes all variables

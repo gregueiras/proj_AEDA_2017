@@ -43,11 +43,6 @@ private:
 	void endProgram();
 
 	/**
-	 * opens new client menu
-	 */
-	void newClientMenu();
-
-	/**
 	 * opens new change user menu
 	 */
 	void newChangeUserMenu();
@@ -57,6 +52,10 @@ private:
 	 */
 	void newRemoveUserMenu();
 
+	/**
+	 * opens new client menu
+	 */
+	void newClientMenu();
 public:
 	/**
 	 * Contructor that initalizes all variables

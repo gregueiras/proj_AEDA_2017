@@ -28,8 +28,7 @@ private:
 	void menuHandler();
 	void listVehicles();
 	int getMenuOption(const int lowerBound, const int upperBound);
-	bool getVehiclePlate();
-	bool askVehiclePlate();
+	string getVehiclePlate();
 
 	void seeVehicleMenu();
 	void newVehicleMenu();

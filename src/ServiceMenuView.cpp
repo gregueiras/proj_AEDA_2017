@@ -24,6 +24,14 @@ void ServiceMenuView::printServiceMenu() {
 	printMessage(serviceMenu);
 }
 
+void ServiceMenuView::printServicesListing() {
+	printMessage(servicesListing);
+}
+
+void ServiceMenuView::printServiceMenuForBusinnessClients() {
+	printMessage(serviceMenuForBusinnessClients);
+}
+
 void ServiceMenuView::printEnterOption() {
 	printMessage(enterOption);
 }
@@ -34,6 +42,26 @@ void ServiceMenuView::printWrongOption() {
 
 void ServiceMenuView::printEnd() {
 	printMessage(end);
+}
+
+void ServiceMenuView::printNoServicesRegistered() {
+	printMessage(noServicesRegistered);
+}
+
+void ServiceMenuView::printServiceInfo(unsigned int id, string userInfo) {
+	cout << "ID: " << id << " " << userInfo << "\n";
+}
+
+void ServiceMenuView::printEnterServiceID() {
+	printMessage(enterServiceID);
+}
+
+void ServiceMenuView::printServiceIDNotFound() {
+	printMessage(serviceIDNotFound);
+}
+
+void ServiceMenuView::printServiceTermExpired() {
+	printMessage(serviceTermExpired);
 }
 
 void ServiceMenuView::printShutdown() {

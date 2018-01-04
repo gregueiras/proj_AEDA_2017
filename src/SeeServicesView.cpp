@@ -31,3 +31,14 @@ void SeeServicesView::printInformation(const string& information) {
 void SeeServicesView::printEnd() {
 	printMessage(end);
 }
+
+void SeeServicesView::printShutdown() const {
+}
+
+void SeeServicesView::printListServices() {
+	printMessage(listServices);
+}
+
+void SeeServicesView::printNoVehiclesRegistered() {
+	printMessage(noVehiclesRegistered);
+}

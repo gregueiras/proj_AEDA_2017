@@ -20,7 +20,9 @@ private:
 	const string wrongOption = "Opção escolhida invalida";
 
 	const string filterMenu =
-			"\nMenu Filtrar\n0->SAIR\n1->intervalo de id\n2->intevalo de tempo\n3->intervalo de volume\n4->intervalo de distancia\n5->intervalo de preço\n6->cidade\n7->filtrar\n8->voltar atras";
+			"\nMenu Filtrar\n0->SAIR\n1->Intervalo de ID\n2->Intervalo de Tempo\n3->Intervalo de Volume\n4->Intervalo de Distancia"
+					"\n5->Intervalo de Preço\n6->Cidade\n7->Filtrar\n8->Voltar Atras";
+
 	const string enterIdInterval =
 			"Introduza intervalo de id (idInferior idSuperior)";
 	const string enterDateInferiorBound =
@@ -33,6 +35,7 @@ private:
 			"Introduza intervalo de distancia (distanciaInferior distanciaSuperior)";
 	const string enterPriceInterval =
 			"Introduza intervalo de preço (preçoInferior preçoSuperior)";
+
 	const string enterCity = "Introduza cidade";
 	const string wrongDate = "Data introduzida invalida";
 	const string wrongTimeInterval = "Data introduzida invalido";

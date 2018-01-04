@@ -23,9 +23,6 @@ private:
 	Client *user;
 	Company *company;
 
-	unsigned int id;
-	string pass;
-
 	/**
 	 * user interaction method to read user credentials
 	 */
@@ -51,10 +48,6 @@ private:
 	 */
 	void newClientMenu();
 
-	/**
-	 * opens new enter menu
-	 */
-	void newEnterController();
 
 	/**
 	 * opens new company administrator menu

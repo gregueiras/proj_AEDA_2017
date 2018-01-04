@@ -21,13 +21,13 @@ RemoveUserMenuController::~RemoveUserMenuController() {
 }
 
 void RemoveUserMenuController::menu() {
-	theView->printRemoveUserMenu();
 	removeUserHandler();
 }
 
 void RemoveUserMenuController::removeUserHandler() {
 	int option;
 	do {
+		theView->printRemoveUserMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 2);
 		switch (option) {
@@ -43,7 +43,7 @@ void RemoveUserMenuController::removeUserHandler() {
 			newUserMenuController();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int RemoveUserMenuController::getMenuOption(const int lowerBound,
@@ -61,8 +61,8 @@ int RemoveUserMenuController::getMenuOption(const int lowerBound,
 void RemoveUserMenuController::removeUser() {
 	theView->printEnterConfirmation();
 	int option;
-	theView->getInfo(option);
-	if (option == 1) {
+	bool flag = theView->getInfo(option);
+	if (option == 1 && flag == true) {
 		user->setVisibility(false);
 	}
 }

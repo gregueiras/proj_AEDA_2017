@@ -18,7 +18,7 @@ private:
 	Utilities *u;
 
 	const string removeUserMenu =
-			"\nRemover Utilizador\n0->SAIR\n1->remover\n2->voltar atrás";
+			"\nRemover Utilizador\n0->SAIR\n1->Remover\n2->Voltar Atrás";
 
 	const string enterConfirmation =
 			"Deseja remover definitivamente perfil de utilizador?\n0->Não\n1->Sim";

@@ -20,13 +20,13 @@ UserMenuController::~UserMenuController() {
 }
 
 void UserMenuController::menu() {
-	theView->printUserMenu();
 	menuHandler();
 }
 
 void UserMenuController::menuHandler() {
 	int option;
 	do {
+		theView->printUserMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 3);
 		switch (option) {
@@ -35,16 +35,16 @@ void UserMenuController::menuHandler() {
 			endProgram();
 			break;
 		case 1:
-			newRemoveUserMenu();
+			newChangeUserMenu();
 			break;
 		case 2:
-			newChangeUserMenu();
+			newRemoveUserMenu();
 			break;
 		case 3:
 			newClientMenu();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int UserMenuController::getMenuOption(const int lowerBound,
@@ -62,11 +62,6 @@ int UserMenuController::getMenuOption(const int lowerBound,
 void UserMenuController::endProgram() {
 }
 
-void UserMenuController::newRemoveUserMenu() {
-	RemoveUserMenuController *removeUserMenuController =
-			new RemoveUserMenuController(user, company);
-	removeUserMenuController->menu();
-}
 
 void UserMenuController::newChangeUserMenu() {
 	ChangeUserMenuController *changeUserMenuController =
@@ -74,6 +69,11 @@ void UserMenuController::newChangeUserMenu() {
 	changeUserMenuController->menu();
 }
 
+void UserMenuController::newRemoveUserMenu() {
+	RemoveUserMenuController *removeUserMenuController =
+			new RemoveUserMenuController(user, company);
+	removeUserMenuController->menu();
+}
 void UserMenuController::newClientMenu() {
 	ClientMenuController *clientMenuController = new ClientMenuController(user,
 			company);

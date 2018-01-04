@@ -17,7 +17,7 @@ using namespace std;
 class NewUserView {
 private:
 	Utilities *u;
-	const string newUserMenu = "\nCriar novo perfil utilizador";
+	const string newUserMenu = "\nRegistar-se";
 	const string enterUserType =
 			"\nIntroduza Tipo Utilizador\n0->SAIR\n1->Pessoal\n2->Empresarial\n3->Nao registado";
 	const string enterName = "Introduza Nome. 0->SAIR";

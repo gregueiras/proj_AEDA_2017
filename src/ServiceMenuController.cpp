@@ -13,20 +13,45 @@ ServiceMenuController::ServiceMenuController(Client *client, Company *company) {
 	v = new Validation();
 	user = client;
 }
+
 ServiceMenuController::~ServiceMenuController() {
 	// TODO Auto-generated destructor stub
 }
 
 void ServiceMenuController::menu() {
-	theView->printServiceMenu();
+	listServices();
 	serviceMenuHandler();
+}
+
+void ServiceMenuController::listServices() {
+	vector<Services *> services = user->getServices();
+	theView->printServicesListing();
+	if (services.size() == 0) {
+		theView->printNoServicesRegistered();
+	} else {
+		for (size_t i = 0; i < services.size(); i++) {
+			if (services.at(i)->isVisibility()) {
+				theView->printServiceInfo(services.at(i)->getId(),
+						services.at(i)->toStrShort());
+			}
+		}
+	}
+}
+
+void ServiceMenuController::printListServicesByUserType() {
+	if (dynamic_cast<Business*>(user)) {
+		theView->printServiceMenuForBusinnessClients();
+	} else {
+		theView->printServiceMenu();
+	}
 }
 
 void ServiceMenuController::serviceMenuHandler() {
 	int option;
 	do {
+		printListServicesByUserType();
 		theView->printEnterOption();
-		option = getMenuOption(0, 3);
+		option = getMenuOption(0, 6);
 		switch (option) {
 		case 0:
 			theView->printShutdown();
@@ -36,13 +61,28 @@ void ServiceMenuController::serviceMenuHandler() {
 			newRequisitService();
 			break;
 		case 2:
-			newServiceListMenu();
+			newSeeService();
 			break;
 		case 3:
-			newClientMenu();
+			newSortServicesMenu();
+			break;
+		case 4:
+			newFilterServicesMenu();
+			break;
+		case 5:
+			if (dynamic_cast<Business*>(user)) {
+				newPayServiceMenu();
+			} else {
+				newClientMenu();
+			}
+			break;
+		case 6:
+			if (dynamic_cast<Business*>(user)) {
+				newClientMenu();
+			}
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int ServiceMenuController::getMenuOption(const int lowerBound,
@@ -57,8 +97,14 @@ int ServiceMenuController::getMenuOption(const int lowerBound,
 	return option;
 }
 
-void ServiceMenuController::endProgram() {
-
+int ServiceMenuController::getServiceID() {
+	int id;
+	theView->printEnterServiceID();
+	bool flag1 = theView->getInfo(id);
+	if (flag1 == false || id < 1) {
+		return -1;
+	}
+	return id;
 }
 
 void ServiceMenuController::newRequisitService() {
@@ -67,17 +113,45 @@ void ServiceMenuController::newRequisitService() {
 	requisitServiceController->menu();
 }
 
-void ServiceMenuController::newServiceListMenu() {
-	user->getId();
-	company->getClients();
-	ListServicesController *listServicesController = new ListServicesController(
+void ServiceMenuController::newSeeService() {
+	serviceID = getServiceID();
+	if (serviceID != 0) {
+		Services s = user->getServiceById(serviceID);
+		if (s.getVolume() != 0) {
+			SeeServiceController *seeServiceController =
+					new SeeServiceController(&s, user, company);
+			seeServiceController->menu();
+		} else {
+			theView->printServiceIDNotFound();
+		}
+	}
+}
+
+void ServiceMenuController::newSortServicesMenu() {
+	SortServicesController *sortServicesController = new SortServicesController(
 			user, company);
-	listServicesController->menu();
+	sortServicesController->menu();
+}
+
+void ServiceMenuController::newFilterServicesMenu() {
+	FilterServicesController *filterServicesController =
+			new FilterServicesController(user, company);
+	filterServicesController->menu();
+}
+
+void ServiceMenuController::newPayServiceMenu() {
+	PayServiceController *payServiceController = new PayServiceController(user,
+			-1, company);
+	payServiceController->menu();
 }
 
 void ServiceMenuController::newClientMenu() {
 	ClientMenuController *clientMenuController = new ClientMenuController(user,
 			company);
 	clientMenuController->menu();
+}
+
+void ServiceMenuController::endProgram() {
+
 }
 

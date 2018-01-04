@@ -18,7 +18,6 @@ class SeeServicesController {
 	Company *company;
 
 	void printServicesInvoices();
-
 	void newAdministratorMenu();
 	void endProgram();
 

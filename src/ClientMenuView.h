@@ -16,14 +16,13 @@ using namespace std;
 class ClientMenuView {
 private:
 	Utilities *u;
+	const string clientMenu =
+			"\nMenu Cliente\n0->SAIR\n1->Menu Perfil Utilizador\n2->Menu dos Servicos\n3->Voltar Atras";
 	const string enterOption = "Introduza a sua opcao";
 	const string wrongOption = "Opcao escolhida invalida";
 	const string notificationHeader = "\n-----Novas Notificações-----\n";
 	const string pendingChangeAdress =
-			"Esteve algum tempo afastado. Atualize a morada";
-
-	const string clientMenu =
-			"\nMenu Cliente\n1->utilizador\n2->servicos\n3->voltar atras\n0->SAIR";
+			"Esteve algum tempo afastado. Atualize a sua morada";
 
 	const string end = "\nTerminou Menu Cliente";
 	const string shutdown = "\nPrograma terminou";

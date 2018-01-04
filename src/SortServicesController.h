@@ -9,7 +9,7 @@
 #define SRC_CONTROLLER_HEADERS_SORTSERVICESCONTROLLER_H_
 
 #include "SortServicesView.h"
-#include "ListServicesController.h"
+#include "ServiceMenuController.h"
 #include "Company.h"
 
 class SortServicesController {
@@ -73,7 +73,7 @@ private:
 	/**
 	 * opens new list services menu
 	 */
-	void newListServicesMenu();
+	void newServiceMenu();
 public:
 	/**
 	 * Contructor that initalizes all variables

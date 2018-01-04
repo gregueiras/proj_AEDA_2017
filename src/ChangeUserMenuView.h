@@ -16,12 +16,8 @@ private:
 	Utilities *u;
 
 	const string changeUserMenu =
-			"Alterar Utilizador\n0->SAIR\n1->name\n2->NIF\n3->street\n4->Country\n5->city"
-					"\n6->County\n7->DoorNumber\n8->Latitude\n9->Longitude\n10->Password\n11->voltar atras";
-	const string newChangeUserMenu = "\nAlterar perfil utilizador";
-	const string enterUserType =
-			"\nIntroduza opçao para alterar\n0->SAIR\n1->nome\n2->nif\n3->nome da rua\n4->País\n5->cidade\n6->municipio\n7->numero da rua"
-					"\n8->latitude\n9->longitude\n10->password";
+			"\nAlterar Perfil de Utilizador\n0->SAIR\n1->Nome\n2->NIF\n3->Estrada\n4->País\n5->Cidade"
+					"\n6->Município\n7->Número da Porta\n8->Latitude\n9->Longitude\n10->Password\n11->Voltar Atras";
 	const string enterOption = "Introduza a sua opção";
 
 	const string enterNewName = "Introduza novo Nome. 0->SAIR";

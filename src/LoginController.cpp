@@ -13,59 +13,49 @@ LoginController::LoginController(Company *company) {
 	v = new Validation();
 	u = new Utilities();
 	this->company = company;
-	id = 0;
-	pass = "";
 }
 
 LoginController::~LoginController() {
 }
 
 void LoginController::menu() {
-	theView->printInitialMessage();
-	getUserCredentials();
-	user = company->getClient(id, pass);
-
-	if (user != NULL) {
-		newClientMenu();
-	} else if (company->checkAdminCredentials(id, pass)) {
-		newAdministratorController();
-	} else {
-		theView->printUserNotFound();
-		menu();
-	}
-}
-
-void LoginController::getUserCredentials() {
-	id = getID();
-	pass = getPass();
+	unsigned int id;
+	string pass;
+	do {
+		theView->printInitialMessage();
+		if ((id = getID()) == 0) {
+			break;
+		}
+		if ((pass = getPass()) == "0") {
+			break;
+		}
+		user = company->getClient(id, pass);
+		if (user != NULL) {
+			newClientMenu();
+		} else if (company->checkAdminCredentials(id, pass)) {
+			newAdministratorController();
+		} else {
+			theView->printUserNotFound();
+		}
+	} while (id != 0 || pass != "0");
 }
 
 unsigned int LoginController::getID() {
 	unsigned int id = 0;
 	bool flag = false;
-	theView->printEnterID();
-	while (!flag) {
-		theView->getInfo(id);
-		if (id == 0) {
-			newEnterController();
-		}
-		if (!(flag = v->validateIDFormat(std::to_string(id)))) {
+	do {
+		theView->printEnterID();
+		flag = theView->getInfo(id);
+		if (flag == false) {
 			theView->printWrongUserID();
-			continue;
 		}
-
-	}
+	} while (!flag);
 	return id;
 }
 
 string LoginController::getPass() {
-	string pass;
 	theView->printEnterPassword();
-	pass = theView->readLine();
-	if (pass == "0") {
-		newEnterController();
-	}
-	return pass;
+	return theView->readLine();
 }
 
 void LoginController::endProgram() {
@@ -82,10 +72,3 @@ void LoginController::newAdministratorController() {
 			new AdministratorMenuController(company);
 	administratorMenuController->menu();
 }
-
-void LoginController::newEnterController() {
-	EnterController *enterController = new EnterController(company);
-	enterController->menu();
-}
-
-/* namespace std */

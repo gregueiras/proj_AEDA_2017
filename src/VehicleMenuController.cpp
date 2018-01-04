@@ -19,25 +19,29 @@ VehicleMenuController::~VehicleMenuController() {
 }
 
 void VehicleMenuController::menu() {
-	listVehicles();
 	menuHandler();
 }
 
 void VehicleMenuController::listVehicles() {
 	theView->printVehicleList();
 	priority_queue<Vehicle> temp = company->getVehicles();
-	while (!temp.empty()) {
-		Vehicle vehicle = temp.top();
-		string info = vehicle.toStrShort();
-		theView->printInformation(info);
-		temp.pop();
+	if (temp.size() == 0) {
+		theView->printNoVehicleRegistered();
+	} else {
+		while (!temp.empty()) {
+			Vehicle vehicle = temp.top();
+			string info = vehicle.toStrShort();
+			theView->printInformation(info);
+			temp.pop();
+		}
 	}
 }
 
 void VehicleMenuController::menuHandler() {
-	theView->printVehicleMenu();
 	int option;
 	do {
+		listVehicles();
+		theView->printVehicleMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 6);
 		switch (option) {
@@ -64,7 +68,7 @@ void VehicleMenuController::menuHandler() {
 			newAdministratorMenu();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int VehicleMenuController::getMenuOption(const int lowerBound,
@@ -79,20 +83,14 @@ int VehicleMenuController::getMenuOption(const int lowerBound,
 	return option;
 }
 
-bool VehicleMenuController::askVehiclePlate() {
-	theView->printEnterPlate();
-	return theView->getInfo(plate);
-}
-
-bool VehicleMenuController::getVehiclePlate() {
-	if (plate == "0" && askVehiclePlate()) {
-		return false;
-	}
-	bool flag = company->existVehicle(plate);
-	if (!flag) {
-		theView->printPlateNotFound();
-	}
-	return flag;
+string VehicleMenuController::getVehiclePlate() {
+	string plate = "0";
+	bool flag = false;
+	do {
+		theView->printEnterPlate();
+		flag = theView->getInfo(plate);
+	} while (!flag);
+	return plate;
 }
 
 void VehicleMenuController::newVehicleMenu() {
@@ -102,43 +100,63 @@ void VehicleMenuController::newVehicleMenu() {
 }
 
 void VehicleMenuController::seeVehicleMenu() {
-	if (getVehiclePlate()) {
-		SeeVehicleController *seeVehicleController = new SeeVehicleController(
-				company, plate);
-		seeVehicleController->menu();
+	plate = getVehiclePlate();
+	if (plate != "0") {
+		if (company->getVehicle(plate) != NULL) {
+			SeeVehicleController *seeVehicleController =
+					new SeeVehicleController(company, plate);
+			seeVehicleController->menu();
+		} else {
+			theView->printPlateNotFound();
+		}
 	}
 }
 
 void VehicleMenuController::changeVehicleMenu() {
-	if (getVehiclePlate()) {
-		if (company->isVehicleAvailable(plate)) {
-			ChangeVehicleController *changeVehicleController =
-					new ChangeVehicleController(company, plate);
-			changeVehicleController->menu();
+	plate = getVehiclePlate();
+	if (plate != "0") {
+		if (company->getVehicle(plate) != NULL) {
+			if (company->isVehicleAvailable(plate)) {
+				ChangeVehicleController *changeVehicleController =
+						new ChangeVehicleController(company, plate);
+				changeVehicleController->menu();
+			} else {
+				theView->printVehicleNotAvailable();
+			}
 		} else {
-			theView->printVehicleNotAvailable();
+			theView->printPlateNotFound();
 		}
 	}
 }
 
 void VehicleMenuController::sendVehicleToMaintenanceMenu() {
-	if (getVehiclePlate()) {
-		if (company->isVehicleAvailable(plate)) {
-			company->changeVehicleInMaintenance(plate, true);
+	plate = getVehiclePlate();
+	if (plate != "0") {
+		if (company->getVehicle(plate) != NULL) {
+			if (company->isVehicleAvailable(plate)) {
+				company->changeVehicleInMaintenance(plate, true);
+			} else {
+				theView->printVehicleNotAvailable();
+			}
 		} else {
-			theView->printVehicleNotAvailable();
+			theView->printPlateNotFound();
 		}
 	}
 }
 
 void VehicleMenuController::removeVehicleMenu() {
-	if (getVehiclePlate()) {
-		if (company->isVehicleAvailable(plate)) {
-			RemoveVehicleController *removeVehicleController =
-					new RemoveVehicleController(company, plate);
-			removeVehicleController->menu();
+	plate = getVehiclePlate();
+	if (plate != "0") {
+		if (company->getVehicle(plate) != NULL) {
+			if (company->isVehicleAvailable(plate)) {
+				RemoveVehicleController *removeVehicleController =
+						new RemoveVehicleController(company, plate);
+				removeVehicleController->menu();
+			} else {
+				theView->printVehicleNotAvailable();
+			}
 		} else {
-			theView->printVehicleNotAvailable();
+			theView->printPlateNotFound();
 		}
 	}
 }
@@ -148,6 +166,5 @@ void VehicleMenuController::newAdministratorMenu() {
 			new AdministratorMenuController(company);
 	administratorMenuController->menu();
 }
-
 void VehicleMenuController::endProgram() {
 }

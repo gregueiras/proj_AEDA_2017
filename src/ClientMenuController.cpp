@@ -26,8 +26,8 @@ void ClientMenuController::menu() {
 
 void ClientMenuController::clientMenuHandler() {
 	int option;
-	theView->printClientMenu();
 	do {
+		theView->printClientMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 3);
 		switch (option) {
@@ -45,7 +45,7 @@ void ClientMenuController::clientMenuHandler() {
 			newEnterMenu();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 void ClientMenuController::notificationHandler() {

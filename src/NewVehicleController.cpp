@@ -22,7 +22,6 @@ NewVehicleController::NewVehicleController(Company *company) {
 	maintenanceDay = 0;
 	maintenanceMonth = 0;
 	maintenanceYear = 0;
-
 }
 
 NewVehicleController::~NewVehicleController() {
@@ -46,11 +45,13 @@ void NewVehicleController::getVehicleInformation() {
 }
 
 void NewVehicleController::getPlate() {
-	theView->printEnterPlate();
-	theView->getInfo(plate);
-	if (plate == "0") {
-		newVehicleMenuController();
-	}
+	do {
+		theView->printEnterPlate();
+		theView->getInfo(plate);
+		if (plate == "0") {
+			newVehicleMenuController();
+		}
+	} while (company->existVehicle(plate) == true);
 }
 
 void NewVehicleController::getBrand() {
@@ -63,7 +64,7 @@ void NewVehicleController::getBrand() {
 
 void NewVehicleController::getModel() {
 	theView->printEnterModel();
-	bool flag = theView->getInfo(model);
+	theView->getInfo(model);
 	if (model == "0") {
 		newVehicleMenuController();
 	}
@@ -72,21 +73,30 @@ void NewVehicleController::getModel() {
 void NewVehicleController::getBirthdayDate() {
 	theView->printEnterBirthdayDate();
 	string date;
+	bool flag;
 	do {
-		theView->printEnterBirthdayDay();
-		theView->getInfo(birthdayDay);
+		do {
+			theView->printEnterBirthdayDay();
+			flag = theView->getInfo(birthdayDay);
+		} while (flag == false);
+
 		if (birthdayDay == 0) {
 			newVehicleMenuController();
 		}
+		do {
+			theView->printEnterBirthdayMonth();
+			flag = theView->getInfo(birthdayMonth);
+		} while (flag == false);
 
-		theView->printEnterBirthdayMonth();
-		theView->getInfo(birthdayMonth);
 		if (birthdayMonth == 0) {
 			newVehicleMenuController();
 		}
 
-		theView->printEnterBirthdayYear();
-		theView->getInfo(birthdayYear);
+		do {
+			theView->printEnterBirthdayYear();
+			flag = theView->getInfo(birthdayYear);
+		} while (flag == false);
+
 		if (birthdayYear == 0) {
 			newVehicleMenuController();
 		}
@@ -97,37 +107,55 @@ void NewVehicleController::getBirthdayDate() {
 
 void NewVehicleController::getExpectableTime() {
 	theView->printEnterExpectableTime();
-	theView->printEnterExpectableHour();
-	theView->getInfo(expectableHour);
-	if (expectableHour == 0) {
-		newVehicleMenuController();
-	}
+	string time;
+	bool flag;
+	do {
+		do {
+			theView->printEnterExpectableHour();
+			flag = theView->getInfo(expectableHour);
+		} while (flag == false);
 
-	theView->printEnterExpectableMinute();
-	theView->getInfo(expectableMinute);
-	if (expectableMinute == 0) {
-		newVehicleMenuController();
-	}
+//	if (expectableHour == 0) {
+//		newVehicleMenuController();
+//	}
+
+		do {
+			theView->printEnterExpectableMinute();
+			flag = theView->getInfo(expectableMinute);
+		} while (flag == false);
+//
+//	if (expectableMinute == 0) {
+//		newVehicleMenuController();
+//	}
+		time = to_string(expectableHour) + ":" + to_string(expectableMinute);
+	} while (!v->validateHourFormat(time));
 }
 
 void NewVehicleController::getMaintenanceDate() {
 	theView->printEnterMaintenanceDate();
 	string date;
+	bool flag;
 	do {
-		theView->printEnterMaintenanceDay();
-		theView->getInfo(maintenanceDay);
+		do {
+			theView->printEnterMaintenanceDay();
+			flag = theView->getInfo(maintenanceDay);
+		} while (flag == false);
 		if (maintenanceDay == 0) {
 			newVehicleMenuController();
 		}
 
-		theView->printEnterMaintenanceMonth();
-		theView->getInfo(maintenanceMonth);
+		do {
+			theView->printEnterMaintenanceMonth();
+			flag = theView->getInfo(maintenanceMonth);
+		} while (flag == false);
 		if (maintenanceMonth == 0) {
 			newVehicleMenuController();
 		}
 
-		theView->printEnterMaintenanceYear();
-		theView->getInfo(maintenanceYear);
+		do {
+			theView->printEnterMaintenanceYear();
+			flag = theView->getInfo(maintenanceYear);
+		} while (flag == false);
 		if (maintenanceYear == 0) {
 			newVehicleMenuController();
 		}

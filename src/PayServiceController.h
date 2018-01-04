@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include "PayServiceView.h"
-#include "ListServicesController.h"
+#include "ServiceMenuController.h"
 
 using namespace std;
 
@@ -84,11 +84,6 @@ private:
 	 * opens new service menu
 	 */
 	void newServiceMenu();
-
-	/**
-	 * opens new list services menu
-	 */
-	void newListServicesMenu();
 
 	/**
 	 * opens new enter menu

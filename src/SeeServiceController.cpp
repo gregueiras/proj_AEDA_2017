@@ -23,13 +23,13 @@ void SeeServiceController::menu() {
 		theView->printInitialMessage();
 		theView->printServiceInformation(service->toStrComplete());
 	}
-	newListServicesMenu();
+	newServiceMenu();
 }
 
-void SeeServiceController::newListServicesMenu() {
-	ListServicesController *listServicesController = new ListServicesController(
+void SeeServiceController::newServiceMenu() {
+	ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
-	listServicesController->menu();
+	serviceMenuController->menu();
 }
 
 void SeeServiceController::endProgram() {

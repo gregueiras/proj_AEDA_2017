@@ -27,14 +27,13 @@ SortServicesController::~SortServicesController() {
 }
 
 void SortServicesController::menu() {
-	theView->printSortServicesMenu();
 	sortServicesHandler();
-	newListServicesMenu();
 }
 
 void SortServicesController::sortServicesHandler() {
 	int option;
 	do {
+		theView->printSortServicesMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 6);
 		switch (option) {
@@ -58,10 +57,10 @@ void SortServicesController::sortServicesHandler() {
 			sortByPrice();
 			break;
 		case 6:
-			newListServicesMenu();
+			newServiceMenu();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int SortServicesController::getMenuOption(const int lowerBound,
@@ -152,11 +151,10 @@ void SortServicesController::sortByPrice() {
 //}
 }
 
-void SortServicesController::newListServicesMenu() {
-
-	ListServicesController *listServicesController = new ListServicesController(
+void SortServicesController::newServiceMenu() {
+	ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
-	listServicesController->menu();
+	serviceMenuController->menu();
 }
 
 void SortServicesController::endProgram() {

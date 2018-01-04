@@ -23,9 +23,15 @@ void SeeServicesController::menu() {
 
 void SeeServicesController::printServicesInvoices() {
 	vector<Client*> clients_temp = company->getClients();
-	for (size_t i = 0; i < clients_temp.size(); i++) {
-		theView->printInformation(clients_temp.at(i)->clientToString(true));
+	if (clients_temp.size() == 0) {
+		theView->printNoVehiclesRegistered();
+	} else {
+		theView->printListServices();
+		for (size_t i = 0; i < clients_temp.size(); i++) {
+			theView->printInformation(clients_temp.at(i)->clientToString(true));
+		}
 	}
+
 }
 
 void SeeServicesController::newAdministratorMenu() {

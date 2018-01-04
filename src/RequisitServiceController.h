@@ -9,7 +9,7 @@
 #define SRC_CONTROLLER_SRC_REQUISITSERVICECONTROLLER_H_
 
 #include "RequisitServiceView.h"
-#include "ListServicesController.h"
+#include "ServiceMenuController.h"
 #include "Company.h"
 #include "ServiceMenuController.h"
 #include "Unregistered.h"
@@ -32,7 +32,8 @@ private:
 			streetDestination, countryDestination, cityDestination,
 			countyDestination;
 	unsigned int packagingInitialDay, packagingInitialMonth,
-			packagingInitialYear, packagingInitialHour, packagingInitialMinute;
+			packagingInitialYear, packagingInitialHour, packagingInitialMinute,
+			vehicleExpectedHour, vehicleExpectedMinute;
 
 	/**
 	 * user interface method to read service information
@@ -117,6 +118,8 @@ private:
 	 * user interaction method to read storage days infomation
 	 */
 	unsigned int getStorageDays();
+
+	//void getVehicleExpectedTime();
 
 	/**
 	 * user interaction method to decide whether or not to pay at end of the month

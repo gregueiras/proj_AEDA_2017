@@ -20,6 +20,9 @@ private:
 	Utilities *u;
 	Validation *v;
 	float discountPercentage;
+	void promotionCampaignHandler();
+	float getPromotionCampaignPercentage();
+	void newAdministratorMenu();
 
 public:
 	PromotionCampaignController(Company *company);
@@ -27,8 +30,6 @@ public:
 	virtual ~PromotionCampaignController();
 
 	void menu();
-
-	void newAdministratorMenu();
 
 };
 

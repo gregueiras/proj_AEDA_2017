@@ -21,13 +21,13 @@ RemoveVehicleController::~RemoveVehicleController() {
 }
 
 void RemoveVehicleController::menu() {
-	theView->printRemoveVehicleMenu();
 	removeVehicleHandler();
 }
 
 void RemoveVehicleController::removeVehicleHandler() {
 	int option;
 	do {
+		theView->printRemoveVehicleMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 2);
 		switch (option) {
@@ -43,7 +43,7 @@ void RemoveVehicleController::removeVehicleHandler() {
 			newVehicleMenuController();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int RemoveVehicleController::getMenuOption(const int lowerBound,
@@ -60,8 +60,8 @@ int RemoveVehicleController::getMenuOption(const int lowerBound,
 void RemoveVehicleController::removeVehicle() {
 	theView->printEnterConfirmation();
 	int option;
-	theView->getInfo(option);
-	if (option == 1) {
+	bool flag = theView->getInfo(option);
+	if (flag == true && option == 1) {
 		company->removeVehicle(vehiclePlate);
 	}
 }

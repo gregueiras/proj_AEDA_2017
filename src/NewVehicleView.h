@@ -17,7 +17,7 @@ class NewVehicleView {
 private:
 	Utilities *u;
 
-	const string initialMessage = "Adicionar novo veículo 0->SAIR";
+	const string initialMessage = "\nAdicionar novo veículo 0->SAIR";
 	const string enterPlate = "Introduza matricula 0->SAIR";
 	const string enterBrand = "Introduza marca 0->SAIR";
 	const string enterModel = "Introduza modelo 0->SAIR";

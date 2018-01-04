@@ -18,12 +18,13 @@ private:
 	Utilities *u;
 	const string vehicleList = "\nListagem dos veículos:";
 	const string vehicleMenu =
-			"\nMenu Veículos \n1->Adicionar Veículo\n2->Ver Veículo\n3->Alterar Veículo\n4->Enviar Veículo para Manutenção\n5->Remover Veículo\n6->Voltar Atrás";
+			"\nMenu Veículos\n0->SAIR\n1->Adicionar Novo Veículo\n2->Ver Informações do Veículo\n3->Alterar Informações do Veículo\n4->Enviar Veículo para Manutenção\n5->Remover Veículo\n6->Voltar Atrás";
 	const string enterOption = "Introduza a sua opcao";
 	const string wrongOption = "Opcao escolhida invalida";
 	const string enterPlate = "Introduza a matricula do veículo";
 	const string plateNotFound = "Veículo com a matricula dada não encontrado";
 	const string vehicleNotAvailable = "Veículo não está disponível";
+	const string noVehicleRegistered = "Nao ha veículos registados no sistema";
 
 	const string end = "\nTerminou Menu Veículos";
 	const string shutdown = "\nPrograma terminou";
@@ -41,6 +42,7 @@ public:
 	void printEnterPlate();
 	void printPlateNotFound();
 	void printVehicleNotAvailable();
+	void printNoVehicleRegistered();
 
 	void printEnd();
 	void printShutdown();

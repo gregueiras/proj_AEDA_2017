@@ -12,8 +12,11 @@
 #include  "Validation.h"
 #include "Client.h"
 #include "RequisitServiceController.h"
-#include "ListServicesController.h"
 #include "ClientMenuController.h"
+#include "SeeServiceController.h"
+#include "SortServicesController.h"
+#include "FilterServicesController.h"
+#include "PayServiceController.h"
 
 class ServiceMenuController {
 private:
@@ -22,7 +25,10 @@ private:
 	Utilities *u;
 	Client *user;
 	Company *company;
+	unsigned int serviceID;
 
+	void listServices();
+	void printListServicesByUserType();
 	void serviceMenuHandler();
 
 	/**
@@ -33,11 +39,16 @@ private:
 	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
 
+	int getServiceID();
 	/**
 	 * opens new requisit service menu
 	 */
 	void newRequisitService();
 
+	void newSeeService();
+	void newFilterServicesMenu();
+	void newSortServicesMenu();
+	void newPayServiceMenu();
 	/**
 	 * opens new list services menu
 	 */

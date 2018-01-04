@@ -20,8 +20,8 @@ AdministratorMenuController::~AdministratorMenuController() {
 
 void AdministratorMenuController::menu() {
 	int option;
-	theView->printAdministratorMenu();
 	do {
+		theView->printAdministratorMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 4);
 		switch (option) {
@@ -39,10 +39,10 @@ void AdministratorMenuController::menu() {
 			newVehiclesMenu();
 			break;
 		case 4:
-			newEnterMenu();
+			newEnterController();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int AdministratorMenuController::getMenuOption(const int lowerBound,
@@ -75,7 +75,7 @@ void AdministratorMenuController::newVehiclesMenu() {
 	vehicleMenuController->menu();
 }
 
-void AdministratorMenuController::newEnterMenu() {
+void AdministratorMenuController::newEnterController() {
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
 }

@@ -26,11 +26,11 @@ void ChangeUserMenuController::menu() {
 
 void ChangeUserMenuController::menuHandler() {
 	int option;
-	theView->printUserInfo(user->getInfoDisp());
-	theView->printChangeUserMenu();
 	do {
+		theView->printUserInfo(user->getInfoDisp());
+		theView->printChangeUserMenu();
 		theView->printEnterOption();
-		option = getMenuOption(0, 10);
+		option = getMenuOption(0, 11);
 		switch (option) {
 		case 0:
 			theView->printShutdown();
@@ -66,8 +66,11 @@ void ChangeUserMenuController::menuHandler() {
 		case 10:
 			changePassword();
 			break;
+		case 11:
+			newUserMenu();
+			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int ChangeUserMenuController::getMenuOption(const int lowerBound,
@@ -84,69 +87,88 @@ int ChangeUserMenuController::getMenuOption(const int lowerBound,
 
 void ChangeUserMenuController::changeName() {
 	string name = getName();
-	user->setName(name);
+	if (name != "0") {
+		user->setName(name);
+	}
 }
 
 void ChangeUserMenuController::changeNIF() {
 	unsigned int nif = getNIF();
-	user->setNif(nif);
-
+	if (nif != 0) {
+		user->setNif(nif);
+	}
 }
 
 void ChangeUserMenuController::changeStreet() {
 	string street = getStreet();
-	Address a = user->getAddress();
-	a.setStreet(street);
-	user->setAddress(a);
+	if (street != "0") {
+		Address a = user->getAddress();
+		a.setStreet(street);
+		user->setAddress(a);
+	}
 }
 
 void ChangeUserMenuController::changeCountry() {
 	string country = getCountry();
-	Address a = user->getAddress();
-	a.setCountry(country);
-	user->setAddress(a);
+	if (country != "0") {
+		Address a = user->getAddress();
+		a.setCountry(country);
+		user->setAddress(a);
+	}
 }
 
 void ChangeUserMenuController::changeCity() {
 	string city = getCity();
-	Address a = user->getAddress();
-	a.setCity(city);
-	user->setAddress(a);
+	if (city != "0") {
+		Address a = user->getAddress();
+		a.setCity(city);
+		user->setAddress(a);
+	}
 }
 
 void ChangeUserMenuController::changeCounty() {
 	string county = getCounty();
-	Address a = user->getAddress();
-	a.setCounty(county);
-	user->setAddress(a);
+	if (county != "0") {
+		Address a = user->getAddress();
+		a.setCounty(county);
+		user->setAddress(a);
+	}
 }
 
 void ChangeUserMenuController::changeDoorNumber() {
 	unsigned int doorNumber = getDoorNumber();
-	Address a = user->getAddress();
-	a.setDoor_number(doorNumber);
-	user->setAddress(a);
+	if (doorNumber != 0) {
+		Address a = user->getAddress();
+		a.setDoor_number(doorNumber);
+		user->setAddress(a);
+	}
 }
 
 void ChangeUserMenuController::changeLatitude() {
 	double latitude = getLatitude();
-	Address a = user->getAddress();
-	GPS gps = a.getCoordinates();
-	gps.setLatitude(latitude);
-	user->setAddress(a);
+	if (latitude != 0) {
+		Address a = user->getAddress();
+		GPS gps = a.getCoordinates();
+		gps.setLatitude(latitude);
+		user->setAddress(a);
+	}
 }
 
 void ChangeUserMenuController::changeLongitude() {
 	double longitude = getLongitude();
-	Address a = user->getAddress();
-	GPS gps = a.getCoordinates();
-	gps.setLongitude(longitude);
-	user->setAddress(a);
+	if (longitude != 0) {
+		Address a = user->getAddress();
+		GPS gps = a.getCoordinates();
+		gps.setLongitude(longitude);
+		user->setAddress(a);
+	}
 }
 
 void ChangeUserMenuController::changePassword() {
 	string password = getPassword();
-	user->setPass(password);
+	if (password != "0") {
+		user->setPass(password);
+	}
 }
 
 string ChangeUserMenuController::getName() {
@@ -158,15 +180,20 @@ string ChangeUserMenuController::getName() {
 
 unsigned int ChangeUserMenuController::getNIF() {
 	unsigned int nif;
-	theView->printEnterNewNIF();
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(nif);
-		if (!(flag = v->validateNIFFormat(std::to_string(nif)))) {
+	bool flag1, flag2;
+	do {
+		theView->printEnterNewNIF();
+		flag1 = theView->getInfo(nif);
+		if (flag1 == true && nif == 0) {
+			return nif;
+		}
+		flag2 = v->validateNIFFormat(std::to_string(nif));
+		if (flag1 == false || flag2 == false) {
 			theView->printWrongNIF();
 		}
-	}
+	} while (flag1 == false || flag2 == false);
 	return nif;
+
 }
 
 string ChangeUserMenuController::getStreet() {
@@ -198,35 +225,49 @@ string ChangeUserMenuController::getCounty() {
 }
 
 unsigned int ChangeUserMenuController::getDoorNumber() {
-	unsigned int doorNumber;
-	theView->printEnterNewDoorNumber();
-	theView->getInfo(doorNumber);
+	unsigned int doorNumber = 0;
+	bool flag1;
+	do {
+		theView->printEnterNewDoorNumber();
+		flag1 = theView->getInfo(doorNumber);
+		if (flag1 == true && doorNumber == 0) {
+			return doorNumber;
+		}
+	} while (flag1 == false);
 	return doorNumber;
+
 }
 
 double ChangeUserMenuController::getLatitude() {
 	double latitude;
-	theView->printEnterNewLatitude();
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(latitude);
-		if (!(flag = v->validateLatitudeFormat(std::to_string(latitude)))) {
+	bool flag1, flag2;
+	do {
+		theView->printEnterNewLatitude();
+		flag1 = theView->getInfo(latitude);
+		if (flag1 == true && latitude == 0) {
+			return latitude;
+		}
+		flag2 = v->validateLatitudeFormat(std::to_string(latitude));
+		if (flag1 == false || flag2 == false) {
 			theView->printWrongLatitude();
 		}
-	}
+	} while (flag1 == false || flag2 == false);
 	return latitude;
-
 }
 double ChangeUserMenuController::getLongitude() {
 	double longitude;
-	theView->printEnterNewLongitude();
-	bool flag = false;
-	while (!flag) {
-		theView->getInfo(longitude);
-		if (!(flag = v->validateLongitudeFormat(std::to_string(longitude)))) {
+	bool flag1, flag2;
+	do {
+		theView->printEnterNewLongitude();
+		flag1 = theView->getInfo(longitude);
+		if (flag1 == true && longitude == 0) {
+			return longitude;
+		}
+		flag2 = v->validateLongitudeFormat(std::to_string(longitude));
+		if (flag1 == false || flag2 == false) {
 			theView->printWrongLongitude();
 		}
-	}
+	} while (flag1 == false || flag2 == false);
 	return longitude;
 }
 

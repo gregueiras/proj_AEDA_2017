@@ -38,13 +38,13 @@ FilterServicesController::~FilterServicesController() {
 
 void FilterServicesController::menu() {
 	filterServicesHandler();
-	newListServicesMenu();
+	newServiceMenu();
 }
 
 void FilterServicesController::filterServicesHandler() {
 	int option;
-	theView->printFilterMenu();
 	do {
+		theView->printFilterMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 8);
 		switch (option) {
@@ -74,10 +74,10 @@ void FilterServicesController::filterServicesHandler() {
 			narrowServices();
 			break;
 		case 8:
-			newListServicesMenu();
+			newServiceMenu();
 			break;
 		}
-	} while (option == -1);
+	} while (option != 0);
 }
 
 int FilterServicesController::getMenuOption(const int lowerBound,
@@ -239,9 +239,9 @@ void FilterServicesController::setVisibility(Services &service,
 void FilterServicesController::endProgram() {
 }
 
-void FilterServicesController::newListServicesMenu() {
-	ListServicesController *listServicesController = new ListServicesController(
+void FilterServicesController::newServiceMenu() {
+	ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
-	listServicesController->menu();
+	serviceMenuController->menu();
 }
 

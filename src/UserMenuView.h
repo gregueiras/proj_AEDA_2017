@@ -18,7 +18,7 @@ private:
 	Utilities *u;
 
 	const string userMenu =
-			"\nMenu Utilizador\n1->apagar\n2->alterar\n3->voltar atrás\n0->SAIR";
+			"\nMenu Perfil Utilizador\n0->SAIR\n1->Alterar Perfil de Utilizador\n2->Apagar Perfil de Utilizador\n3->Voltar Atrás";
 
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Introduziu opção errada";

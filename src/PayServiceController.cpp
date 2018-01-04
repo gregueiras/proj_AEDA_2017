@@ -34,7 +34,7 @@ void PayServiceController::menu() {
 			theView->printPayEOM();
 			payEOM();
 			setUserActive();
-			newListServicesMenu();
+			newServiceMenu();
 		} else {
 			theView->printPayMenuBusiness();
 			payMenuBusiness();
@@ -153,19 +153,13 @@ int PayServiceController::getMenuOption(const int lowerBound,
 	return option;
 }
 
-void PayServiceController::newListServicesMenu() {
-	ListServicesController *listServicesController = new ListServicesController(
+void PayServiceController::newServiceMenu() {
+	ServiceMenuController *serviceMenuController = new ServiceMenuController(
 			user, company);
-	listServicesController->menu();
+	serviceMenuController->menu();
 }
 
 void PayServiceController::newEnterMenu() {
 	EnterController *enterController = new EnterController(company);
 	enterController->menu();
-}
-
-void PayServiceController::newServiceMenu() {
-	ServiceMenuController *serviceMenuController = new ServiceMenuController(
-			user, company);
-	serviceMenuController->menu();
 }
