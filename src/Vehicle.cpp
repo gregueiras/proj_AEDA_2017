@@ -28,6 +28,8 @@ bool Vehicle::operator <(const Vehicle& v1) const {
 		return false;
 	else if ( ((this->inMaintenance) == false) &&  ((v1.inMaintenance) == true) )
 		return true;
+	else if (!(this->expectable_day == v1.expectable_day))
+		return (!(this->expectable_day < v1.expectable_day));
 	else
 		return	(!(this->expectable_time < v1.expectable_time));
 }
