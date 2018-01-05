@@ -170,7 +170,7 @@ string Services::toStrComplete() {
 
 string Services::toStrShort() {
 	string s1 = this->getPackaging().getStart_date().toStr();
-	s1 += "to";
+	s1 += " to ";
 	s1 += this->getDelivery().getEnd_date().toStr();
 
 	return s1;
