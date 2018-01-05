@@ -994,11 +994,11 @@ bool Company::freeAvailableVehicles() {
 			}
 		}
 
-		if (!v_temp.isInMaintenance())
+		if (v_temp.isInMaintenance())
 		{
 			if (v_temp.maintenance < this->current_date)
 			{
-				v_temp.setInMaintenance(true);
+				v_temp.setInMaintenance(false);
 				res = true;
 			}
 		}
