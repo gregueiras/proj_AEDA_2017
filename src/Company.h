@@ -175,6 +175,11 @@ public:
 	void activateClientRecordById(unsigned int id);
 
 	/**
+	* Get all clients from inactive_clients hash table to clients vector to
+	*/
+	void activateAllClients();
+
+	/**
 	 * Check all clients on clients vector to see if any should be moved to
 	 * inactivity. If so, moves them.
 	 *The comparison is done with the current timezone time

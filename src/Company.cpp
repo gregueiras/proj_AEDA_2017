@@ -106,9 +106,23 @@ void Company::activateClientRecordById(unsigned int id)
 	
 }
 
-void Company::setInactiveClients() {
-	for (size_t i = 0; i < clients.size(); i++)
+void Company::activateAllClients() {
+	int lim = clients.at(0)->getNextId();
+
+	for (size_t i = 0; i < lim; i++)
 	{
+		activateClientRecordById(i);
+	}
+
+}
+
+void Company::setInactiveClients() {
+	for (size_t i = 1; i < clients.size(); i++)
+	{
+		//ignore admin id
+		if (clients.at(i)->getId() == 1)
+			continue;
+
 		bool set = false;
 		Services* current_serv;
 
@@ -541,6 +555,9 @@ vector<Client*> Company::readClientsFromFile() {
 }
 
 bool Company::writeClientsToFile() {
+
+	activateAllClients();
+
 	for (size_t i = 0; i < this->getClients().size(); i++) {
 		if (!(this->getClients().at(i)->writeClientToFile()))
 			return false;
