@@ -119,10 +119,6 @@ void Company::activateAllClients() {
 void Company::setInactiveClients() {
 	for (size_t i = 0; i < clients.size(); i++)
 	{
-		//ignore admin id
-		if (clients.at(i)->getId() == 1)
-			continue;
-
 		bool set = false;
 		Services* current_serv;
 
