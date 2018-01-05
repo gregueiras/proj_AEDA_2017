@@ -582,9 +582,6 @@ bool Company::writeCompanyToFile() {
 		output << this->getEntity() << endl << endl;
 		//reference
 		output << this->getReference() << endl << endl;
-		//Current Date & Hour
-		output << this->getCurrentDate().toStr() << endl;
-		output << this->getCurrentHour().toStr() << endl << endl;
 
 	} else
 		return false;
@@ -618,36 +615,6 @@ bool Company::readCompanyFromFile() {
 		//get reference
 		getline(input, temp);
 		this->setReference(temp);
-		//////////////////////
-
-		getline(input, temp);
-
-		//get current_date and current_hour
-		getline(input, temp);
-		try {
-			Date current_date(stoul(temp.substr(0, 2)),
-					stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
-		} catch (DateInvalidDay& d) {
-			cout << "Error reading current day \n";
-			input.close();
-			return false;
-		} catch (DateInvalidMonth& d) {
-			cout << "Error reading current month \n";
-			input.close();
-			return false;
-		} catch (DateInvalidYear& d) {
-			cout << "Error reading current year \n";
-			input.close();
-			return false;
-		}
-
-		Date current_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
-				stoul(temp.substr(6)));
-
-		this->setCurrentDate(current_date);
-		getline(input, temp);
-		Hour current_hour(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
-		this->setCurrentHour(current_hour);
 		//////////////////////
 
 		input.close();

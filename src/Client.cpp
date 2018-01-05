@@ -127,6 +127,11 @@ unsigned int Client::getNextId() {
 	return this->next_id;
 }
 
+void Client::setNextId(unsigned int n_id)
+{
+	next_id = n_id;
+}
+
 void Client::incNextId() {
 	++this->next_id;
 }
