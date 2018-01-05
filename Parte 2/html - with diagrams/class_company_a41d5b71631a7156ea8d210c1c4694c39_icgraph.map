@@ -1,0 +1,7 @@
+<map id="Company::findClient" name="Company::findClient">
+<area shape="rect" id="node2" href="$class_company.html#ae83628fad359cb753ef8fb8d896672d6" title="Company::deactivateClient\lRecord" alt="" coords="192,23,368,65"/>
+<area shape="rect" id="node3" href="$class_company.html#a6f92666116d67cb172b0d7e424b9d6dc" title="Company::setInactiveClients" alt="" coords="416,5,603,32"/>
+<area shape="rect" id="node5" href="$class_company.html#a64ca43b900ffc4f266a27ebff94e65e9" title="Company::getClient" alt="" coords="441,56,577,83"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="699,5,750,32"/>
+<area shape="rect" id="node6" href="$class_login_controller.html#a34cfc11e30d91b336670be99296c5891" title="LoginController::menu" alt="" coords="651,56,799,83"/>
+</map>

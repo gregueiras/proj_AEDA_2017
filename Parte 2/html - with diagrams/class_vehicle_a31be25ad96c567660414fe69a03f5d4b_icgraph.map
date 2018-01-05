@@ -1,0 +1,7 @@
+<map id="Vehicle::setInMaintenance" name="Vehicle::setInMaintenance">
+<area shape="rect" id="node2" href="$class_company.html#a8be66e18fc480cfe421299d1e8408674" title="Company::removeVehicleMaintenance" alt="" coords="232,5,475,32"/>
+<area shape="rect" id="node3" href="$class_company.html#abb89cf3f47806b578811d54c037960f2" title="Company::sendVehiclesToMaintenance" alt="" coords="228,56,479,83"/>
+<area shape="rect" id="node4" href="$class_company.html#a59ad173ddcae8f3b1cd6d524494520c1" title="Company::freeAvailableVehicles" alt="" coords="250,107,457,133"/>
+<area shape="rect" id="node6" href="$class_company.html#ac26527b45ac05af196120325e8fb4d18" title="Company::changeVehicleIn\lMaintenance" alt="" coords="263,158,443,199"/>
+<area shape="rect" id="node5" href="$class_company.html#a931cd0ff12fec358a44235218a54706e" title="Company::updateAvailable\lVehicles" alt="" coords="527,99,701,141"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Services::calcDistance" name="Services::calcDistance">
+<area shape="rect" id="node2" href="$_g_p_s_8cpp.html#a35b2733f4c40ba66fc9808b5c518a7dd" title="calculateDistanceBetween2GPS" alt="" coords="208,56,419,83"/>
+<area shape="rect" id="node6" href="$class_address.html#aad7b5495d146cb7888963608daa9eb4e" title="Address::getCoordinates" alt="" coords="231,107,396,133"/>
+<area shape="rect" id="node3" href="$_g_p_s_8cpp.html#ac1f91cd2f2223ad35ec285ac8f3693f9" title="auxDegreesToRadians" alt="" coords="467,5,619,32"/>
+<area shape="rect" id="node4" href="$class_g_p_s.html#a0e3a379065f1f8ecc2e44634737a9729" title="GPS::getLatitude" alt="" coords="481,56,604,83"/>
+<area shape="rect" id="node5" href="$class_g_p_s.html#abf8c270f4a5fad8d4b4e37c0efa92f73" title="GPS::getLongitude" alt="" coords="477,107,609,133"/>
+</map>

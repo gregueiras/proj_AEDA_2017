@@ -1,0 +1,6 @@
+<map id="Services::getTravelTime" name="Services::getTravelTime">
+<area shape="rect" id="node2" href="$class_shipping.html#ab2ad88839d75348bdd2c0886152c7837" title="Shipping::getDispatch_hour" alt="" coords="212,5,393,32"/>
+<area shape="rect" id="node3" href="$class_shipping.html#a6cff97ea524217ea33a1540c5696c3dd" title="Shipping::getArrival_hour" alt="" coords="220,56,385,83"/>
+<area shape="rect" id="node4" href="$class_shipping.html#a2eda5a6722c0521030dc021b8586b5a6" title="Shipping::getArrival_date" alt="" coords="220,107,385,133"/>
+<area shape="rect" id="node5" href="$class_shipping.html#a51f2ec7809a006b1d23b073bc7ef58c5" title="Shipping::getDispatch_date" alt="" coords="212,157,393,184"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Hour::getHour" name="Hour::getHour">
+<area shape="rect" id="node2" href="$class_company.html#ab893122823220bdfe6c75d36116a43df" title="Company::assignVehicle" alt="" coords="156,13,323,39"/>
+<area shape="rect" id="node5" href="$_date_8h.html#ac81134bc4bac4643f8fe3b2f43f35b56" title="operator+" alt="" coords="201,63,278,90"/>
+<area shape="rect" id="node6" href="$_hour_8h.html#afac3df4d2e0a3550804f25ef38345d5f" title="operator\&lt;\&lt;" alt="" coords="197,114,282,141"/>
+<area shape="rect" id="node7" href="$_hour_8h.html#aadc29da3b7f549f8f8379eeffd77e190" title="operator&#45;" alt="" coords="203,165,276,191"/>
+<area shape="rect" id="node8" href="$class_services.html#a01dd5ae5fe974f9bd38c6f80cfe9575a" title="Services::Services" alt="" coords="175,215,303,242"/>
+<area shape="rect" id="node3" href="$class_company.html#a2f572503d60a9efd37660d6c3e762396" title="Company::assignAllAvailable\lVehicles" alt="" coords="371,5,560,47"/>
+<area shape="rect" id="node4" href="$class_company.html#a931cd0ff12fec358a44235218a54706e" title="Company::updateAvailable\lVehicles" alt="" coords="608,5,783,47"/>
+</map>

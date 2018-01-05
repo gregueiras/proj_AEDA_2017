@@ -1,0 +1,4 @@
+<map id="Company::getVehicleInfoShort" name="Company::getVehicleInfoShort">
+<area shape="rect" id="node2" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="256,5,377,32"/>
+<area shape="rect" id="node3" href="$class_vehicle.html#a49bdf1be8b00c03714031d6d3917c8ea" title="Vehicle::toStrShort" alt="" coords="251,56,383,83"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Company::deactivateClientRecord" name="Company::deactivateClientRecord">
+<area shape="rect" id="node2" href="$class_client.html#abea9f3c2aeb7b5e64eb1c18948261019" title="Client::setVisibility" alt="" coords="233,5,364,32"/>
+<area shape="rect" id="node3" href="$class_company.html#a41d5b71631a7156ea8d210c1c4694c39" title="Company::findClient" alt="" coords="229,56,368,83"/>
+<area shape="rect" id="node4" href="$class_client.html#ac01ad37c1be121ac3f7e119c7d18d32b" title="Client::getId" alt="" coords="416,56,507,83"/>
+</map>

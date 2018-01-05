@@ -1,0 +1,6 @@
+<map id="ChangeUserMenuController::menu" name="ChangeUserMenuController::menu">
+<area shape="rect" id="node2" href="$class_change_user_menu_view.html#a88bd087b2ffec5b75118415b87614591" title="ChangeUserMenuView\l::printUserInfo" alt="" coords="236,5,389,47"/>
+<area shape="rect" id="node3" href="$class_client.html#ad1f72b27065c272c8d6619d10ee1f3c9" title="Client::getInfoDisp" alt="" coords="249,71,376,98"/>
+<area shape="rect" id="node4" href="$class_change_user_menu_view.html#a9c820a026abcf82bd9e8bb587d68e7af" title="ChangeUserMenuView\l::printChangeUserMenu" alt="" coords="233,123,392,164"/>
+<area shape="rect" id="node5" href="$class_change_user_menu_view.html#af23d2764c2cf15c73424e25ed64c0601" title="ChangeUserMenuView\l::printEnterOption" alt="" coords="236,188,389,229"/>
+</map>

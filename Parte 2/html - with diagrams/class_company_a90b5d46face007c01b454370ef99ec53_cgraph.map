@@ -1,0 +1,4 @@
+<map id="Company::changeVehicleBirthday" name="Company::changeVehicleBirthday">
+<area shape="rect" id="node2" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="281,5,402,32"/>
+<area shape="rect" id="node3" href="$class_vehicle.html#a9536ce6bcd54abd3aba27964bd68715b" title="Vehicle::setBirthday" alt="" coords="272,56,411,83"/>
+</map>

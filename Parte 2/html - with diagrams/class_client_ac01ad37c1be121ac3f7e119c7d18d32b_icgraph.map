@@ -1,0 +1,12 @@
+<map id="Client::getId" name="Client::getId">
+<area shape="rect" id="node2" href="$class_client_record.html#ae4f8134377e8694c8a76b37042b8ed11" title="ClientRecord::ClientRecord" alt="" coords="144,5,323,32"/>
+<area shape="rect" id="node3" href="$class_company.html#a41d5b71631a7156ea8d210c1c4694c39" title="Company::findClient" alt="" coords="164,56,303,83"/>
+<area shape="rect" id="node9" href="$class_company.html#ada99adc3cba705135cdc8f0fae3066f3" title="Company::addClient" alt="" coords="164,107,303,133"/>
+<area shape="rect" id="node10" href="$class_company.html#ab52ffaac5d04f54bbbad8c241993a85d" title="Company::addService" alt="" coords="159,157,307,184"/>
+<area shape="rect" id="node11" href="$class_company.html#a076efd42e18abf25e1ec5c95cdbdc1ff" title="Company::addPayment" alt="" coords="154,208,313,235"/>
+<area shape="rect" id="node4" href="$class_company.html#ae83628fad359cb753ef8fb8d896672d6" title="Company::deactivateClient\lRecord" alt="" coords="371,49,547,90"/>
+<area shape="rect" id="node5" href="$class_company.html#a6f92666116d67cb172b0d7e424b9d6dc" title="Company::setInactiveClients" alt="" coords="595,31,781,57"/>
+<area shape="rect" id="node7" href="$class_company.html#a64ca43b900ffc4f266a27ebff94e65e9" title="Company::getClient" alt="" coords="620,81,756,108"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="878,31,929,57"/>
+<area shape="rect" id="node8" href="$class_login_controller.html#a34cfc11e30d91b336670be99296c5891" title="LoginController::menu" alt="" coords="829,81,977,108"/>
+</map>

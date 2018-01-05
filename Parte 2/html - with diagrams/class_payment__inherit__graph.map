@@ -1,0 +1,6 @@
+<map id="Payment" name="Payment">
+<area shape="rect" id="node2" href="$class_bank_transfer.html" title="{BankTransfer\n||+ BankTransfer()\l+ BankTransfer()\l+ ~BankTransfer()\l+ getPayType()\l}" alt="" coords="5,321,132,443"/>
+<area shape="rect" id="node3" href="$class_credit_card.html" title="{CreditCard\n||+ CreditCard()\l+ CreditCard()\l+ ~CreditCard()\l+ getPayType()\l}" alt="" coords="156,321,267,443"/>
+<area shape="rect" id="node4" href="$class_debit_card.html" title="{DebitCard\n||+ DebitCard()\l+ DebitCard()\l+ ~DebitCard()\l+ getPayType()\l}" alt="" coords="291,321,401,443"/>
+<area shape="rect" id="node5" href="$class_e_o_m_payment.html" title="{EOMPayment\n||+ EOMPayment()\l+ EOMPayment()\l+ ~EOMPayment()\l+ getPayType()\l}" alt="" coords="425,321,557,443"/>
+</map>

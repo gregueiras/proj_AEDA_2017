@@ -1,0 +1,5 @@
+<map id="Client" name="Client">
+<area shape="rect" id="node2" href="$class_business.html" title="{Business\n||+ Business()\l+ Business()\l+ ~Business()\l+ Sup_pay_bank_transfer()\l+ Sup_pay_credit_card()\l+ Sup_pay_debit_card()\l+ Sup_pay_eom()\l+ getClientType()\l}" alt="" coords="5,277,184,457"/>
+<area shape="rect" id="node3" href="$class_personal.html" title="{Personal\n||+ Personal()\l+ Personal()\l+ ~Personal()\l+ Sup_pay_bank_transfer()\l+ Sup_pay_credit_card()\l+ Sup_pay_debit_card()\l+ Sup_pay_eom()\l+ getClientType()\l}" alt="" coords="208,277,387,457"/>
+<area shape="rect" id="node4" href="$class_unregistered.html" title="{Unregistered\n||+ Unregistered()\l+ Unregistered()\l+ ~Unregistered()\l+ Sup_pay_bank_transfer()\l+ Sup_pay_credit_card()\l+ Sup_pay_debit_card()\l+ Sup_pay_eom()\l+ getClientType()\l}" alt="" coords="411,277,589,457"/>
+</map>

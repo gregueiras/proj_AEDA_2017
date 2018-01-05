@@ -1,0 +1,4 @@
+<map id="RemoveVehicleController::menu" name="RemoveVehicleController::menu">
+<area shape="rect" id="node2" href="$class_remove_vehicle_view.html#a46f326e4f851a82f42db1f6970f8081f" title="RemoveVehicleView::\lprintRemoveVehicleMenu" alt="" coords="220,5,388,47"/>
+<area shape="rect" id="node3" href="$class_remove_vehicle_view.html#a8641dc3cef32c33f715a4181bb065114" title="RemoveVehicleView::\lprintEnterOption" alt="" coords="231,71,377,112"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Shipping::getArrival_hour" name="Shipping::getArrival_hour">
+<area shape="rect" id="node2" href="$_services_8cpp.html#a9fce202b757e2b6d2171a795615345fb" title="operator\&lt;\&lt;" alt="" coords="255,5,341,32"/>
+<area shape="rect" id="node3" href="$class_services.html#aaff0878ca85af9a916b3aaaaa4c75844" title="Services::getTravelTime" alt="" coords="219,56,377,83"/>
+<area shape="rect" id="node4" href="$class_company.html#ab893122823220bdfe6c75d36116a43df" title="Company::assignVehicle" alt="" coords="425,56,592,83"/>
+<area shape="rect" id="node5" href="$class_company.html#a2f572503d60a9efd37660d6c3e762396" title="Company::assignAllAvailable\lVehicles" alt="" coords="640,49,829,90"/>
+<area shape="rect" id="node6" href="$class_company.html#a931cd0ff12fec358a44235218a54706e" title="Company::updateAvailable\lVehicles" alt="" coords="877,49,1052,90"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Client::getPayment" name="Client::getPayment">
+<area shape="rect" id="node2" href="$class_company.html#ae5cfdd2df5bcf879073a595d7783d700" title="Company::checkAllDues" alt="" coords="187,5,352,32"/>
+<area shape="rect" id="node3" href="$class_company.html#ad97a03773d20cf02ce6de2438d5f85e4" title="Company::payAllDues" alt="" coords="194,56,345,83"/>
+</map>

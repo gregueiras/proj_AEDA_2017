@@ -1,0 +1,20 @@
+<map id="Company::assignAllAvailableVehicles" name="Company::assignAllAvailableVehicles">
+<area shape="rect" id="node2" href="$class_company.html#a4005a2c9dfc5d75c6227152356734a36" title="Company::isAnyVehicleAvailable" alt="" coords="243,259,455,285"/>
+<area shape="rect" id="node3" href="$class_company.html#ab893122823220bdfe6c75d36116a43df" title="Company::assignVehicle" alt="" coords="265,309,432,336"/>
+<area shape="rect" id="node4" href="$class_vehicle.html#acabfd2a38baa71de99f53b4f46c1fd3b" title="Vehicle::setAvailable" alt="" coords="523,31,666,57"/>
+<area shape="rect" id="node5" href="$class_services.html#aaff0878ca85af9a916b3aaaaa4c75844" title="Services::getTravelTime" alt="" coords="515,81,674,108"/>
+<area shape="rect" id="node10" href="$class_services.html#a6277f1dfea44ae1ad4872fde9be559a7" title="Services::getDelivery" alt="" coords="523,132,666,159"/>
+<area shape="rect" id="node11" href="$class_delivery.html#a40751a66446782d1779541749c21ef5b" title="Delivery::getEnd_hour" alt="" coords="521,183,669,209"/>
+<area shape="rect" id="node12" href="$class_hour.html#a211d6cd34b71a73ea89802f2b3d66110" title="Hour::getHour" alt="" coords="543,233,646,260"/>
+<area shape="rect" id="node13" href="$class_services.html#a24cb7256d565d31e481e286da4ed21a5" title="Services::getExpectedTime" alt="" coords="505,284,685,311"/>
+<area shape="rect" id="node14" href="$class_hour.html#a5a0ac9bba1546e1d879f7b5b105c3804" title="Hour::getMinute" alt="" coords="537,335,652,361"/>
+<area shape="rect" id="node15" href="$class_vehicle.html#adba966953c7c7485d68c019aa351396e" title="Vehicle::setExpectableDay" alt="" coords="505,385,684,412"/>
+<area shape="rect" id="node16" href="$class_delivery.html#a19d26465cdb91fd43d6d117c9aee832a" title="Delivery::getEnd_date" alt="" coords="521,436,669,463"/>
+<area shape="rect" id="node17" href="$class_vehicle.html#a88e98dec6a6f08ef8c8974eefaad0893" title="Vehicle::setExpectableTime" alt="" coords="503,487,687,513"/>
+<area shape="rect" id="node18" href="$class_services.html#afc2e379d83e93537cd9146b56ec543bd" title="Services::setVehiclePlate" alt="" coords="509,537,680,564"/>
+<area shape="rect" id="node19" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="534,588,655,615"/>
+<area shape="rect" id="node6" href="$class_shipping.html#ab2ad88839d75348bdd2c0886152c7837" title="Shipping::getDispatch_hour" alt="" coords="735,5,916,32"/>
+<area shape="rect" id="node7" href="$class_shipping.html#a6cff97ea524217ea33a1540c5696c3dd" title="Shipping::getArrival_hour" alt="" coords="743,56,908,83"/>
+<area shape="rect" id="node8" href="$class_shipping.html#a2eda5a6722c0521030dc021b8586b5a6" title="Shipping::getArrival_date" alt="" coords="743,107,908,133"/>
+<area shape="rect" id="node9" href="$class_shipping.html#a51f2ec7809a006b1d23b073bc7ef58c5" title="Shipping::getDispatch_date" alt="" coords="735,157,916,184"/>
+</map>

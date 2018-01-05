@@ -1,0 +1,13 @@
+<map id="Services::Services" name="Services::Services">
+<area shape="rect" id="node2" href="$class_services.html#a56f8283f9a98fc6985055e45d40d1a7e" title="Services::calcDistance" alt="" coords="211,81,366,108"/>
+<area shape="rect" id="node8" href="$class_services.html#a1a74141e5d1de6e61c067438ab917a94" title="Services::auxCalcTimePackaging" alt="" coords="181,132,396,159"/>
+<area shape="rect" id="node9" href="$class_services.html#aa8aac66bcc1ee54ab66bce17ca248199" title="Services::auxCalcTimeShipping" alt="" coords="187,183,391,209"/>
+<area shape="rect" id="node10" href="$class_hour.html#a211d6cd34b71a73ea89802f2b3d66110" title="Hour::getHour" alt="" coords="237,233,340,260"/>
+<area shape="rect" id="node11" href="$class_hour.html#a5a0ac9bba1546e1d879f7b5b105c3804" title="Hour::getMinute" alt="" coords="231,284,346,311"/>
+<area shape="rect" id="node12" href="$class_services.html#a32be10d68d5dc2d07efa0720b401cdf3" title="Services::calcPrice" alt="" coords="222,335,355,361"/>
+<area shape="rect" id="node3" href="$_g_p_s_8cpp.html#a35b2733f4c40ba66fc9808b5c518a7dd" title="calculateDistanceBetween2GPS" alt="" coords="444,56,655,83"/>
+<area shape="rect" id="node7" href="$class_address.html#aad7b5495d146cb7888963608daa9eb4e" title="Address::getCoordinates" alt="" coords="467,107,632,133"/>
+<area shape="rect" id="node4" href="$_g_p_s_8cpp.html#ac1f91cd2f2223ad35ec285ac8f3693f9" title="auxDegreesToRadians" alt="" coords="703,5,855,32"/>
+<area shape="rect" id="node5" href="$class_g_p_s.html#a0e3a379065f1f8ecc2e44634737a9729" title="GPS::getLatitude" alt="" coords="717,56,840,83"/>
+<area shape="rect" id="node6" href="$class_g_p_s.html#abf8c270f4a5fad8d4b4e37c0efa92f73" title="GPS::getLongitude" alt="" coords="713,107,845,133"/>
+</map>

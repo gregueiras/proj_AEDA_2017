@@ -1,0 +1,7 @@
+<map id="Company::addPayment" name="Company::addPayment">
+<area shape="rect" id="node2" href="$class_company.html#a7c0f53a15c220f39b93ec41d4642cbde" title="Company::getClients" alt="" coords="212,5,355,32"/>
+<area shape="rect" id="node3" href="$class_client.html#ac01ad37c1be121ac3f7e119c7d18d32b" title="Client::getId" alt="" coords="238,56,329,83"/>
+<area shape="rect" id="node4" href="$class_client.html#a5c473ba52d7678744edec9e51052c947" title="Client::getName" alt="" coords="226,107,341,133"/>
+<area shape="rect" id="node5" href="$class_client.html#a3cb0725d3681860ebe499c141158bbec" title="Client::addPayment" alt="" coords="215,157,351,184"/>
+<area shape="rect" id="node6" href="$class_b_s_t.html#a2b117df6521c7d61dac75ff2c938bae7" title="BST::insert" alt="" coords="240,208,327,235"/>
+</map>

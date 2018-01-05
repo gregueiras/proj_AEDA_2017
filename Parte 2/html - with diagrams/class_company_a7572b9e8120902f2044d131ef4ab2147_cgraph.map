@@ -1,0 +1,4 @@
+<map id="Company::changeVehicleModel" name="Company::changeVehicleModel">
+<area shape="rect" id="node2" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="261,5,383,32"/>
+<area shape="rect" id="node3" href="$class_vehicle.html#acee5c7d495d13e42435279d7049d0966" title="Vehicle::setModel" alt="" coords="259,56,385,83"/>
+</map>

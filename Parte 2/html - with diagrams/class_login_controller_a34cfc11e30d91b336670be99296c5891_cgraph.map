@@ -1,0 +1,13 @@
+<map id="LoginController::menu" name="LoginController::menu">
+<area shape="rect" id="node2" href="$class_login_view.html#a26fe845d00aef4c911b7911527c65889" title="LoginView::printInitialMessage" alt="" coords="214,33,411,60"/>
+<area shape="rect" id="node3" href="$class_company.html#a64ca43b900ffc4f266a27ebff94e65e9" title="Company::getClient" alt="" coords="245,84,381,111"/>
+<area shape="rect" id="node11" href="$class_company.html#a0a87094086c4c8e0b1c9cf4ed3973f3c" title="Company::checkAdminCredentials" alt="" coords="201,135,424,161"/>
+<area shape="rect" id="node12" href="$class_login_view.html#afbdc3c4a785f58e4bea6a78f6ab79211" title="LoginView::printUserNotFound" alt="" coords="214,185,411,212"/>
+<area shape="rect" id="node4" href="$class_company.html#aa1bd849d6ada9e3eac14aaf5866f514a" title="Company::activateClientRecordById" alt="" coords="472,55,701,81"/>
+<area shape="rect" id="node7" href="$class_company.html#ae83628fad359cb753ef8fb8d896672d6" title="Company::deactivateClient\lRecord" alt="" coords="499,106,675,147"/>
+<area shape="rect" id="node5" href="$class_client_record.html#a690fe88256c04c61a620a252913f4f96" title="ClientRecord::setVisibility" alt="" coords="750,5,921,32"/>
+<area shape="rect" id="node6" href="$class_client_record.html#ae806e1c0976cf11f11f32e1ba1a78f8a" title="ClientRecord::getClientPtr" alt="" coords="749,56,921,83"/>
+<area shape="rect" id="node8" href="$class_client.html#abea9f3c2aeb7b5e64eb1c18948261019" title="Client::setVisibility" alt="" coords="770,111,901,137"/>
+<area shape="rect" id="node9" href="$class_company.html#a41d5b71631a7156ea8d210c1c4694c39" title="Company::findClient" alt="" coords="766,161,905,188"/>
+<area shape="rect" id="node10" href="$class_client.html#ac01ad37c1be121ac3f7e119c7d18d32b" title="Client::getId" alt="" coords="969,161,1060,188"/>
+</map>

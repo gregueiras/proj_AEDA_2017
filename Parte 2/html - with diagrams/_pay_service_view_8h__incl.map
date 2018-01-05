@@ -1,0 +1,12 @@
+<map id="PayServiceView.h" name="PayServiceView.h">
+<area shape="rect" id="node2" href="$_utilities_8h.html" title="Utilities.h" alt="" coords="366,80,442,107"/>
+<area shape="rect" id="node6" href="$_services_8h.html" title="Services.h" alt="" coords="441,155,524,181"/>
+<area shape="rect" id="node14" href="$_date_8h.html" title="Date.h" alt="" coords="579,304,639,331"/>
+<area shape="rect" id="node15" href="$_hour_8h.html" title="hour.h" alt="" coords="816,379,875,405"/>
+<area shape="rect" id="node18" href="$_vehicle_8h.html" title="Vehicle.h" alt="" coords="255,229,331,256"/>
+<area shape="rect" id="node9" href="$_address_8h.html" title="Address.h" alt="" coords="389,304,470,331"/>
+<area shape="rect" id="node10" href="$_g_p_s_8h.html" title="GPS.h" alt="" coords="195,379,256,405"/>
+<area shape="rect" id="node13" href="$_delivery_8h.html" title="Delivery.h" alt="" coords="781,229,859,256"/>
+<area shape="rect" id="node16" href="$_packaging_8h.html" title="Packaging.h" alt="" coords="478,229,573,256"/>
+<area shape="rect" id="node17" href="$_shipping_8h.html" title="Shipping.h" alt="" coords="665,229,748,256"/>
+</map>

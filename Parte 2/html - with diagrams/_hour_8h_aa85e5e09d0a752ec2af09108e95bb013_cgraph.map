@@ -1,0 +1,6 @@
+<map id="operator+" name="operator+">
+<area shape="rect" id="node2" href="$class_hour.html#a5a0ac9bba1546e1d879f7b5b105c3804" title="Hour::getMinute" alt="" coords="131,5,245,32"/>
+<area shape="rect" id="node3" href="$class_hour.html#a20aea0c929038dac55df435fd2cad21e" title="Hour::setHour" alt="" coords="137,56,239,83"/>
+<area shape="rect" id="node4" href="$class_hour.html#a211d6cd34b71a73ea89802f2b3d66110" title="Hour::getHour" alt="" coords="137,107,239,133"/>
+<area shape="rect" id="node5" href="$class_hour.html#aa18d3bd250dc209d9d2e764e6e321bd5" title="Hour::setMinute" alt="" coords="131,157,245,184"/>
+</map>

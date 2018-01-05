@@ -1,0 +1,8 @@
+<map id="ChangeVehicleController::menu" name="ChangeVehicleController::menu">
+<area shape="rect" id="node2" href="$class_change_vehicle_view.html#a111dba661e007f213e2263cef3c854db" title="ChangeVehicleView::\lprintInformation" alt="" coords="255,5,401,47"/>
+<area shape="rect" id="node3" href="$class_company.html#a708269e9337f3d8dac5aa48e7a446a0b" title="Company::getVehicleInfoComplete" alt="" coords="217,71,439,98"/>
+<area shape="rect" id="node6" href="$class_change_vehicle_view.html#a16f84b5e5b74e01fc2ca609c1211db53" title="ChangeVehicleView::\lprintChangeVehicleMenu" alt="" coords="245,123,411,164"/>
+<area shape="rect" id="node7" href="$class_change_vehicle_view.html#a71d16074069cf13d3044e8e42c8edbf7" title="ChangeVehicleView::\lprintEnterOption" alt="" coords="255,188,401,229"/>
+<area shape="rect" id="node4" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="504,46,625,73"/>
+<area shape="rect" id="node5" href="$class_vehicle.html#aa9966cf63fa578169a296c6bd761fcee" title="Vehicle::toStrComplete" alt="" coords="487,97,643,123"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Company::getClients" name="Company::getClients">
+<area shape="rect" id="node2" href="$class_company.html#ab52ffaac5d04f54bbbad8c241993a85d" title="Company::addService" alt="" coords="215,5,363,32"/>
+<area shape="rect" id="node3" href="$class_company.html#a076efd42e18abf25e1ec5c95cdbdc1ff" title="Company::addPayment" alt="" coords="210,56,369,83"/>
+<area shape="rect" id="node4" href="$class_company.html#a4170ab34b83fc2fabdb312bbda19459d" title="Company::writeClientsToFile" alt="" coords="196,107,383,133"/>
+</map>

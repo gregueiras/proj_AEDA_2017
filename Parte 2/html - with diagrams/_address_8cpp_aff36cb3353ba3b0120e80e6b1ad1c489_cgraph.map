@@ -1,0 +1,8 @@
+<map id="operator&lt;&lt;" name="operator&lt;&lt;">
+<area shape="rect" id="node2" href="$class_address.html#a957910d4fb28aa950cf5ff3b75ac208f" title="Address::getStreet" alt="" coords="160,5,291,32"/>
+<area shape="rect" id="node3" href="$class_address.html#a7963bc95474393806983a75407a46e43" title="Address::getDoor_number" alt="" coords="139,56,312,83"/>
+<area shape="rect" id="node4" href="$class_address.html#a8ba0e090654cd23883598182934b6d16" title="Address::getCity" alt="" coords="166,107,285,133"/>
+<area shape="rect" id="node5" href="$class_address.html#ae1e121046bf7f45f93332cebdd10ddd9" title="Address::getCounty" alt="" coords="157,157,294,184"/>
+<area shape="rect" id="node6" href="$class_address.html#a67c55ab009a333d95927149a077a1305" title="Address::getCountry" alt="" coords="155,208,296,235"/>
+<area shape="rect" id="node7" href="$class_address.html#aad7b5495d146cb7888963608daa9eb4e" title="Address::getCoordinates" alt="" coords="143,259,308,285"/>
+</map>

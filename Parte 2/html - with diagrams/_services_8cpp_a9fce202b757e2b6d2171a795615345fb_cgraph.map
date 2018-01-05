@@ -1,0 +1,22 @@
+<map id="operator&lt;&lt;" name="operator&lt;&lt;">
+<area shape="rect" id="node2" href="$class_services.html#a180d9023ace570654c0cc4f6d8a7353e" title="Services::getOrigin\l_address" alt="" coords="164,5,295,47"/>
+<area shape="rect" id="node3" href="$class_services.html#af166219e012cbed18961a1f5d4b6c201" title="Services::getPackaging" alt="" coords="150,71,309,98"/>
+<area shape="rect" id="node4" href="$class_packaging.html#a5f6fcaaf302afb53b3488b0728f29e11" title="Packaging::getStart_date" alt="" coords="145,122,314,149"/>
+<area shape="rect" id="node5" href="$class_packaging.html#a77ee7ea3a8bdb6e2ad4ee96ea56c3586" title="Packaging::getStart_hour" alt="" coords="145,173,314,199"/>
+<area shape="rect" id="node6" href="$class_packaging.html#a754b3d7924b487362672fa1edc12a47b" title="Packaging::getEnd_date" alt="" coords="147,223,311,250"/>
+<area shape="rect" id="node7" href="$class_packaging.html#a7b706ae8984b656bb04afa7fe32e6ca0" title="Packaging::getEnd_hour" alt="" coords="147,274,311,301"/>
+<area shape="rect" id="node8" href="$class_services.html#a5f92c399a1a6cdfec27b430d5bb02966" title="Services::getShipping" alt="" coords="156,325,303,351"/>
+<area shape="rect" id="node9" href="$class_shipping.html#a51f2ec7809a006b1d23b073bc7ef58c5" title="Shipping::getDispatch_date" alt="" coords="139,375,320,402"/>
+<area shape="rect" id="node10" href="$class_shipping.html#ab2ad88839d75348bdd2c0886152c7837" title="Shipping::getDispatch_hour" alt="" coords="139,426,320,453"/>
+<area shape="rect" id="node11" href="$class_shipping.html#a2eda5a6722c0521030dc021b8586b5a6" title="Shipping::getArrival_date" alt="" coords="147,477,312,503"/>
+<area shape="rect" id="node12" href="$class_shipping.html#a6cff97ea524217ea33a1540c5696c3dd" title="Shipping::getArrival_hour" alt="" coords="147,527,312,554"/>
+<area shape="rect" id="node13" href="$class_services.html#a1d8e80539ea5915e9437a24becacdd14" title="Services::getDestination\l_address" alt="" coords="148,579,311,620"/>
+<area shape="rect" id="node14" href="$class_services.html#a6277f1dfea44ae1ad4872fde9be559a7" title="Services::getDelivery" alt="" coords="158,645,301,671"/>
+<area shape="rect" id="node15" href="$class_delivery.html#a46f4c95ee1af8825604dd0a8f9e9b325" title="Delivery::getStart_date" alt="" coords="153,695,306,722"/>
+<area shape="rect" id="node16" href="$class_delivery.html#ab23ba04f78efddd1df8c9b7a7bf83bfb" title="Delivery::getStart_hour" alt="" coords="153,746,306,773"/>
+<area shape="rect" id="node17" href="$class_delivery.html#a19d26465cdb91fd43d6d117c9aee832a" title="Delivery::getEnd_date" alt="" coords="155,797,303,823"/>
+<area shape="rect" id="node18" href="$class_delivery.html#a40751a66446782d1779541749c21ef5b" title="Delivery::getEnd_hour" alt="" coords="155,847,303,874"/>
+<area shape="rect" id="node19" href="$class_services.html#aec58e96cda8af36b453feaee0e78da98" title="Services::getVolume" alt="" coords="159,898,300,925"/>
+<area shape="rect" id="node20" href="$class_services.html#a89daead06aef7c07fd0c60b9d835e5c5" title="Services::getDistance" alt="" coords="155,949,303,975"/>
+<area shape="rect" id="node21" href="$class_services.html#a2f5fa8696b7d870913e0dcc88bd38cd9" title="Services::getPrice" alt="" coords="166,999,293,1026"/>
+</map>

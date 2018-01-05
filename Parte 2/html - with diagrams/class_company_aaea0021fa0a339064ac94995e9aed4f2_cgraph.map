@@ -1,0 +1,5 @@
+<map id="Company::changeVehicleExpectedTime" name="Company::changeVehicleExpectedTime">
+<area shape="rect" id="node2" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="338,5,459,32"/>
+<area shape="rect" id="node3" href="$class_vehicle.html#a88e98dec6a6f08ef8c8974eefaad0893" title="Vehicle::setExpectableTime" alt="" coords="307,56,491,83"/>
+<area shape="rect" id="node4" href="$class_vehicle.html#adba966953c7c7485d68c019aa351396e" title="Vehicle::setExpectableDay" alt="" coords="309,107,488,133"/>
+</map>

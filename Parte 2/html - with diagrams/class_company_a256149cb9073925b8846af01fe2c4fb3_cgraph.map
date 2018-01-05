@@ -1,0 +1,10 @@
+<map id="Company::readClientsFromFile" name="Company::readClientsFromFile">
+<area shape="rect" id="node2" href="$class_company.html#ab79a6081f240e49b288bb5389e1c25b0" title="Company::readClientFromFile" alt="" coords="267,5,462,32"/>
+<area shape="rect" id="node3" href="$class_company.html#ac1a2930300e16380dafe3b4cb1b94aaf" title="Company::readServicesFromFile" alt="" coords="259,56,470,83"/>
+<area shape="rect" id="node5" href="$class_client.html#a47356d422abc1bcca0f4de9c2c351187" title="Client::setServices" alt="" coords="299,107,430,133"/>
+<area shape="rect" id="node6" href="$class_company.html#ab685d0670bcec2fc3557dfddfbd59fa3" title="Company::readPaymentsFromFile" alt="" coords="255,157,475,184"/>
+<area shape="rect" id="node7" href="$class_client.html#a5d9433332d4978e5116647e2533ccfba" title="Client::setPayment" alt="" coords="298,208,431,235"/>
+<area shape="rect" id="node8" href="$class_b_s_t.html#a2b117df6521c7d61dac75ff2c938bae7" title="BST::insert" alt="" coords="321,259,408,285"/>
+<area shape="rect" id="node9" href="$class_client.html#a5c473ba52d7678744edec9e51052c947" title="Client::getName" alt="" coords="307,309,422,336"/>
+<area shape="rect" id="node4" href="$class_services.html#afc2e379d83e93537cd9146b56ec543bd" title="Services::setVehiclePlate" alt="" coords="523,56,693,83"/>
+</map>

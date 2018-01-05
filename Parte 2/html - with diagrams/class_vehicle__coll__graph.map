@@ -1,0 +1,4 @@
+<map id="Vehicle" name="Vehicle">
+<area shape="rect" id="node2" href="$class_hour.html" title="{Hour\n||+ Hour()\l+ Hour()\l+ Hour()\l+ ~Hour()\l+ setHour()\l+ getHour()\l+ setMinute()\l+ getMinute()\l+ operator\&lt;()\l+ operator\&lt;=()\l+ operator==()\l+ toStr()\l}" alt="" coords="5,5,111,244"/>
+<area shape="rect" id="node4" href="$class_date.html" title="{Date\n||+ Date()\l+ Date()\l+ ~Date()\l+ setDay()\l+ getDay()\l+ setMonth()\l+ getMonth()\l+ setYear()\l+ getYear()\l+ toStr()\l}" alt="" coords="249,20,345,229"/>
+</map>

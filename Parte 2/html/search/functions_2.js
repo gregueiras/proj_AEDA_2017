@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['calcdistance',['calcDistance',['../class_services.html#a56f8283f9a98fc6985055e45d40d1a7e',1,'Services']]],
+  ['calcprice',['calcPrice',['../class_services.html#a32be10d68d5dc2d07efa0720b401cdf3',1,'Services']]],
+  ['calculatedistancebetween2gps',['calculateDistanceBetween2GPS',['../_g_p_s_8cpp.html#a35b2733f4c40ba66fc9808b5c518a7dd',1,'calculateDistanceBetween2GPS(const GPS gps1, const GPS gps2):&#160;GPS.cpp'],['../_g_p_s_8h.html#a35b2733f4c40ba66fc9808b5c518a7dd',1,'calculateDistanceBetween2GPS(const GPS gps1, const GPS gps2):&#160;GPS.cpp']]],
+  ['changeusermenucontroller',['ChangeUserMenuController',['../class_change_user_menu_controller.html#ab4491e4ebe4d24528be9b176e7823b12',1,'ChangeUserMenuController']]],
+  ['changeusermenuview',['ChangeUserMenuView',['../class_change_user_menu_view.html#a1255c4d7a82530f54d923036159e444b',1,'ChangeUserMenuView']]],
+  ['changevehicleavailability',['changeVehicleAvailability',['../class_company.html#ac37fe861aa2b9d338bf8a80d821fbb49',1,'Company']]],
+  ['changevehiclebirthday',['changeVehicleBirthday',['../class_company.html#a90b5d46face007c01b454370ef99ec53',1,'Company']]],
+  ['changevehiclebrand',['changeVehicleBrand',['../class_company.html#a588bab9cf545be6550b028ec8f987ad1',1,'Company']]],
+  ['changevehiclecontroller',['ChangeVehicleController',['../class_change_vehicle_controller.html#a6a32b21340171f5b09e6dc48d7ced894',1,'ChangeVehicleController']]],
+  ['changevehicleexpectedtime',['changeVehicleExpectedTime',['../class_company.html#aaea0021fa0a339064ac94995e9aed4f2',1,'Company']]],
+  ['changevehicleinmaintenance',['changeVehicleInMaintenance',['../class_company.html#ac26527b45ac05af196120325e8fb4d18',1,'Company']]],
+  ['changevehiclemaintenance',['changeVehicleMaintenance',['../class_company.html#a050520528657f5b14c9e1fd36007f7d9',1,'Company']]],
+  ['changevehiclemodel',['changeVehicleModel',['../class_company.html#a7572b9e8120902f2044d131ef4ab2147',1,'Company']]],
+  ['changevehicleplate',['changeVehiclePlate',['../class_company.html#af54afa3d2c47e19aae0c467082d6a9a2',1,'Company']]],
+  ['changevehicleview',['ChangeVehicleView',['../class_change_vehicle_view.html#aecbcae5ade2f877a1c9a2bf337b34e5a',1,'ChangeVehicleView']]],
+  ['checkadmincredentials',['checkAdminCredentials',['../class_company.html#a0a87094086c4c8e0b1c9cf4ed3973f3c',1,'Company']]],
+  ['checkalldues',['checkAllDues',['../class_company.html#ae5cfdd2df5bcf879073a595d7783d700',1,'Company']]],
+  ['citytogps',['cityToGPS',['../class_address.html#a3d08bf60d31791116fb186fed5e66e58',1,'Address']]],
+  ['client',['Client',['../class_client.html#a466dcb2f75f3f3d5f9dd6d735d52a05c',1,'Client::Client(string name, Address address, unsigned int nif, string pass)'],['../class_client.html#a1a8655655d9a756f18c5b5a47a71680e',1,'Client::Client(string name, Address address, unsigned int nif, string pass, unsigned int id)']]],
+  ['clientmenucontroller',['ClientMenuController',['../class_client_menu_controller.html#ad20b75db9165b5dcb26231d5027c3aa7',1,'ClientMenuController']]],
+  ['clientmenuview',['ClientMenuView',['../class_client_menu_view.html#a10b2b1e4283505197037d9a728ca8b7d',1,'ClientMenuView']]],
+  ['clientrecord',['ClientRecord',['../class_client_record.html#ae4f8134377e8694c8a76b37042b8ed11',1,'ClientRecord::ClientRecord(Client *c)'],['../class_client_record.html#a36315af5029b53177d965cc945cc6917',1,'ClientRecord::ClientRecord(unsigned int id)']]],
+  ['clienttostring',['clientToString',['../class_client.html#ae14c91390ffd6e756f7f0f3cd0a302eb',1,'Client']]],
+  ['company',['Company',['../class_company.html#a29937dda711b09df306ae7ca9b3d6b42',1,'Company::Company()'],['../class_company.html#a2d4053cedf288e4e7c2989263c6fd84f',1,'Company::Company(string nib, string entity, string reference)'],['../class_company.html#a6e587e243909b9526684e2d537b53679',1,'Company::Company(string nib, string entity, string reference, unsigned int period)']]],
+  ['creditcard',['CreditCard',['../class_credit_card.html#a3e9592c4638dd4890ef6f3f8428c2889',1,'CreditCard::CreditCard(double value, unsigned int s_id)'],['../class_credit_card.html#add1428249bbed6cb98e8af026f51b4d2',1,'CreditCard::CreditCard(double value, unsigned int s_id, bool due, Date due_date, Hour due_hour)']]]
+];

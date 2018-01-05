@@ -1,0 +1,7 @@
+<map id="SeeVehicleController::menu" name="SeeVehicleController::menu">
+<area shape="rect" id="node2" href="$class_see_vehicle_view.html#ab30649223b26efc1a2099c98137b8159" title="SeeVehicleView::printInitial\lMessage" alt="" coords="217,5,396,47"/>
+<area shape="rect" id="node3" href="$class_see_vehicle_view.html#a1f95642746b663feb01364eb45947da6" title="SeeVehicleView::printInformation" alt="" coords="201,71,413,98"/>
+<area shape="rect" id="node4" href="$class_company.html#a708269e9337f3d8dac5aa48e7a446a0b" title="Company::getVehicleInfoComplete" alt="" coords="196,122,417,149"/>
+<area shape="rect" id="node5" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="483,97,604,123"/>
+<area shape="rect" id="node6" href="$class_vehicle.html#aa9966cf63fa578169a296c6bd761fcee" title="Vehicle::toStrComplete" alt="" coords="465,147,621,174"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="Sort::auxSortbyDate" name="Sort::auxSortbyDate">
+<area shape="rect" id="node2" href="$class_services.html#af166219e012cbed18961a1f5d4b6c201" title="Services::getPackaging" alt="" coords="199,5,357,32"/>
+<area shape="rect" id="node3" href="$class_packaging.html#a5f6fcaaf302afb53b3488b0728f29e11" title="Packaging::getStart_date" alt="" coords="193,56,363,83"/>
+<area shape="rect" id="node4" href="$class_services.html#a5f92c399a1a6cdfec27b430d5bb02966" title="Services::getShipping" alt="" coords="205,107,351,133"/>
+<area shape="rect" id="node5" href="$class_shipping.html#a2eda5a6722c0521030dc021b8586b5a6" title="Shipping::getArrival_date" alt="" coords="195,157,361,184"/>
+<area shape="rect" id="node6" href="$class_services.html#a6277f1dfea44ae1ad4872fde9be559a7" title="Services::getDelivery" alt="" coords="207,208,349,235"/>
+<area shape="rect" id="node7" href="$class_delivery.html#a46f4c95ee1af8825604dd0a8f9e9b325" title="Delivery::getStart_date" alt="" coords="201,259,355,285"/>
+<area shape="rect" id="node8" href="$class_delivery.html#a19d26465cdb91fd43d6d117c9aee832a" title="Delivery::getEnd_date" alt="" coords="204,309,352,336"/>
+</map>

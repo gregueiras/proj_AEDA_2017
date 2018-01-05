@@ -1,0 +1,11 @@
+<map id="Company::writeVehiclesToFile" name="Company::writeVehiclesToFile">
+<area shape="rect" id="node2" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="282,5,403,32"/>
+<area shape="rect" id="node3" href="$class_vehicle.html#abc4f750cfd478aa61b2940f2ed43e5eb" title="Vehicle::getBrand" alt="" coords="280,56,405,83"/>
+<area shape="rect" id="node4" href="$class_vehicle.html#a1b75f36160ef33727ce4890729487fc3" title="Vehicle::getModel" alt="" coords="279,107,406,133"/>
+<area shape="rect" id="node5" href="$class_vehicle.html#ace6708733dc3726aa164955828181371" title="Vehicle::getMaintenance" alt="" coords="260,157,425,184"/>
+<area shape="rect" id="node6" href="$class_vehicle.html#ac22fb1fc8282edb26517ae4f08a54efd" title="Vehicle::getBirthday" alt="" coords="273,208,412,235"/>
+<area shape="rect" id="node7" href="$class_vehicle.html#a0a384c55715c4669e72b963db9c03ae1" title="Vehicle::getExpectableTime" alt="" coords="251,259,435,285"/>
+<area shape="rect" id="node8" href="$class_vehicle.html#a164cbd570e9a998fa588a9e392feba83" title="Vehicle::getExpectableDay" alt="" coords="253,309,432,336"/>
+<area shape="rect" id="node9" href="$class_vehicle.html#a268e690f99f9114cbe13a92b23e0ec26" title="Vehicle::isAvailable" alt="" coords="275,360,410,387"/>
+<area shape="rect" id="node10" href="$class_vehicle.html#a820fe5bf3705cc6b8a0c5d6561da9f90" title="Vehicle::isInMaintenance" alt="" coords="259,411,426,437"/>
+</map>

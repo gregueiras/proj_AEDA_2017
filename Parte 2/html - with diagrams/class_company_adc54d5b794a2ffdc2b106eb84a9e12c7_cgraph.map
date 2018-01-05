@@ -1,0 +1,4 @@
+<map id="Company::removeVehicle" name="Company::removeVehicle">
+<area shape="rect" id="node2" href="$class_vehicle.html#aa4df83e6c13b359dc592e15c67e0f83c" title="Vehicle::getPlate" alt="" coords="229,5,351,32"/>
+<area shape="rect" id="node3" href="$class_vehicle.html#a268e690f99f9114cbe13a92b23e0ec26" title="Vehicle::isAvailable" alt="" coords="223,56,357,83"/>
+</map>

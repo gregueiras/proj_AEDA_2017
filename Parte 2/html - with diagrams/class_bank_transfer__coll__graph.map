@@ -1,0 +1,3 @@
+<map id="BankTransfer" name="BankTransfer">
+<area shape="rect" id="node2" href="$class_payment.html" title="{Payment\n||+ Payment()\l+ Payment()\l+ ~Payment()\l+ getServiceId()\l+ getId()\l+ getNextId()\l+ setDue()\l+ getDue()\l+ setDueDate()\l+ getDueDate()\l+ getValue()\l+ setDueHour()\l+ getDueHour()\l+ getPayType()\l}" alt="" coords="13,5,125,273"/>
+</map>

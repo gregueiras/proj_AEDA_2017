@@ -1,0 +1,9 @@
+<map id="Company::setInactiveClients" name="Company::setInactiveClients">
+<area shape="rect" id="node2" href="$class_services.html#a6277f1dfea44ae1ad4872fde9be559a7" title="Services::getDelivery" alt="" coords="257,5,399,32"/>
+<area shape="rect" id="node3" href="$class_delivery.html#a19d26465cdb91fd43d6d117c9aee832a" title="Delivery::getEnd_date" alt="" coords="254,56,402,83"/>
+<area shape="rect" id="node4" href="$class_delivery.html#a40751a66446782d1779541749c21ef5b" title="Delivery::getEnd_hour" alt="" coords="254,107,402,133"/>
+<area shape="rect" id="node5" href="$class_company.html#ae83628fad359cb753ef8fb8d896672d6" title="Company::deactivateClient\lRecord" alt="" coords="240,158,416,199"/>
+<area shape="rect" id="node6" href="$class_client.html#abea9f3c2aeb7b5e64eb1c18948261019" title="Client::setVisibility" alt="" coords="468,140,599,167"/>
+<area shape="rect" id="node7" href="$class_company.html#a41d5b71631a7156ea8d210c1c4694c39" title="Company::findClient" alt="" coords="464,191,603,217"/>
+<area shape="rect" id="node8" href="$class_client.html#ac01ad37c1be121ac3f7e119c7d18d32b" title="Client::getId" alt="" coords="651,191,741,217"/>
+</map>

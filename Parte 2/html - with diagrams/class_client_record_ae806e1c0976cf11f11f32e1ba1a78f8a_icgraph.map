@@ -1,0 +1,7 @@
+<map id="ClientRecord::getClientPtr" name="ClientRecord::getClientPtr">
+<area shape="rect" id="node2" href="$class_company.html#aa1bd849d6ada9e3eac14aaf5866f514a" title="Company::activateClientRecordById" alt="" coords="225,31,455,57"/>
+<area shape="rect" id="node3" href="$class_company.html#a5905d26d8059b86f656ff97fb1b9291f" title="Company::activateAllClients" alt="" coords="503,5,687,32"/>
+<area shape="rect" id="node5" href="$class_company.html#a64ca43b900ffc4f266a27ebff94e65e9" title="Company::getClient" alt="" coords="527,56,663,83"/>
+<area shape="rect" id="node4" href="$class_company.html#a4170ab34b83fc2fabdb312bbda19459d" title="Company::writeClientsToFile" alt="" coords="735,5,921,32"/>
+<area shape="rect" id="node6" href="$class_login_controller.html#a34cfc11e30d91b336670be99296c5891" title="LoginController::menu" alt="" coords="754,56,902,83"/>
+</map>

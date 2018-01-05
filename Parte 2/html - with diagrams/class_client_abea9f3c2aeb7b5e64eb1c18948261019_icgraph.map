@@ -1,0 +1,8 @@
+<map id="Client::setVisibility" name="Client::setVisibility">
+<area shape="rect" id="node2" href="$class_company.html#ae83628fad359cb753ef8fb8d896672d6" title="Company::deactivateClient\lRecord" alt="" coords="197,23,373,65"/>
+<area shape="rect" id="node7" href="$class_company.html#a76b86f320ef11854bf447cea9b1f7862" title="Company::activateClientRecord" alt="" coords="184,89,387,116"/>
+<area shape="rect" id="node3" href="$class_company.html#a6f92666116d67cb172b0d7e424b9d6dc" title="Company::setInactiveClients" alt="" coords="435,5,621,32"/>
+<area shape="rect" id="node5" href="$class_company.html#a64ca43b900ffc4f266a27ebff94e65e9" title="Company::getClient" alt="" coords="460,56,596,83"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="718,5,769,32"/>
+<area shape="rect" id="node6" href="$class_login_controller.html#a34cfc11e30d91b336670be99296c5891" title="LoginController::menu" alt="" coords="669,56,817,83"/>
+</map>

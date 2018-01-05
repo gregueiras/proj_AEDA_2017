@@ -1,0 +1,4 @@
+<map id="VehicleMenuController::menu" name="VehicleMenuController::menu">
+<area shape="rect" id="node2" href="$class_vehicle_menu_view.html#a47bd28f0e98413950983068cb6c9de1e" title="VehicleMenuView::printVehicleMenu" alt="" coords="205,5,439,32"/>
+<area shape="rect" id="node3" href="$class_vehicle_menu_view.html#af553c22061e712aad9762667b4ff0dd8" title="VehicleMenuView::printEnter\lOption" alt="" coords="227,57,417,98"/>
+</map>
