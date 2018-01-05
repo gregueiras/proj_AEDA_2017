@@ -52,7 +52,6 @@ int main() {
 
 	c1->setInactiveClients();
 	EnterController enter = EnterController(c1);
-
 	enter.menu();
 
 	cout << "chegou a main e terminou" << endl;

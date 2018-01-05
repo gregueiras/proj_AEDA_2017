@@ -7,13 +7,13 @@
 
 #include "PayServiceController.h"
 
-PayServiceController::PayServiceController(Client *user, unsigned int serviceID,
+PayServiceController::PayServiceController(Client *user, Services *service,
 		Company *company) {
 	this->theView = new PayServiceView;
 	v = new Validation();
 	u = new Utilities();
 	this->user = user;
-	this->serviceID = serviceID;
+	this->service = service;
 	this->company = company;
 	amountToPay = 0;
 	creditCardNumber = 0;
@@ -25,7 +25,7 @@ PayServiceController::~PayServiceController() {
 
 void PayServiceController::menu() {
 	if (dynamic_cast<Business*>(user)) {
-		if (serviceID == -1) {
+		if (service == NULL) {
 			theView->printPayEOM();
 			payEOM();
 			setUserActive();
@@ -53,7 +53,7 @@ void PayServiceController::menu() {
 }
 
 double PayServiceController::getAmountToPay() {
-	return user->getServiceById(serviceID).getPrice();
+	return service->getPrice();
 }
 
 void PayServiceController::payEOM() {
@@ -118,7 +118,7 @@ void PayServiceController::payCreditCard() {
 }
 //-----------------------------
 void PayServiceController::setServicePaid() {
-	int payment_id = user->getPaymentId(serviceID);
+	int payment_id = user->getPaymentId(service->getId());
 	if (payment_id != 0) {
 		company->getPayment(payment_id).setDue(false);
 	}

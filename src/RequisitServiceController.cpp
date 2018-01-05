@@ -47,6 +47,7 @@ void RequisitServiceController::menu() {
 	getServiceInformation();
 	createService();
 	addService();
+
 	payService();
 }
 
@@ -292,7 +293,7 @@ void RequisitServiceController::payService() {
 		theView->printAskAddToEOM();
 		payAtEOMHandler();
 	}
-
+	cout << "montante a pagar" << service->getPrice() << endl;
 	newPayServiceMenu();
 }
 
@@ -357,7 +358,7 @@ void RequisitServiceController::newServiceMenu() {
 void RequisitServiceController::newPayServiceMenu() {
 	theView->printEnd();
 	PayServiceController *payServiceController = new PayServiceController(user,
-			service->getId(), company);
+			service, company);
 	payServiceController->menu();
 }
 

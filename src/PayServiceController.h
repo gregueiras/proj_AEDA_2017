@@ -21,7 +21,7 @@ private:
 	Utilities *u;
 	Client *user;
 	Company *company;
-	int serviceID;
+	Services *service;
 	double amountToPay;
 	unsigned long creditCardNumber;
 
@@ -94,8 +94,7 @@ public:
 	 * @param serviceID chosen service id
 	 * @param company pointer to the company object
 	 */
-	PayServiceController(Client *client, unsigned int serviceID,
-			Company *company);
+	PayServiceController(Client *client, Services *service, Company *company);
 
 	/**
 	 * destructor

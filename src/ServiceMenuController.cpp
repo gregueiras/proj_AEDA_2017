@@ -25,10 +25,10 @@ void ServiceMenuController::menu() {
 
 void ServiceMenuController::listServices() {
 	vector<Services *> services = user->getServices();
-	theView->printServicesListing();
 	if (services.size() == 0) {
 		theView->printNoServicesRegistered();
 	} else {
+		theView->printServicesListing();
 		for (size_t i = 0; i < services.size(); i++) {
 			if (services.at(i)->isVisibility()) {
 				theView->printServiceInfo(services.at(i)->getId(),
@@ -145,7 +145,7 @@ void ServiceMenuController::newFilterServicesMenu() {
 void ServiceMenuController::newPayServiceMenu() {
 	theView->printEnd();
 	PayServiceController *payServiceController = new PayServiceController(user,
-			-1, company);
+	NULL, company);
 	payServiceController->menu();
 }
 

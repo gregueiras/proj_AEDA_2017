@@ -16,7 +16,7 @@ using namespace std;
 class ServiceMenuView {
 private:
 	Utilities *u;
-	const string servicesListing = "\nMenu Serviços:";
+	const string servicesListing = "\nListagem de Serviços";
 	const string noServicesRegistered = "\nNão tem serviços registados:";
 	const string serviceMenu =
 			"\nMenu Serviços\n0->SAIR\n1->Requesitar Novo Serviço\n2->Ver Serviço\n3->Ordenar Listagem dos Serviços\n4->Filtrar Listagem dos Serviços"
