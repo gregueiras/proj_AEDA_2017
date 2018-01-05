@@ -5,7 +5,7 @@
 
 using namespace std;
 // Constructors/Destructors
-//  
+//
 
 Company::Company() :
 	payments_regist(PaymentRecord(0)) {
@@ -103,7 +103,17 @@ void Company::activateClientRecordById(unsigned int id)
 	clients.push_back(c.getClientPtr());
 
 	inactive_clients.erase(it);
-	
+
+}
+
+void Company::activateAllClients() {
+	int lim = clients.at(0)->getNextId();
+
+	for (size_t i = 0; i < lim; i++)
+	{
+		activateClientRecordById(i);
+	}
+
 }
 
 void Company::setInactiveClients() {
@@ -154,9 +164,9 @@ void Company::setReference(string new_var) {
 	this->reference = new_var;
 }
 
-//  
+//
 // Methods
-//  
+//
 
 //unsigned long Company::getCost_km_m() {
 //	return this->cost_km_m;
@@ -202,9 +212,8 @@ Client * Company::getClient(unsigned int id, string pass) {
 	if (clients_size != this->clients.size()) {
 		if (pass == this->clients.at(clients_size)->getPass())
 			return this->clients.at(clients_size);
-	}
-	else {
-		deactivateClientRecord(this->clients.at(clients_size));
+		else
+			deactivateClientRecord(this->clients.at(clients_size));
 	}
 
 	return NULL;
@@ -227,7 +236,7 @@ void Company::addService(Services *new_var, unsigned int client_id) {
 		Client *i_Client = this->clients.at(i);
 		//if client is found (by id)
 		if (i_Client->getId() == client_id) {
-			//client is identified 
+			//client is identified
 			client_identified = true;
 			//add service to client
 			i_Client->addServices(new_var);
@@ -249,7 +258,7 @@ void Company::addPayment(Payment *new_var, unsigned int client_id) {
 		Client *i_Client = this->clients.at(i);
 		//if client is found (by id)
 		if (i_Client->getId() == client_id) {
-			//client is identified 
+			//client is identified
 			client_identified = true;
 			name = i_Client->getName();
 			//add service to client
@@ -414,7 +423,7 @@ Client* Company::readClientFromFile(const unsigned int id) {
 
 		//get pass
 		getline(input, pass);
-		//////////////////////	
+		//////////////////////
 
 		if (client_type == "Business")
 			ptr = new Business(name, address, nif, pass, id);
@@ -542,6 +551,9 @@ vector<Client*> Company::readClientsFromFile() {
 }
 
 bool Company::writeClientsToFile() {
+
+	activateAllClients();
+
 	for (size_t i = 0; i < this->getClients().size(); i++) {
 		if (!(this->getClients().at(i)->writeClientToFile()))
 			return false;
@@ -570,9 +582,6 @@ bool Company::writeCompanyToFile() {
 		output << this->getEntity() << endl << endl;
 		//reference
 		output << this->getReference() << endl << endl;
-		//Current Date & Hour
-		output << this->getCurrentDate().toStr() << endl;
-		output << this->getCurrentHour().toStr() << endl << endl;
 
 	} else
 		return false;
@@ -606,36 +615,6 @@ bool Company::readCompanyFromFile() {
 		//get reference
 		getline(input, temp);
 		this->setReference(temp);
-		//////////////////////
-
-		getline(input, temp);
-
-		//get current_date and current_hour
-		getline(input, temp);
-		try {
-			Date current_date(stoul(temp.substr(0, 2)),
-					stoul(temp.substr(3, 2)), stoul(temp.substr(6)));
-		} catch (DateInvalidDay& d) {
-			cout << "Error reading current day \n";
-			input.close();
-			return false;
-		} catch (DateInvalidMonth& d) {
-			cout << "Error reading current month \n";
-			input.close();
-			return false;
-		} catch (DateInvalidYear& d) {
-			cout << "Error reading current year \n";
-			input.close();
-			return false;
-		}
-
-		Date current_date(stoul(temp.substr(0, 2)), stoul(temp.substr(3, 2)),
-				stoul(temp.substr(6)));
-
-		this->setCurrentDate(current_date);
-		getline(input, temp);
-		Hour current_hour(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
-		this->setCurrentHour(current_hour);
 		//////////////////////
 
 		input.close();

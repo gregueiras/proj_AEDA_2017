@@ -54,6 +54,10 @@ int main() {
 	EnterController enter = EnterController(c1);
 	enter.menu();
 
+	c1->writeClientsToFile();
+	c1->writeCompanyToFile();
+	c1->writeVehiclesToFile();
+
 	cout << "chegou a main e terminou" << endl;
 
 }

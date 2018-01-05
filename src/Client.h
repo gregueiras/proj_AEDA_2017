@@ -212,6 +212,13 @@ public:
   unsigned int getNextId();
 
   /**
+  * Set the value of next_id
+  * ID number of the next client added
+  * @param n_id the new value of next_id
+  */
+  void setNextId(unsigned int n_id);
+
+  /**
   * ++next_id
   * ID number of the next client added
   */
