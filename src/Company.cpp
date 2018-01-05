@@ -5,7 +5,7 @@
 
 using namespace std;
 // Constructors/Destructors
-//  
+//
 
 Company::Company() :
 	payments_regist(PaymentRecord(0)) {
@@ -103,7 +103,7 @@ void Company::activateClientRecordById(unsigned int id)
 	clients.push_back(c.getClientPtr());
 
 	inactive_clients.erase(it);
-	
+
 }
 
 void Company::activateAllClients() {
@@ -117,7 +117,7 @@ void Company::activateAllClients() {
 }
 
 void Company::setInactiveClients() {
-	for (size_t i = 1; i < clients.size(); i++)
+	for (size_t i = 0; i < clients.size(); i++)
 	{
 		//ignore admin id
 		if (clients.at(i)->getId() == 1)
@@ -168,9 +168,9 @@ void Company::setReference(string new_var) {
 	this->reference = new_var;
 }
 
-//  
+//
 // Methods
-//  
+//
 
 //unsigned long Company::getCost_km_m() {
 //	return this->cost_km_m;
@@ -240,7 +240,7 @@ void Company::addService(Services *new_var, unsigned int client_id) {
 		Client *i_Client = this->clients.at(i);
 		//if client is found (by id)
 		if (i_Client->getId() == client_id) {
-			//client is identified 
+			//client is identified
 			client_identified = true;
 			//add service to client
 			i_Client->addServices(new_var);
@@ -262,7 +262,7 @@ void Company::addPayment(Payment *new_var, unsigned int client_id) {
 		Client *i_Client = this->clients.at(i);
 		//if client is found (by id)
 		if (i_Client->getId() == client_id) {
-			//client is identified 
+			//client is identified
 			client_identified = true;
 			name = i_Client->getName();
 			//add service to client
@@ -427,7 +427,7 @@ Client* Company::readClientFromFile(const unsigned int id) {
 
 		//get pass
 		getline(input, pass);
-		//////////////////////	
+		//////////////////////
 
 		if (client_type == "Business")
 			ptr = new Business(name, address, nif, pass, id);
