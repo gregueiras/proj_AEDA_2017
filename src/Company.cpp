@@ -202,9 +202,8 @@ Client * Company::getClient(unsigned int id, string pass) {
 	if (clients_size != this->clients.size()) {
 		if (pass == this->clients.at(clients_size)->getPass())
 			return this->clients.at(clients_size);
-	}
-	else {
-		deactivateClientRecord(this->clients.at(clients_size));
+		else
+			deactivateClientRecord(this->clients.at(clients_size));
 	}
 
 	return NULL;
