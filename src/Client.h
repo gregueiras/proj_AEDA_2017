@@ -33,9 +33,10 @@ public:
   /**
    * Constructor for registed clients
    */
-  Client (string name, Address address, unsigned int nif, string pass);
 
-  Client(string name, Address address, unsigned int nif, string pass, unsigned int id);
+	Client (string name, Address address, unsigned int nif, string pass);
+
+	Client(string name, Address address, unsigned int nif, string pass, unsigned int id);
 
   /**
    * Empty Destructor
@@ -307,8 +308,12 @@ public:
 
 class ClientRecord {
 	Client* clientPtr;
+	unsigned int id;
 public:
 	ClientRecord(Client* c);
+	ClientRecord(unsigned int id);
+
+	Client* getClientPtr();
 
 	bool getVisibility() const;
 	void setVisibility(bool new_var);
@@ -318,6 +323,7 @@ public:
 	Address getAddress() const;
 
 	unsigned int getId() const;
+	void setId(unsigned int new_id);
 
 	unsigned int getNif() const;
 

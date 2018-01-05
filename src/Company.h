@@ -169,6 +169,12 @@ public:
 	void activateClientRecord(Client* c);
 
 	/**
+	* Get a client from clients vector to inactive_clients hash table
+	* @param id the id of the client in question
+	*/
+	void activateClientRecordById(unsigned int id);
+
+	/**
 	 * Check all clients on clients vector to see if any should be moved to
 	 * inactivity. If so, moves them.
 	 *The comparison is done with the current timezone time
@@ -244,7 +250,7 @@ public:
 	 * @param new_var the client, if found
 	 * @param id the client id
 	 */
-	Client * getClient(unsigned int id, string pass) const;
+	Client * getClient(unsigned int id, string pass);
 
 	/**
 	 * Set the vector of services_queue

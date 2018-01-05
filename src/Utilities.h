@@ -14,6 +14,9 @@
 
 #include "Services.h"
 #include "Vehicle.h"
+#include "Date.h"
+#include "Hour.h"
+
 
 using namespace std;
 
@@ -106,5 +109,17 @@ bool auxSortbyMaintenanceDate(Vehicle a, Vehicle b);
  * @return string of numbers with size == length
  */
 string generateRandom(int length);
+
+/**
+* Gets current Timezone Date
+* @return current Timezone Date
+*/
+Date getTimeZoneDate();
+
+/**
+* Gets current Timezone Hour
+* @return current Timezone Hour
+*/
+Hour getTimeZoneHour();
 
 #endif /* SRC_MODEL_UTILITIES_H_ */

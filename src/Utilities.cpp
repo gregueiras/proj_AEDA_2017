@@ -5,7 +5,11 @@
  *      Author: jotaa
  */
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "Utilities.h"
+
+#include <ctime> 
 
 Utilities::Utilities() {
 	// TODO Auto-generated constructor stub
@@ -133,6 +137,30 @@ string generateRandom(int length) {
 	}
 
 	return random;
+}
+
+Date getTimeZoneDate()
+{
+	time_t t;
+	time(&t);
+
+	struct tm * now = localtime(&t);
+
+	Date ret = Date(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
+
+	return ret;
+}
+
+Hour getTimeZoneHour()
+{
+	time_t t;
+	time(&t);
+
+	struct tm * now = localtime(&t);
+
+	Hour ret = Hour(now->tm_hour, now->tm_min);
+
+	return ret;
 }
 
 string Utilities::readLine() {

@@ -341,6 +341,18 @@ string Client::clientToString(bool service) {
 
 ClientRecord::ClientRecord(Client * c) {
 	this->clientPtr = c;
+	this->id = clientPtr->getId();
+}
+
+ClientRecord::ClientRecord(unsigned int id)
+{
+	this->clientPtr = NULL;
+	this->id = id;
+}
+
+Client * ClientRecord::getClientPtr()
+{
+	return clientPtr;
 }
 
 bool ClientRecord::getVisibility() const {
@@ -360,7 +372,12 @@ Address ClientRecord::getAddress() const {
 }
 
 unsigned int ClientRecord::getId() const {
-	return this->clientPtr->id;
+	return this->id;
+}
+
+void ClientRecord::setId(unsigned int new_id)
+{
+	id = new_id;
 }
 
 unsigned int ClientRecord::getNif() const {
