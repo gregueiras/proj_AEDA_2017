@@ -21,9 +21,16 @@ private:
 	Utilities *u;
 	Company *company;
 
+	/**
+	 * set users that were offline too long to inactive
+	 */
 	void setInactiveUsers();
 
+	/**
+	 * updates vehicles that are available
+	 */
 	void updateAvailableVehicles();
+
 	/**
 	 * reads the user option and acts accordingly
 	 */

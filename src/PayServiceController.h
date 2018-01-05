@@ -19,7 +19,7 @@ private:
 	PayServiceView *theView;
 	Validation *v;
 	Utilities *u;
-	Client *user;
+	Client *client;
 	Company *company;
 	Services *service;
 	double amountToPay;
@@ -65,8 +65,15 @@ private:
 	 */
 	unsigned long getCreditCardNumber();
 
+	/**
+	 * method to get the amount to pay for the service
+	 * @return the amount to pay
+	 */
 	double getAmountToPay();
 
+	/**
+	 * method to set user as active
+	 */
 	void setUserActive();
 
 	/**

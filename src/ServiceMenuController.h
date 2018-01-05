@@ -23,7 +23,7 @@ private:
 	ServiceMenuView *theView;
 	Validation *v;
 	Utilities *u;
-	Client *user;
+	Client *client;
 	Company *company;
 	unsigned int serviceID;
 
@@ -39,16 +39,36 @@ private:
 	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
 
+	/**
+	 * user interaction methos to read service ID
+	 */
 	int getServiceID();
+
 	/**
 	 * opens new requisit service menu
 	 */
 	void newRequisitService();
 
+	/**
+	 * opens new see services menu
+	 */
 	void newSeeService();
+
+	/**
+	 * opens new filter services menu
+	 */
 	void newFilterServicesMenu();
+
+	/**
+	 * opens new sort services menu
+	 */
 	void newSortServicesMenu();
+
+	/**
+	 * opens new pay services menu
+	 */
 	void newPayServiceMenu();
+
 	/**
 	 * opens new list services menu
 	 */
@@ -65,6 +85,7 @@ private:
 	void endProgram();
 
 public:
+
 	/**
 	 * Contructor that initalizes all variables
 	 * @param client log in user

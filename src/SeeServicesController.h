@@ -17,12 +17,31 @@ class SeeServicesController {
 	SeeServicesView *theView;
 	Company *company;
 
+	/**
+	 * prints services invoices
+	 */
 	void printServicesInvoices();
+
+	/**
+	 * opens new administrator menu
+	 */
 	void newAdministratorMenu();
 
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param company pointer to the company object
+	 */
 	SeeServicesController(Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~SeeServicesController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
 
 };

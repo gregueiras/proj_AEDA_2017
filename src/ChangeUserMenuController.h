@@ -20,10 +20,8 @@ private:
 
 	Validation *v;
 	Utilities *u;
-	Client *user;
+	Client *client;
 	Company *company;
-
-	void menuHandler();
 
 	/**
 	 * user interaction method to change name
@@ -77,51 +75,61 @@ private:
 
 	/**
 	 * user interaction method to read name information
+	 * @return the name
 	 */
 	string getName();
 
 	/**
 	 * user interaction method to read nif information
+	 * @return the nif
 	 */
 	unsigned int getNIF();
 
 	/**
 	 * user interaction method to read street information
+	 * @return the street
 	 */
 	string getStreet();
 
 	/**
 	 * user interaction method to read country information
+	 * @return the country
 	 */
 	string getCountry();
 
 	/**
 	 * user interaction method to read city information
+	 * @return the city
 	 */
 	string getCity();
 
 	/**
 	 * user interaction method to read county information
+	 * @return the county
 	 */
 	string getCounty();
 
 	/**
 	 * user interaction method to read door number information
+	 * @return the door number
 	 */
 	unsigned int getDoorNumber();
 
 	/**
 	 * user interaction method to read latitude information
+	 * @return the latitude
 	 */
 	double getLatitude();
 
 	/**
 	 * user interaction method to read longitude information
+	 * @return the longitude
 	 */
 	double getLongitude();
 
 	/**
 	 * user interaction method to read password information
+	 * @return the password
 	 */
 	string getPassword();
 

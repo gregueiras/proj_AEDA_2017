@@ -20,7 +20,7 @@ private:
 	LoginView *theView;
 	Validation *v;
 	Utilities *u;
-	Client *user;
+	Client *client;
 	Company *company;
 
 	/**

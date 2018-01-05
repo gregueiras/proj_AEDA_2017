@@ -7,7 +7,7 @@
 
 #include "FilterServicesController.h"
 
-FilterServicesController::FilterServicesController(Client *user,
+FilterServicesController::FilterServicesController(Client *client,
 		Company *company) {
 	this->theView = new FilterServicesView;
 	this->company = company;
@@ -15,7 +15,7 @@ FilterServicesController::FilterServicesController(Client *user,
 	u = new Utilities();
 	dateInferiorBound = new Date(0, 0, 0);
 	dateSuperiorBound = new Date(0, 0, 0);
-	this->user = user;
+	this->client = client;
 	idInferiorBound = 0;
 	idSuperiorBound = 0;
 	dayInferiorBound = 0;
@@ -366,8 +366,8 @@ void FilterServicesController::getCity() {
  *
  */
 void FilterServicesController::narrowServices() {
-	for (size_t i = 0; i < user->getServices().size(); i++) {
-		Services *service = user->getServices().at(i);
+	for (size_t i = 0; i < client->getServices().size(); i++) {
+		Services *service = client->getServices().at(i);
 		//service.setVisibility(true);
 		narrowServicesByID(service);
 	}
@@ -473,7 +473,7 @@ void FilterServicesController::endProgram() {
 void FilterServicesController::newServiceMenu() {
 	theView->printEnd();
 	ServiceMenuController *serviceMenuController = new ServiceMenuController(
-			user, company);
+			client, company);
 	serviceMenuController->menu();
 }
 

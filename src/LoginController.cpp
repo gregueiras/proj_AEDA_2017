@@ -8,7 +8,7 @@
 #include "LoginController.h"
 
 LoginController::LoginController(Company *company) {
-	user = NULL;
+	client = NULL;
 	this->theView = new LoginView;
 	v = new Validation();
 	u = new Utilities();
@@ -31,8 +31,8 @@ void LoginController::menu() {
 		if (pass == "0") {
 			break;
 		}
-		user = company->getClient(id, pass);
-		if (user != NULL) {
+		client = company->getClient(id, pass);
+		if (client != NULL) {
 
 			newClientMenu();
 		} else if (company->checkAdminCredentials(id, pass)) {
@@ -73,7 +73,7 @@ void LoginController::endProgram() {
 
 void LoginController::newClientMenu() {
 	theView->printEnd();
-	ClientMenuController *clientMenuController = new ClientMenuController(user,
+	ClientMenuController *clientMenuController = new ClientMenuController(client,
 			company);
 	clientMenuController->menu();
 }

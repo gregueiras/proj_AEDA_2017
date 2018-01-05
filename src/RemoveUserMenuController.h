@@ -21,16 +21,11 @@ private:
 	RemoveMenuView *theView;
 	Validation *v;
 	Utilities *u;
-	Client *user;
+	Client *client;
 	Company *company;
 
 	/**
-	 *
-	 */
-	void removeUserHandler();
-
-	/**
-	 *
+	 * method to remove user
 	 */
 	void removeUser();
 

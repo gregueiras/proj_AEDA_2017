@@ -26,7 +26,7 @@ private:
 	Validation *v;
 	Utilities *u;
 	Company *company;
-	Client *user;
+	Client *client;
 
 	const unsigned int client_type_personal = 1;
 	const unsigned int client_type_business = 2;

@@ -25,21 +25,75 @@ private:
 	Validation *v;
 	string plate;
 
-	void menuHandler();
+	/**
+	 * list vehicles on the company
+	 */
 	void listVehicles();
+
+	/**
+	 * read the menu option from the keyboard the value of arrival_date
+	 * Date of arrival
+	 * @param lowerBound lower bound of the menu option
+	 * @param upperBound upper bound of the menu option
+	 * @return option
+	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
+
+	/**
+	 * list vehicles on the company
+	 * @return vehicle_string
+	 */
 	string getVehiclePlate();
 
+	/**
+	 * opens new see vehicle menu
+	 */
 	void newSeeVehicleMenu();
-	void newVehicleMenu();
+
+	/**
+	 * opens new add vehicle menu
+	 */
+	void newAddVehicleMenu();
+
+	/**
+	 * opens new change vehicle menu
+	 */
 	void newChangeVehicleMenu();
-	void sendVehicleToMaintenanceMenu();
+
+	/**
+	 * sends vehicle to maintenance
+	 */
+	void sendVehicleToMaintenance();
+
+	/**
+	 * opens new remove vehicle menu
+	 */
 	void newRemoveVehicleMenu();
+
+	/**
+	 * opens new administrator menu
+	 */
 	void newAdministratorMenu();
+
+	/**
+	 * end program
+	 */
 	void endProgram();
 public:
+	/**
+	 * Contructor that initalizes all variables
+	 * @param company pointer to the company object
+	 */
 	VehicleMenuController(Company *company);
+
+	/**
+	 * destructor
+	 */
 	virtual ~VehicleMenuController();
+
+	/**
+	 * prints initial message and calls the user interaction method
+	 */
 	void menu();
 };
 

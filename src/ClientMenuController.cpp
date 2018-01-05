@@ -11,7 +11,7 @@ ClientMenuController::ClientMenuController(Client *client, Company *company) {
 	this->theView = new ClientMenuView;
 	v = new Validation();
 	u = new Utilities();
-	user = client;
+	this->client = client;
 	this->company = company;
 }
 
@@ -50,7 +50,7 @@ void ClientMenuController::clientMenuHandler() {
 
 void ClientMenuController::notificationHandler() {
 	theView->printNotificationsHeader();
-	if (user->getVisibility() == false && company->getDiscount() != 0) {
+	if (client->getVisibility() == false && company->getDiscount() != 0) {
 		theView->printPendingChangeAdress();
 	}
 }
@@ -85,7 +85,7 @@ void ClientMenuController::newEnterMenu() {
 
 void ClientMenuController::newUserMenu() {
 	theView->printEnd();
-	UserMenuController *userControllerMenu = new UserMenuController(user,
+	UserMenuController *userControllerMenu = new UserMenuController(client,
 			company);
 	userControllerMenu->menu();
 }
@@ -93,6 +93,6 @@ void ClientMenuController::newUserMenu() {
 void ClientMenuController::newServiceMenu() {
 	theView->printEnd();
 	ServiceMenuController *serviceMenuController = new ServiceMenuController(
-			user, company);
+			client, company);
 	serviceMenuController->menu();
 }

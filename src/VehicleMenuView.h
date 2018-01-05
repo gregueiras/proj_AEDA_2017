@@ -34,19 +34,59 @@ public:
 	VehicleMenuView();
 	virtual ~VehicleMenuView();
 
+	/**
+	 * prints vehicle list messagem
+	 */
 	void printVehicleList();
+
+	/**
+	 * prints vehicle menu
+	 */
 	void printVehicleMenu();
+
+	/**
+	 * prints enter option message
+	 */
 	void printEnterOption();
+
+	/**
+	 * prints wrong option message
+	 */
 	void printWrongOption();
 
+	/**
+	 * prints enter plate message
+	 */
 	void printEnterPlate();
+
+	/**
+	 * prints plate not found message
+	 */
 	void printPlateNotFound();
+
+	/**
+	 * prints vehicle not available message
+	 */
 	void printVehicleNotAvailable();
+
+	/**
+	 * prints no vehicle registered message
+	 */
 	void printNoVehicleRegistered();
 
+	/**
+	 * prints end message
+	 */
 	void printEnd();
+	/**
+	 * prints shutdown message
+	 */
 	void printShutdown();
 
+	/**
+	 * prints information
+	 * @param info information to print
+	 */
 	void printInformation(const string info);
 
 	/**

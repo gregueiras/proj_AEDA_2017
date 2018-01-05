@@ -23,14 +23,15 @@ void SeeServicesController::menu() {
 
 void SeeServicesController::printServicesInvoices() {
 	vector<Client*> clients_temp = company->getClients();
-//	if (company->getServicesQueue().size() == 0) {
-//		theView->printNoServicesRegistered();
-//	} else {
-	theView->printListServices();
-	for (size_t i = 0; i < clients_temp.size(); i++) {
-		theView->printInformation(clients_temp.at(i)->clientToString(true));
+	if (company->getServicesQueue().size() == 0
+			&& company->getNextServices().size() == 0) {
+		theView->printNoServicesRegistered();
+	} else {
+		theView->printListServices();
+		for (size_t i = 0; i < clients_temp.size(); i++) {
+			theView->printInformation(clients_temp.at(i)->clientToString(true));
+		}
 	}
-//	}
 }
 
 void SeeServicesController::newAdministratorMenu() {

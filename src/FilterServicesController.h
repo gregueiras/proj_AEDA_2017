@@ -18,7 +18,7 @@ private:
 	FilterServicesView *theView;
 	Validation *v;
 	Utilities *u;
-	Client *user;
+	Client *client;
 	Company *company;
 
 	unsigned int idInferiorBound, idSuperiorBound, dayInferiorBound,
@@ -28,7 +28,6 @@ private:
 			priceInferiorBound, priceSuperiorBound, volumeInferiorBound,
 			volumeSuperiorBound;
 	string city;
-
 	Date *dateInferiorBound, *dateSuperiorBound;
 
 	/**
@@ -49,11 +48,40 @@ private:
 	 */
 	void getTimeInterval();
 
+	/**
+	 * user interaction method to read day inferior bound information
+	 * @return the day inferior bound
+	 */
 	unsigned int getDayInferiorBound();
+
+	/**
+	 * user interaction method to read month inferior bound information
+	 * @return the month inferior bound
+	 */
 	unsigned int getMonthInferiorBound();
+
+	/**
+	 * user interaction method to read year inferior bound information
+	 * @return the id inferior bound
+	 */
 	unsigned int getYearInferiorBound();
+
+	/**
+	 * user interaction method to read day superior bound information
+	 * @return the year superior bound
+	 */
 	unsigned int getDaySuperiorBound();
+
+	/**
+	 * user interaction method to read month superior bound information
+	 * @return the month superior bound
+	 */
 	unsigned int getMonthSuperiorBound();
+
+	/**
+	 * user interaction method to read year superior bound information
+	 * @return the year superior bound
+	 */
 	unsigned int getYearSuperiorBound();
 
 	/**
@@ -61,29 +89,69 @@ private:
 	 */
 	void getIDInterval();
 
+	/**
+	 * user interaction method to read id inferior bound information
+	 * @return the id inferior bound
+	 */
 	unsigned int getIDInferiorBound();
+
+	/**
+	 * user interaction method to read id superior bound information
+	 * @return the id superior bound
+	 */
 	unsigned int getIDSuperiorBound();
+
 	/**
 	 * user interaction method to read volume interval information
 	 */
 	void getVolumeInterval();
 
+	/**
+	 * user interaction method to read volume inferior bound information
+	 * @return the volume inferior bound
+	 */
 	unsigned long getVolumeInferiorBound();
+
+	/**
+	 * user interaction method to read volume superior bound information
+	 * @return the volume superior bound
+	 */
 	unsigned long getVolumeSuperiorBound();
+
 	/**
 	 * user interaction method to read price interval information
 	 */
 	void getPriceInterval();
 
+	/**
+	 * user interaction method to read price inferior bound information
+	 * @return the price inferior bound
+	 */
 	unsigned long getPriceInferiorBound();
+
+	/**
+	 * user interaction method to read price superior bound information
+	 * @return the price superior bound
+	 */
 	unsigned long getPriceSuperiorBound();
+
 	/**
 	 * user interaction method to read distance interval information
 	 */
 	void getDistanceInterval();
 
+	/**
+	 * user interaction method to read distance inferior bound information
+	 * @return the distance inferior bound
+	 */
 	unsigned long getDistanceInferiorBound();
+
+	/**
+	 * user interaction method to read distance superior bound information
+	 * @return the distance superior bound
+	 */
 	unsigned long getDistanceSuperiorBound();
+
 	/**
 	 * user interaction method to read city infomation
 	 */

@@ -155,3 +155,19 @@ void RequisitServiceView::printEnterPackagingInitialHour() {
 void RequisitServiceView::printEnterPackagingInitialMinute() {
 	printMessage(enterPackagingInitialMinute);
 }
+
+void RequisitServiceView::printEnterVehicleExpectedHour() {
+	printMessage(enterVehicleExpectedHour);
+}
+
+void RequisitServiceView::printEnterVehicleExpectedMinute() {
+	printMessage(enterVehicleExpectedMinute);
+}
+
+void RequisitServiceView::printSchedulingForDateRequired() {
+	printMessage(schedulingForDateRequired);
+}
+
+void RequisitServiceView::printSchedulingForBriefTime() {
+	printMessage(schedulingForBriefTime);
+}

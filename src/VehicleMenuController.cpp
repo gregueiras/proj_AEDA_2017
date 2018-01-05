@@ -19,7 +19,36 @@ VehicleMenuController::~VehicleMenuController() {
 }
 
 void VehicleMenuController::menu() {
-	menuHandler();
+	int option;
+	do {
+		listVehicles();
+		theView->printVehicleMenu();
+		theView->printEnterOption();
+		option = getMenuOption(0, 6);
+		switch (option) {
+		case 0:
+			endProgram();
+			break;
+		case 1:
+			newAddVehicleMenu();
+			break;
+		case 2:
+			newSeeVehicleMenu();
+			break;
+		case 3:
+			newChangeVehicleMenu();
+			break;
+		case 4:
+			sendVehicleToMaintenance();
+			break;
+		case 5:
+			newRemoveVehicleMenu();
+			break;
+		case 6:
+			newAdministratorMenu();
+			break;
+		}
+	} while (option != 0);
 }
 
 void VehicleMenuController::listVehicles() {
@@ -35,39 +64,6 @@ void VehicleMenuController::listVehicles() {
 			temp.pop();
 		}
 	}
-}
-
-void VehicleMenuController::menuHandler() {
-	int option;
-	do {
-		listVehicles();
-		theView->printVehicleMenu();
-		theView->printEnterOption();
-		option = getMenuOption(0, 6);
-		switch (option) {
-		case 0:
-			endProgram();
-			break;
-		case 1:
-			newVehicleMenu();
-			break;
-		case 2:
-			newSeeVehicleMenu();
-			break;
-		case 3:
-			newChangeVehicleMenu();
-			break;
-		case 4:
-			sendVehicleToMaintenanceMenu();
-			break;
-		case 5:
-			newRemoveVehicleMenu();
-			break;
-		case 6:
-			newAdministratorMenu();
-			break;
-		}
-	} while (option != 0);
 }
 
 int VehicleMenuController::getMenuOption(const int lowerBound,
@@ -92,7 +88,7 @@ string VehicleMenuController::getVehiclePlate() {
 	return plate;
 }
 
-void VehicleMenuController::newVehicleMenu() {
+void VehicleMenuController::newAddVehicleMenu() {
 	theView->printEnd();
 	NewVehicleController *newVehicleController = new NewVehicleController(
 			company);
@@ -131,7 +127,7 @@ void VehicleMenuController::newChangeVehicleMenu() {
 	}
 }
 
-void VehicleMenuController::sendVehicleToMaintenanceMenu() {
+void VehicleMenuController::sendVehicleToMaintenance() {
 	plate = getVehiclePlate();
 	if (plate != "0") {
 		if (company->getVehicle(plate) != NULL) {

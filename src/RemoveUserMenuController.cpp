@@ -12,7 +12,7 @@ RemoveUserMenuController::RemoveUserMenuController(Client *client,
 	this->theView = new RemoveMenuView;
 	u = new Utilities();
 	v = new Validation();
-	user = client;
+	this->client = client;
 	this->company = company;
 }
 
@@ -21,10 +21,6 @@ RemoveUserMenuController::~RemoveUserMenuController() {
 }
 
 void RemoveUserMenuController::menu() {
-	removeUserHandler();
-}
-
-void RemoveUserMenuController::removeUserHandler() {
 	int option;
 	do {
 		theView->printRemoveUserMenu();
@@ -62,7 +58,7 @@ void RemoveUserMenuController::removeUser() {
 	int option;
 	bool flag = theView->getInfo(option);
 	if (option == 1 && flag == true) {
-		user->setVisibility(false);
+		client->setVisibility(false);
 	}
 }
 
@@ -74,7 +70,7 @@ void RemoveUserMenuController::newEnterMenuController() {
 
 void RemoveUserMenuController::newUserMenuController() {
 	theView->printEnd();
-	UserMenuController *userMenuController = new UserMenuController(user,
+	UserMenuController *userMenuController = new UserMenuController(client,
 			company);
 	userMenuController->menu();
 }

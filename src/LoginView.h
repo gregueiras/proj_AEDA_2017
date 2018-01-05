@@ -19,11 +19,11 @@ private:
 	Utilities *u;
 	const string initialMessage = "\nLogin";
 
-	const string enterID = "Introduza id. ";
-	const string enterPass = "Introduza pass. ";
-	const string userNotFound = "Utilizador nao encontrado. ";
-	const string wrongUserId = "ID introduzido invalido. ";
-	const string exit = "0->SAIR";
+	const string enterID = "Introduza id";
+	const string enterPass = "Introduza pass";
+	const string userNotFound = "Utilizador nao encontrado";
+	const string wrongUserId = "ID introduzido invalido";
+	const string exit = " 0->SAIR";
 	const string end = "Terminou Login";
 	const string shutdown = "\nPrograma terminou";
 	void printMessage(const string &message);

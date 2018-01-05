@@ -20,10 +20,6 @@ ChangeVehicleController::~ChangeVehicleController() {
 }
 
 void ChangeVehicleController::menu() {
-	menuHandler();
-}
-
-void ChangeVehicleController::menuHandler() {
 	int option;
 	do {
 		theView->printInformation(company->getVehicleInfoComplete(plate));
@@ -32,8 +28,6 @@ void ChangeVehicleController::menuHandler() {
 		option = getMenuOption(0, 7);
 		switch (option) {
 		case 0:
-
-			theView->printShutdown();
 			endProgram();
 			break;
 		case 1:
@@ -60,7 +54,6 @@ void ChangeVehicleController::menuHandler() {
 			break;
 		}
 	} while (option != 0);
-
 }
 
 int ChangeVehicleController::getMenuOption(const int lowerBound,
@@ -118,8 +111,10 @@ void ChangeVehicleController::changeMaintenanceDate() {
 
 string ChangeVehicleController::getPlate() {
 	string plate;
-	theView->printEnterNewPlate();
-	theView->getInfo(plate);
+	do {
+		theView->printEnterNewPlate();
+		theView->getInfo(plate);
+	} while (company->existVehicle(plate) == true);
 	return plate;
 }
 
@@ -170,7 +165,6 @@ Date * ChangeVehicleController::getBirthdayDate() {
 		date = to_string(birthdayDay) + "/" + to_string(birthdayMonth) + "/"
 				+ to_string(birthdayYear);
 	} while (!v->validateDateFormat(date));
-
 	return new Date(birthdayDay, birthdayMonth, birthdayYear);
 }
 

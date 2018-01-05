@@ -67,6 +67,7 @@ void RequisitServiceController::RequisitServiceController::getServiceInformation
 	}
 	getPackagingInitialDate();
 	getPackagingInitialHour();
+	getVehicleExpectedTime();
 }
 
 void RequisitServiceController::getAddressInformation(string &street,
@@ -88,7 +89,6 @@ string RequisitServiceController::getStreet() {
 	theView->printEnterStreet();
 	street = theView->getLine();
 	if (street == "0" && !dynamic_cast<Unregistered*>(user)) {
-
 		newServiceMenu();
 	}
 	return street;
@@ -98,7 +98,6 @@ string RequisitServiceController::getCountry() {
 	theView->printEnterCountry();
 	country = theView->getLine();
 	if (country == "0" && !dynamic_cast<Unregistered*>(user)) {
-
 		newServiceMenu();
 	}
 	return country;
@@ -264,6 +263,26 @@ long RequisitServiceController::getVolume() {
 	return volume;
 }
 
+void RequisitServiceController::getVehicleExpectedTime() {
+	theView->printEnterVehicleExpectedTime();
+	string time;
+	bool flag;
+	do {
+		do {
+			theView->printEnterVehicleExpectedHour();
+			flag = theView->getInfo(vehicleExpectedHour);
+		} while (flag == false);
+
+		do {
+			theView->printEnterVehicleExpectedMinute();
+			flag = theView->getInfo(vehicleExpectedMinute);
+		} while (flag == false);
+
+		time = to_string(vehicleExpectedHour) + ":"
+				+ to_string(vehicleExpectedMinute);
+	} while (!v->validateHourFormat(time));
+}
+
 void RequisitServiceController::createService() {
 	Address adressOrigin(streetOrigin, countryOrigin, cityOrigin, countyOrigin,
 			doorNumberOrigin);
@@ -293,7 +312,6 @@ void RequisitServiceController::payService() {
 		theView->printAskAddToEOM();
 		payAtEOMHandler();
 	}
-	cout << "montante a pagar" << service->getPrice() << endl;
 	newPayServiceMenu();
 }
 
@@ -336,8 +354,10 @@ void RequisitServiceController::addService() {
 	if (company->isAnyVehicleAvailable()) {
 		company->addService(service, user->getId());
 		company->assignVehicle(service);
+		theView->printSchedulingForDateRequired();
 	} else {
 		company->addServiceToNext_Services(service);
+		theView->printSchedulingForBriefTime();
 	}
 	user->addServices(service);
 }

@@ -11,7 +11,8 @@ ServiceMenuController::ServiceMenuController(Client *client, Company *company) {
 	this->company = company;
 	u = new Utilities();
 	v = new Validation();
-	user = client;
+	this->client = client;
+	serviceID = 0;
 }
 
 ServiceMenuController::~ServiceMenuController() {
@@ -24,7 +25,7 @@ void ServiceMenuController::menu() {
 }
 
 void ServiceMenuController::listServices() {
-	vector<Services *> services = user->getServices();
+	vector<Services *> services = client->getServices();
 	if (services.size() == 0) {
 		theView->printNoServicesRegistered();
 	} else {
@@ -39,7 +40,7 @@ void ServiceMenuController::listServices() {
 }
 
 void ServiceMenuController::printListServicesByUserType() {
-	if (dynamic_cast<Business*>(user)) {
+	if (dynamic_cast<Business*>(client)) {
 		theView->printServiceMenuForBusinnessClients();
 	} else {
 		theView->printServiceMenu();
@@ -69,14 +70,14 @@ void ServiceMenuController::serviceMenuHandler() {
 			newFilterServicesMenu();
 			break;
 		case 5:
-			if (dynamic_cast<Business*>(user)) {
+			if (dynamic_cast<Business*>(client)) {
 				newPayServiceMenu();
 			} else {
 				newClientMenu();
 			}
 			break;
 		case 6:
-			if (dynamic_cast<Business*>(user)) {
+			if (dynamic_cast<Business*>(client)) {
 				newClientMenu();
 			}
 			break;
@@ -109,18 +110,18 @@ int ServiceMenuController::getServiceID() {
 void ServiceMenuController::newRequisitService() {
 	theView->printEnd();
 	RequisitServiceController *requisitServiceController =
-			new RequisitServiceController(user, company);
+			new RequisitServiceController(client, company);
 	requisitServiceController->menu();
 }
 
 void ServiceMenuController::newSeeService() {
 	serviceID = getServiceID();
 	if (serviceID != 0) {
-		Services s = user->getServiceById(serviceID);
+		Services s = client->getServiceById(serviceID);
 		if (s.getVolume() != 0) {
 			theView->printEnd();
 			SeeServiceController *seeServiceController =
-					new SeeServiceController(&s, user, company);
+					new SeeServiceController(&s, client, company);
 			seeServiceController->menu();
 		} else {
 			theView->printServiceIDNotFound();
@@ -131,28 +132,29 @@ void ServiceMenuController::newSeeService() {
 void ServiceMenuController::newSortServicesMenu() {
 	theView->printEnd();
 	SortServicesController *sortServicesController = new SortServicesController(
-			user, company);
+			client, company);
 	sortServicesController->menu();
 }
 
 void ServiceMenuController::newFilterServicesMenu() {
 	theView->printEnd();
 	FilterServicesController *filterServicesController =
-			new FilterServicesController(user, company);
+			new FilterServicesController(client, company);
 	filterServicesController->menu();
 }
 
 void ServiceMenuController::newPayServiceMenu() {
 	theView->printEnd();
-	PayServiceController *payServiceController = new PayServiceController(user,
-	NULL, company);
+	PayServiceController *payServiceController = new PayServiceController(
+			client,
+			NULL, company);
 	payServiceController->menu();
 }
 
 void ServiceMenuController::newClientMenu() {
 	theView->printEnd();
-	ClientMenuController *clientMenuController = new ClientMenuController(user,
-			company);
+	ClientMenuController *clientMenuController = new ClientMenuController(
+			client, company);
 	clientMenuController->menu();
 }
 

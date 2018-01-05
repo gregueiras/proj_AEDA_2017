@@ -20,7 +20,7 @@ private:
 	ClientMenuView *theView;
 	Validation *v;
 	Utilities *u;
-	Client *user;
+	Client *client;
 	Company *company;
 
 	/**
@@ -36,6 +36,9 @@ private:
 	 */
 	int getMenuOption(const int lowerBound, const int upperBound);
 
+	/**
+	 * presents new notifications to the user
+	 */
 	void notificationHandler();
 
 	/**
@@ -58,12 +61,13 @@ private:
 	 */
 	void newServiceMenu();
 public:
+
 	/**
 	 * Contructor that initalizes all variables
 	 * @param client log in user
 	 * @param company pointer to the company object
 	 */
-	ClientMenuController(Client *user, Company *company);
+	ClientMenuController(Client *client, Company *company);
 
 	/**
 	 * destructor

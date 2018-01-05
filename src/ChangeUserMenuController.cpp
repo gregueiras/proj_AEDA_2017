@@ -13,21 +13,16 @@ ChangeUserMenuController::ChangeUserMenuController(Client *client,
 	this->company = company;
 	u = new Utilities();
 	v = new Validation();
-	user = client;
+	this->client = client;
 }
 
 ChangeUserMenuController::~ChangeUserMenuController() {
 }
 
 void ChangeUserMenuController::menu() {
-	menuHandler();
-	newUserMenu();
-}
-
-void ChangeUserMenuController::menuHandler() {
 	int option;
 	do {
-		theView->printUserInfo(user->getInfoDisp());
+		theView->printUserInfo(client->getInfoDisp());
 		theView->printChangeUserMenu();
 		theView->printEnterOption();
 		option = getMenuOption(0, 11);
@@ -66,7 +61,6 @@ void ChangeUserMenuController::menuHandler() {
 			changePassword();
 			break;
 		case 11:
-
 			newUserMenu();
 			break;
 		}
@@ -88,86 +82,86 @@ int ChangeUserMenuController::getMenuOption(const int lowerBound,
 void ChangeUserMenuController::changeName() {
 	string name = getName();
 	if (name != "0") {
-		user->setName(name);
+		client->setName(name);
 	}
 }
 
 void ChangeUserMenuController::changeNIF() {
 	unsigned int nif = getNIF();
 	if (nif != 0) {
-		user->setNif(nif);
+		client->setNif(nif);
 	}
 }
 
 void ChangeUserMenuController::changeStreet() {
 	string street = getStreet();
 	if (street != "0") {
-		Address a = user->getAddress();
+		Address a = client->getAddress();
 		a.setStreet(street);
-		user->setAddress(a);
+		client->setAddress(a);
 	}
 }
 
 void ChangeUserMenuController::changeCountry() {
 	string country = getCountry();
 	if (country != "0") {
-		Address a = user->getAddress();
+		Address a = client->getAddress();
 		a.setCountry(country);
-		user->setAddress(a);
+		client->setAddress(a);
 	}
 }
 
 void ChangeUserMenuController::changeCity() {
 	string city = getCity();
 	if (city != "0") {
-		Address a = user->getAddress();
+		Address a = client->getAddress();
 		a.setCity(city);
-		user->setAddress(a);
+		client->setAddress(a);
 	}
 }
 
 void ChangeUserMenuController::changeCounty() {
 	string county = getCounty();
 	if (county != "0") {
-		Address a = user->getAddress();
+		Address a = client->getAddress();
 		a.setCounty(county);
-		user->setAddress(a);
+		client->setAddress(a);
 	}
 }
 
 void ChangeUserMenuController::changeDoorNumber() {
 	unsigned int doorNumber = getDoorNumber();
 	if (doorNumber != 0) {
-		Address a = user->getAddress();
+		Address a = client->getAddress();
 		a.setDoor_number(doorNumber);
-		user->setAddress(a);
+		client->setAddress(a);
 	}
 }
 
 void ChangeUserMenuController::changeLatitude() {
 	double latitude = getLatitude();
 	if (latitude != 0) {
-		Address a = user->getAddress();
+		Address a = client->getAddress();
 		GPS gps = a.getCoordinates();
 		gps.setLatitude(latitude);
-		user->setAddress(a);
+		client->setAddress(a);
 	}
 }
 
 void ChangeUserMenuController::changeLongitude() {
 	double longitude = getLongitude();
 	if (longitude != 0) {
-		Address a = user->getAddress();
+		Address a = client->getAddress();
 		GPS gps = a.getCoordinates();
 		gps.setLongitude(longitude);
-		user->setAddress(a);
+		client->setAddress(a);
 	}
 }
 
 void ChangeUserMenuController::changePassword() {
 	string password = getPassword();
 	if (password != "0") {
-		user->setPass(password);
+		client->setPass(password);
 	}
 }
 
@@ -291,7 +285,7 @@ void ChangeUserMenuController::endProgram() {
 
 void ChangeUserMenuController::newUserMenu() {
 	theView->printEnd();
-	UserMenuController *userMenuController = new UserMenuController(user,
+	UserMenuController *userMenuController = new UserMenuController(client,
 			company);
 	userMenuController->menu();
 }

@@ -42,8 +42,16 @@ public:
 	 */
 	void printShutdown() const;
 
+	/**
+	 * prints list services message
+	 */
 	void printListServices();
+
+	/**
+	 * prints no services registerd message
+	 */
 	void printNoServicesRegistered();
+
 	/**
 	 * prints end message
 	 */

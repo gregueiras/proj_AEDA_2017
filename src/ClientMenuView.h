@@ -47,8 +47,14 @@ public:
 	 */
 	void printWrongOption();
 
+	/**
+	 * prints notifications header message
+	 */
 	void printNotificationsHeader();
 
+	/**
+	 * prints pending change adress message
+	 */
 	void printPendingChangeAdress();
 
 	/**

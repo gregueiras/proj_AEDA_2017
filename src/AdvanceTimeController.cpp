@@ -19,6 +19,11 @@ AdvanceTimeController::~AdvanceTimeController() {
 }
 
 void AdvanceTimeController::menu() {
+	menuHandler();
+	updateCompanyInformation();
+}
+
+void AdvanceTimeController::menuHandler() {
 	int option;
 	do {
 		theView->printCurrentDate(company->getCurrentDate().toStr());
@@ -41,6 +46,11 @@ void AdvanceTimeController::menu() {
 			break;
 		}
 	} while (option != 0);
+}
+
+void AdvanceTimeController::updateCompanyInformation() {
+	company->updateAvailableVehicles();
+	company->setInactiveClients();
 }
 
 int AdvanceTimeController::getMenuOption(const int lowerBound,

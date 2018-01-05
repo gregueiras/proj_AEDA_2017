@@ -57,31 +57,93 @@ public:
 	ChangeVehicleView();
 	virtual ~ChangeVehicleView();
 
+	/**
+	 * prints change vehicle menu message
+	 */
 	void printChangeVehicleMenu();
+	/**
+	 * prints enter option message
+	 */
 	void printEnterOption();
+	/**
+	 * prints wrong option message
+	 */
 	void printWrongOption();
+	/**
+	 * prints end message
+	 */
 	void printEnd();
+	/**
+	 * prints shutdown message
+	 */
 	void printShutdown();
 
+	/**
+	 * prints enter new plate message
+	 */
 	void printEnterNewPlate();
+	/**
+	 * prints enter new brand message
+	 */
 	void printEnterNewBrand();
+	/**
+	 * prints enter new model message
+	 */
 	void printEnterNewModel();
 
+	/**
+	 * prints enter new date message
+	 */
 	void printEnterNewBirthdayDate();
+	/**
+	 * prints enter new day message
+	 */
 	void printEnterNewBirthdayDay();
+	/**
+	 * prints enter new month message
+	 */
 	void printEnterNewBirthdayMonth();
+	/**
+	 * prints enter new year message
+	 */
 	void printEnterNewBirthdayYear();
 
+	/**
+	 * prints enter new expectable time message
+	 */
 	void printEnterNewExpectableTime();
+	/**
+	 * prints enter new expectable hour message
+	 */
 	void printEnterNewExpectableHour();
+	/**
+	 * prints enter new expectable minute message
+	 */
 	void printEnterNewExpectableMinute();
 
+	/**
+	 * prints enter new maintenance date message
+	 */
 	void printEnterNewMaintenanceDate();
+	/**
+	 * prints enter new maintenance day message
+	 */
 	void printEnterNewMaintenanceDay();
+	/**
+	 * prints enter new maintenance month message
+	 */
 	void printEnterNewMaintenanceMonth();
+	/**
+	 * prints enter new maintenance year message
+	 */
 	void printEnterNewMaintenanceYear();
 
+	/**
+	 * prints information
+	 * @information information to print
+	 */
 	void printInformation(const string information);
+
 	/**
 	 * reads string from keyboard
 	 */

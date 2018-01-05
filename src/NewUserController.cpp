@@ -12,7 +12,7 @@ NewUserController::NewUserController(Company *company) {
 	v = new Validation();
 	u = new Utilities();
 	this->company = company;
-	user = NULL;
+	client = NULL;
 	userType = 0;
 	nif = 0;
 	doorNumber = 0;
@@ -74,7 +74,6 @@ void NewUserController::getName() {
 	theView->printEnterName();
 	name = theView->readLine();
 	if (name == "0") {
-
 		newEnterController();
 	}
 }
@@ -191,19 +190,19 @@ void NewUserController::createUser() {
 		address = Address(street, country, city, county, doorNumber);
 
 	if (userType == client_type_personal) {
-		user = new Personal(name, address, nif, password);
+		client = new Personal(name, address, nif, password);
 	} else if (userType == client_type_business) {
-		user = new Business(name, address, nif, password);
+		client = new Business(name, address, nif, password);
 	} else {
-		user = new Unregistered(name, address, nif);
+		client = new Unregistered(name, address, nif);
 	}
-	company->addClient(user);
+	company->addClient(client);
 
 	if (userType == client_type_unregistered) {
 
 		newRequisitServiceController();
 	} else {
-		theView->printUserID(user->getId());
+		theView->printUserID(client->getId());
 
 		newEnterController();
 	}
@@ -219,7 +218,7 @@ void NewUserController::newEnterController() {
 void NewUserController::newRequisitServiceController() {
 	theView->printEnd();
 	RequisitServiceController *enterController = new RequisitServiceController(
-			user, company);
+			client, company);
 	enterController->menu();
 }
 

@@ -31,6 +31,9 @@ public:
 	RemoveVehicleView();
 	virtual ~RemoveVehicleView();
 
+	/**
+	 * prints remove vehicle menu message
+	 */
 	void printRemoveVehicleMenu();
 
 	/**

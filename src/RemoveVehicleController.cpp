@@ -21,10 +21,6 @@ RemoveVehicleController::~RemoveVehicleController() {
 }
 
 void RemoveVehicleController::menu() {
-	removeVehicleHandler();
-}
-
-void RemoveVehicleController::removeVehicleHandler() {
 	int option;
 	do {
 		theView->printRemoveVehicleMenu();

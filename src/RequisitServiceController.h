@@ -65,6 +65,11 @@ private:
 	void getPackagingInitialHour();
 
 	/**
+	 * user interaction method to read expected initial hour information
+	 */
+	void getVehicleExpectedTime();
+
+	/**
 	 * method to create instance of a new service
 	 */
 	void createService();

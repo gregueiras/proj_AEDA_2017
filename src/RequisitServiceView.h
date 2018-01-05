@@ -48,6 +48,10 @@ private:
 	const string enterStorageTime = "Introduza o tempo de armazenamento";
 	const string enterVehicleExpectedTime =
 			"Introduza o tempo expectavel para o veículo voltar a estar disponivel";
+	const string enterVehicleExpectedHour =
+			"Introduza o tempo expectavel para o veículo voltar a estar disponivel";
+	const string enterVehicleExpectedMinute =
+			"Introduza o tempo expectavel para o veículo voltar a estar disponivel";
 
 	const string wrongPackagingInitialDay = "dia inicio do embalamento invalido";
 	const string wrongPackagingInitialMonth =
@@ -64,6 +68,11 @@ private:
 	const string wrongLongitude = "Longitude introduzida invalida";
 
 	const string addToEOM = "Pretende deixar para o fim do mes?\n1->Sim\n2->Nao";
+	const string schedulingForDateRequired =
+			"Agendamento continua para a data que o cliente pediu";
+	const string schedulingForBriefTime =
+			"Devido a não haver veículos disponíveis, serviço vai ser agendado para o mais brevemente possível";
+
 	const string enterOption = "Introduza a sua opção";
 	const string wrongOption = "Opçao introduzida invalida";
 
@@ -171,7 +180,30 @@ public:
 	 */
 	void printEnterVolume();
 
+	/**
+	 * prints enter vehicle expected time message
+	 */
 	void printEnterVehicleExpectedTime();
+
+	/**
+	 * prints enter vehicle expected hour message
+	 */
+	void printEnterVehicleExpectedHour();
+
+	/**
+	 * prints enter vehicle expected minute message
+	 */
+	void printEnterVehicleExpectedMinute();
+
+	/**
+	 * prints scheduling for date required message
+	 */
+	void printSchedulingForDateRequired();
+
+	/**
+	 * prints scheduling for brief time message
+	 */
+	void printSchedulingForBriefTime();
 
 	/**
 	 * prints enter intial day message
@@ -252,7 +284,8 @@ public:
 	 * reads string from keyboard
 	 */
 	template<typename T> bool getInfo(T &info);
-};
+}
+;
 
 template<typename T>
 bool RequisitServiceView::getInfo(T& info) {

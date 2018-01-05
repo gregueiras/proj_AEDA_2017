@@ -32,15 +32,44 @@ public:
 	PromotionCampaignView();
 	virtual ~PromotionCampaignView();
 
+	/**
+	 * prints initial message
+	 */
 	void printInitialMessage();
+
+	/**
+	 * prints company discount percentage
+	 */
 	void printCompanyDiscountPercentage(const float discount);
+
+	/**
+	 * prints enter discount percentage message
+	 */
 	void printEnterDiscountPercentage();
 
+	/**
+	 * prints previous promotion campaign ended message
+	 */
 	void printPreviousPromotionalCampaignEnded();
+
+	/**
+	 * prints shutdown message
+	 */
 	void printShutdown();
+
+	/**
+	 * prints wrong percentage message
+	 */
 	void printWrongPercentage();
+
+	/**
+	 * prints end message
+	 */
 	void printEnd();
 
+	/**
+	 * reads string from keyboard
+	 */
 	template<typename T> bool getInfo(T &info);
 };
 

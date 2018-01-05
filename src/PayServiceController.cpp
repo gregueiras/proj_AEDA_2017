@@ -7,12 +7,12 @@
 
 #include "PayServiceController.h"
 
-PayServiceController::PayServiceController(Client *user, Services *service,
+PayServiceController::PayServiceController(Client *client, Services *service,
 		Company *company) {
 	this->theView = new PayServiceView;
 	v = new Validation();
 	u = new Utilities();
-	this->user = user;
+	this->client = client;
 	this->service = service;
 	this->company = company;
 	amountToPay = 0;
@@ -24,7 +24,7 @@ PayServiceController::~PayServiceController() {
 }
 
 void PayServiceController::menu() {
-	if (dynamic_cast<Business*>(user)) {
+	if (dynamic_cast<Business*>(client)) {
 		if (service == NULL) {
 			theView->printPayEOM();
 			payEOM();
@@ -43,7 +43,7 @@ void PayServiceController::menu() {
 		amountToPay = getAmountToPay();
 		payMenu();
 		setServicePaid();
-		if (dynamic_cast<Personal*>(user)) {
+		if (dynamic_cast<Personal*>(client)) {
 			setUserActive();
 			newServiceMenu();
 		} else {
@@ -57,12 +57,12 @@ double PayServiceController::getAmountToPay() {
 }
 
 void PayServiceController::payEOM() {
-	if (company->checkAllDues(user, amountToPay) == false) {
+	if (company->checkAllDues(client, amountToPay) == false) {
 		theView->printNoEOMLeftToPay();
 	} else {
 		theView->printPayMenuBusiness();
 		payMenuBusiness();
-		company->payAllDues(user);
+		company->payAllDues(client);
 	}
 }
 
@@ -118,7 +118,7 @@ void PayServiceController::payCreditCard() {
 }
 //-----------------------------
 void PayServiceController::setServicePaid() {
-	int payment_id = user->getPaymentId(service->getId());
+	int payment_id = client->getPaymentId(service->getId());
 	if (payment_id != 0) {
 		company->getPayment(payment_id).setDue(false);
 	}
@@ -138,8 +138,8 @@ unsigned long PayServiceController::getCreditCardNumber() {
 }
 
 void PayServiceController::setUserActive() {
-	if (user->getVisibility() == false) {
-		company->activateClientRecord(user);
+	if (client->getVisibility() == false) {
+		company->activateClientRecord(client);
 	}
 }
 
@@ -158,7 +158,7 @@ int PayServiceController::getMenuOption(const int lowerBound,
 void PayServiceController::newServiceMenu() {
 	theView->printEnd();
 	ServiceMenuController *serviceMenuController = new ServiceMenuController(
-			user, company);
+			client, company);
 	serviceMenuController->menu();
 }
 
