@@ -15,6 +15,7 @@ Company::Company() :
 	this->period_to_inactive = 60;
 	current_date = getTimeZoneDate();
 	current_hour = getTimeZoneHour();
+	discount = 0;
 }
 
 Company::Company(string nib, string entity, string reference) :
@@ -107,6 +108,11 @@ void Company::activateClientRecordById(unsigned int id)
 }
 
 void Company::activateAllClients() {
+
+
+	if (clients.size() == 0)
+		return;
+
 	int lim = clients.at(0)->getNextId();
 
 	for (size_t i = 0; i < lim; i++)
@@ -346,10 +352,10 @@ vector<Services*> Company::readServicesFromFile(const unsigned int id) {
 			plate = temp;
 
 			getline(input, temp);
-			volume = stod(temp);
+			Hour expected_time(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
 
 			getline(input, temp);
-			Hour expected_time(stoul(temp.substr(0, 2)), stoul(temp.substr(3)));
+			volume = stod(temp);
 
 			Services* s1 = new Services(origin, volume, destination, start_h,
 					start_d, expected_time, days_in_storage);
@@ -457,6 +463,8 @@ vector<Payment*> Company::readPaymentsFromFile(Client* ptr,
 			//get pay_type
 			getline(input, pay_type);
 			//////////////////////
+			if (pay_type == "")
+				break;
 
 			getline(input, temp);
 
@@ -517,7 +525,7 @@ vector<Client*> Company::readClientsFromFile() {
 	vector<Client*> c_tmp;
 	vector<Services*> s_tmp;
 	vector<Payment*> p_tmp;
-	unsigned int id = 1;
+	unsigned int id = 2;
 	Client* ptr = NULL;
 
 	do {
@@ -1002,6 +1010,8 @@ bool Company::freeAvailableVehicles() {
 				res = true;
 			}
 		}
+		temp.push_back(v_temp);
+
 	}
 
 	for (auto i : temp)

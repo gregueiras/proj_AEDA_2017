@@ -45,7 +45,7 @@ int main() {
 
 	c1->readVehiclesFromFile();
 
-	//cout << c1->getNib() << endl;
+	cout << c1->getClients().size() << endl;
 
 	//SortServicesController *sortServicesController = new SortServicesController(
 //	sortServicesController->menu();

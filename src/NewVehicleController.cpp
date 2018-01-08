@@ -187,6 +187,7 @@ void NewVehicleController::createVehicle() {
 	if (!company->addVehicle(vehicle)) {
 		theView->printRepeatedVehicle();
 	}
+
 	company->updateAvailableVehicles();
 }
 

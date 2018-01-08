@@ -26,6 +26,7 @@ void ServiceMenuController::menu() {
 
 void ServiceMenuController::listServices() {
 	vector<Services *> services = client->getServices();
+
 	if (services.size() == 0) {
 		theView->printNoServicesRegistered();
 	} else {

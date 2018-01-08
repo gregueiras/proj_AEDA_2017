@@ -1,0 +1,66 @@
+Rua A
+8
+Porto
+Porto
+Portugal
+41.156944
+-8.628902
+
+Rua B
+9
+Lisboa
+Lisboa
+Portugal
+38.721278
+-9.138393
+
+09/01/2018
+12:20
+0
+25-20-DF
+02:30
+20
+Rua C
+7
+Faro
+Faro
+Portugal
+37.019139
+-7.930455
+
+Rua D
+3
+Coimbra
+Coimbra
+Portugal
+40.201690
+-8.410034
+
+10/01/2018
+09:30
+0
+20-12-TY
+20:00
+20
+Rua C
+7
+Faro
+Faro
+Portugal
+37.019139
+-7.930455
+
+Rua D
+2
+Coimbra
+Coimbra
+Portugal
+40.201690
+-8.410034
+
+09/01/2018
+10:22
+0
+25-BG-23
+01:00
+20

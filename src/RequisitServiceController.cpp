@@ -304,7 +304,6 @@ void RequisitServiceController::createService() {
 			packagingInitialTime, packagingInitialDate, vehicleExpectedTime,
 			storageDays);
 	service->applyDiscount(company->getDiscount());
-
 }
 
 void RequisitServiceController::payService() {
@@ -357,9 +356,9 @@ void RequisitServiceController::addService() {
 		theView->printSchedulingForDateRequired();
 	} else {
 		company->addServiceToNext_Services(service);
+		user->addServices(service);
 		theView->printSchedulingForBriefTime();
 	}
-	user->addServices(service);
 }
 
 void RequisitServiceController::newEnterController() {
